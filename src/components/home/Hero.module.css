@@ -18,7 +18,7 @@
 .grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: clamp(32px, 5vw, 80px);
   align-items: center;
 }
@@ -70,7 +70,7 @@
   max-width: 12ch;
 }
 .title[data-size="l"] {
-  max-width: 17ch;
+  max-width: 24ch;
 }
 .title em {
   color: var(--accent-solid);

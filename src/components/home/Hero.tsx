@@ -23,6 +23,7 @@ export function Hero({ deck }: { deck: DeckItem[] }) {
         { k: "Led", v: "A team of four designers" },
         { k: "Building", v: "Blinkwiser, AI products" },
       ]}
+      titleSize="l"
       visual={<ReframeDeck items={deck} />}
     />
   );
