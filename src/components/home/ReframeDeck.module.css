@@ -1,0 +1,288 @@
+.deck {
+  display: grid;
+  gap: 18px;
+}
+
+/* ----------------------------------------------------------------- tabs */
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+.tab {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  min-height: 64px;
+  padding: 10px 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in oklch, var(--surface-raised) 70%, transparent);
+  text-align: left;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+.tab:hover {
+  border-color: var(--border-strong);
+}
+.tab[aria-selected="true"] {
+  border-color: var(--accent-solid);
+  background: var(--surface-raised);
+}
+.tabIndex {
+  font-size: 11px;
+  color: var(--accent-solid);
+}
+.tabLabel {
+  font-size: 12.5px;
+  line-height: 1.25;
+  color: var(--text-secondary);
+}
+.tab[aria-selected="true"] .tabLabel {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+.progress {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border-subtle);
+  overflow: hidden;
+}
+.progress i {
+  display: block;
+  height: 100%;
+  background: var(--accent-solid);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation-name: fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+.progress i[data-running] {
+  animation-play-state: running;
+}
+.progress i[data-static] {
+  animation: none;
+  transform: none;
+}
+@keyframes fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------------------------------------------------------------- stack */
+.stack {
+  position: relative;
+  padding-bottom: 20px;
+}
+.ghost {
+  position: absolute;
+  inset: 0 0 20px;
+  border-radius: var(--radius-xl);
+  background: var(--surface-raised);
+  border: 1px solid color-mix(in oklch, var(--accent-solid) 35%, var(--border-subtle));
+  transition:
+    border-color var(--duration-slow) var(--ease-standard),
+    transform var(--duration-slow) var(--ease-emphasized);
+}
+.ghost[data-depth="1"] {
+  transform: translateY(10px) scale(0.965);
+  opacity: 0.8;
+}
+.ghost[data-depth="2"] {
+  transform: translateY(20px) scale(0.93);
+  opacity: 0.5;
+}
+.card {
+  position: relative;
+  min-height: 430px;
+  border-radius: var(--radius-xl);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-overlay);
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent-solid);
+  transition: background-color var(--duration-slow) var(--ease-standard);
+}
+.inner {
+  display: grid;
+  gap: 20px;
+  padding: clamp(20px, 2.4vw, 28px);
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.headText {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+.chip {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+}
+.glyph {
+  width: 128px;
+  flex: none;
+  margin: -6px -4px 0 0;
+  opacity: 0.9;
+}
+.rows {
+  display: grid;
+  gap: 16px;
+}
+.rows > div {
+  display: grid;
+  gap: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+.brief {
+  font-size: var(--font-size-body-l);
+  line-height: 1.4;
+  color: var(--text-tertiary);
+}
+.strike {
+  background: linear-gradient(var(--text-critical), var(--text-critical)) no-repeat 0 58% / 100% 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.problem {
+  font-size: var(--font-size-heading-m);
+  line-height: 1.35;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.012em;
+}
+.mark {
+  background: linear-gradient(var(--accent-soft), var(--accent-soft)) no-repeat 0 90% / 100% 38%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.call {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 8px;
+  font-size: var(--font-size-body-s);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.call svg {
+  margin-top: 2px;
+  color: var(--accent-solid);
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+.read {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-solid);
+}
+.read svg {
+  transition: transform var(--duration-base) var(--ease-emphasized);
+}
+.read:hover svg {
+  transform: translateX(3px);
+}
+
+/* ------------------------------------------------------------- controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.count {
+  font-size: 10.5px;
+}
+.buttons {
+  display: flex;
+  gap: 6px;
+}
+.ctrl {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+.ctrl:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+.ctrl:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pauseBars {
+  display: inline-flex;
+  gap: 3px;
+}
+.pauseBars span {
+  width: 3px;
+  height: 11px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 640px) {
+  .tabs {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .tab {
+    min-height: 44px;
+    padding: 8px 6px 12px;
+    justify-items: center;
+  }
+  .tabLabel {
+    display: none;
+  }
+  .glyph {
+    width: 84px;
+  }
+  .card {
+    min-height: 0;
+  }
+}
+
+/* The glyph is a thumbnail here: drop its tiny labels. */
+.glyph text {
+  display: none;
+}

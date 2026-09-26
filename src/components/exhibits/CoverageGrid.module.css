@@ -1,0 +1,244 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 16px;
+  align-items: start;
+}
+.tableWrap {
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: center;
+  vertical-align: middle;
+}
+.table thead th {
+  vertical-align: bottom;
+}
+.table thead th:first-child,
+.table tbody th {
+  text-align: left;
+}
+.table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.covName {
+  display: block;
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 6px;
+}
+.select,
+.cellSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  max-width: 100%;
+  padding: 5px 24px 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-default);
+  background:
+    linear-gradient(45deg, transparent 50%, var(--text-tertiary) 50%) calc(100% - 13px) 55% / 5px 5px no-repeat,
+    linear-gradient(135deg, var(--text-tertiary) 50%, transparent 50%) calc(100% - 9px) 55% / 5px 5px no-repeat,
+    var(--surface-canvas);
+  font-size: 12px;
+  cursor: pointer;
+}
+.planState {
+  display: block;
+  margin-top: 6px;
+  font-size: 10.5px;
+  font-family: var(--font-family-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.planState[data-kind="changed"] {
+  color: var(--accent-solid);
+}
+.planState[data-kind="waived"] {
+  color: var(--text-critical);
+}
+.cellSelect {
+  display: block;
+  margin: 6px auto 0;
+  font-size: 11px;
+  padding-block: 3px;
+}
+.table tbody th {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+}
+.table tbody th > span:last-child {
+  display: grid;
+}
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface-muted);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+}
+.memberName {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+}
+.table td {
+  transition: background-color var(--duration-base) var(--ease-standard);
+}
+.table td[data-on] {
+  background: color-mix(in oklch, var(--accent-solid) 7%, transparent);
+}
+.table td[data-waived] {
+  background: repeating-linear-gradient(-45deg, transparent 0 6px, var(--surface-sunken) 6px 12px);
+}
+.cell {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+.cell input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--surface-raised);
+  position: relative;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-emphasized);
+}
+.box::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--accent-on-solid);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform var(--duration-base) var(--ease-emphasized);
+}
+.cell input:checked + .box {
+  background: var(--accent-solid);
+  border-color: var(--accent-solid);
+}
+.cell input:checked + .box::after {
+  transform: rotate(45deg) scale(1);
+}
+.cell input:active + .box {
+  transform: scale(0.9);
+}
+.cell input:focus-visible + .box {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+.cell input:disabled + .box {
+  opacity: 0.35;
+}
+.tableFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-sunken);
+}
+.hatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.hatch input {
+  accent-color: var(--accent-solid);
+  width: 16px;
+  height: 16px;
+}
+.reset {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.total {
+  position: sticky;
+  top: 100px;
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+.total :global(.t-label),
+.total :global(.c-secondary) {
+  color: color-mix(in oklch, var(--text-inverse) 65%, transparent);
+}
+.amount {
+  font-size: clamp(2.25rem, 1.6rem + 2vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-weight: var(--font-weight-medium);
+}
+.amount span {
+  font-size: 0.36em;
+  letter-spacing: 0;
+  margin-left: 4px;
+  color: color-mix(in oklch, var(--text-inverse) 65%, transparent);
+}
+.breakdown {
+  display: grid;
+  gap: 6px;
+  padding-block: 12px;
+  border-block: 1px solid color-mix(in oklch, var(--text-inverse) 18%, transparent);
+  font-size: 13px;
+}
+.breakdown li {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .total {
+    position: static;
+  }
+}
+/* Keep names visible while the grid scrolls sideways on narrow screens. */
+.table thead th:first-child,
+.table tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--surface-raised);
+}

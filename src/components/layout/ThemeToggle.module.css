@@ -1,0 +1,40 @@
+.toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+.toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.icons {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+.icons > svg {
+  position: absolute;
+  inset: 0;
+  transition:
+    transform var(--duration-slow) var(--ease-emphasized),
+    opacity var(--duration-base) var(--ease-standard);
+}
+.moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+.toggle[data-theme-state="dark"] .sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+.toggle[data-theme-state="dark"] .moon {
+  opacity: 1;
+  transform: none;
+}

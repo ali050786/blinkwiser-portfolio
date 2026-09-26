@@ -1,0 +1,62 @@
+.wrap {
+  padding-block: clamp(24px, 4vw, 48px) clamp(64px, 9vw, 120px);
+}
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 56px);
+  border-radius: var(--radius-xl);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+  transition:
+    border-color var(--duration-base) var(--ease-standard),
+    transform var(--duration-slow) var(--ease-emphasized);
+}
+.card:hover {
+  border-color: var(--accent-solid);
+}
+.copy {
+  display: grid;
+  gap: 16px;
+}
+.copy > p:nth-child(3) {
+  max-width: 56ch;
+}
+.title {
+  max-width: 20ch;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.card:hover .title {
+  color: var(--accent-solid);
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-solid);
+}
+.cta svg {
+  transition: transform var(--duration-base) var(--ease-emphasized);
+}
+.card:hover .cta svg {
+  transform: translateX(4px);
+}
+.glyph {
+  transition: transform var(--duration-slower) var(--ease-emphasized);
+}
+.card:hover .glyph {
+  transform: translateY(-6px);
+}
+@media (max-width: 860px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+  .glyph {
+    display: none;
+  }
+}

@@ -1,0 +1,499 @@
+.wrap {
+  --b-primary: oklch(52% 0.2 268);
+  --b-radius: 8px;
+  --b-soft: color-mix(in oklch, var(--b-primary) 15%, var(--surface-raised));
+  --b-on: #fff;
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+.wrap[data-brand="b"] {
+  --b-primary: oklch(52% 0.12 158);
+  --b-radius: 3px;
+}
+.wrap[data-brand="c"] {
+  --b-primary: oklch(58% 0.18 36);
+  --b-radius: 15px;
+}
+
+/* ---------------------------------------------------------------- scene */
+.scene {
+  position: relative;
+  height: clamp(400px, 44vw, 540px);
+  display: grid;
+  place-items: center;
+  perspective: 1800px;
+  perspective-origin: 50% 30%;
+}
+.tilt {
+  --gap: 78px;
+  --rz: -42deg;
+  transform-style: preserve-3d;
+}
+.stage {
+  position: relative;
+  width: 300px;
+  height: 208px;
+  transform-style: preserve-3d;
+  translate: 0 calc(var(--gap) * 1.25);
+  transform: rotateX(56deg) rotateZ(var(--rz));
+}
+.layer {
+  position: absolute;
+  inset: 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: color-mix(in oklch, var(--surface-raised) 88%, transparent);
+  border: 1px solid var(--border-default);
+  box-shadow:
+    0 1px 0 color-mix(in oklch, var(--surface-raised) 60%, transparent) inset,
+    -18px 28px 40px -24px oklch(0% 0 0 / 0.28);
+  transform: translateZ(calc(var(--i) * var(--gap) + var(--lift) + var(--hover)));
+  transition:
+    opacity var(--duration-base) var(--ease-standard),
+    --hover var(--duration-slow) var(--ease-emphasized),
+    border-color var(--duration-base) var(--ease-standard);
+  backface-visibility: hidden;
+}
+.layer[data-layer="3"] {
+  background: var(--surface-raised);
+}
+.wrap[data-focus] .layer {
+  opacity: 0.28;
+}
+.wrap[data-focus="0"] .layer[data-layer="0"],
+.wrap[data-focus="1"] .layer[data-layer="1"],
+.wrap[data-focus="2"] .layer[data-layer="2"],
+.wrap[data-focus="3"] .layer[data-layer="3"] {
+  opacity: 1;
+  --hover: 22px;
+  border-color: var(--b-primary);
+}
+.tag {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: var(--font-family-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* Every themed surface transitions, so a brand swap reads as one cascade. */
+.layer :where(span, i, b, div, p) {
+  transition:
+    background-color var(--duration-slow) var(--ease-standard),
+    border-color var(--duration-slow) var(--ease-standard),
+    border-radius var(--duration-slow) var(--ease-emphasized),
+    color var(--duration-slow) var(--ease-standard);
+}
+.layer i {
+  display: block;
+}
+
+/* --------------------------------------------------------------- tokens */
+.tokens {
+  display: grid;
+  gap: 16px;
+  margin-top: 14px;
+}
+.swatches {
+  display: flex;
+  gap: 8px;
+}
+.swatches span {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--b-radius);
+}
+.swPrimary {
+  background: var(--b-primary);
+}
+.swSoft {
+  background: var(--b-soft);
+}
+.swInk {
+  background: var(--text-primary);
+}
+.swMid {
+  background: var(--border-strong);
+}
+.swLight {
+  background: var(--surface-muted);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+.typeRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.aa {
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--b-primary);
+}
+.scale {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+}
+.scale i {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+.spacing {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+.spacing i {
+  height: 12px;
+  background: var(--b-soft);
+  border-left: 2px solid var(--b-primary);
+}
+.radius {
+  width: 26px;
+  height: 26px;
+  margin-left: auto;
+  border: 2px solid var(--b-primary);
+  border-radius: var(--b-radius);
+}
+
+/* ----------------------------------------------------------- components */
+.components {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding-inline: 12px;
+  border-radius: var(--b-radius);
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.btnPrimary {
+  background: var(--b-primary);
+  color: var(--b-on);
+}
+.btnSecondary {
+  border: 1px solid var(--b-primary);
+  color: var(--b-primary);
+}
+.switch {
+  position: relative;
+  width: 34px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--b-primary);
+}
+.switch i {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+}
+.check {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: calc(var(--b-radius) * 0.5);
+  background: var(--b-primary);
+}
+.check::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  padding-inline: 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--b-radius);
+  background: var(--surface-raised);
+}
+.input i {
+  width: 42%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+.badge {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--b-soft);
+  color: var(--b-primary);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------ app shell */
+.shell {
+  margin-top: 14px;
+}
+.shellHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  padding-inline: 8px;
+  border-radius: 6px;
+  background: var(--surface-muted);
+}
+.logoDot {
+  width: 11px;
+  height: 11px;
+  border-radius: calc(var(--b-radius) * 0.4);
+  background: var(--b-primary);
+}
+.bar {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+.shellBody {
+  display: flex;
+  gap: 8px;
+  height: 128px;
+  margin-top: 8px;
+}
+.shellNav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 58px;
+  padding: 6px;
+  border-radius: 6px;
+  background: var(--surface-sunken);
+}
+.shellNav i {
+  height: 9px;
+  border-radius: 3px;
+  background: var(--border-subtle);
+}
+.shellNav i.navActive {
+  background: var(--b-soft);
+  box-shadow: inset 2px 0 0 var(--b-primary);
+}
+.shellMain {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+}
+.shellMain i {
+  border-radius: 2px;
+  background: color-mix(in oklch, var(--b-primary) 11%, transparent);
+}
+
+/* --------------------------------------------------------------- screen */
+.screen {
+  margin-top: 2px;
+  font-size: 10px;
+}
+.screenHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-right: 64px;
+}
+.screenHeader b {
+  font-weight: 600;
+}
+.screenHeader span {
+  color: var(--text-tertiary);
+}
+.screenTitle {
+  margin: 10px 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.plan {
+  display: grid;
+  gap: 2px;
+  padding: 7px 8px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--b-radius);
+}
+.plan span {
+  color: var(--text-tertiary);
+  font-size: 9px;
+}
+.plan b {
+  font-size: 14px;
+  font-weight: 500;
+}
+.plan em {
+  font-style: normal;
+  font-size: 8.5px;
+  color: var(--text-tertiary);
+}
+.plan[data-selected] {
+  border-color: var(--b-primary);
+  background: var(--b-soft);
+}
+.screenFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+.total {
+  color: var(--text-tertiary);
+}
+.total b {
+  color: var(--b-primary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------- legend */
+.legend {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  translate: 0 -62%;
+  display: grid;
+  gap: 38px;
+  font-size: var(--font-size-body-s);
+  color: var(--text-tertiary);
+}
+.legend li {
+  cursor: default;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.legend li[data-active],
+.legend li:hover {
+  color: var(--text-primary);
+}
+.legend :global(.t-mono),
+.legend span {
+  font-size: 11px;
+  margin-right: 6px;
+}
+
+/* ------------------------------------------------------------- controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.brands {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+}
+.brandBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding-inline: 12px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+.brandBtn[aria-pressed="true"] {
+  background: var(--surface-muted);
+  color: var(--text-primary);
+}
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+[data-swatch="a"] .swatch {
+  background: oklch(52% 0.2 268);
+}
+[data-swatch="b"] .swatch {
+  background: oklch(52% 0.12 158);
+}
+[data-swatch="c"] .swatch {
+  background: oklch(58% 0.18 36);
+}
+.play {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+}
+.pauseBars {
+  display: inline-flex;
+  gap: 3px;
+}
+.pauseBars span {
+  width: 3px;
+  height: 11px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.caption {
+  text-align: center;
+  font-size: var(--font-size-body-s);
+  color: var(--text-secondary);
+}
+.caption :global(.t-label) {
+  margin-right: 8px;
+}
+
+@media (max-width: 1240px) {
+  .legend {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .scene {
+    height: 440px;
+  }
+}
+@media (max-width: 520px) {
+  .scene {
+    height: 360px;
+  }
+  .tilt {
+    scale: 0.74;
+  }
+  .brandBtn {
+    padding-inline: 10px;
+    font-size: 12px;
+  }
+}

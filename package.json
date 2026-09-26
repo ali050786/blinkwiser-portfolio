@@ -1,0 +1,35 @@
+{
+  "name": "ali-abdul-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "portfolio.blinkwiser.com v2: decision-led case studies, three-tier design tokens, Next.js App Router.",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "predev": "npm run tokens",
+    "dev": "next dev",
+    "prebuild": "npm run tokens",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "check:copy": "node scripts/check-copy.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check": "npm run check:copy && npm run check:contrast && npm run typecheck"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "gsap": "^3.15.0",
+    "motion": "^13.4.3",
+    "next": "^16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.8"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}

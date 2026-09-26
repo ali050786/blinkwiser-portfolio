@@ -1,0 +1,51 @@
+.wrap {
+  display: grid;
+  gap: clamp(32px, 5vw, 56px);
+}
+.cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.cols[data-cols="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.col {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: clamp(20px, 2.4vw, 28px);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.col p:not(:global(.t-label)) {
+  font-size: var(--font-size-body-s);
+  line-height: 1.6;
+}
+.change {
+  background: var(--surface-inverse);
+  border-color: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+.change :global(.t-label) {
+  color: color-mix(in oklch, var(--accent-solid) 50%, var(--text-inverse));
+}
+.quote {
+  display: grid;
+  gap: 14px;
+  padding-left: clamp(20px, 3vw, 32px);
+  border-left: 2px solid var(--accent-solid);
+}
+.quoteText {
+  font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.375rem);
+  line-height: 1.2;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+@media (max-width: 900px) {
+  .cols,
+  .cols[data-cols="3"] {
+    grid-template-columns: 1fr;
+  }
+}

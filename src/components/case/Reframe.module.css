@@ -1,0 +1,54 @@
+.reframe {
+  display: grid;
+  gap: 18px;
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: var(--radius-xl);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+}
+.row {
+  display: grid;
+  gap: 10px;
+}
+.assumed {
+  color: var(--text-tertiary);
+  max-width: 36ch;
+}
+.strike {
+  background: linear-gradient(var(--text-critical), var(--text-critical)) no-repeat 0 58% / 100% 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 900ms var(--ease-emphasized) 250ms;
+}
+.turn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.turnLine {
+  width: 40px;
+  height: 1px;
+  background: var(--accent-solid);
+  transform-origin: left;
+  transition: transform 700ms var(--ease-emphasized) 700ms;
+}
+.actual {
+  max-width: 36ch;
+}
+.mark {
+  background: linear-gradient(var(--accent-soft), var(--accent-soft)) no-repeat 0 88% / 100% 42%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 1100ms var(--ease-emphasized) 1000ms;
+}
+
+/* Initial state only when motion is allowed; RevealObserver adds .is-in. */
+[data-motion="ok"] .reframe:not(:global(.is-in)) .strike {
+  background-size: 0% 2px;
+}
+[data-motion="ok"] .reframe:not(:global(.is-in)) .turnLine {
+  transform: scaleX(0);
+}
+[data-motion="ok"] .reframe:not(:global(.is-in)) .mark {
+  background-size: 0% 42%;
+}
