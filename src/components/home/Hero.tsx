@@ -9,7 +9,7 @@ export function Hero({ deck }: { deck: DeckItem[] }) {
     <HeroShell
       title={
         <>
-          The brief is usually a <em className="t-serif-em">symptom</em>.
+          Designing the systems that make complex products feel <em className="t-serif-em">simple</em>.
         </>
       }
       lede={
