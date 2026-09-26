@@ -43,7 +43,7 @@ export function Header() {
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.brand} aria-label={`${site.name}, home`}>
           <span className={styles.mark} aria-hidden="true">
-            <span>A</span>
+            <span>S</span>
             <span>A</span>
           </span>
           <span className={styles.brandText}>
