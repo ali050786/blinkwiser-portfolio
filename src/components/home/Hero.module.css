@@ -85,7 +85,8 @@
 .ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 12px 24px;
 }
 .facts {
   display: flex;
@@ -105,20 +106,32 @@
   position: relative;
 }
 
-/* Stacked layout: headline and lede on top, a wide visual below. */
+/* Stacked layout: headline and lede full width, actions under them, then a wide visual and the facts. */
 .stackTop {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(24px, 4vw, 64px);
-  align-items: end;
+  gap: clamp(16px, 2vw, 24px);
 }
-.stacked .title {
-  max-width: 15ch;
+.stacked .title,
+.stacked .title[data-size="l"] {
+  max-width: none;
+}
+.stackMid {
+  position: relative;
+  display: grid;
+  gap: clamp(20px, 2.4vw, 28px);
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+.stackMid .lede {
+  max-width: none;
 }
 .stackVisual {
   position: relative;
-  margin-top: clamp(32px, 4vw, 56px);
+  margin-top: clamp(40px, 5vw, 72px);
+}
+.stackFacts {
+  position: relative;
+  margin-top: clamp(40px, 4.5vw, 64px);
 }
 
 /* Hidden until GSAP reveals it; a failsafe shows it if scripts never run. */
@@ -134,8 +147,7 @@
 }
 
 @media (max-width: 1024px) {
-  .grid,
-  .stackTop {
+  .grid {
     grid-template-columns: 1fr;
   }
   .title {

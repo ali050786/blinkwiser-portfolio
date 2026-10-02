@@ -1,4 +1,3 @@
-import { ProofStrip } from "./ProofStrip";
 import { WorkIndex } from "./WorkIndex";
 import { HowIWork } from "./HowIWork";
 import { Contact } from "./Contact";
@@ -7,7 +6,6 @@ import { Contact } from "./Contact";
 export function HomeSections() {
   return (
     <>
-      <ProofStrip />
       <WorkIndex />
       <HowIWork />
       <Contact />

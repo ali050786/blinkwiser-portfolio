@@ -1,0 +1,126 @@
+/* The work grid: equal cards after the featured study. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 32px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.grid > li {
+  display: grid;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  background: var(--surface-raised);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color var(--duration-base) var(--ease-standard);
+}
+.card:hover {
+  border-color: var(--accent-solid);
+}
+.card:focus-visible {
+  outline: 2px solid var(--accent-solid);
+  outline-offset: 4px;
+}
+
+/* The real screen, framed and cropped at a fixed height so the cards line up. */
+.visual {
+  position: relative;
+  height: clamp(200px, 22vw, 280px);
+  padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px) 0;
+  overflow: hidden;
+  background: var(--surface-sunken);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.frame {
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-bottom: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  background: var(--surface-canvas);
+  box-shadow: 0 10px 30px -18px color-mix(in oklch, var(--text-primary) 35%, transparent);
+  transition: transform var(--duration-slow) var(--ease-emphasized);
+}
+.card:hover .frame {
+  transform: translateY(-4px);
+}
+.visual::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 56px;
+  background: linear-gradient(transparent, var(--surface-sunken));
+  pointer-events: none;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(20px, 2.4vw, 32px);
+}
+.kicker {
+  margin: 0;
+  color: var(--accent-solid);
+}
+.title {
+  margin: 0;
+  max-width: 24ch;
+}
+.outcome {
+  display: grid;
+  gap: 4px;
+  margin: 4px 0 0;
+}
+.value {
+  font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.25rem);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.label {
+  max-width: 36ch;
+}
+.outcome + .foot {
+  margin-top: auto;
+}
+.body > .outcome {
+  margin-bottom: 6px;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-solid);
+}
+.cta :global(svg) {
+  transition: transform var(--duration-base) var(--ease-emphasized);
+}
+.card:hover .cta :global(svg) {
+  transform: translateX(3px);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

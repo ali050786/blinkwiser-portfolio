@@ -1,0 +1,225 @@
+/* The hero's career wave: full width under the headline, vertical on phones. */
+.wave {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1000 / 236;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.svgH {
+  width: 100%;
+  height: 100%;
+}
+.svgV {
+  display: none;
+}
+
+.surface {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  vector-effect: non-scaling-stroke;
+}
+.key {
+  position: absolute;
+  left: 0;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+.keyBrief {
+  top: 26px;
+}
+.seg {
+  fill: none;
+  stroke: var(--text-primary);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke var(--motion-hover),
+    opacity var(--motion-hover);
+}
+.seg[data-current] {
+  stroke: var(--accent-solid);
+  stroke-width: 2.25;
+}
+.dot {
+  fill: var(--accent-solid);
+}
+
+/* One chapter highlighted: the others step back. */
+.wave[data-active] .seg {
+  opacity: 0.35;
+}
+.wave[data-active="ai"] .seg[data-seg="ai"],
+.wave[data-active="health"] .seg[data-seg="health"],
+.wave[data-active="dubai"] .seg[data-seg="dubai"],
+.wave[data-active="jet"] .seg[data-seg="jet"] {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------ chapters */
+.list {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chapter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--cx) - 9.5%);
+  width: 19%;
+  text-align: center;
+  transition: opacity var(--motion-hover);
+}
+.wave[data-active] .chapter:not([data-active]) {
+  opacity: 0.4;
+}
+
+.trigger {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  cursor: default;
+  border-radius: var(--radius-sm);
+  outline-offset: -2px;
+}
+a.trigger {
+  cursor: pointer;
+}
+
+.org {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.now {
+  color: var(--accent-strong);
+}
+
+.details {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  pointer-events: none;
+  font-size: var(--font-size-body-s);
+  line-height: 1.35;
+}
+.brief {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: var(--text-tertiary);
+}
+.brief s {
+  text-decoration-thickness: 1px;
+}
+.lower {
+  position: absolute;
+  top: var(--fy);
+  left: -4%;
+  right: -4%;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.fix {
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.result,
+.read {
+  color: var(--accent-strong);
+  white-space: nowrap;
+}
+.read {
+  opacity: 0;
+  transition: opacity var(--motion-hover);
+}
+.chapter[data-active] .read {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------ phones */
+@media (max-width: 760px) {
+  .wave {
+    aspect-ratio: auto;
+    height: var(--vh);
+  }
+  .svgH,
+  .key {
+    display: none;
+  }
+  .svgV {
+    display: block;
+    inset: 0 auto auto 0;
+    width: 120px;
+    height: var(--vh);
+  }
+  .chapter {
+    top: var(--vy);
+    bottom: auto;
+    left: 128px;
+    right: 0;
+    width: auto;
+    height: 112px;
+    text-align: left;
+  }
+  .trigger {
+    position: relative;
+    inset: auto;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 44px;
+  }
+  .org {
+    position: static;
+    display: flex;
+    justify-content: flex-start;
+    white-space: normal;
+  }
+  .details {
+    position: absolute;
+    inset: 22px 0 auto 0;
+  }
+  .brief,
+  .lower {
+    position: static;
+    transform: none;
+    white-space: normal;
+  }
+  .lower {
+    display: grid;
+    justify-items: start;
+    gap: 2px;
+    margin-top: 2px;
+  }
+}

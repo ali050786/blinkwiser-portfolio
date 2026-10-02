@@ -6,7 +6,7 @@ type Props = {
   href: string;
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "ghost";
-  icon?: "arrow-right" | "arrow-up-right" | "arrow-left";
+  icon?: "arrow-right" | "arrow-up-right" | "arrow-left" | "none";
   external?: boolean;
   className?: string;
 };
@@ -15,9 +15,11 @@ export function ButtonLink({ href, children, variant = "primary", icon = "arrow-
   const content = (
     <>
       <span>{children}</span>
-      <span className={styles.icon}>
-        <Icon name={icon} size={16} />
-      </span>
+      {icon !== "none" && (
+        <span className={styles.icon}>
+          <Icon name={icon} size={16} />
+        </span>
+      )}
     </>
   );
   const cls = `${styles.button} ${styles[variant]} ${className ?? ""}`;

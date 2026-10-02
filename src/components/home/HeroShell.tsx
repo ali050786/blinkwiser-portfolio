@@ -18,6 +18,8 @@ type Props = {
   kicker?: string;
   /** xl for short headlines, l for longer ones. */
   titleSize?: "xl" | "l";
+  /** Arrow icons on the calls to action. */
+  ctaIcons?: boolean;
 };
 
 /**
@@ -25,7 +27,7 @@ type Props = {
  * facts, with the GSAP line-by-line reveal. Each hero option supplies its own
  * copy and its own interactive visual.
  */
-export function HeroShell({ title, lede, visual, facts, layout = "split", kicker, titleSize = "xl" }: Props) {
+export function HeroShell({ title, lede, visual, facts, layout = "split", kicker, titleSize = "xl", ctaIcons = true }: Props) {
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -73,40 +75,46 @@ export function HeroShell({ title, lede, visual, facts, layout = "split", kicker
     </>
   );
 
-  const rest = (
-    <>
-      <p className={`t-body-l c-secondary ${styles.lede}`} data-hero-fade>
-        {lede}
-      </p>
-      <div className={styles.ctas} data-hero-fade>
-        <ButtonLink href="/#work">Read the case studies</ButtonLink>
-        <ButtonLink href="/#contact" variant="secondary" icon="arrow-up-right">
-          Get in touch
-        </ButtonLink>
-      </div>
-      {facts && facts.length > 0 && (
-        <dl className={styles.facts} data-hero-fade>
-          {facts.map((f) => (
-            <div key={f.k}>
-              <dt className="t-label c-tertiary">{f.k}</dt>
-              <dd>{f.v}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
-    </>
+  const ledeEl = (
+    <p className={`t-body-l c-secondary ${styles.lede}`} data-hero-fade>
+      {lede}
+    </p>
   );
+  const ctasEl = (
+    <div className={styles.ctas} data-hero-fade>
+      <ButtonLink href="/#work" icon={ctaIcons ? "arrow-right" : "none"}>
+        Read the case studies
+      </ButtonLink>
+      <ButtonLink href="/#contact" variant="ghost" icon={ctaIcons ? "arrow-up-right" : "none"}>
+        Get in touch
+      </ButtonLink>
+    </div>
+  );
+  const factsEl =
+    facts && facts.length > 0 ? (
+      <dl className={styles.facts} data-hero-fade>
+        {facts.map((f) => (
+          <div key={f.k}>
+            <dt className="t-label c-tertiary">{f.k}</dt>
+            <dd>{f.v}</dd>
+          </div>
+        ))}
+      </dl>
+    ) : null;
 
   if (layout === "stacked") {
+    // Headline and lede across the full width, actions under them, then a wide visual, then the facts.
     return (
       <section ref={root} className={`${styles.hero} ${styles.stacked}`} aria-labelledby="hero-title">
-        <div className={`container ${styles.stackTop}`}>
-          <div className={styles.copy}>{copy}</div>
-          <div className={styles.copy}>{rest}</div>
+        <div className={`container ${styles.stackTop}`}>{copy}</div>
+        <div className={`container ${styles.stackMid}`}>
+          {ledeEl}
+          {ctasEl}
         </div>
         <div className={`container ${styles.stackVisual}`} data-hero-fade>
           {visual}
         </div>
+        {factsEl && <div className={`container ${styles.stackFacts}`}>{factsEl}</div>}
       </section>
     );
   }
@@ -116,7 +124,9 @@ export function HeroShell({ title, lede, visual, facts, layout = "split", kicker
       <div className={`container ${styles.grid}`}>
         <div className={styles.copy}>
           {copy}
-          {rest}
+          {ledeEl}
+          {ctasEl}
+          {factsEl}
         </div>
         <div className={styles.visual} data-hero-fade>
           {visual}

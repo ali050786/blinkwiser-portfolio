@@ -1,23 +1,31 @@
 import { caseStudies } from "@/content/case-studies";
-import { WorkList, type WorkItem } from "./WorkList";
 import { FeaturedCase } from "./FeaturedCase";
+import { WorkGrid, type WorkCard } from "./WorkGrid";
 import styles from "./WorkIndex.module.css";
+
+/*
+ * What each card says, beyond its case study's own fields. Domains match the
+ * hero's briefs; outcomes are the case studies' own headline figures, kept to
+ * one value and one plain line.
+ */
+const home: Record<string, { domain: string; outcome: { value: string; label: string } }> = {
+  "02": { domain: "White-label platform", outcome: { value: "< 24 h", label: "to theme a new client, down from weeks" } },
+  "03": { domain: "AI design systems", outcome: { value: "3–4 days", label: "Jira-story turnaround, down from 1–2 weeks" } },
+  "04": { domain: "AI product, Blinkwiser", outcome: { value: "Every edit", label: "undoable, and honest about what changed" } },
+  "05": { domain: "Civic services, Dubai", outcome: { value: "3.5M", label: "residents, with city services organised by need, not department" } },
+};
 
 export function WorkIndex() {
   const [featured, ...rest] = caseStudies;
-  const items: WorkItem[] = rest.map((c) => ({
+  const items: WorkCard[] = rest.map((c) => ({
     slug: c.slug,
     index: c.index,
     accent: c.accent,
-    glyph: c.glyph,
-    group: c.group,
+    domain: home[c.index]?.domain ?? c.group,
     title: c.card?.title ?? c.short,
-    widget: c.card?.widget ?? "stepper",
-    call: c.hero.call,
-    tags: c.tags,
-    headline: { value: c.card?.value ?? c.headline.value, label: c.card?.label ?? c.headline.label },
-    snapshot: c.snapshot,
-    meta: `${c.meta.role} · ${c.meta.timeline}`,
+    outcome: home[c.index]?.outcome ?? c.headline,
+    role: c.meta.role,
+    timeline: c.meta.timeline,
     visual:
       c.cover ??
       ({
@@ -38,7 +46,7 @@ export function WorkIndex() {
       </div>
       <div className="container">
         <FeaturedCase study={featured!} />
-        <WorkList items={items} />
+        <WorkGrid items={items} />
       </div>
     </section>
   );
