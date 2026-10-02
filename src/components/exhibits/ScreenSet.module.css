@@ -1,0 +1,207 @@
+/* ---------------------------------------------------------------- tabs */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin: -4px 0 20px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  height: 36px;
+  padding-inline: 12px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+.tab:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+.tab[aria-selected="true"] {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--text-inverse);
+}
+.tabNum {
+  font-size: 10.5px;
+  opacity: 0.7;
+}
+
+/* -------------------------------------------------------------- layout */
+.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px clamp(14px, 2vw, 24px);
+  align-items: start;
+}
+.compare .change {
+  grid-column: 1 / -1;
+}
+.tour {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(16px, 2.4vw, 28px);
+  align-items: start;
+}
+.change {
+  max-width: 68ch;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.col {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.side {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  color: var(--text-tertiary);
+}
+.side::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.col[data-side="after"] .side {
+  color: var(--accent-solid);
+}
+.col[data-side="after"] .side::before {
+  background: var(--accent-solid);
+}
+
+/* --------------------------------------------------------------- shots */
+.shot {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+.shotButton {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  background: #f4f5f8;
+  cursor: zoom-in;
+  text-align: left;
+}
+.col[data-side="after"] .shotButton {
+  border-color: color-mix(in oklch, var(--accent-solid) 55%, var(--border-default));
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent-solid) 12%, transparent);
+}
+
+/* Fade the bottom of tall screens; the full screen is one click away. */
+.shotButton[data-tall]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 72px;
+  background: linear-gradient(to bottom, transparent, color-mix(in oklch, var(--surface-canvas) 92%, transparent));
+  pointer-events: none;
+}
+.zoomHint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  font-size: 10px;
+  opacity: 0.9;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+.shotButton:hover .zoomHint,
+.shotButton:focus-visible .zoomHint {
+  opacity: 1;
+}
+.shotButton:focus-visible {
+  outline: 2px solid var(--accent-solid);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------- dialog */
+.dialog {
+  width: min(1240px, calc(100vw - 32px));
+  max-width: none;
+  height: calc(100dvh - 32px);
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--surface-canvas);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-overlay);
+  overflow: hidden;
+}
+.dialog::backdrop {
+  background: color-mix(in oklch, black 62%, transparent);
+}
+.dialogInner {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+}
+.dialogBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.close {
+  flex: 0 0 auto;
+  height: 34px;
+  padding-inline: 14px;
+  border-radius: var(--radius-pill);
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  font-size: 13px;
+}
+.dialogScroll {
+  overflow: auto;
+  padding: 16px;
+  background: var(--surface-sunken);
+}
+.dialogScreen {
+  max-width: 1200px;
+  margin-inline: auto;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-raised);
+}
+
+@media (max-width: 760px) {
+  .compare,
+  .tour {
+    grid-template-columns: 1fr;
+  }
+  .shotButton {
+    max-height: 420px;
+  }
+}

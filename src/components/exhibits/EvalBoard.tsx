@@ -22,14 +22,6 @@ const data: Record<Tab, { rows: Row[]; summary: string }> = {
     rows: [
       { metric: "Accuracy, scored against evidence", a: { label: "v2", value: 9.5, display: "9.5" }, b: { label: "v1", value: 8.8, display: "8.8" }, max: 10 },
       {
-        metric: "Structural errors",
-        a: { label: "v2", value: 0, display: "0" },
-        b: { label: "v1", value: 47, display: "47" },
-        max: 47,
-        lowerIsBetter: true,
-        note: "Text over the limit, broken highlights, sentences cut mid-way",
-      },
-      {
         metric: "Flow",
         a: { label: "v2", value: 7.5, display: "7.5" },
         b: { label: "v1", value: 8.4, display: "8.4" },

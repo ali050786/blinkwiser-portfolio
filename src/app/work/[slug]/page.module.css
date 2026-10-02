@@ -55,12 +55,55 @@
   background: var(--card-bg);
   border: 1px solid var(--card-border);
 }
+.spotlight {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 32px;
+  border-top: 1px solid var(--border-default);
+}
+.spotCols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 6px;
+}
+.spotCol {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 22px;
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.spotCol ul {
+  display: grid;
+  gap: 10px;
+}
+.spotCol li {
+  position: relative;
+  padding-left: 14px;
+}
+.spotCol li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-solid);
+}
 @media (max-width: 1024px) {
   .body {
     grid-template-columns: 1fr;
   }
 }
 @media (max-width: 760px) {
+  .spotCols {
+    grid-template-columns: 1fr;
+  }
   .followOn ul {
     grid-template-columns: 1fr;
   }

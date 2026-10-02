@@ -1,19 +1,29 @@
 import { caseStudies } from "@/content/case-studies";
 import { WorkList, type WorkItem } from "./WorkList";
+import { FeaturedCase } from "./FeaturedCase";
 import styles from "./WorkIndex.module.css";
 
 export function WorkIndex() {
-  const items: WorkItem[] = caseStudies.map((c) => ({
+  const [featured, ...rest] = caseStudies;
+  const items: WorkItem[] = rest.map((c) => ({
     slug: c.slug,
     index: c.index,
     accent: c.accent,
     glyph: c.glyph,
     group: c.group,
-    title: c.title,
+    title: c.card?.title ?? c.short,
+    widget: c.card?.widget ?? "stepper",
+    call: c.hero.call,
     tags: c.tags,
-    headline: c.headline,
+    headline: { value: c.card?.value ?? c.headline.value, label: c.card?.label ?? c.headline.label },
     snapshot: c.snapshot,
     meta: `${c.meta.role} · ${c.meta.timeline}`,
+    visual:
+      c.cover ??
+      ({
+        screen: "ds-tokens",
+        alt: "The design system's colour tokens, named by role: the same system the AI agent reads.",
+      } as const),
   }));
 
   return (
@@ -25,12 +35,9 @@ export function WorkIndex() {
         <h2 id="work-title" className="t-display-l" data-reveal>
           Five decisions, told the way they were <em className="t-serif-em c-accent">made</em>.
         </h2>
-        <p className="t-body-l c-secondary" data-reveal>
-          Each study opens with a 30-second snapshot: the reframe, the hardest call, and what it moved. The full read walks every fork,
-          including the road not taken and what it cost.
-        </p>
       </div>
       <div className="container">
+        <FeaturedCase study={featured!} />
         <WorkList items={items} />
       </div>
     </section>

@@ -142,3 +142,10 @@
     max-width: 14ch;
   }
 }
+
+/* Phones get the short intro: role, years and names. The systems-layer line is desktop only. */
+@media (max-width: 760px) {
+  .desktopOnly {
+    display: none;
+  }
+}

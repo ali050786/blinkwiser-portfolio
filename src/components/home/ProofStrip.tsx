@@ -13,6 +13,7 @@ export function ProofStrip() {
       prefix: p.prefix,
       suffix: p.suffix,
       label: p.label,
+      text: "text" in p ? p.text : undefined,
       study: { index: c.index, slug: c.slug, accent: c.accent, title: c.title },
     };
   });

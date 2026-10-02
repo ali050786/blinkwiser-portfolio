@@ -52,7 +52,7 @@ export function Approach() {
             Where I work
           </p>
           <h2 className="t-heading-l" data-reveal>
-            The intersection of systems, distribution and AI, in domains where errors are expensive.
+            Health insurance, design systems and AI: domains where errors are expensive.
           </h2>
         </div>
         <ul className={styles.capGrid}>

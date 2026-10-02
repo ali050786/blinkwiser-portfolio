@@ -7,14 +7,376 @@ import type { CaseStudy } from "./types";
  *  - employer named once per study, as attribution only
  *  - no internal codenames, file keys or repo names
  *  - metrics are team-observed and labelled as such
- *  - every visual is a demo brand or a redrawn diagram, never a client screen
+ *  - every visual is a demo brand or a redrawn diagram, never a client screen;
+ *    client product screens are rebuilt in HTML from the design files
+ *    (screens.ts). Real captures are used only for my own product (Blinkwiser)
+ *    and for the publicly published Dubai Municipality app.
  */
 
 export const caseStudies: CaseStudy[] = [
   /* ------------------------------------------------------------------ 01 */
   {
-    slug: "ai-readable-design-system",
+    slug: "open-enrollment",
     index: "01",
+    accent: "enrollment",
+    glyph: "flow",
+    group: "Health insurance platforms",
+    title: "Open Enrollment: redesigning the decision, not the screens",
+    short: "Open Enrollment",
+    dek: "The flow asked questions in the order the backend stores them. I reordered them to match how a family actually decides.",
+    meta: {
+      role: "UX Lead",
+      context: "Mphasis · US health-insurance platform",
+      timeline: "Live in production",
+      domain: "Enterprise SaaS · US health insurance",
+    },
+    tags: ["US health insurance", "Decision modelling", "Defaults", "Regulated flows"],
+    cover: {
+      screen: "new-plan",
+      alt: "Redesigned enrollment screen: Select a Plan for Medical, with the family's coverage already filled in, plans priced per month and a running total premium in the header.",
+      caption: "The redesign, live in production: who's covered is already known when plans are chosen, and cost is per month on every step.",
+    },
+    headline: { value: "9 → 5", label: "steps, with one question asked once" },
+    hero: {
+      label: "Regulated decision flow",
+      brief: "The enrollment flow is too long.",
+      problem: "It asked questions in the order the backend stores them.",
+      call: "Reorder the questions to match how a family actually decides.",
+    },
+    snapshot: {
+      frame:
+        "Clients said the enrollment flow was too long. Length was the symptom: the flow was the data model rendered as UI, so members answered “who's covered” again inside every coverage.",
+      decision:
+        "Reorder the questions to the member's model (my family → who needs what → which plan) and ask “who needs what” once, as a single family-by-coverage grid.",
+      outcome:
+        "9 steps became 5, the per-coverage loop disappeared, cost is visible at every step, and the flow is live for open enrollment, life events and new hires.",
+    },
+    frame: {
+      assumed: "The flow is too long. Trim screens.",
+      actual: "The flow asks questions in the backend's order. Change the order of the questions.",
+      body: [
+        "Feedback from clients and BAs came in four parts: the flow was too long, members were confused about dependents, cost was unclear until late, and admins struggled when enrolling members on their behalf.",
+        "The obvious fix was to trim screens. I looked at why there were so many first. Cutting screens would have shortened the loop without removing it.",
+      ],
+      evidence: {
+        title: "The data model, rendered as UI",
+        items: [
+          "Three screens to manage the household: list, add, updated list.",
+          "A hub-and-spoke loop per coverage: pick Medical, browse plans, pick one, then choose who it covers, return to the hub, repeat for Dental and Vision.",
+          "So “who's covered” was answered twice: once for the household and once inside every coverage.",
+          "The premium was an annual estimate that could still move when dependents or the network changed.",
+        ],
+      },
+      exhibit: "flow-compare",
+    },
+    stakes: {
+      intro: "Open enrollment is a once-a-year window with a deadline, and the choices lock for the year.",
+      items: [
+        { title: "Missed family members", body: "Someone missed on one coverage stays uncovered until the next window or a qualifying life event." },
+        { title: "Late cost", body: "A cost that only becomes clear at the end means members commit before they understand what they'll pay." },
+        { title: "Admins repeat every flaw", body: "Every weakness in the member flow repeats for admins enrolling on members' behalf, across every client." },
+      ],
+    },
+    forks: [
+      {
+        id: "reorder",
+        title: "Trim the screens, or change the order of the questions?",
+        tension: "Trimming was faster and would have answered “too long” on paper.",
+        rejected: { label: "Trim screens", detail: "Keeps the loop and the duplicated dependent question." },
+        chosen: { label: "Reorder the decision", detail: "My family → who needs what → which plan." },
+        why: [
+          "“Who needs what” is now asked once, as a grid of family members against coverage types, and plan selection follows from that grid instead of re-asking it per coverage.",
+        ],
+        cost: "It no longer matched how the backend stored enrollments. That became the third fork.",
+      },
+      {
+        id: "defaults",
+        title: "What should the common case cost?",
+        tension: "Once the grid exists, most of the work is choosing plans.",
+        rejected: { label: "Ask everything, every time", detail: "Equal weight for common and rare paths." },
+        chosen: { label: "Design the defaults", detail: "Shared family plan by default; per-member plans as a clear escape hatch." },
+        why: [
+          "Keeping the current plan is the default path, and waiving coverage is a visible option, not a hidden one.",
+          "The bet: the common path should be the shortest one, while the less common path stays one clear step away.",
+        ],
+        cost: "Defaults carry weight in a regulated flow, so every one had to stay visible and reversible.",
+        exhibit: "coverage-grid",
+      },
+      {
+        id: "engineering",
+        title: "Force the data model on members, or a rewrite on engineering?",
+        tension:
+          "Engineering pushed back, and fairly: their model is coverage → plan → members, and I was asking them to take answers in reverse order.",
+        rejected: { label: "Either extreme", detail: "Ship the backend's order to members, or demand a backend rewrite." },
+        chosen: { label: "Translate, then phase", detail: "The UI collects the grid and translates it; the backend changes only where translation isn't enough." },
+        why: [
+          "I walked engineering through the member's decision order against the specific client complaints. We split the work and shipped in phases rather than one cut-over.",
+        ],
+        cost: "A slower rollout, in exchange for a change engineering owned rather than resisted.",
+      },
+    ],
+    followOn: {
+      title: "What followed from the new order",
+      intro: "Also my calls, each made possible by asking the questions in the right sequence.",
+      items: [
+        {
+          title: "Cost where the decision is made",
+          body: "A running total premium on every step, shown per month or per pay deduction instead of an annual estimate at the end.",
+        },
+        {
+          title: "One review, not scattered confirmations",
+          body: "A single page to check everything before a year-long commitment: what changed, fix in place, disclaimer and e-signature in the same step.",
+        },
+        {
+          title: "Ask only when needed",
+          body: "Document upload used to be a fixed step. It now appears only when a member's situation requires a document.",
+        },
+      ],
+    },
+    spotlight: {
+      label: "The admin side",
+      title: "Passive enrollment: the members who never open the flow",
+      intro:
+        "The redesign made enrollment easier for members who take part. Every year some members don't take part at all, and something still has to happen to their coverage. Each client decides what.",
+      why: [
+        "Members who took no action during open enrollment were handled manually by admins, one member at a time.",
+        "Each client has its own rule for them: terminate, carry the current plan forward, or move them to a default plan, sometimes depending on eligibility.",
+        "It all lands at the deadline of a once-a-year window, where a missed member stays uncovered until the next window or a qualifying life event.",
+      ],
+      what: [
+        "A Passive Enrollment tab in each client's enrollment settings: four rules in plain language, each showing only the options it needs.",
+        "Termination status and reason, an exclusion for members with supplemental products, and a default-plan mapping file with a downloadable template.",
+        "Save, or save and run now. The admin confirms against the number of members affected, and settings lock while a run is in progress.",
+        "A log of every run, and a report that separates processed members from the ones needing review, each with a reason and Enroll or Terminate in the row.",
+        "The business owned the rules. I designed how admins set them, run them and handle what they can't decide.",
+      ],
+      impact: [
+        "A manual, member-by-member job became a rule each client's admin sets once and runs themselves.",
+        "Every run leaves a record: who ran it, when, with which rule and file, and how many members it touched.",
+        "Members a rule can't handle are no longer lost in the batch. They come back with a reason and are resolved in place.",
+      ],
+      provenance: "Qualitative. Effort before and after was not measured.",
+      exhibit: "passive-screens",
+    },
+    outcome: {
+      metrics: [
+        {
+          value: "9 → 5",
+          label: "Steps: Welcome, Profile, Dependents, Coverage, Review",
+          before: { label: "9 steps", amount: 9 },
+          after: { label: "5 steps", amount: 5 },
+          unit: "steps",
+        },
+        { value: "1×", label: "“Who's covered” asked once, not once per coverage" },
+        { value: "Every step", label: "Cost visible, in the unit people pay" },
+        { value: "4 flows", label: "One skeleton for open enrollment, life events, new hires, admin-on-behalf" },
+      ],
+      points: [
+        "Live in production. The complaints that triggered the redesign have dropped, and admins enrolling on behalf get through it faster.",
+      ],
+      provenance: "Early signals are observed, not formally measured yet.",
+      exhibit: "enrollment-screens",
+    },
+    ownership: {
+      mine: [
+        "The reframe, the new question order, the family-plan default, the running monthly total and the single editable review.",
+      ],
+      shared: [
+        "Reusing one skeleton across enrollment types and actors, decided with product and engineering. I also designed the admin screens for passive enrollment; the business owned the rules behind it.",
+      ],
+      change: [
+        "I'd get evidence in earlier. The redesign rested on client and BA feedback plus analysis of the flow, not observed member behaviour. I'd also instrument the old flow first, so the improvement could be measured, not just described.",
+      ],
+    },
+    signals:
+      "Redesigning the decision model instead of the UI, aligning engineering to the user's mental model without forcing a rewrite, and designing defaults deliberately.",
+  },
+  /* ------------------------------------------------------------------ 02 */
+  {
+    slug: "enterprise-platform-from-zero",
+    index: "02",
+    accent: "platform",
+    glyph: "tiers",
+    group: "Health insurance platforms",
+    title: "Building an enterprise health-insurance platform from zero",
+    short: "White-label platform",
+    dek: "I was brought in to adjust a handful of screens. Underneath was a white-label product with no system, hardcoded colours and every new client rebuilt by hand.",
+    meta: {
+      role: "Founding UX Designer → UX Lead",
+      context: "Mphasis · US health-insurance platform",
+      timeline: "2021–present",
+      domain: "Enterprise SaaS · US health insurance",
+    },
+    tags: ["US health insurance", "Three-tier tokens", "White-label", "Design system adoption"],
+    cover: {
+      screen: "ds-dashboard",
+      alt: "Member dashboard page pattern from the design system: coverage status by family member, claims status, resources and find care.",
+      caption: "A member dashboard page pattern, assembled from the library. Every client sees it in its own brand.",
+    },
+    headline: { value: "< 24 h", label: "to theme a new client, from weeks" },
+    card: { title: "White-label health-insurance platform", widget: "brands", label: "to theme a new client" },
+    hero: {
+      label: "Enterprise platform",
+      brief: "Adjust a handful of screens.",
+      problem: "A white-label product with no system, rebuilt by hand for every client.",
+      call: "Make the brand a variable, then make engineering build to it.",
+    },
+    snapshot: {
+      frame:
+        "The ask was a few screen edits. The real problem was a white-label product with no system, developers improvising components, and every new client rebuilt by hand.",
+      decision:
+        "Treat the handoff problem as a platform problem: make the brand a variable through a three-tier token system, then make engineering actually use it.",
+      outcome:
+        "New-client theming went from weeks of rebuild to under 24 hours, delivery settled at about 2 days of design plus 3 of build, and the system became engineering's default.",
+    },
+    frame: {
+      assumed: "Change a few screens to match new requirements.",
+      actual:
+        "A white-label platform that engineering couldn't maintain, where every client multiplied the cost of every change.",
+      body: [
+        "The screens had been designed by someone else, and there was no design system behind them. Two things didn't fit the ask.",
+        "It was a white-label platform, sold to insurers who resell it to employers, who put it in front of their members, so every client needed its own look at every level. And developers were already struggling to maintain what existed. Editing screens one by one would have kept the product exactly as fragile as it was.",
+        "So I didn't treat the ask as a set of edits. I started by documenting what already existed, and that documentation became the design system.",
+      ],
+    },
+    stakes: {
+      intro: "The product was failing in three concrete ways.",
+      items: [
+        { title: "Inconsistency", body: "Developers used different components for the same job on different pages." },
+        { title: "Hardcoded colours", body: "Brand colours were written straight into the code, so nothing could be re-themed." },
+        {
+          title: "Rebuild per client",
+          body: "A growth ceiling: the business could only sign clients as fast as engineering could re-skin the product.",
+        },
+        {
+          title: "Compliance exposure",
+          body: "In US health insurance, an inconsistent eligibility or enrolment screen is a compliance risk, not a polish issue.",
+        },
+      ],
+    },
+    forks: [
+      {
+        id: "go-underneath",
+        title: "Fix the screens, or fix what made them break?",
+        tension: "The requested edits were the expected move and the visible one.",
+        rejected: { label: "Do the edits", detail: "Every future change stays hand-made; every new client stays a rebuild." },
+        chosen: { label: "Go underneath", detail: "Start with documentation, and let it become the system." },
+        why: [
+          "The deciding factor was that the pain belonged to engineering, not design. The system had a real customer before it had a name.",
+        ],
+        cost: "Investing in a foundation nobody had asked for, which had to prove its value before anyone would call it one.",
+      },
+      {
+        id: "brand-as-variable",
+        title: "Per-client builds, or make the brand a variable?",
+        tension: "Each client needed its own identity at three levels. Per-client builds would have reproduced the mess at scale.",
+        rejected: { label: "Per-client builds", detail: "A fork of the product's look for every insurer and employer." },
+        chosen: {
+          label: "Three-tier tokens",
+          detail: "Insurer → employer → member. Each tier inherits from the one above and overrides only what it owns.",
+        },
+        why: [
+          "A new client becomes a configuration, not a project.",
+          "The same foundation runs web, mobile web, iOS and Android, so mobile never became a second theming system to keep in sync by hand.",
+        ],
+        cost: "Discipline: nothing can be styled directly any more. That is precisely the habit engineering had to break.",
+        exhibit: "theme-cascade",
+      },
+      {
+        id: "adoption",
+        title: "Is a design system nobody uses just a Figma file?",
+        tension:
+          "Building the system didn't change behaviour. It lived in a separate file developers had to remember to open, and at first they carried on as before.",
+        rejected: { label: "Specs and good intentions", detail: "How the product had become inconsistent in the first place." },
+        chosen: { label: "Treat adoption as design", detail: "Work it from four sides until the system is the default." },
+        why: ["Adoption took a few months, worked from four sides:"],
+        bullets: [
+          { title: "Enablement", body: "Walkthrough sessions with the development team." },
+          { title: "Documentation", body: "Usage rules for each component, written into the system itself." },
+          { title: "Quality", body: "Design QA on builds, catching hardcoded values and off-system components before release." },
+          { title: "Policy", body: "An agreement with the tech lead that the design system is the standard engineering builds to." },
+        ],
+        cost: "Months of enablement and QA effort before the system paid back.",
+      },
+    ],
+    followOn: {
+      title: "How the work ran",
+      intro: "Research, alignment and the team, the parts of the job that sit around the screens.",
+      items: [
+        {
+          title: "Personas for three audiences",
+          body: "Research with internal stakeholders produced personas for each audience the platform serves: insurers, employers and members, three to four of each.",
+        },
+        {
+          title: "Workshops before ideas reach design",
+          body: "Any new idea went through a working session with the business analysts first, so the requirement and the rules behind it were agreed before anything was drawn.",
+        },
+        {
+          title: "Architecture changes, with engineering",
+          body: "Any architectural change to the design system was worked through with engineering in a workshop before it shipped, so the system and the codebase changed together.",
+        },
+      ],
+    },
+    spotlight: {
+      label: "Built on the token system",
+      title: "The Branding Hub: the brand variable, in an admin's hands",
+      intro:
+        "The three-tier tokens made the brand a variable in the product. The Branding Hub is the screen that sets it. I designed it, and it is live for admins.",
+      why: [
+        "The platform is resold to employers, and each one needs the member portal in its own look.",
+        "Tokens make theming possible. Someone still has to set them, for many employers, without breaking what members see.",
+        "Several admins work on themes at once, so changes need drafts, a clear owner and a way back.",
+      ],
+      what: [
+        "A hub of every member-facing theme: its colours, how many employers use it, who edited it last, and default, draft and locked states.",
+        "A theme editor that uses the same roles as the design tokens, with each colour field saying where it appears, plus the font.",
+        "A preview on the member dashboard before publishing, and employer assignment with each employer's own logo, links, contacts and resources.",
+        "Safeguards: save as draft, an edit lock that shows who is editing, change history, and restore for deleted themes.",
+      ],
+      impact: [
+        "Shipped and in use by admins.",
+        "Theming a client is an admin task in one place, built on the token roles, so every theme stays inside the system.",
+        "Colours are chosen by role and checked on a real dashboard before members see them.",
+        "Admins can work on themes side by side without overwriting each other, and a deleted theme can be brought back.",
+      ],
+      provenance: "Qualitative. Shipped; usage not formally measured.",
+      exhibit: "branding-screens",
+    },
+    outcome: {
+      metrics: [
+        {
+          value: "< 24 h",
+          label: "New-client theming",
+          before: { label: "Weeks", amount: 15 },
+          after: { label: "< 1 day", amount: 1 },
+          unit: "working days",
+        },
+        { value: "1–2 days", label: "To rebrand white-label iOS and Android apps" },
+        { value: "2 + 3", label: "Days of design + build per feature, predictably" },
+        { value: "120+", label: "Components across four surfaces" },
+      ],
+      points: [
+        "Consistency held: hardcoded colours and off-system components are caught in design QA before release, not in production.",
+        "The system serves a set of Fortune-500 and enterprise-tier insurers.",
+      ],
+      provenance: "Team-observed figures, not formally tracked.",
+      exhibit: "design-system-screens",
+    },
+    ownership: {
+      mine: [
+        "The reframe, the architecture and the adoption plan. I started as the only designer, interviewed and selected four more, onboarded them onto the system and its standards, and was promoted to UX Lead.",
+      ],
+      change: [
+        "I'd close the distance between the system and the people using it much earlier. Its rationale lived in my head, and the system lived in a separate file engineers had to go and check. Closing that gap is what I later did by making it machine-readable (case study 03).",
+      ],
+    },
+    signals:
+      "Problem-finding over brief-following, platform architecture with honest costs, and the part most design-system stories skip: driving adoption across engineering.",
+  },
+  /* ------------------------------------------------------------------ 03 */
+  {
+    slug: "ai-readable-design-system",
+    index: "03",
     accent: "automation",
     glyph: "skills",
     group: "AI-driven UI",
@@ -22,13 +384,14 @@ export const caseStudies: CaseStudy[] = [
     short: "AI-readable design system",
     dek: "The AI wasn't the variable I could change. The design system was. So I rebuilt it as a library of skill files an agent reads to turn a Jira story into a brand-compliant, self-verified screen.",
     meta: {
-      role: "Senior UX Architect, UX Lead",
-      context: "Mphasis · Javelina platform",
+      role: "UX Lead",
+      context: "Mphasis · US health-insurance platform",
       timeline: "Built Aug–Sep 2026",
       domain: "Enterprise SaaS · US health insurance",
     },
     tags: ["Agentic design workflow", "Design systems", "Figma variables", "MCP"],
-    headline: { value: "~40%", label: "less design production time" },
+    headline: { value: "3–4 days", label: "Jira-story turnaround, down from 1–2 weeks" },
+    card: { title: "A design system that builds itself", widget: "pipeline", label: "Jira-story turnaround" },
     hero: {
       label: "AI-driven design system",
       brief: "The AI isn't good enough yet. Prompt harder.",
@@ -187,11 +550,10 @@ export const caseStudies: CaseStudy[] = [
     signals:
       "A design system alone won't drive an AI. You have to teach it your rules, and every time it repeats a mistake, turn the fix into a skill.",
   },
-
-  /* ------------------------------------------------------------------ 02 */
+  /* ------------------------------------------------------------------ 04 */
   {
     slug: "designing-trust-into-ai",
-    index: "02",
+    index: "04",
     accent: "blinkwiser",
     glyph: "pipeline",
     group: "AI-driven UI",
@@ -199,13 +561,29 @@ export const caseStudies: CaseStudy[] = [
     short: "Trust in an AI product",
     dek: "Getting an AI to produce a plausible LinkedIn carousel took two weeks. Getting one a creator could trust took the rest of the year.",
     meta: {
-      role: "Founder · product, UX, architecture, evaluation",
+      role: "Independent lab · product, UX, architecture, evaluation",
       context: "Blinkwiser · built by directing AI coding agents",
       timeline: "Dec 2025–present",
       domain: "AI SaaS · creator tools",
     },
     tags: ["Agent pipeline", "Grounding", "Eval harness", "AI UX"],
-    headline: { value: "0 vs 47", label: "structural errors in blind evals" },
+    cover: {
+      src: "/work/blinkwiser/landing.webp",
+      width: 1600,
+      height: 1090,
+      alt: "Agentic Carousel by Blinkwiser landing page: 'Carousels that design themselves', a prompt box, and a fan of generated slides in three styles.",
+      caption: "Agentic Carousel by Blinkwiser, live: a crew of agents researches, writes and designs a LinkedIn carousel from a topic, link, video or file.",
+    },
+    reel: {
+      video: "/work/blinkwiser/run.mp4",
+      poster: "/work/blinkwiser/run-poster.webp",
+      width: 1600,
+      height: 800,
+      alt: "Screen recording of the studio generating a carousel: each agent step reports in the chat, then the first slides land, marked Draft while the editor is still checking.",
+      caption: "One run, sped up 3×: every agent step reports in the chat, and the first slides land marked Draft while the editor is still checking.",
+    },
+    headline: { value: "Every edit", label: "undoable, and honest about what changed" },
+    card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan → Reflect", label: "facts checked before you see it" },
     hero: {
       label: "AI product · founder",
       brief: "Turn a topic into a LinkedIn carousel, fast.",
@@ -218,7 +596,7 @@ export const caseStudies: CaseStudy[] = [
       decision:
         "Treat trust as the product: enforce rules and facts in code, make every change honest and reversible, settle quality-versus-speed with blind evals, and cut features that dilute the design.",
       outcome:
-        "The rebuild wins 7 of 10 blind head-to-heads, scores 9.5 vs 8.8 on accuracy and produces zero structural errors against 47. Live, free and pre-revenue.",
+        "Creators can see what the agents did and get back from any of it: numbers trace to sources, the chat says what actually changed, and every edit has a restore point. Blind tests back it up: the rebuild beats the first version 7 times in 10. Live, free and pre-revenue.",
     },
     frame: {
       assumed: "Turn a topic into a carousel, fast. Generation is the product.",
@@ -302,19 +680,19 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome: {
       metrics: [
-        { value: "7 / 10", label: "Blind head-to-head wins, v2 vs v1" },
-        { value: "9.5 vs 8.8", label: "Accuracy score against evidence" },
+        { value: "7 / 10", label: "Times a blind judge preferred the rebuilt version over the first one" },
+        { value: "9.5 vs 8.8", label: "Accuracy: how well each carousel's claims hold up against their sources" },
         {
           value: "31 s",
-          label: "Per deck, same judged quality",
+          label: "Per carousel, down from 84 s, with no drop in quality",
           before: { label: "84 s", amount: 84 },
           after: { label: "31 s", amount: 31 },
           unit: "seconds",
         },
-        { value: "~23 s", label: "Until the first slides appear" },
+        { value: "~23 s", label: "Until the first slides appear, marked Draft while the checks finish" },
       ],
       points: [
-        "Zero structural errors against 47 in v1: text over the limit, broken accent highlights, sentences cut mid-way.",
+        "Every change in the editor saves a restore point, and when an edit didn't happen the chat says so instead of claiming it did.",
         "Honest about the gaps: v1 still scores higher on flow (8.4 vs 7.5), and that's the next fix.",
         "Live and free at blinkwiser.com with a handful of real users and no revenue yet. I removed credits and limits so people could use it freely before I monetise.",
       ],
@@ -332,287 +710,6 @@ export const caseStudies: CaseStudy[] = [
     signals:
       "Designing for model failure (grounding, honesty, reversibility), deciding trade-offs with evals instead of opinions, and the restraint to cut what dilutes the product.",
   },
-
-  /* ------------------------------------------------------------------ 03 */
-  {
-    slug: "enterprise-platform-from-zero",
-    index: "03",
-    accent: "platform",
-    glyph: "tiers",
-    group: "Enterprise systems",
-    title: "Building an enterprise health platform from zero",
-    short: "White-label platform",
-    dek: "I was brought in to adjust a handful of screens. Underneath was a white-label product with no system, hardcoded colours and every new client rebuilt by hand.",
-    meta: {
-      role: "Founding UX Designer → UX Lead",
-      context: "Mphasis · Javelina platform",
-      timeline: "2021–present",
-      domain: "Enterprise SaaS · US health insurance",
-    },
-    tags: ["Three-tier tokens", "White-label", "Design system adoption", "Web + native"],
-    headline: { value: "< 24 h", label: "to theme a new client, from weeks" },
-    hero: {
-      label: "Enterprise platform",
-      brief: "Adjust a handful of screens.",
-      problem: "A white-label product with no system, rebuilt by hand for every client.",
-      call: "Make the brand a variable, then make engineering build to it.",
-    },
-    snapshot: {
-      frame:
-        "The ask was a few screen edits. The real problem was a white-label product with no system, developers improvising components, and every new client rebuilt by hand.",
-      decision:
-        "Treat the handoff problem as a platform problem: make the brand a variable through a three-tier token system, then make engineering actually use it.",
-      outcome:
-        "New-client theming went from weeks of rebuild to under 24 hours, delivery settled at about 2 days of design plus 3 of build, and the system became engineering's default.",
-    },
-    frame: {
-      assumed: "Change a few screens to match new requirements.",
-      actual:
-        "A white-label platform that engineering couldn't maintain, where every client multiplied the cost of every change.",
-      body: [
-        "The screens had been designed by someone else, and there was no design system behind them. Two things didn't fit the ask.",
-        "It was a white-label platform, sold to insurers who resell it to employers, who put it in front of their members, so every client needed its own look at every level. And developers were already struggling to maintain what existed. Editing screens one by one would have kept the product exactly as fragile as it was.",
-        "So I didn't treat the ask as a set of edits. I started by documenting what already existed, and that documentation became the design system.",
-      ],
-    },
-    stakes: {
-      intro: "The product was failing in three concrete ways.",
-      items: [
-        { title: "Inconsistency", body: "Developers used different components for the same job on different pages." },
-        { title: "Hardcoded colours", body: "Brand colours were written straight into the code, so nothing could be re-themed." },
-        {
-          title: "Rebuild per client",
-          body: "A growth ceiling: the business could only sign clients as fast as engineering could re-skin the product.",
-        },
-        {
-          title: "Compliance exposure",
-          body: "In US health insurance, an inconsistent eligibility or enrolment screen is a compliance risk, not a polish issue.",
-        },
-      ],
-    },
-    forks: [
-      {
-        id: "go-underneath",
-        title: "Fix the screens, or fix what made them break?",
-        tension: "The requested edits were the expected move and the visible one.",
-        rejected: { label: "Do the edits", detail: "Every future change stays hand-made; every new client stays a rebuild." },
-        chosen: { label: "Go underneath", detail: "Start with documentation, and let it become the system." },
-        why: [
-          "The deciding factor was that the pain belonged to engineering, not design. The system had a real customer before it had a name.",
-        ],
-        cost: "Investing in a foundation nobody had asked for, which had to prove its value before anyone would call it one.",
-      },
-      {
-        id: "brand-as-variable",
-        title: "Per-client builds, or make the brand a variable?",
-        tension: "Each client needed its own identity at three levels. Per-client builds would have reproduced the mess at scale.",
-        rejected: { label: "Per-client builds", detail: "A fork of the product's look for every insurer and employer." },
-        chosen: {
-          label: "Three-tier tokens",
-          detail: "Insurer → employer → member. Each tier inherits from the one above and overrides only what it owns.",
-        },
-        why: [
-          "A new client becomes a configuration, not a project.",
-          "The same foundation runs web, mobile web, iOS and Android, so mobile never became a second theming system to keep in sync by hand.",
-        ],
-        cost: "Discipline: nothing can be styled directly any more. That is precisely the habit engineering had to break.",
-        exhibit: "theme-cascade",
-      },
-      {
-        id: "adoption",
-        title: "Is a design system nobody uses just a Figma file?",
-        tension:
-          "Building the system didn't change behaviour. It lived in a separate file developers had to remember to open, and at first they carried on as before.",
-        rejected: { label: "Specs and good intentions", detail: "How the product had become inconsistent in the first place." },
-        chosen: { label: "Treat adoption as design", detail: "Work it from four sides until the system is the default." },
-        why: ["Adoption took a few months, worked from four sides:"],
-        bullets: [
-          { title: "Enablement", body: "Walkthrough sessions with the development team." },
-          { title: "Documentation", body: "Usage rules for each component, written into the system itself." },
-          { title: "Quality", body: "Design QA on builds, catching hardcoded values and off-system components before release." },
-          { title: "Policy", body: "An agreement with the tech lead that the design system is the standard engineering builds to." },
-        ],
-        cost: "Months of enablement and QA effort before the system paid back.",
-      },
-    ],
-    outcome: {
-      metrics: [
-        {
-          value: "< 24 h",
-          label: "New-client theming",
-          before: { label: "Weeks", amount: 15 },
-          after: { label: "< 1 day", amount: 1 },
-          unit: "working days",
-        },
-        { value: "1–2 days", label: "To rebrand white-label iOS and Android apps" },
-        { value: "2 + 3", label: "Days of design + build per feature, predictably" },
-        { value: "120+", label: "Components across four surfaces" },
-      ],
-      points: [
-        "Consistency held: hardcoded colours and off-system components are caught in design QA before release, not in production.",
-        "The system serves a set of Fortune-500 and enterprise-tier insurers.",
-      ],
-      provenance: "Team-observed figures, not formally tracked.",
-    },
-    ownership: {
-      mine: [
-        "The reframe, the architecture and the adoption plan. I started as the only designer, interviewed and selected four more, onboarded them onto the system and its standards, and was promoted to UX Lead.",
-      ],
-      change: [
-        "I'd close the distance between the system and the people using it much earlier. Its rationale lived in my head, and the system lived in a separate file engineers had to go and check. Closing that gap is what I later did by making it machine-readable (case study 01).",
-      ],
-    },
-    signals:
-      "Problem-finding over brief-following, platform architecture with honest costs, and the part most design-system stories skip: driving adoption across engineering.",
-  },
-
-  /* ------------------------------------------------------------------ 04 */
-  {
-    slug: "open-enrollment",
-    index: "04",
-    accent: "enrollment",
-    glyph: "flow",
-    group: "Enterprise systems",
-    title: "Open Enrollment: redesigning the decision, not the screens",
-    short: "Open Enrollment",
-    dek: "The flow asked questions in the order the backend stores them. I reordered them to match how a family actually decides.",
-    meta: {
-      role: "UX Lead",
-      context: "Mphasis · Javelina platform",
-      timeline: "Live in production",
-      domain: "Enterprise SaaS · US health insurance",
-    },
-    tags: ["Decision modelling", "Defaults", "Engineering alignment", "Regulated flows"],
-    headline: { value: "9 → 5", label: "steps, with one question asked once" },
-    hero: {
-      label: "Regulated decision flow",
-      brief: "The enrollment flow is too long.",
-      problem: "It asked questions in the order the backend stores them.",
-      call: "Reorder the questions to match how a family actually decides.",
-    },
-    snapshot: {
-      frame:
-        "Clients said the enrollment flow was too long. Length was the symptom: the flow was the data model rendered as UI, so members answered “who's covered” again inside every coverage.",
-      decision:
-        "Reorder the questions to the member's model (my family → who needs what → which plan) and ask “who needs what” once, as a single family-by-coverage grid.",
-      outcome:
-        "9 steps became 5, the per-coverage loop disappeared, cost is visible at every step, and the flow is live for open enrollment, life events and new hires.",
-    },
-    frame: {
-      assumed: "The flow is too long. Trim screens.",
-      actual: "The flow asks questions in the backend's order. Change the order of the questions.",
-      body: [
-        "Feedback from clients and BAs came in four parts: the flow was too long, members were confused about dependents, cost was unclear until late, and admins struggled when enrolling members on their behalf.",
-        "The obvious fix was to trim screens. I looked at why there were so many first. Cutting screens would have shortened the loop without removing it.",
-      ],
-      evidence: {
-        title: "The data model, rendered as UI",
-        items: [
-          "Three screens to manage the household: list, add, updated list.",
-          "A hub-and-spoke loop per coverage: pick Medical, browse plans, pick one, then choose who it covers, return to the hub, repeat for Dental and Vision.",
-          "So “who's covered” was answered twice: once for the household and once inside every coverage.",
-          "The premium was an annual estimate that could still move when dependents or the network changed.",
-        ],
-      },
-      exhibit: "flow-compare",
-    },
-    stakes: {
-      intro: "Open enrollment is a once-a-year window with a deadline, and the choices lock for the year.",
-      items: [
-        { title: "Missed family members", body: "Someone missed on one coverage stays uncovered until the next window or a qualifying life event." },
-        { title: "Late cost", body: "A cost that only becomes clear at the end means members commit before they understand what they'll pay." },
-        { title: "Admins repeat every flaw", body: "Every weakness in the member flow repeats for admins enrolling on members' behalf, across every client." },
-      ],
-    },
-    forks: [
-      {
-        id: "reorder",
-        title: "Trim the screens, or change the order of the questions?",
-        tension: "Trimming was faster and would have answered “too long” on paper.",
-        rejected: { label: "Trim screens", detail: "Keeps the loop and the duplicated dependent question." },
-        chosen: { label: "Reorder the decision", detail: "My family → who needs what → which plan." },
-        why: [
-          "“Who needs what” is now asked once, as a grid of family members against coverage types, and plan selection follows from that grid instead of re-asking it per coverage.",
-        ],
-        cost: "It no longer matched how the backend stored enrollments. That became the third fork.",
-      },
-      {
-        id: "defaults",
-        title: "What should the common case cost?",
-        tension: "Once the grid exists, most of the work is choosing plans.",
-        rejected: { label: "Ask everything, every time", detail: "Equal weight for common and rare paths." },
-        chosen: { label: "Design the defaults", detail: "Shared family plan by default; per-member plans as a clear escape hatch." },
-        why: [
-          "Keeping the current plan is the default path, and waiving coverage is a visible option, not a hidden one.",
-          "The bet: the common path should be the shortest one, while the less common path stays one clear step away.",
-        ],
-        cost: "Defaults carry weight in a regulated flow, so every one had to stay visible and reversible.",
-        exhibit: "coverage-grid",
-      },
-      {
-        id: "engineering",
-        title: "Force the data model on members, or a rewrite on engineering?",
-        tension:
-          "Engineering pushed back, and fairly: their model is coverage → plan → members, and I was asking them to take answers in reverse order.",
-        rejected: { label: "Either extreme", detail: "Ship the backend's order to members, or demand a backend rewrite." },
-        chosen: { label: "Translate, then phase", detail: "The UI collects the grid and translates it; the backend changes only where translation isn't enough." },
-        why: [
-          "I walked engineering through the member's decision order against the specific client complaints. We split the work and shipped in phases rather than one cut-over.",
-        ],
-        cost: "A slower rollout, in exchange for a change engineering owned rather than resisted.",
-      },
-    ],
-    followOn: {
-      title: "What followed from the new order",
-      intro: "Also my calls, each made possible by asking the questions in the right sequence.",
-      items: [
-        {
-          title: "Cost where the decision is made",
-          body: "A running total premium on every step, shown per month or per pay deduction instead of an annual estimate at the end.",
-        },
-        {
-          title: "One review, not scattered confirmations",
-          body: "A single page to check everything before a year-long commitment: what changed, fix in place, disclaimer and e-signature in the same step.",
-        },
-        {
-          title: "Ask only when needed",
-          body: "Document upload used to be a fixed step. It now appears only when a member's situation requires a document.",
-        },
-      ],
-    },
-    outcome: {
-      metrics: [
-        {
-          value: "9 → 5",
-          label: "Steps: Welcome, Profile, Dependents, Coverage, Review",
-          before: { label: "9 steps", amount: 9 },
-          after: { label: "5 steps", amount: 5 },
-          unit: "steps",
-        },
-        { value: "1×", label: "“Who's covered” asked once, not once per coverage" },
-        { value: "Every step", label: "Cost visible, in the unit people pay" },
-        { value: "4 flows", label: "One skeleton for open enrollment, life events, new hires, admin-on-behalf" },
-      ],
-      points: [
-        "Live in production. The complaints that triggered the redesign have dropped, and admins enrolling on behalf get through it faster.",
-      ],
-      provenance: "Early signals are observed, not formally measured yet.",
-    },
-    ownership: {
-      mine: [
-        "The reframe, the new question order, the family-plan default, the running monthly total and the single editable review.",
-      ],
-      shared: [
-        "Reusing one skeleton across enrollment types and actors, decided with product and engineering. I also designed the admin screens for passive enrollment; the business owned the rules behind it.",
-      ],
-      change: [
-        "I'd get evidence in earlier. The redesign rested on client and BA feedback plus analysis of the flow, not observed member behaviour. I'd also instrument the old flow first, so the improvement could be measured, not just described.",
-      ],
-    },
-    signals:
-      "Redesigning the decision model instead of the UI, aligning engineering to the user's mental model without forcing a rewrite, and designing defaults deliberately.",
-  },
-
   /* ------------------------------------------------------------------ 05 */
   {
     slug: "dubai-municipality",
@@ -630,7 +727,17 @@ export const caseStudies: CaseStudy[] = [
       domain: "Government · bilingual English–Arabic",
     },
     tags: ["Information architecture", "Stakeholder alignment", "RTL design", "Low-code constraints"],
-    headline: { value: "0 rework", label: "in right-to-left; Arabic shipped as designed" },
+    cover: {
+      src: "/work/dubai/app.webp",
+      width: 2400,
+      height: 1273,
+      full: true,
+      alt: "Four screens of the Dubai Municipality app: the home screen in English and in Arabic, the Services screen grouped by need, and the Dashboard tracking every request.",
+      caption:
+        "The live app: search and voice as the front door, services grouped by what residents need, one dashboard for every request, and Arabic as an equal to English.",
+    },
+    headline: { value: "One home", label: "for a city's services, organised by what residents need, not by department" },
+    card: { title: "Dubai Municipality app", widget: "departments", label: "for 3.5M residents" },
     hero: {
       label: "Civic services · bilingual",
       brief: "Redesign the city's services portal.",
@@ -643,7 +750,7 @@ export const caseStudies: CaseStudy[] = [
       decision:
         "Organise the city's services around resident needs and one consistent service pattern, designed to be built as-is in the client's low-code platform, in Arabic and English as equals.",
       outcome:
-        "Formal sign-off at every milestone despite competing departments; launched publicly, built by the client's team with no custom workarounds and no right-to-left rework.",
+        "Every service under one roof, organised by need: search as the way in, one dashboard to track every request, and one pattern for every service in Arabic and English. Signed off at every milestone despite competing departments, and built by the client's team as designed.",
     },
     frame: {
       assumed: "Redesign the portal's visual layer.",
@@ -702,13 +809,14 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome: {
       metrics: [
-        { value: "Every", label: "Milestone formally signed off" },
-        { value: "0", label: "Custom engineering workarounds" },
-        { value: "0", label: "Right-to-left rework in development" },
-        { value: "3.5M", label: "Residents in the city the portal serves" },
+        { value: "One home", label: "For the city's services, grouped by what residents need instead of which department owns them" },
+        { value: "One place", label: "To track every request: in progress, completed, cancelled or waiting on payment" },
+        { value: "Every", label: "Milestone formally signed off, despite competing departments" },
+        { value: "3.5M", label: "Residents in the city it serves" },
       ],
       points: [
-        "Launched publicly, built by the client's own team in Mendix, with the Arabic experience shipped as designed.",
+        "Launched publicly, built by the client's own team in Mendix with no custom workarounds.",
+        "Arabic designed alongside English from the first wireframes, so it shipped as designed with no right-to-left rework.",
         "A resident-first structure: services grouped by need, one service pattern, search-first entry and a single place to track applications.",
       ],
       provenance: "This was 2020–2021. The live app has changed a lot since; this describes what we designed and shipped at the time.",

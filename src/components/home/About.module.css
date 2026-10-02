@@ -72,3 +72,28 @@
     grid-template-columns: 1fr;
   }
 }
+
+.resumeLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 28px;
+}
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 20px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  font-size: var(--font-size-body-s);
+}
+.resumeAlt {
+  font-size: var(--font-size-body-s);
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const decisions = [
   {
     title: "Three tiers of tokens, not a utility framework",
-    body: "tokens/tokens.json (W3C DTCG format) compiles to CSS custom properties: primitives, semantic intent with light and dark modes, then component tokens. References stay as var() chains, so each case study re-themes by overriding only the semantic accent, exactly like a client brand on the white-label platform in case study 03.",
+    body: "tokens/tokens.json (W3C DTCG format) compiles to CSS custom properties: primitives, semantic intent with light and dark modes, then component tokens. References stay as var() chains, so each case study re-themes by overriding only the semantic accent, exactly like a client brand on the white-label platform in case study 02.",
   },
   {
     title: "GSAP for choreography, Motion for state",

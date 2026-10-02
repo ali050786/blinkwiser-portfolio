@@ -25,6 +25,11 @@ export function Contact() {
             <a href={site.linkedin} target="_blank" rel="me noopener" className={styles.secondary}>
               LinkedIn <span aria-hidden="true">↗</span>
             </a>
+            {site.resumeUrl && (
+              <a href={site.resumeUrl} className={styles.secondary}>
+                Résumé
+              </a>
+            )}
           </div>
           </div>
           <div className={styles.fit} data-reveal>

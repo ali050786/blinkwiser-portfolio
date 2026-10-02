@@ -133,10 +133,30 @@
   justify-content: space-between;
   gap: 12px;
 }
-.previewGlyph {
-  padding: 12px 8px;
+.previewVisual {
+  position: relative;
+  max-height: 230px;
+  overflow: hidden;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
   background: var(--surface-sunken);
+}
+.previewVisual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.previewVisual::after,
+.rowThumb::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 48px;
+  background: linear-gradient(transparent, var(--surface-raised));
+  pointer-events: none;
+}
+.rowThumb {
+  display: none;
 }
 .snap {
   display: grid;
@@ -184,6 +204,20 @@
     display: block;
     max-width: 60ch;
   }
+  .rowThumb {
+    position: relative;
+    display: block;
+    max-height: 180px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-sunken);
+  }
+  .rowThumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
   .row[data-active]::before {
     opacity: 0;
   }
@@ -200,4 +234,12 @@
   .arrow {
     display: none;
   }
+}
+
+.call {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  font-size: var(--font-size-body-l, 1.125rem);
+  line-height: 1.45;
 }

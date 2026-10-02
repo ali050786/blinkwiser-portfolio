@@ -1,0 +1,46 @@
+.wrap {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(24px, 3.5vw, 40px);
+}
+.frame {
+  position: relative;
+  max-height: min(64vh, 620px);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--card-border);
+  background: #f4f5f8;
+  box-shadow: var(--card-shadow);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+}
+.caption :global(.t-label) {
+  font-size: 10.5px;
+}
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 96px;
+  background: linear-gradient(to bottom, transparent, color-mix(in oklch, var(--surface-canvas) 90%, transparent));
+  pointer-events: none;
+}
+.frame[data-video] {
+  max-height: none;
+  background: #0b0b10;
+}
+.frame[data-video]::after {
+  display: none;
+}
+.frame[data-full] {
+  max-height: none;
+  background: linear-gradient(180deg, #eef0f4, #e3e7ee);
+}
+.frame[data-full]::after {
+  display: none;
+}

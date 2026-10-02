@@ -14,6 +14,8 @@ export type ProofItem = {
   prefix: string;
   suffix: string;
   label: string;
+  /** Show this text instead of an animated number. */
+  text?: string;
   study: { index: string; slug: string; accent: Accent; title: string };
 };
 
@@ -32,11 +34,15 @@ export function ProofList({ items }: { items: ProofItem[] }) {
           data-accent={p.study.accent}
         >
           <div className={styles.inner} data-reveal style={{ "--reveal-i": i } as React.CSSProperties}>
-            <p className={`${styles.value} tabular`}>
-              <span className={styles.affix}>{p.prefix}</span>
-              <CountUp to={p.value} decimals={p.decimals} />
-              <span className={styles.affix}>{p.suffix}</span>
-            </p>
+            {p.text ? (
+              <p className={`${styles.value} ${styles.valueText}`}>{p.text}</p>
+            ) : (
+              <p className={`${styles.value} tabular`}>
+                <span className={styles.affix}>{p.prefix}</span>
+                <CountUp to={p.value} decimals={p.decimals} />
+                <span className={styles.affix}>{p.suffix}</span>
+              </p>
+            )}
             <p className={`t-body-s c-secondary ${styles.label}`}>{p.label}</p>
             <Link href={`/work/${p.study.slug}`} className={`t-label ${styles.link}`}>
               Case {p.study.index} <span aria-hidden="true">→</span>

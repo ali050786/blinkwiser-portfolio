@@ -1,7 +1,6 @@
 import { ProofStrip } from "./ProofStrip";
 import { WorkIndex } from "./WorkIndex";
-import { Approach } from "./Approach";
-import { About } from "./About";
+import { HowIWork } from "./HowIWork";
 import { Contact } from "./Contact";
 
 /** Everything on the home page below the hero. */
@@ -10,8 +9,7 @@ export function HomeSections() {
     <>
       <ProofStrip />
       <WorkIndex />
-      <Approach />
-      <About />
+      <HowIWork />
       <Contact />
     </>
   );

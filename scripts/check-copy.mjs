@@ -8,7 +8,7 @@ import { join, resolve, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const BLOCKED = ["Cigna", "Keenan", "Aptia", "Bywater", "Hub International", "A1M", "HEF", "Prior-Auth"];
+const BLOCKED = ["Cigna", "Keenan", "Aptia", "Bywater", "Hub International", "A1M", "HEF", "Prior-Auth", "Javelina"];
 const RULES = [
   { name: "em-dash", test: (line) => line.includes("—") },
   ...BLOCKED.map((w) => ({ name: `blocked name "${w}"`, test: (line) => new RegExp(`\\b${w.replace(/[-]/g, "\\-")}\\b`, "i").test(line) })),

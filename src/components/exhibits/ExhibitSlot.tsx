@@ -9,6 +9,10 @@ import { BilingualPair } from "./BilingualPair";
 import { PipelineRun } from "./PipelineRun";
 import { EvalBoard } from "./EvalBoard";
 import { RestoreChat } from "./RestoreChat";
+import { EnrollmentScreens } from "./EnrollmentScreens";
+import { DesignSystemScreens } from "./DesignSystemScreens";
+import { PassiveScreens } from "./PassiveScreens";
+import { BrandingScreens } from "./BrandingScreens";
 
 /**
  * Each exhibit is its own client island. The page stays a server component;
@@ -25,6 +29,10 @@ const registry: Record<ExhibitId, React.ComponentType> = {
   pipeline: PipelineRun,
   "eval-board": EvalBoard,
   "restore-chat": RestoreChat,
+  "enrollment-screens": EnrollmentScreens,
+  "design-system-screens": DesignSystemScreens,
+  "passive-screens": PassiveScreens,
+  "branding-screens": BrandingScreens,
 };
 
 export function ExhibitSlot({ id }: { id: ExhibitId }) {

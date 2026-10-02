@@ -1,4 +1,5 @@
 import { education, learning, site, timeline } from "@/content/site";
+import { resumeFile } from "@/content/resume";
 import styles from "./About.module.css";
 
 export function About() {
@@ -14,11 +15,11 @@ export function About() {
           </h2>
           <div className={`prose t-body-l c-secondary ${styles.bio}`} data-reveal>
             <p>
-              I&apos;m Ali, a Senior UX Architect at Mphasis in Pune. I&apos;ve designed US health-insurance platforms, a city&apos;s civic
+              I&apos;m Ali, UX lead at Mphasis in Pune. I&apos;ve designed US health-insurance platforms, a city&apos;s civic
               services and an airline&apos;s apps, for people who can&apos;t afford a wrong answer.
             </p>
             <p>
-              I joined a white-label health platform as its only designer and grew it into a system, a team of four designers, and a
+              I joined a white-label health-insurance platform as its only designer and grew it into a system, a team of four designers, and a
               practice that now builds screens with AI. On the side I run Blinkwiser, where I design and ship AI products by directing
               coding agents: the judgment is mine; the typing mostly isn&apos;t.
             </p>
@@ -27,6 +28,16 @@ export function About() {
               level below the one I was handed.
             </p>
           </div>
+          {site.resumeUrl && (
+            <p className={styles.resumeLinks} data-reveal>
+              <a href={site.resumeUrl} className={styles.resumeBtn}>
+                Read my résumé <span aria-hidden="true">→</span>
+              </a>
+              <a href={resumeFile} download className={styles.resumeAlt}>
+                Download PDF
+              </a>
+            </p>
+          )}
         </div>
 
         <div className={styles.side}>

@@ -55,6 +55,17 @@ All copy lives in `src/content/`, never in components.
 
 Two content rules are enforced by `check:copy` rather than by review: no em-dashes anywhere in shipped copy, and no client or internal project names. Extend the `BLOCKED` list in `scripts/check-copy.mjs` as that list changes.
 
+## Résumé versions
+
+`src/content/resume.ts` holds two versions that share every fact, title and date; only the top third (title, tagline, profile, Domain row) differs.
+
+| Version | Where it lives | Use |
+| --- | --- | --- |
+| `general` | `/resume` and `public/sikandar-ali-abdul-resume.pdf` | Public site, general Lead UX roles |
+| `health-tech` | `resumes/sikandar-ali-abdul-resume-health-tech.pdf` (not deployed) | Send directly for health-tech roles |
+
+The site always builds `general`. To refresh the health-tech PDF, build with `RESUME_VARIANT=health-tech npm run build`, open `/resume` and print to PDF (A4, the print styles fit one page), then rebuild without the variable before deploying.
+
 ## Tokens
 
 `tokens/tokens.json` is W3C DTCG format in three tiers:

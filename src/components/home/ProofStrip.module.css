@@ -73,3 +73,9 @@
     border-top: 1px solid var(--border-subtle);
   }
 }
+.valueText {
+  font-size: clamp(1.25rem, 0.95rem + 0.9vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  white-space: normal;
+}

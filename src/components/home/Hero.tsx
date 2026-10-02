@@ -14,12 +14,13 @@ export function Hero({ deck }: { deck: DeckItem[] }) {
       }
       lede={
         <>
-          I&apos;m Ali, a Senior UX Architect with 11 years across AI products, enterprise design systems, US health insurance and a
-          city&apos;s civic services. I find the real problem behind the brief, then design the decision that fixes it.
+          I&apos;m Ali: 11 years in enterprise UX, the last five leading design on a white-label US health-insurance platform. Before
+          that, Dubai Municipality and Jet Airways. I work at the systems layer, where the real problem sits one level below the brief.
         </>
       }
       facts={[
-        { k: "Now", v: "Senior UX Architect, Mphasis" },
+        { k: "Now", v: "UX Lead, Mphasis" },
+        { k: "Domain", v: "US health insurance, since 2021" },
         { k: "Led", v: "A team of four designers" },
         { k: "Building", v: "Blinkwiser, AI products" },
       ]}

@@ -7,10 +7,10 @@ import type { GlyphId } from "./types";
  */
 
 const tabLabels: Record<string, string> = {
-  "01": "AI design systems",
-  "02": "AI product",
-  "03": "Enterprise platform",
-  "04": "Decision flows",
+  "01": "Health insurance enrollment",
+  "02": "Health insurance platform",
+  "03": "AI design systems",
+  "04": "AI product",
   "05": "Civic, bilingual",
 };
 

@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { useReducedMotionSafe as useReducedMotion } from "@/lib/motion";
-import type { Accent, CaseStudy, GlyphId } from "@/content/types";
-import { Glyph } from "@/components/ui/Glyph";
+import type { Accent, CardWidget as WidgetKind, CaseStudy, GlyphId, Shot } from "@/content/types";
+import { CardWidget } from "./CardWidget";
+import { ShotMedia } from "@/components/screens/ShotMedia";
 import { Icon } from "@/components/ui/Icon";
 import styles from "./WorkIndex.module.css";
 
@@ -20,6 +21,9 @@ export type WorkItem = {
   headline: { value: string; label: string };
   snapshot: CaseStudy["snapshot"];
   meta: string;
+  visual: Shot;
+  widget: WidgetKind;
+  call: string;
 };
 
 export function WorkList({ items }: { items: WorkItem[] }) {
@@ -78,18 +82,7 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                               >
                                 {item.title}
                               </span>
-                              <span className={styles.tags}>
-                                {item.tags.slice(0, 3).map((t) => (
-                                  <span key={t} className={styles.tag}>
-                                    {t}
-                                  </span>
-                                ))}
-                              </span>
-                              <span
-                                className={`t-body-s c-secondary ${styles.mobileSnap}`}
-                              >
-                                {item.snapshot.outcome}
-                              </span>
+                              <CardWidget kind={item.widget} />
                             </span>
                             <span className={styles.rowMetric}>
                               <span className={`tabular ${styles.metricValue}`}>
@@ -141,25 +134,15 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                 <span className="t-label c-accent">
                   {current.index} · {current.group}
                 </span>
-                <span className="t-label c-tertiary">Decision snapshot</span>
+                <span className="t-label c-tertiary">Preview</span>
               </div>
-              <div className={styles.previewGlyph}>
-                <Glyph id={current.glyph} />
+              <div className={styles.previewVisual}>
+                <ShotMedia shot={current.visual} />
               </div>
-              <dl className={styles.snap}>
-                <div>
-                  <dt className="t-label c-tertiary">Frame</dt>
-                  <dd>{current.snapshot.frame}</dd>
-                </div>
-                <div>
-                  <dt className="t-label c-tertiary">Key decision</dt>
-                  <dd>{current.snapshot.decision}</dd>
-                </div>
-                <div>
-                  <dt className="t-label c-tertiary">Outcome</dt>
-                  <dd>{current.snapshot.outcome}</dd>
-                </div>
-              </dl>
+              <p className={styles.call}>
+                <span className="t-label c-tertiary">The call</span>
+                <span>{current.call}</span>
+              </p>
               <div className={styles.previewFoot}>
                 <span className="t-body-s c-tertiary">{current.meta}</span>
                 <Link

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy, getNeighbours } from "@/content/case-studies";
 import { CaseHero } from "@/components/case/CaseHero";
 import { Snapshot } from "@/components/case/Snapshot";
+import { CaseCover } from "@/components/case/CaseCover";
 import { BeatRail } from "@/components/case/BeatRail";
 import { Beat } from "@/components/case/Beat";
 import { Reframe } from "@/components/case/Reframe";
@@ -53,6 +54,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <ReadingProgress />
       <CaseHero study={c} />
       <Snapshot study={c} />
+      {c.cover && <CaseCover shot={c.cover} />}
+      {c.reel && <CaseCover shot={c.reel} label="The product, running" />}
 
       <div className={`container ${styles.body}`}>
         <BeatRail beats={BEATS.map(({ id, n, label }) => ({ id, n, label }))} forks={c.forks.map((f) => ({ id: f.id, title: f.title }))} />
@@ -106,7 +109,39 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                     </li>
                   ))}
                 </ul>
+                {c.followOn.exhibit && <ExhibitSlot id={c.followOn.exhibit} />}
               </div>
+            )}
+            {c.spotlight && (
+              <section className={styles.spotlight} aria-labelledby="spotlight-title">
+                <p className="t-label c-accent">{c.spotlight.label}</p>
+                <h3 id="spotlight-title" className="t-heading-l">
+                  {c.spotlight.title}
+                </h3>
+                <p className="t-body-l c-secondary prose">{c.spotlight.intro}</p>
+                <div className={styles.spotCols}>
+                  {(
+                    [
+                      ["Why", c.spotlight.why],
+                      ["What I designed", c.spotlight.what],
+                      ["Impact", c.spotlight.impact],
+                    ] as const
+                  ).map(([h, items]) => (
+                    <div key={h} className={styles.spotCol} data-reveal>
+                      <h4 className="t-label c-tertiary">{h}</h4>
+                      <ul>
+                        {items.map((it) => (
+                          <li key={it.slice(0, 32)} className="t-body-s c-secondary">
+                            {it}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                <p className="t-label c-tertiary">{c.spotlight.provenance}</p>
+                {c.spotlight.exhibit && <ExhibitSlot id={c.spotlight.exhibit} />}
+              </section>
             )}
           </Beat>
 

@@ -1,0 +1,165 @@
+.widget {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+}
+.arrow {
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+.widget svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 9 → 5 */
+.stepper {
+  display: grid;
+  gap: 6px;
+}
+.stepper > span {
+  display: flex;
+  gap: 5px;
+}
+.stepper i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.stepper [data-after] i {
+  background: var(--accent-solid);
+}
+
+/* same screen, three brands */
+.brands {
+  display: flex;
+  gap: 10px;
+}
+.mini {
+  display: grid;
+  grid-template-rows: 11px 1fr;
+  width: 84px;
+  height: 54px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--color-white);
+}
+.miniHead {
+  background: var(--c);
+}
+.miniBody {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 6px;
+}
+.miniBody i {
+  height: 4px;
+  border-radius: 2px;
+  background: oklch(90% 0.006 85);
+}
+.miniBody b {
+  width: 32px;
+  height: 9px;
+  margin-top: 2px;
+  border-radius: 4px;
+  background: var(--c);
+}
+
+/* Figma → agent → screen */
+.pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.node {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+}
+.node[data-agent] {
+  border-color: transparent;
+  background: color-mix(in oklch, var(--accent-solid) 14%, transparent);
+  color: var(--accent-strong);
+}
+.note {
+  margin-left: 4px;
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* the carousel itself */
+.slides {
+  position: relative;
+  display: block;
+  width: 130px;
+  height: 60px;
+}
+.slide {
+  position: absolute;
+  top: 2px;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  width: 44px;
+  height: 56px;
+  padding: 6px;
+  border: 1px solid var(--border-default);
+  border-radius: 7px;
+  background: var(--color-white);
+  box-shadow: 0 2px 6px -3px oklch(0% 0 0 / 0.2);
+}
+.slide i {
+  height: 4px;
+  border-radius: 2px;
+  background: oklch(90% 0.006 85);
+}
+.slide i[data-h] {
+  width: 70%;
+  background: var(--accent-solid);
+}
+
+/* departments → one home */
+.departments {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 13px);
+  gap: 4px;
+}
+.tiles i {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  background: var(--border-strong);
+}
+.home {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--accent-solid);
+  color: var(--accent-on-solid, #fff);
+}
+.home svg {
+  width: 22px;
+  height: 22px;
+}

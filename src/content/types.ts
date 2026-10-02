@@ -10,7 +10,11 @@ export type ExhibitId =
   | "bilingual-pair"
   | "pipeline"
   | "eval-board"
-  | "restore-chat";
+  | "restore-chat"
+  | "enrollment-screens"
+  | "design-system-screens"
+  | "passive-screens"
+  | "branding-screens";
 
 export type GlyphId = "skills" | "pipeline" | "tiers" | "flow" | "services";
 
@@ -22,6 +26,46 @@ export interface Metric {
   before?: { label: string; amount: number };
   after?: { label: string; amount: number };
   unit?: string;
+}
+
+export type ScreenKey =
+  | "old-household"
+  | "old-coverage-hub"
+  | "old-who-again"
+  | "old-plan-list"
+  | "old-review"
+  | "new-household"
+  | "new-plan"
+  | "new-coverage"
+  | "new-review"
+  | "ds-tokens"
+  | "ds-buttons"
+  | "ds-product-card"
+  | "ds-dashboard"
+  | "pe-rule"
+  | "pe-confirm"
+  | "pe-running"
+  | "pe-report"
+  | "bh-hub"
+  | "bh-editor"
+  | "bh-preview"
+  | "bh-assign";
+
+/**
+ * A product screen: rebuilt in HTML from design files (`screen`), or, for my own
+ * product only, a real capture (`src` image or `video`).
+ */
+export interface Shot {
+  screen?: ScreenKey;
+  src?: string;
+  video?: string;
+  poster?: string;
+  width?: number;
+  height?: number;
+  alt: string;
+  caption?: string;
+  /** Show the whole image (no height cap or fade), e.g. a row of phone screens. */
+  full?: boolean;
 }
 
 export interface Option {
@@ -42,15 +86,31 @@ export interface Fork {
   exhibit?: ExhibitId;
 }
 
+/** A feature built on the study's main decision: why it existed, what I designed, what it changed. */
+export interface Spotlight {
+  label: string;
+  title: string;
+  intro: string;
+  why: string[];
+  what: string[];
+  impact: string[];
+  provenance: string;
+  exhibit?: ExhibitId;
+}
+
+export type CardWidget = "stepper" | "brands" | "pipeline" | "slides" | "departments";
+
 export interface CaseStudy {
   slug: string;
   index: string;
   accent: Accent;
   glyph: GlyphId;
-  group: "AI-driven UI" | "Enterprise systems" | "Civic scale";
+  group: "Health insurance platforms" | "AI-driven UI" | "Civic scale";
   title: string;
   /** Short label used in navigation and the index. */
   short: string;
+  /** Home-page card: a short title, one visual widget, a short metric label. About 12 words in all. */
+  card?: { title: string; widget: CardWidget; label: string; value?: string };
   dek: string;
   meta: {
     role: string;
@@ -59,6 +119,10 @@ export interface CaseStudy {
     domain: string;
   };
   tags: string[];
+  /** Optional product screen shown under the snapshot, rebuilt in a demo brand. */
+  cover?: Shot;
+  /** Optional short recording shown right under the cover. */
+  reel?: Shot;
   headline: { value: string; label: string };
   /** The reframe in one breath, for the home page hero deck. */
   hero: { label: string; brief: string; problem: string; call: string };
@@ -73,6 +137,7 @@ export interface CaseStudy {
   stakes: { intro?: string; items: { title: string; body: string }[] };
   forks: Fork[];
   followOn?: { title: string; intro?: string; items: { title: string; body: string }[]; exhibit?: ExhibitId };
+  spotlight?: Spotlight;
   outcome: {
     metrics: Metric[];
     points: string[];

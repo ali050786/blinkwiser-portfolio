@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CaseStudy } from "@/content/types";
+import { principles } from "@/content/site";
 import { Glyph } from "@/components/ui/Glyph";
 import { Icon } from "@/components/ui/Icon";
 import styles from "./CaseHero.module.css";
@@ -11,6 +12,8 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
     ["Timeline", c.meta.timeline],
     ["Domain", c.meta.domain],
   ] as const;
+
+  const habit = principles.find((p) => p.primary === c.index);
 
   return (
     <header className={`container ${styles.hero}`}>
@@ -26,6 +29,12 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           </p>
           <h1 className="t-display-l">{c.title}</h1>
           <p className={`t-body-l c-secondary ${styles.dek}`}>{c.dek}</p>
+          {habit && (
+            <p className={styles.habit}>
+              <span className="t-label c-tertiary">How I worked</span>
+              <span>{habit.title}</span>
+            </p>
+          )}
           <ul className={styles.tags} aria-label="Topics">
             {c.tags.map((t) => (
               <li key={t}>{t}</li>

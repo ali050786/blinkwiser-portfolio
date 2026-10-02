@@ -1,63 +1,80 @@
 export const site = {
   name: "Sikandar Ali Abdul",
-  title: "Sikandar Ali Abdul · Senior UX Architect",
+  title: "Sikandar Ali Abdul · Lead UX Designer, US Health Insurance",
   url: "https://portfolio.blinkwiser.com",
   description:
-    "Senior UX Architect. Decision-led case studies from 11 years across AI products, enterprise design systems, US health insurance and civic services: the brief, the real problem, and the call.",
-  role: "Senior UX Architect",
+    "Lead UX Designer for US health insurance. Five years leading design on a white-label US health-insurance platform, plus AI products and civic services. Decision-led case studies with real screens: the brief, the real problem, and the call.",
+  role: "Lead UX Designer",
   location: "Pune, India",
   availability: "Open to senior and lead roles in UX, AI products and design engineering",
   email: "ali050786@gmail.com",
   linkedin: "https://www.linkedin.com/in/sikandar-ux",
   blinkwiser: "https://blinkwiser.com",
-  /** Set to a path in /public (e.g. "/ali-abdul-resume.pdf") to show the résumé link. */
-  resumeUrl: null as string | null,
+  /** The résumé page (it links the PDF). Set to null to hide the résumé links. */
+  resumeUrl: "/resume" as string | null,
 };
 
 export const nav = [
   { href: "/#work", label: "Work" },
-  { href: "/#approach", label: "Approach" },
-  { href: "/#about", label: "About" },
+  { href: "/#how", label: "How I work" },
   { href: "/#contact", label: "Contact" },
 ];
 
 export const proof = [
-  { value: 40, prefix: "~", suffix: "%", label: "less design production time once the design system was readable by AI", study: "01" },
-  { value: 7, prefix: "", suffix: " / 10", label: "blind-eval wins for a rebuilt, grounded AI product", study: "02" },
-  { value: 24, prefix: "< ", suffix: "h", label: "to theme a new client on a white-label platform, down from weeks", study: "03" },
-  { value: 5, prefix: "9 → ", suffix: "", label: "enrollment steps, with \u201cwho's covered\u201d asked once", study: "04" },
+  { value: 5, prefix: "9 → ", suffix: "", label: "enrollment steps, with \u201cwho's covered\u201d asked once", study: "01" },
+  { value: 24, prefix: "< ", suffix: "h", label: "to theme a new client on a white-label health-insurance platform, down from weeks", study: "02" },
+  { value: 0, text: "1–2 wks → 3–4 days", prefix: "", suffix: "", label: "Jira-story turnaround with BAs, once the design system was readable by AI", study: "03" },
+  { value: 0, text: "Plan → Execute → Reflect", prefix: "", suffix: "", label: "an agent workflow on every carousel: research the facts, write, then check its own work", study: "04" },
   { value: 3.5, decimals: 1, prefix: "", suffix: "M", label: "residents' city services, organised by need instead of department", study: "05" },
 ];
 
 export const principles = [
   {
     title: "Find the problem under the brief",
+    /** The one study this habit leads, shown at the top of that study. */
+    primary: "01",
     body: "Every study here starts with a reframe. Asked to edit screens, I found a platform problem. Told a flow was too long, I found it asked questions in the wrong order.",
-    refs: ["03", "04"],
+    refs: ["01", "02"],
   },
   {
     title: "Make the variable explicit",
+    /** The one study this habit leads, shown at the top of that study. */
+    primary: "03",
     body: "Brands become tokens. Rules become code, not prompt requests. A design system becomes files an agent can read. What can change should be configurable, and nothing else should be.",
-    refs: ["01", "02", "03"],
+    refs: ["02", "03", "04"],
   },
   {
     title: "Design for the build reality",
+    /** The one study this habit leads, shown at the top of that study. */
+    primary: "05",
     body: "A design that can't be built as specified is a wish. I design within the platform's constraints, and translate between the user's model and the system's instead of forcing either.",
-    refs: ["04", "05"],
+    refs: ["01", "05"],
   },
   {
     title: "Settle trade-offs with evidence",
+    /** The one study this habit leads, shown at the top of that study. */
+    primary: "04",
     body: "Quality versus speed is an eval, not a debate. And honest attribution (observed, not measured; directional, not isolated) is part of the result.",
-    refs: ["02"],
+    refs: ["04"],
   },
   {
     title: "Adoption is part of the design",
+    /** The one study this habit leads, shown at the top of that study. */
+    primary: "02",
     body: "A system nobody uses is a file. Enablement, documentation, design QA and an agreement with engineering are design work too.",
-    refs: ["01", "03"],
+    refs: ["02", "03"],
   },
 ];
 
 export const capabilities = [
+  {
+    title: "US health insurance",
+    items: [
+      "Enrollment, life-event and eligibility flows for members and admins",
+      "A white-label benefits platform for insurers, employers and members",
+      "Multi-tenant compliance and audit logging, designed in",
+    ],
+  },
   {
     title: "Enterprise design systems",
     items: [
@@ -67,11 +84,11 @@ export const capabilities = [
     ],
   },
   {
-    title: "Component distribution",
+    title: "Research and team leadership",
     items: [
-      "Figma variables and modes as the single source for five brands",
-      "App shells and layout templates every screen starts from",
-      "Documentation written into the system, not beside it",
+      "Stakeholder research and personas for insurers, employers and members",
+      "Workshops with BAs and engineering before ideas or system changes ship",
+      "Hired, onboarded and led a team of four designers",
     ],
   },
   {
@@ -80,24 +97,17 @@ export const capabilities = [
       "Design systems rebuilt as machine-readable skill files",
       "Agent workflows with self-verification and drift audits",
       "Grounded generation, honesty guards and blind eval harnesses",
-    ],
-  },
-  {
-    title: "Regulated and bilingual UX",
-    items: [
-      "US health insurance: eligibility, enrollment, multi-tenant compliance",
-      "Government services for a city of millions",
-      "Arabic and English, right-to-left as a first-class discipline",
+      "Daily tools: Claude Code, Figma MCP, LangGraph and Lovable",
     ],
   },
 ];
 
 export const timeline = [
-  { period: "2025–now", role: "Founder", org: "Blinkwiser", detail: "AI products, designed and shipped by directing coding agents." },
+  { period: "2025–now", role: "Independent AI product work", org: "Blinkwiser", detail: "A lab alongside Mphasis: AI products designed and shipped by directing coding agents." },
   {
     period: "2021–now",
     role: "Founding UX Designer → UX Lead",
-    org: "Mphasis · Javelina platform",
+    org: "Mphasis · US health-insurance platform",
     detail: "White-label enterprise SaaS for US health insurance. Built the system and a team of four designers around it.",
   },
   {
