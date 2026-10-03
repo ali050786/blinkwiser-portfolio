@@ -117,3 +117,18 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Compact: inside a case beat rather than the hero. One column, smaller story line. */
+.wrap[data-compact] .grid {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.wrap[data-compact] .story {
+  font-size: var(--font-size-heading-l);
+  line-height: var(--font-leading-snug);
+  letter-spacing: -0.02em;
+  max-width: 30ch;
+}
+.wrap[data-compact] .proof {
+  max-width: 640px;
+}

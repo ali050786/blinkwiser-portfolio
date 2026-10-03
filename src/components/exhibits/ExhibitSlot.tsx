@@ -14,6 +14,7 @@ import { DesignSystemScreens } from "./DesignSystemScreens";
 import { PassiveScreens } from "./PassiveScreens";
 import { BrandingScreens } from "./BrandingScreens";
 import { CoverageGap, TrimVsReorder, TranslateLayer, AskWhenNeeded, PassiveRun } from "./Diagrams";
+import { RulesInHeads, TwoLoops, PromptVsSystem, PortableSkills, AdoptionSpread } from "./DsDiagrams";
 
 /**
  * Each exhibit is its own client island. The page stays a server component;
@@ -39,6 +40,11 @@ const registry: Record<ExhibitId, React.ComponentType> = {
   "trim-vs-reorder": TrimVsReorder,
   "translate-layer": TranslateLayer,
   "ask-when-needed": AskWhenNeeded,
+  "rules-in-heads": RulesInHeads,
+  "two-loops": TwoLoops,
+  "prompt-vs-system": PromptVsSystem,
+  "portable-skills": PortableSkills,
+  "adoption-spread": AdoptionSpread,
 };
 
 export function ExhibitSlot({ id }: { id: ExhibitId }) {

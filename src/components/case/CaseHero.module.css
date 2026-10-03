@@ -111,6 +111,29 @@
   display: grid;
   gap: 10px;
 }
+.openerTop {
+  display: grid;
+  gap: 24px;
+}
+.turnTop {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .openerTop[data-turn] {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    align-items: end;
+    gap: clamp(32px, 4vw, 64px);
+  }
+  .turnTop {
+    display: block;
+  }
+  .turnBottom {
+    display: none;
+  }
+  .turnTop .turn {
+    padding-top: 4px;
+  }
+}
 .titleSmall {
   max-width: 40ch;
   margin: 0;
@@ -145,4 +168,44 @@
 }
 .turnAfter {
   margin: 6px 0 0;
+}
+
+/* Picture-first hero (hook): one line, one number, one before/after proof. */
+.hook {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  margin-top: clamp(24px, 4vw, 48px);
+}
+.hookCopy {
+  display: grid;
+  gap: 20px;
+  align-content: center;
+}
+.hookLine {
+  margin: 8px 0 0;
+  max-width: 14ch;
+}
+.hookTurn {
+  margin: 0;
+  max-width: 24ch;
+  color: var(--text-secondary);
+}
+.hookNumber {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  max-width: 40ch;
+}
+.hookVisual {
+  display: grid;
+  gap: 12px;
+}
+@media (max-width: 1024px) {
+  .hook {
+    grid-template-columns: 1fr;
+  }
 }

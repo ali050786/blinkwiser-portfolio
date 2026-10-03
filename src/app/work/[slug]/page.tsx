@@ -14,6 +14,7 @@ import { Ownership } from "@/components/case/Ownership";
 import { NextCase } from "@/components/case/NextCase";
 import { ReadingProgress } from "@/components/case/ReadingProgress";
 import { ExhibitSlot } from "@/components/exhibits/ExhibitSlot";
+import { HeroStories } from "@/components/case/HeroStories";
 import styles from "./page.module.css";
 
 export const dynamicParams = false;
@@ -82,6 +83,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               </div>
             )}
             {c.frame.exhibit && <ExhibitSlot id={c.frame.exhibit} />}
+            {c.hook && c.opener && (
+              <section className={styles.findings} aria-labelledby="findings-title">
+                <h3 id="findings-title" className="t-heading-l">
+                  {c.opener.label ?? "What I found"}
+                </h3>
+                <HeroStories opener={c.opener} compact />
+              </section>
+            )}
           </Beat>
 
           <Beat {...beat("stakes")}>

@@ -87,6 +87,99 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
     );
   }
 
+  if (id === "mockup-hours" || id === "story-days") {
+    // One block per working hour or working day. Dashed blocks are the top of a range.
+    const hours = id === "mockup-hours";
+    const before = hours ? { solid: 16, range: 0, label: "~2 days" } : { solid: 5, range: 5, label: "1–2 weeks" };
+    const after = hours ? { solid: 3, range: 1, label: "3–4 hours" } : { solid: 3, range: 1, label: "3–4 days" };
+    const w = hours ? 22 : 36;
+    const step = hours ? 24 : 40;
+    const row = (b: typeof before, y: number, kind: "before" | "after") =>
+      Array.from({ length: b.solid + b.range }, (_, i) => (
+        <rect
+          key={`${kind}${i}`}
+          x={44 + i * step}
+          y={y}
+          width={w}
+          height={28}
+          rx={5}
+          className={i >= b.solid ? (kind === "before" ? g.cardWarn : g.accentRing) : kind === "before" ? g.card : g.accent}
+        />
+      ));
+    return (
+      <svg
+        viewBox="0 0 480 300"
+        className={`${g.glyph} ${styles.svg}`}
+        role="img"
+        aria-label={`Before: ${before.label}. After: ${after.label}. One block per working ${hours ? "hour" : "day"}; outlined blocks are the top of the range.`}
+      >
+        <T x={44} y={44}>
+          before · {before.label}
+        </T>
+        {row(before, 62, "before")}
+        <T x={44} y={160} accent>
+          after · {after.label}
+        </T>
+        {row(after, 178, "after")}
+        <T x={44} y={270}>
+          1 block = 1 working {hours ? "hour" : "day"} · team-observed
+        </T>
+      </svg>
+    );
+  }
+
+  if (id === "time-freed")
+    return (
+      <svg viewBox="0 0 480 300" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Before: a designer's production time, the whole bar. After: about 60 percent, with about 40 percent freed for research, flows and edge cases.">
+        <T x={44} y={44}>
+          before · production time
+        </T>
+        <rect x={44} y={62} width={392} height={28} rx={6} className={g.card} />
+        <T x={44} y={160} accent>
+          after · about 40% less
+        </T>
+        <rect x={44} y={178} width={235} height={28} rx={6} className={g.card} />
+        <rect x={283} y={178} width={153} height={28} rx={6} className={g.accent} />
+        <T x={436} y={232} anchor="end" accent>
+          freed for research, flows, edge cases
+        </T>
+        <T x={44} y={270}>
+          approximate · team-observed
+        </T>
+      </svg>
+    );
+
+  if (id === "brand-grid") {
+    const platforms = ["admin", "member", "mobile"];
+    return (
+      <svg viewBox="0 0 480 300" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="One design system feeding a grid of five client brands by three platforms: admin centre, member portal and mobile app.">
+        {[0, 1, 2, 3, 4].map((r) => (
+          <g key={r}>
+            <path d={`M78 150 C 130 150, 130 ${70 + r * 40}, 176 ${70 + r * 40}`} className={g.strong} />
+            <T x={196} y={74 + r * 40} anchor="end">
+              {String.fromCharCode(65 + r)}
+            </T>
+            {platforms.map((p, c) => (
+              <rect key={p} x={210 + c * 76} y={56 + r * 40} width={64} height={28} rx={6} className={g.accentMid} />
+            ))}
+          </g>
+        ))}
+        {platforms.map((p, c) => (
+          <T key={p} x={242 + c * 76} y={40} anchor="middle">
+            {p}
+          </T>
+        ))}
+        <circle cx={66} cy={150} r={14} className={g.accent} />
+        <T x={66} y={190} anchor="middle" accent>
+          one system
+        </T>
+        <T x={44} y={280}>
+          brands A–E are generic labels · themed by mode
+        </T>
+      </svg>
+    );
+  }
+
   // four-flows
   const entries = ["open enrollment", "life event", "new hire", "admin on behalf"];
   const xs = [250, 300, 350, 400, 450];

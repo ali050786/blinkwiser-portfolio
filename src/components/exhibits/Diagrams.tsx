@@ -5,7 +5,7 @@ import d from "./Diagrams.module.css";
  * Line diagrams in the same visual language as the study glyphs: plain nodes,
  * red dashed nodes for the problem, accent for the fix. Static, readable as stills.
  */
-function Diagram({ label, viewBox, aria, caption, children }: { label: string; viewBox: string; aria: string; caption: string; children: React.ReactNode }) {
+export function Diagram({ label, viewBox, aria, caption, children }: { label: string; viewBox: string; aria: string; caption: string; children: React.ReactNode }) {
   return (
     <figure className={d.fig} data-reveal>
       <p className={`t-label ${d.label}`}>{label}</p>
@@ -19,7 +19,7 @@ function Diagram({ label, viewBox, aria, caption, children }: { label: string; v
   );
 }
 
-const T = ({ x, y, children, anchor = "start", warn, accent }: { x: number; y: number; children: React.ReactNode; anchor?: "start" | "middle" | "end"; warn?: boolean; accent?: boolean }) => (
+export const T = ({ x, y, children, anchor = "start", warn, accent }: { x: number; y: number; children: React.ReactNode; anchor?: "start" | "middle" | "end"; warn?: boolean; accent?: boolean }) => (
   <text x={x} y={y} textAnchor={anchor} className={`${g.mono} ${warn ? d.warnText : ""} ${accent ? d.accentText : ""}`}>
     {children}
   </text>

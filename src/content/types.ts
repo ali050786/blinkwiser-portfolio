@@ -19,9 +19,22 @@ export type ExhibitId =
   | "coverage-gap"
   | "trim-vs-reorder"
   | "translate-layer"
-  | "ask-when-needed";
+  | "ask-when-needed"
+  | "rules-in-heads"
+  | "two-loops"
+  | "prompt-vs-system"
+  | "portable-skills"
+  | "adoption-spread";
 
-export type MetricVisualId = "glyph-flow" | "asked-once" | "cost-every-step" | "four-flows";
+export type MetricVisualId =
+  | "glyph-flow"
+  | "asked-once"
+  | "cost-every-step"
+  | "four-flows"
+  | "mockup-hours"
+  | "story-days"
+  | "time-freed"
+  | "brand-grid";
 
 export type HeroVisualId = "newborn" | "plan-switch" | "cost" | "save-side" | "link-colour" | "audit";
 
@@ -146,10 +159,10 @@ export interface CaseStudy {
     /** Accessible name for the story tabs. */
     label?: string;
     scope: string;
-    /** Optional opening line that puts a person in the story before the tabs. */
+    /** Optional opening line that puts a person in the story before the tabs. Replaces the scope line when set. */
     lead?: string;
     /** Optional turning point shown under the tabs: what someone said, and what happened next. */
-    turn?: { quote: string; source: string; after: string };
+    turn?: { quote: string; source: string; after?: string };
     note: string;
     stories: {
       id: string;
@@ -163,6 +176,11 @@ export interface CaseStudy {
       caption: string;
     }[];
   };
+  /**
+   * Optional picture-first hero: one line, the headline number and one
+   * before/after proof. When set, the opener's story tabs move into the Frame beat.
+   */
+  hook?: { line: string; turn: string; visual: "same-request"; note: string };
   /** The reframe in one breath, for the home page hero deck. */
   hero: { label: string; brief: string; problem: string; call: string };
   snapshot: { frame: string; decision: string; outcome: string };

@@ -26,7 +26,7 @@ type Opener = NonNullable<CaseStudy["opener"]>;
  * short story with the old system's own words on the left and a side-by-side
  * proof on the right.
  */
-export function HeroStories({ opener }: { opener: Opener }) {
+export function HeroStories({ opener, compact }: { opener: Opener; compact?: boolean }) {
   const [active, setActive] = useState(0);
   const reduce = useReducedMotionSafe();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -47,7 +47,7 @@ export function HeroStories({ opener }: { opener: Opener }) {
   } as const;
 
   return (
-    <div className={styles.wrap}>
+    <div className={styles.wrap} data-compact={compact || undefined}>
       <div role="tablist" aria-label={opener.label ?? "Three moments from one enrollment"} className={styles.tabs}>
         {opener.stories.map((st, i) => (
           <button

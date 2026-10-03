@@ -421,7 +421,7 @@ export const caseStudies: CaseStudy[] = [
     group: "AI-driven UI",
     title: "AI-readable design system: writing down the rules nobody wrote",
     short: "AI-readable design system",
-    dek: "The AI wasn't the variable I could change. The design system was. So I rebuilt it as a library of skill files an agent reads to turn a Jira story into a brand-compliant, self-verified screen.",
+    dek: "AI kept drawing screens that didn't look like our product. The model wasn't the problem: six years of design rules lived only in designers' heads. I wrote them down as files the AI reads before it designs and checks its work against.",
     meta: {
       role: "UX Lead",
       context: "Mphasis · US health-insurance platform",
@@ -429,45 +429,45 @@ export const caseStudies: CaseStudy[] = [
       domain: "Enterprise SaaS · US health insurance",
     },
     tags: ["Agentic design workflow", "Design systems", "Figma variables", "MCP"],
-    headline: { value: "3–4 days", label: "Jira-story turnaround, down from 1–2 weeks" },
-    card: { title: "A design system that builds itself", widget: "pipeline", label: "Jira-story turnaround" },
+    headline: { value: "3–4 days", label: "from Jira story to engineering-ready screen, down from 1–2 weeks (team-observed)" },
+    card: { title: "A design system AI can read", widget: "pipeline", label: "Jira-story turnaround" },
+    hook: {
+      line: "Same AI. Same components.",
+      turn: "It only looked like our product once we wrote the rules down.",
+      visual: "same-request",
+      note: "Illustration in a demo brand, not a client screen.",
+    },
     opener: {
       label: "Three things the AI got wrong",
       scope: "A six-year-old design system, five client brands and three platforms, rewritten as files an AI reads before it designs.",
-      lead: "We gave the AI our real design system. Four or five screens came back looking like someone else's product, and each was drawn again by hand. I went looking for why.",
-      turn: {
-        quote: "It cannot automatically give the design to us.",
-        source: "My senior, after the first screen (as I remember it)",
-        after: "That was the expected verdict: wait for better AI, or keep drawing by hand. These three findings are why I rewrote the system instead.",
-      },
-      note: "These are illustrations with generic names, not client screens or real token names. The rule, the note and the 19 vs 20 are quoted from the skill files; the old screen is rebuilt from memory, and four or five is a team recollection, not a count.",
+      note: "Illustrations with generic names, not client screens. Quotes come from the skill files.",
       stories: [
         {
           id: "save-side",
           tab: "The button",
           story: "The first one put Save on the left. Every designer here puts it on the right.",
           quoteEmpty: { field: "Button · Description" },
-          quoteSource: "The old button's description: Figma had no such field six years ago (as I remember it)",
+          quoteSource: "The old button's description (as I remember it)",
           visual: "save-side",
-          caption: "The AI had our real components and still got it wrong, because the habit lived in our heads. The fix was one line in a skill file the AI reads before every screen.",
+          caption: "The habit lived in our heads. Now it's one line the AI reads before every screen.",
         },
         {
           id: "link-colour",
           tab: "The colour",
           story: "Our links have one colour. The AI picked another.",
           quote: "Not an exact match, but agreed mapping.",
-          quoteSource: "The rebuilt system's own note, mapping an old colour that never had a job",
+          quoteSource: "The rebuilt system's note on an old colour",
           visual: "link-colour",
-          caption: "Nothing said which colour a link takes. The old colours were named for how they look, so any of them could be a link. The skills name each colour for its job, so the AI no longer guesses.",
+          caption: "The old colours were named for how they look, so any could be a link. Now each is named for its job.",
         },
         {
           id: "audit",
           tab: "The audit",
           story: "Even with the rules written down, the docs said 19 components. The file had 20.",
           quote: "19 standalone components",
-          quoteSource: "The system's own index, before the audit run on 4 Sep 2026",
+          quoteSource: "The system's index, before the audit (4 Sep 2026)",
           visual: "audit",
-          caption: "An audit skill caught the gap in one run. Six years of patches with nobody checking is how the old system drifted. Now the audit compares the docs with the file every session, so the AI never reads a stale rule.",
+          caption: "Unchecked patches are how the old system drifted. Now an audit compares docs and file every session.",
         },
       ],
     },
@@ -483,7 +483,7 @@ export const caseStudies: CaseStudy[] = [
       decision:
         "Unprompted, rebuild the design system as an AI-readable knowledge base: interlocking skill files for tokens, themes, components, layout, app shells, a build workflow, a self-audit and a memory.",
       outcome:
-        "New-client mockups went from about 2 days to 3–4 hours, Jira-story turnaround from 1–2 weeks to 3–4 days, and the wider org chose to adopt the process.",
+        "New-client mockups went from about 2 days to 3–4 hours, Jira-story turnaround from 1–2 weeks to 3–4 days, and the wider org chose to adopt the process. All figures are team-observed.",
     },
     frame: {
       assumed: "The AI isn't good enough yet. Prompt harder, wait for better models, or add designers.",
@@ -494,14 +494,7 @@ export const caseStudies: CaseStudy[] = [
         "We had a design system in Figma, but no descriptions: it was built six years ago, before Figma had a field for them, and patched piecemeal ever since. The rules lived in designers' heads. Components alone weren't enough. Making the system AI-legible meant externalising that tacit knowledge: colour and typography semantics, grid, layout, components and composition.",
         "Nobody had done this on a veteran six-year project. I looked for a process and found none that worked, so I built one.",
       ],
-      evidence: {
-        title: "How the AI failed",
-        items: [
-          "Different colours for different components, because nothing said which colour a link or a button should take.",
-          "A different grid on every screen, because the grid was never documented.",
-          "Screens that still didn't feel like our app, even when it pulled the right components.",
-        ],
-      },
+      exhibit: "rules-in-heads",
     },
     stakes: {
       intro: "Fast, on-brand screens sat on the critical path for two audiences at once.",
@@ -519,6 +512,7 @@ export const caseStudies: CaseStudy[] = [
           body: "Every slow mockup pulled senior designers off product work. The manual approach didn't scale with the pipeline.",
         },
       ],
+      exhibit: "two-loops",
     },
     forks: [
       {
@@ -533,6 +527,7 @@ export const caseStudies: CaseStudy[] = [
           "No one assigned it. I saw it, and I owned it.",
         ],
         cost: "Weeks of unrequested work on a foundation that had to prove itself before anyone would call it one.",
+        exhibit: "prompt-vs-system",
       },
       {
         id: "skill-files",
@@ -588,6 +583,7 @@ export const caseStudies: CaseStudy[] = [
           "Anti-lock-in: the skills run on Figma's agent today and can move to Claude Code or any agent through a Figma MCP when that makes more sense.",
         ],
         cost: "Maintaining governance (versioned backups, a guide page) that a single-vendor setup would have hidden.",
+        exhibit: "portable-skills",
       },
     ],
     outcome: {
@@ -598,16 +594,18 @@ export const caseStudies: CaseStudy[] = [
           before: { label: "~2 days", amount: 16 },
           after: { label: "3–4 hours", amount: 3.5 },
           unit: "working hours",
+          visual: "mockup-hours",
         },
         {
           value: "3–4 days",
-          label: "Jira-story turnaround with BAs",
+          label: "Jira story to engineering-ready screen, with BAs",
           before: { label: "1–2 weeks", amount: 7.5 },
           after: { label: "3–4 days", amount: 3.5 },
           unit: "working days",
+          visual: "story-days",
         },
-        { value: "~40%", label: "Less design production time overall" },
-        { value: "5 · 3", label: "Client brands and platforms covered" },
+        { value: "~40%", label: "Less design production time overall", visual: "time-freed" },
+        { value: "5 · 3", label: "Client brands and platforms covered by one system", visual: "brand-grid" },
       ],
       points: [
         "Adoption is the hardest proof: all four designers on my team run on it, and the org's wider UAT team chose the process for their own projects. I didn't have to sell it.",
@@ -616,6 +614,7 @@ export const caseStudies: CaseStudy[] = [
       ],
       provenance:
         "Lived-experience figures, recognised by managers, BAs and senior leadership. Not yet formalised in sprint metrics, because the work is recent.",
+      exhibit: "adoption-spread",
     },
     ownership: {
       mine: [

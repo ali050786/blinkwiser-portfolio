@@ -1,0 +1,177 @@
+/* Mini screens for the SameRequest proof. Card and columns come from FamilyReset.module.css. */
+.card {
+  width: 100%;
+}
+.screen {
+  --link-good: var(--accent-solid);
+  --link-bad: #2f9e5b;
+  display: grid;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  overflow: visible;
+}
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.logo {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--accent-solid);
+}
+.topLine {
+  width: 40%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+.body {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+.pageTitle {
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+}
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  align-items: start;
+}
+.tile {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-sunken);
+  min-height: 72px;
+  align-content: start;
+}
+.tileLabel {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+.tileValue {
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.02em;
+}
+.link {
+  position: relative;
+  font-size: 10px;
+  color: var(--link-good);
+  justify-self: start;
+}
+.line {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}
+.primary {
+  position: relative;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--text-primary);
+  color: var(--surface-raised);
+  font-size: 11px;
+}
+.secondary {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Before: the mistakes the old system let through */
+.screen[data-kind="old"] .foot {
+  justify-content: flex-start;
+}
+.screen[data-kind="old"] .link {
+  color: var(--link-bad);
+}
+.screen[data-kind="old"] .tiles {
+  grid-template-columns: 1.45fr 0.8fr;
+  gap: 14px;
+}
+.screen[data-kind="old"] .tile[data-second] {
+  margin-top: 12px;
+  border-radius: 2px;
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 2px;
+}
+.screen[data-kind="old"] .primary,
+.screen[data-kind="old"] .link {
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.mark {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-critical);
+  color: var(--surface-raised);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  line-height: 1;
+}
+.legend {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: m;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  counter-increment: m;
+}
+.legend li::before {
+  content: counter(m);
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-critical);
+  color: var(--surface-raised);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+}
+.ok {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-positive);
+}
+.ok::before {
+  content: "✓ ";
+}
+:root[data-theme="dark"] .screen {
+  --link-bad: #5fc98a;
+}
