@@ -52,7 +52,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
             </p>
           </div>
           <div className={styles.hookVisual}>
-            <SameRequest />
+            <SameRequest stories={c.opener?.stories ?? []} />
             <p className="t-label c-tertiary">{c.hook.note}</p>
           </div>
         </div>

@@ -1,4 +1,9 @@
+"use client";
+
+import { useRef, useState } from "react";
+import type { CaseStudy } from "@/content/types";
 import base from "./FamilyReset.module.css";
+import tabsCss from "./HeroStories.module.css";
 import styles from "./SameRequest.module.css";
 
 /**
@@ -16,7 +21,7 @@ function Screen({ kind }: { kind: "old" | "new" }) {
         <span className={styles.topLine} />
       </div>
       <div className={styles.frame}>
-        <div className={styles.rail} data-missing={old || undefined}>
+        <div className={styles.rail} data-missing={old || undefined} data-n="3">
           {old ? (
             <Mark n={3} />
           ) : (
@@ -33,7 +38,7 @@ function Screen({ kind }: { kind: "old" | "new" }) {
             <div className={styles.tile}>
               <span className={styles.tileLabel}>Available balance</span>
               <span className={styles.tileValue}>$950.00</span>
-              <span className={styles.link}>
+              <span className={styles.link} data-n="2">
                 Transactions →{old && <Mark n={2} />}
               </span>
             </div>
@@ -46,7 +51,7 @@ function Screen({ kind }: { kind: "old" | "new" }) {
           <div className={styles.foot}>
             {old ? (
               <>
-                <span className={styles.primary}>
+                <span className={styles.primary} data-n="1">
                   Save
                   <Mark n={1} />
                 </span>
@@ -55,7 +60,7 @@ function Screen({ kind }: { kind: "old" | "new" }) {
             ) : (
               <>
                 <span className={styles.secondary}>Cancel</span>
-                <span className={styles.primary}>Save</span>
+                <span className={styles.primary} data-n="1">Save</span>
               </>
             )}
           </div>
@@ -66,39 +71,101 @@ function Screen({ kind }: { kind: "old" | "new" }) {
 }
 
 function Mark({ n }: { n: number }) {
-  return <span className={styles.mark}>{n}</span>;
+  return (
+    <span className={styles.mark} data-n={n}>
+      {n}
+    </span>
+  );
 }
 
-export function SameRequest() {
+type Story = NonNullable<CaseStudy["opener"]>["stories"][number];
+
+/** One finding per tab: the tab highlights its numbered mark and shows the old system's words. */
+export function SameRequest({ stories }: { stories: Story[] }) {
+  const [active, setActive] = useState(0);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const s = stories[active]!;
+  const n = String(active + 1);
+  const go = (i: number) => {
+    const k = (i + stories.length) % stories.length;
+    setActive(k);
+    tabs.current[k]?.focus();
+  };
+
   return (
-    <figure className={`${base.card} ${styles.card}`}>
-      <header className={base.head}>
-        <p className={base.title}>The same request, given to the AI twice</p>
-        <p className={base.change}>
-          <span className={base.to}>Same AI</span>
-          <span className={base.to}>Same components</span>
-        </p>
-      </header>
-      <div className={base.cols}>
-        <section className={base.col} data-kind="old" aria-label="Before the skills: off-brand">
-          <p className={`t-label ${base.colLabel}`}>Before the skills</p>
-          <Screen kind="old" />
-          <ol className={styles.legend}>
-            <li>Save on the wrong side</li>
-            <li>Link in a button colour</li>
-            <li>Side nav left out: docs said 19 components, the file had 20</li>
-          </ol>
-        </section>
-        <section className={base.col} data-kind="new" aria-label="With the skills: on-brand">
-          <p className={`t-label ${base.colLabel}`}>With the skills</p>
-          <Screen kind="new" />
-          <ul className={styles.okList}>
-            <li>Save on the right</li>
-            <li>Link takes the link colour</li>
-            <li>Side nav in place: audit matched docs to file, 20 of 20</li>
-          </ul>
-        </section>
+    <div className={styles.wrap}>
+      <div role="tablist" aria-label="Three things the AI got wrong" className={tabsCss.tabs}>
+        {stories.map((st, i) => (
+          <button
+            key={st.id}
+            ref={(el) => {
+              tabs.current[i] = el;
+            }}
+            type="button"
+            role="tab"
+            id={`hook-tab-${st.id}`}
+            aria-selected={i === active}
+            aria-controls="hook-panel"
+            tabIndex={i === active ? 0 : -1}
+            className={tabsCss.tab}
+            onClick={() => setActive(i)}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowRight") (e.preventDefault(), go(active + 1));
+              if (e.key === "ArrowLeft") (e.preventDefault(), go(active - 1));
+            }}
+          >
+            <span className="t-mono">{String(i + 1).padStart(2, "0")}</span>
+            {st.tab}
+          </button>
+        ))}
       </div>
-    </figure>
+      <figure
+        id="hook-panel"
+        role="tabpanel"
+        aria-labelledby={`hook-tab-${s.id}`}
+        className={`${base.card} ${styles.card}`}
+        data-active={n}
+      >
+        <header className={base.head}>
+          <p className={base.title}>The same request, given to the AI twice</p>
+          <p className={base.change}>
+            <span className={base.to}>Same AI</span>
+            <span className={base.to}>Same components</span>
+          </p>
+        </header>
+        <div className={base.cols}>
+          <section className={base.col} data-kind="old" aria-label="Before the skills: off-brand">
+            <p className={`t-label ${base.colLabel}`}>Before the skills</p>
+            <Screen kind="old" />
+            <ol className={styles.legend}>
+              <li data-n="1">Save on the wrong side</li>
+              <li data-n="2">Link in a button colour</li>
+              <li data-n="3">Side nav left out: docs said 19 components, the file had 20</li>
+            </ol>
+          </section>
+          <section className={base.col} data-kind="new" aria-label="With the skills: on-brand">
+            <p className={`t-label ${base.colLabel}`}>With the skills</p>
+            <Screen kind="new" />
+            <ul className={styles.okList}>
+              <li data-n="1">Save on the right</li>
+              <li data-n="2">Link takes the link colour</li>
+              <li data-n="3">Side nav in place: audit matched docs to file, 20 of 20</li>
+            </ul>
+          </section>
+        </div>
+        <figcaption className={styles.words} aria-live="polite">
+          <span className={styles.wordsQuote}>
+            {s.quoteEmpty ? (
+              <>
+                {s.quoteEmpty.field}: <span className={styles.emptyWord}>empty</span>
+              </>
+            ) : (
+              <>“{s.quote}”</>
+            )}
+          </span>
+          {s.quoteSource && <span className="t-label c-tertiary">{s.quoteSource}</span>}
+        </figcaption>
+      </figure>
+    </div>
   );
 }
