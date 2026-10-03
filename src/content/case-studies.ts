@@ -262,7 +262,7 @@ export const caseStudies: CaseStudy[] = [
       picture: {
         visual: "client-theme",
         title: "A new client, before and after tokens",
-        chips: ["Same screen", "Same product"],
+        chips: ["Employer B, a new client"],
         before: {
           label: "Before: hardcoded",
           items: ["Brand colour hardcoded: the old client's colour stays", "Two buttons for the same job", "Rebuilt by hand for each client: weeks"],
@@ -690,15 +690,15 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "Every edit", label: "undoable, and honest about what changed" },
     card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan → Reflect", label: "facts checked before you see it" },
     hook: {
-      line: "Same model. Same prompt.",
-      turn: "Creators could trust it once facts were checked in code and every edit could be undone.",
+      line: "Plausible took two weeks. Trustworthy took a year.",
+      turn: "Facts checked in code, and every edit honest and undoable.",
       number: { value: "7 in 10", label: "blind head-to-heads won by the rebuild over v1 (my eval harness, AI judge)" },
       note: "Illustration with demo content, not a real deck. The live product is shown below.",
       tabsLabel: "Three ways v1 broke trust",
       picture: {
         visual: "trust-edit",
         title: "One edit, in v1 and in the rebuild",
-        chips: ["Same model", "Same request"],
+        chips: ["One edit request", "v1 vs the rebuild"],
         before: {
           label: "v1: trust the model",
           items: ["A number with no source", "Claimed an edit it hadn't made", "No way back: undo was a chat message"],
@@ -889,15 +889,15 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "One home", label: "for a city's services, organised by what residents need, not by department" },
     card: { title: "Dubai Municipality app", widget: "departments", label: "for 3.5M residents" },
     hook: {
-      line: "Same services. Same city.",
-      turn: "Residents could find them once they were grouped by need, not by department.",
+      line: "Residents don't know who owns a service.",
+      turn: "So I organised the city's services by what people need done.",
       number: { value: "3.5M", label: "residents, with every city service in one home, in Arabic and English" },
       note: "Illustration with generic labels, not the client's screens. The live app is shown below.",
       tabsLabel: "Three things the old catalogue got wrong",
       picture: {
         visual: "city-home",
         title: "The services screen, before and after",
-        chips: ["Same services", "Same residents"],
+        chips: ["Every city service", "Arabic and English"],
         before: {
           label: "Organised by department",
           items: ["Grouped by who owns the service", "Found only by its official name", "Each service laid out its own way"],

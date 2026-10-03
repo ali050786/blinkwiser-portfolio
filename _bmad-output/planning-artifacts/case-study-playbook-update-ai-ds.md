@@ -33,6 +33,7 @@ A recruiter gives the first screen about 10 seconds: a title, one number, one pi
 - Never make a named colleague the one who was wrong ("my senior said..."). If a verdict matters, make it shared ("what we all concluded") or cut it.
 - Don't say the same beat twice ("I went looking for why" plus "I wanted to know why").
 - Avoid overclaims in titles and cards ("builds itself" became "a design system AI can read").
+- Every case gets its own hero headline, taken from its own story. Never reuse another case's formula ("Same X. Same Y." belongs to case 03 only), and vary the chips too.
 
 ## 4. Visuals
 
