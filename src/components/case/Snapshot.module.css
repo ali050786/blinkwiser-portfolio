@@ -48,3 +48,43 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Split layout: core diagram beside the snapshot rows (used when the hero opens with a story). */
+.card[data-split] .body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+.card[data-split] .rows {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.visual {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: clamp(16px, 2.4vw, 28px);
+  border-radius: var(--radius-lg);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+}
+.headline {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+.headlineValue {
+  font-size: var(--font-size-display-m);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--accent-solid);
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .card[data-split] .body {
+    grid-template-columns: 1fr;
+  }
+}

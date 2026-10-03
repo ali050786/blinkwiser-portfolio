@@ -21,8 +21,8 @@ export const caseStudies: CaseStudy[] = [
     accent: "enrollment",
     glyph: "flow",
     group: "Health insurance platforms",
-    title: "Open Enrollment: redesigning the decision, not the screens",
-    short: "Open Enrollment",
+    title: "Enrollment: redesigning the decision, not the screens",
+    short: "Enrollment",
     dek: "The flow asked questions in the order the backend stores them. I reordered them to match how a family actually decides.",
     meta: {
       role: "UX Lead",
@@ -37,6 +37,39 @@ export const caseStudies: CaseStudy[] = [
       caption: "The redesign, live in production: who's covered is already known when plans are chosen, and cost is per month on every step.",
     },
     headline: { value: "9 → 5", label: "steps, with one question asked once" },
+    opener: {
+      scope: "One flow, three enrollment modules: Open Enrollment, Life Event and New Hire.",
+      note: "Dennis is a design persona, and these are illustrations, not the shipped screens. Counts come from walking the old and new flows; prices are demo values, not client data.",
+      stories: [
+        {
+          id: "newborn",
+          tab: "New baby",
+          story: "Dennis just had a baby. He has 31 days to get her covered.",
+          quote: "Adding a dependent does not automatically enroll them in coverage.",
+          quoteSource: "The old flow, right after he added her",
+          visual: "newborn",
+          caption: "The old flow made adding a person and covering her two separate jobs, one trip per coverage. The redesign does both in the same row."
+        },
+        {
+          id: "plan-switch",
+          tab: "Cheaper plan",
+          story: "Dennis switches to a cheaper dental plan. The old flow forgets his family.",
+          quote: "Select Member(s)/Dependent(s) to cover",
+          quoteSource: "The old plan page, asking again after he changed plans",
+          visual: "plan-switch",
+          caption: "The old flow tied the family to the plan, so a new plan meant a new family list. The redesign ties the family to Dennis.",
+        },
+        {
+          id: "cost",
+          tab: "Seeing the cost",
+          story: "Dennis is covering six people. What will it cost him each month?",
+          quote: "The displayed Premium is only an estimate. The amount may vary if you change network or update Dependents.",
+          quoteSource: "The old plan page, word for word",
+          visual: "cost",
+          caption: "Each coverage is picked on its own screen. The old flow never added them up, so Dennis committed without a total. The redesign carries a cart-style monthly total across every screen.",
+        },
+      ],
+    },
     hero: {
       label: "Regulated decision flow",
       brief: "The enrollment flow is too long.",
@@ -70,12 +103,13 @@ export const caseStudies: CaseStudy[] = [
       exhibit: "flow-compare",
     },
     stakes: {
-      intro: "Open enrollment is a once-a-year window with a deadline, and the choices lock for the year.",
+      intro: "Open enrollment is a once-a-year window; a life event like a birth gives 31 days. Either way there is a deadline, and the choices lock for the year.",
       items: [
         { title: "Missed family members", body: "Someone missed on one coverage stays uncovered until the next window or a qualifying life event." },
         { title: "Late cost", body: "A cost that only becomes clear at the end means members commit before they understand what they'll pay." },
         { title: "Admins repeat every flaw", body: "Every weakness in the member flow repeats for admins enrolling on members' behalf, across every client." },
       ],
+      exhibit: "coverage-gap",
     },
     forks: [
       {
@@ -88,6 +122,7 @@ export const caseStudies: CaseStudy[] = [
           "“Who needs what” is now asked once, as a grid of family members against coverage types, and plan selection follows from that grid instead of re-asking it per coverage.",
         ],
         cost: "It no longer matched how the backend stored enrollments. That became the third fork.",
+        exhibit: "trim-vs-reorder",
       },
       {
         id: "defaults",
@@ -113,6 +148,7 @@ export const caseStudies: CaseStudy[] = [
           "I walked engineering through the member's decision order against the specific client complaints. We split the work and shipped in phases rather than one cut-over.",
         ],
         cost: "A slower rollout, in exchange for a change engineering owned rather than resisted.",
+        exhibit: "translate-layer",
       },
     ],
     followOn: {
@@ -132,6 +168,7 @@ export const caseStudies: CaseStudy[] = [
           body: "Document upload used to be a fixed step. It now appears only when a member's situation requires a document.",
         },
       ],
+      exhibit: "ask-when-needed",
     },
     spotlight: {
       label: "The admin side",
@@ -146,7 +183,7 @@ export const caseStudies: CaseStudy[] = [
       what: [
         "A Passive Enrollment tab in each client's enrollment settings: four rules in plain language, each showing only the options it needs.",
         "Termination status and reason, an exclusion for members with supplemental products, and a default-plan mapping file with a downloadable template.",
-        "Save, or save and run now. The admin confirms against the number of members affected, and settings lock while a run is in progress.",
+        "Save, or save and run now. Before a run the admin sees the rule, the file and the number of members affected, with a plain warning that it cannot be undone; settings lock while a run is in progress.",
         "A log of every run, and a report that separates processed members from the ones needing review, each with a reason and Enroll or Terminate in the row.",
         "The business owned the rules. I designed how admins set them, run them and handle what they can't decide.",
       ],
@@ -156,6 +193,7 @@ export const caseStudies: CaseStudy[] = [
         "Members a rule can't handle are no longer lost in the batch. They come back with a reason and are resolved in place.",
       ],
       provenance: "Qualitative. Effort before and after was not measured.",
+      lead: "passive-funnel",
       exhibit: "passive-screens",
     },
     outcome: {
@@ -166,10 +204,11 @@ export const caseStudies: CaseStudy[] = [
           before: { label: "9 steps", amount: 9 },
           after: { label: "5 steps", amount: 5 },
           unit: "steps",
+          visual: "glyph-flow",
         },
-        { value: "1×", label: "“Who's covered” asked once, not once per coverage" },
-        { value: "Every step", label: "Cost visible, in the unit people pay" },
-        { value: "4 flows", label: "One skeleton for open enrollment, life events, new hires, admin-on-behalf" },
+        { value: "1×", label: "“Who's covered” asked once, not once per coverage", visual: "asked-once" },
+        { value: "Every step", label: "Cost visible, in the unit people pay", visual: "cost-every-step" },
+        { value: "4 flows", label: "One skeleton for open enrollment, life events, new hires, admin-on-behalf", visual: "four-flows" },
       ],
       points: [
         "Live in production. The complaints that triggered the redesign have dropped, and admins enrolling on behalf get through it faster.",

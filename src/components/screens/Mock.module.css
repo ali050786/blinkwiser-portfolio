@@ -1668,3 +1668,16 @@
 .tr > .chip {
   justify-self: start;
 }
+
+.modalList {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--m-ink-2);
+  font-size: 12px;
+}
+.modalList b {
+  color: var(--m-ink);
+  font-weight: 600;
+}

@@ -14,7 +14,16 @@ export type ExhibitId =
   | "enrollment-screens"
   | "design-system-screens"
   | "passive-screens"
-  | "branding-screens";
+  | "branding-screens"
+  | "passive-funnel"
+  | "coverage-gap"
+  | "trim-vs-reorder"
+  | "translate-layer"
+  | "ask-when-needed";
+
+export type MetricVisualId = "glyph-flow" | "asked-once" | "cost-every-step" | "four-flows";
+
+export type HeroVisualId = "newborn" | "plan-switch" | "cost";
 
 export type GlyphId = "skills" | "pipeline" | "tiers" | "flow" | "services";
 
@@ -26,6 +35,8 @@ export interface Metric {
   before?: { label: string; amount: number };
   after?: { label: string; amount: number };
   unit?: string;
+  /** Optional small line diagram drawn in the card; replaces the before/after bars. */
+  visual?: MetricVisualId;
 }
 
 export type ScreenKey =
@@ -95,6 +106,8 @@ export interface Spotlight {
   what: string[];
   impact: string[];
   provenance: string;
+  /** Optional glanceable visual shown right under the intro, before the text columns. */
+  lead?: ExhibitId;
   exhibit?: ExhibitId;
 }
 
@@ -124,6 +137,24 @@ export interface CaseStudy {
   /** Optional short recording shown right under the cover. */
   reel?: Shot;
   headline: { value: string; label: string };
+  /**
+   * Optional story-first opening for the case hero: a line placing the study's
+   * scope, then short stories (one per tab), each with the old system's own words
+   * where they exist and a side-by-side proof.
+   */
+  opener?: {
+    scope: string;
+    note: string;
+    stories: {
+      id: string;
+      tab: string;
+      story: string;
+      quote?: string;
+      quoteSource?: string;
+      visual: HeroVisualId;
+      caption: string;
+    }[];
+  };
   /** The reframe in one breath, for the home page hero deck. */
   hero: { label: string; brief: string; problem: string; call: string };
   snapshot: { frame: string; decision: string; outcome: string };
@@ -134,7 +165,7 @@ export interface CaseStudy {
     evidence?: { title: string; items: string[] };
     exhibit?: ExhibitId;
   };
-  stakes: { intro?: string; items: { title: string; body: string }[] };
+  stakes: { intro?: string; items: { title: string; body: string }[]; exhibit?: ExhibitId };
   forks: Fork[];
   followOn?: { title: string; intro?: string; items: { title: string; body: string }[]; exhibit?: ExhibitId };
   spotlight?: Spotlight;

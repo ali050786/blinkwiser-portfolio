@@ -40,8 +40,8 @@
 .quoteText {
   font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.375rem);
   line-height: 1.2;
-  max-width: 30ch;
-  text-wrap: balance;
+  max-width: 52ch;
+  text-wrap: pretty;
 }
 @media (max-width: 900px) {
   .cols,

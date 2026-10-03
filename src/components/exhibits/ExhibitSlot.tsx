@@ -13,6 +13,7 @@ import { EnrollmentScreens } from "./EnrollmentScreens";
 import { DesignSystemScreens } from "./DesignSystemScreens";
 import { PassiveScreens } from "./PassiveScreens";
 import { BrandingScreens } from "./BrandingScreens";
+import { CoverageGap, TrimVsReorder, TranslateLayer, AskWhenNeeded, PassiveRun } from "./Diagrams";
 
 /**
  * Each exhibit is its own client island. The page stays a server component;
@@ -33,6 +34,11 @@ const registry: Record<ExhibitId, React.ComponentType> = {
   "design-system-screens": DesignSystemScreens,
   "passive-screens": PassiveScreens,
   "branding-screens": BrandingScreens,
+  "passive-funnel": PassiveRun,
+  "coverage-gap": CoverageGap,
+  "trim-vs-reorder": TrimVsReorder,
+  "translate-layer": TranslateLayer,
+  "ask-when-needed": AskWhenNeeded,
 };
 
 export function ExhibitSlot({ id }: { id: ExhibitId }) {

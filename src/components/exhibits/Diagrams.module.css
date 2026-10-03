@@ -1,0 +1,52 @@
+.fig {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: clamp(16px, 2.4vw, 28px);
+  max-width: 820px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+}
+.label {
+  margin: 0;
+  color: var(--text-tertiary);
+}
+.fig figcaption {
+  margin: 0;
+  max-width: 64ch;
+}
+.warnText {
+  fill: var(--text-critical);
+}
+.accentText {
+  fill: var(--accent-solid);
+}
+.gap {
+  fill: none;
+  stroke: var(--text-critical);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+.band {
+  fill: color-mix(in oklch, var(--accent-solid) 10%, var(--surface-sunken));
+  stroke: var(--accent-solid);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+}
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.svg {
+  min-width: 560px;
+}
+.gapThin {
+  fill: none;
+  stroke: var(--text-critical);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+}
+.barWarn {
+  fill: var(--text-critical);
+}

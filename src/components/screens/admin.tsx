@@ -161,16 +161,28 @@ export function PeConfirm() {
     <div className={`${s.screen} ${s.doc} ${s.dim}`}>
       <div className={s.modal}>
         <h3>Run passive enrollment?</h3>
-        <p>This applies the saved passive enrollment rule to every member who took no action.</p>
+        <p>The utility will run with this configuration:</p>
+        <ul className={s.modalList}>
+          <li>
+            Coverage effective date <b>01-01-2026</b>
+          </li>
+          <li>
+            Rule <b>Default to another plan (always)</b>
+          </li>
+          <li>
+            Default-plan file <b>default-plans-2026.csv</b>
+          </li>
+        </ul>
         <div className={s.banner}>
-          <b>
-            <I n="people" /> 312 members will be affected by this run.
-          </b>
-          Are you sure you want to run the utility?
+          <b>This action cannot be undone.</b>
+          Once run, member enrollments are processed with this configuration and cannot be reversed.
         </div>
+        <p>
+          <b>312 members</b> will be affected. Run the utility?
+        </p>
         <div className={s.modalActions}>
           <span className={s.link}>Cancel</span>
-          <Btn>Run utility</Btn>
+          <Btn>Yes, run utility</Btn>
         </div>
       </div>
     </div>

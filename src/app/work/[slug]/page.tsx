@@ -86,6 +86,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <Beat {...beat("stakes")}>
             <StakesGrid intro={c.stakes.intro} items={c.stakes.items} />
+            {c.stakes.exhibit && <ExhibitSlot id={c.stakes.exhibit} />}
           </Beat>
 
           <Beat {...beat("decisions")}>
@@ -119,6 +120,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   {c.spotlight.title}
                 </h3>
                 <p className="t-body-l c-secondary prose">{c.spotlight.intro}</p>
+                {c.spotlight.lead && <ExhibitSlot id={c.spotlight.lead} />}
                 <div className={styles.spotCols}>
                   {(
                     [

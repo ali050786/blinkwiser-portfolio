@@ -113,8 +113,9 @@ export const passiveStages: ScreenStage[] = [
   {
     id: "confirm",
     label: "Confirm the run",
-    change: "Before anything changes, the admin is told exactly how many members the run will touch, and has to confirm.",
-    after: [shot("pe-confirm", "Confirmation dialog naming the rule, the file and the number of members affected.")],
+    change:
+      "Before anything changes, the admin sees the date, rule and file the run will use, how many members it will touch, and a plain warning that it cannot be undone.",
+    after: [shot("pe-confirm", "Confirmation dialog listing the effective date, rule and file, a warning that the run cannot be undone, and the number of members affected.")],
   },
   {
     id: "running",
