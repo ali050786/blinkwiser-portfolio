@@ -21,12 +21,15 @@ export function Snapshot({ study: c }: { study: CaseStudy }) {
         </div>
         <div className={styles.body}>
           {split && (
-            <figure className={styles.visual}>
+            <figure className={styles.visual} data-bare={c.hook ? "" : undefined}>
               <Glyph id={c.glyph} />
-              <figcaption className={styles.headline}>
-                <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>
-                <span className="t-body-s c-secondary">{c.headline.label}</span>
-              </figcaption>
+              {/* With a picture-first hero the number is already above, so the glyph stands alone here. */}
+              {!c.hook && (
+                <figcaption className={styles.headline}>
+                  <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>
+                  <span className="t-body-s c-secondary">{c.headline.label}</span>
+                </figcaption>
+              )}
             </figure>
           )}
           <ol className={styles.rows}>
