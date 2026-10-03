@@ -31,8 +31,18 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
             </p>
             <h1 className={`t-heading-m c-secondary ${styles.titleSmall}`}>{c.title}</h1>
             <p className={`t-body-l c-secondary ${styles.scope}`}>{c.opener.scope}</p>
+            {c.opener.lead && <p className={styles.lead}>{c.opener.lead}</p>}
           </div>
           <HeroStories opener={c.opener} />
+          {c.opener.turn && (
+            <figure className={styles.turn}>
+              <blockquote>
+                <p>“{c.opener.turn.quote}”</p>
+              </blockquote>
+              <figcaption className="t-label c-tertiary">{c.opener.turn.source}</figcaption>
+              <p className={`c-secondary ${styles.turnAfter}`}>{c.opener.turn.after}</p>
+            </figure>
+          )}
           <ul className={styles.tags} aria-label="Topics">
             {c.tags.map((t) => (
               <li key={t}>{t}</li>

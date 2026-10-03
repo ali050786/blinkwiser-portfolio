@@ -23,7 +23,7 @@ export type ExhibitId =
 
 export type MetricVisualId = "glyph-flow" | "asked-once" | "cost-every-step" | "four-flows";
 
-export type HeroVisualId = "newborn" | "plan-switch" | "cost";
+export type HeroVisualId = "newborn" | "plan-switch" | "cost" | "save-side" | "link-colour" | "audit";
 
 export type GlyphId = "skills" | "pipeline" | "tiers" | "flow" | "services";
 
@@ -143,13 +143,21 @@ export interface CaseStudy {
    * where they exist and a side-by-side proof.
    */
   opener?: {
+    /** Accessible name for the story tabs. */
+    label?: string;
     scope: string;
+    /** Optional opening line that puts a person in the story before the tabs. */
+    lead?: string;
+    /** Optional turning point shown under the tabs: what someone said, and what happened next. */
+    turn?: { quote: string; source: string; after: string };
     note: string;
     stories: {
       id: string;
       tab: string;
       story: string;
       quote?: string;
+      /** Render the quote as an empty field: the old system had no words at all. */
+      quoteEmpty?: { field: string };
       quoteSource?: string;
       visual: HeroVisualId;
       caption: string;

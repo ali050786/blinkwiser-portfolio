@@ -119,3 +119,30 @@
   max-width: 60ch;
   margin: 0;
 }
+.lead {
+  max-width: 62ch;
+  margin: 4px 0 0;
+  font-size: var(--font-size-body-l);
+  line-height: var(--font-leading-normal, 1.5);
+  color: var(--text-primary);
+}
+.turn {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  margin: 0;
+  padding: 16px 0 0 20px;
+  border-left: 3px solid var(--accent-solid);
+  max-width: 64ch;
+}
+.turn blockquote {
+  margin: 0;
+}
+.turn blockquote p {
+  margin: 0;
+  font-size: var(--font-size-heading-m);
+  line-height: var(--font-leading-snug);
+}
+.turnAfter {
+  margin: 6px 0 0;
+}

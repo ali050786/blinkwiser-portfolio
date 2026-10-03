@@ -419,7 +419,7 @@ export const caseStudies: CaseStudy[] = [
     accent: "automation",
     glyph: "skills",
     group: "AI-driven UI",
-    title: "Making a six-year design system build itself with AI",
+    title: "AI-readable design system: writing down the rules nobody wrote",
     short: "AI-readable design system",
     dek: "The AI wasn't the variable I could change. The design system was. So I rebuilt it as a library of skill files an agent reads to turn a Jira story into a brand-compliant, self-verified screen.",
     meta: {
@@ -431,6 +431,46 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Agentic design workflow", "Design systems", "Figma variables", "MCP"],
     headline: { value: "3–4 days", label: "Jira-story turnaround, down from 1–2 weeks" },
     card: { title: "A design system that builds itself", widget: "pipeline", label: "Jira-story turnaround" },
+    opener: {
+      label: "Three things the AI got wrong",
+      scope: "A six-year-old design system, five client brands and three platforms, rewritten as files an AI reads before it designs.",
+      lead: "We gave the AI our real design system. Four or five screens came back looking like someone else's product, and each was drawn again by hand. I went looking for why.",
+      turn: {
+        quote: "It cannot automatically give the design to us.",
+        source: "My senior, after the first screen (as I remember it)",
+        after: "That was the expected verdict: wait for better AI, or keep drawing by hand. These three findings are why I rewrote the system instead.",
+      },
+      note: "These are illustrations with generic names, not client screens or real token names. The rule, the note and the 19 vs 20 are quoted from the skill files; the old screen is rebuilt from memory, and four or five is a team recollection, not a count.",
+      stories: [
+        {
+          id: "save-side",
+          tab: "The button",
+          story: "The first one put Save on the left. Every designer here puts it on the right.",
+          quoteEmpty: { field: "Button · Description" },
+          quoteSource: "The old button's description: Figma had no such field six years ago (as I remember it)",
+          visual: "save-side",
+          caption: "The AI had our real components and still got it wrong, because the habit lived in our heads. The fix was one line in a skill file the AI reads before every screen.",
+        },
+        {
+          id: "link-colour",
+          tab: "The colour",
+          story: "Our links have one colour. The AI picked another.",
+          quote: "Not an exact match, but agreed mapping.",
+          quoteSource: "The rebuilt system's own note, mapping an old colour that never had a job",
+          visual: "link-colour",
+          caption: "Nothing said which colour a link takes. The old colours were named for how they look, so any of them could be a link. The skills name each colour for its job, so the AI no longer guesses.",
+        },
+        {
+          id: "audit",
+          tab: "The audit",
+          story: "Even with the rules written down, the docs said 19 components. The file had 20.",
+          quote: "19 standalone components",
+          quoteSource: "The system's own index, before the audit run on 4 Sep 2026",
+          visual: "audit",
+          caption: "An audit skill caught the gap in one run. Six years of patches with nobody checking is how the old system drifted. Now the audit compares the docs with the file every session, so the AI never reads a stale rule.",
+        },
+      ],
+    },
     hero: {
       label: "AI-driven design system",
       brief: "The AI isn't good enough yet. Prompt harder.",
@@ -451,7 +491,7 @@ export const caseStudies: CaseStudy[] = [
         "The design system was built for humans and never written down for a machine. The AI had nothing to reason with.",
       body: [
         "Two loops were slow. Demos to prospective insurers took days, and the BA-to-developer loop stalled because developers reason from screens, not written requirements, so feasibility couldn't be confirmed until someone mocked it up. I was already bringing AI into the design workflow to attack both, and the org was keen on AI too. But the output wasn't usable.",
-        "We had a design system in Figma, but its descriptions were vague and years stale: patched piecemeal as needs came up, never fully re-documented, because you can't write down everything that lives in a designer's head. Components alone weren't enough. Making the system AI-legible meant externalising that tacit knowledge: colour and typography semantics, grid, layout, components and composition.",
+        "We had a design system in Figma, but no descriptions: it was built six years ago, before Figma had a field for them, and patched piecemeal ever since. The rules lived in designers' heads. Components alone weren't enough. Making the system AI-legible meant externalising that tacit knowledge: colour and typography semantics, grid, layout, components and composition.",
         "Nobody had done this on a veteran six-year project. I looked for a process and found none that worked, so I built one.",
       ],
       evidence: {

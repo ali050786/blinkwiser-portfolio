@@ -7,12 +7,16 @@ import { useReducedMotionSafe } from "@/lib/motion";
 import { FamilyReset } from "./FamilyReset";
 import { NewbornAdd } from "./NewbornAdd";
 import { CostReveal } from "./CostReveal";
+import { AuditDrift, LinkColour, SaveSide } from "./DsProofs";
 import styles from "./HeroStories.module.css";
 
 const visuals: Record<HeroVisualId, React.ComponentType> = {
   newborn: NewbornAdd,
   "plan-switch": FamilyReset,
   cost: CostReveal,
+  "save-side": SaveSide,
+  "link-colour": LinkColour,
+  audit: AuditDrift,
 };
 
 type Opener = NonNullable<CaseStudy["opener"]>;
@@ -44,7 +48,7 @@ export function HeroStories({ opener }: { opener: Opener }) {
 
   return (
     <div className={styles.wrap}>
-      <div role="tablist" aria-label="Three moments from one enrollment" className={styles.tabs}>
+      <div role="tablist" aria-label={opener.label ?? "Three moments from one enrollment"} className={styles.tabs}>
         {opener.stories.map((st, i) => (
           <button
             key={st.id}
@@ -74,6 +78,15 @@ export function HeroStories({ opener }: { opener: Opener }) {
         <AnimatePresence mode="wait" initial={false}>
           <motion.div key={s.id} className={styles.copy} {...fade}>
             <p className={`t-display-l ${styles.story}`}>{s.story}</p>
+            {s.quoteEmpty && (
+              <figure className={styles.quote}>
+                <p className={styles.emptyField}>
+                  <span className="t-label c-tertiary">{s.quoteEmpty.field}</span>
+                  <span className={styles.emptyBox} aria-label="empty" />
+                </p>
+                {s.quoteSource && <figcaption className="t-label c-tertiary">{s.quoteSource}</figcaption>}
+              </figure>
+            )}
             {s.quote && (
               <blockquote className={styles.quote}>
                 <p>“{s.quote}”</p>

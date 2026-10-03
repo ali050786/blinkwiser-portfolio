@@ -1,0 +1,199 @@
+/* Mini UI for the design-system hero proofs. Card, columns and results come from FamilyReset.module.css. */
+
+/* Illustration colours: three generic swatches, fixed so "same colours" reads the same in both columns. */
+.swatch[data-c="a"],
+.miniLink[data-c="a"] {
+  --c: #2f9e5b;
+}
+.swatch[data-c="b"],
+.miniLink[data-c="b"] {
+  --c: #23407e;
+}
+.swatch[data-c="c"],
+.miniLink[data-c="c"] {
+  --c: #8a8f98;
+}
+:root[data-theme="dark"] .swatch[data-c="b"],
+:root[data-theme="dark"] .miniLink[data-c="b"] {
+  --c: #7f9be0;
+}
+
+/* 01: overlay panel */
+.panel {
+  display: grid;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.close {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+.panelBody {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.radio {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+}
+.radio[data-on] {
+  border: 3px solid var(--text-secondary);
+}
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+.panelFoot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 7px 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+.panelFoot[data-side="right"] {
+  justify-content: flex-end;
+}
+.panelFoot > * {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard);
+}
+.panelFoot[data-shown] > * {
+  opacity: 1;
+  transform: none;
+}
+.btnPrimary {
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--text-primary);
+  color: var(--surface-raised);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+}
+.btnPrimary[data-wrong] {
+  outline: 1.5px dashed var(--text-critical);
+  outline-offset: 3px;
+}
+.btnLink {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.rule {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-positive);
+}
+.rule[data-off] {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  color: var(--text-critical);
+}
+
+/* 02: colours */
+.sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.swatches {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.swatchRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  font-size: 12px;
+  font-family: var(--font-family-mono);
+  transition: border-color var(--duration-base) var(--ease-standard);
+}
+.swatchRow[data-picked][data-kind="old"] {
+  border-style: dashed;
+  border-color: var(--text-critical);
+}
+.swatchRow[data-picked][data-kind="new"] {
+  border-color: var(--text-positive);
+}
+.swatch {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--c);
+}
+.mini {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+}
+.miniLabel {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.miniValue {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+}
+.miniLink {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  color: var(--c, var(--text-tertiary));
+  transition: color var(--duration-base) var(--ease-standard);
+}
+
+p .word {
+  font-size: var(--font-size-heading-l, 28px);
+  letter-spacing: -0.02em;
+}
+
+/* 03: audit */
+.diff {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panelFoot > *,
+  .swatchRow,
+  .miniLink {
+    transition: none;
+  }
+}

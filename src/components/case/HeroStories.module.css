@@ -72,6 +72,38 @@
   font-size: var(--font-size-body-l);
   line-height: var(--font-leading-snug);
 }
+.quote .emptyField {
+  display: grid;
+  gap: 6px;
+}
+.emptyBox {
+  display: block;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border-default);
+  background: var(--surface-raised);
+  position: relative;
+}
+.emptyBox::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  width: 1.5px;
+  height: 20px;
+  background: var(--text-tertiary);
+  animation: caret 1.1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .emptyBox::after {
+    animation: none;
+  }
+}
 .proof {
   display: grid;
   gap: 12px;
