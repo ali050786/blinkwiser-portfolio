@@ -53,6 +53,15 @@ A recruiter gives the first screen about 10 seconds: a title, one number, one pi
 - Copying files to the Mac can silently write an older version when the same file was sent before. After every copy, compare checksums on the Mac against the working copy; stage under a fresh file name if they differ.
 - One question at a time; when the user asks for a view, give it straight.
 
+## 7. Cases 02, 04 and 05 (built 2026-10-03, same session)
+
+- All three now use the picture-first hero. The hero is data-driven: `hook` in `case-studies.ts` holds the line, the turn, an optional `number`, the picture's labels and legends, and one finding per tab. Only words copied verbatim from the old system get `quoted: true`; everything else shows as a plain statement with its source.
+- Each picture's two screens live in `src/components/case/hook/screens.tsx` (registered by `HookVisualId`); `HookFrame.tsx` does the tabs, marks, legends and evidence line for every case.
+- Outcome cards can take a data-driven `viz` (blocks, dots, compare, fan, timeline, ticks) instead of one-off code. Every viz carries its provenance note.
+- New diagrams for every text-only section live in `src/components/exhibits/CaseDiagrams.tsx`.
+- Numbers chosen for the heroes: 02 `< 24 h` to theme a new client; 04 `7 in 10` blind head-to-heads (own harness, AI judge); 05 `3.5M` residents.
+- Copy across all three was cut to the budget in section 2. No facts or numbers were added.
+
 ## Open item for this case
 
 - The full story tabs also appear inside Frame ("Three things the AI got wrong") and now repeat the hero tabs. Recommendation: remove the Frame copy. Awaiting the user's call.

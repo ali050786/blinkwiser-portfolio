@@ -1,6 +1,6 @@
 import type { CaseStudy } from "@/content/types";
 import { Icon } from "@/components/ui/Icon";
-import { MetricVisual } from "./MetricVisual";
+import { MetricVisual, MetricVizView } from "./MetricVisual";
 import styles from "./OutcomePanel.module.css";
 
 export function OutcomePanel({ outcome }: { outcome: CaseStudy["outcome"] }) {
@@ -8,13 +8,14 @@ export function OutcomePanel({ outcome }: { outcome: CaseStudy["outcome"] }) {
     <div className={styles.wrap}>
       <ul className={styles.metrics}>
         {outcome.metrics.map((m, i) => {
-          const hasBars = !m.visual && m.before && m.after;
+          const hasBars = !m.visual && !m.viz && m.before && m.after;
           const pct = hasBars ? Math.max(4, (m.after!.amount / m.before!.amount) * 100) : 0;
           return (
             <li key={m.label} className={styles.metric} data-bars={hasBars || undefined} data-reveal style={{ "--reveal-i": i } as React.CSSProperties}>
               <p className={`tabular ${styles.value}`}>{m.value}</p>
               <p className="t-body-s c-secondary">{m.label}</p>
               {m.visual && <MetricVisual id={m.visual} />}
+              {m.viz && <MetricVizView viz={m.viz} />}
               {hasBars && (
                 <div className={styles.bars} role="img" aria-label={`Before: ${m.before!.label}. After: ${m.after!.label}.`}>
                   <div className={styles.barRow}>

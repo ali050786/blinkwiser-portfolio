@@ -1,4 +1,4 @@
-import type { MetricVisualId } from "@/content/types";
+import type { MetricViz, MetricVisualId } from "@/content/types";
 import { Glyph } from "@/components/ui/Glyph";
 import g from "@/components/ui/Glyph.module.css";
 import styles from "./MetricVisual.module.css";
@@ -203,6 +203,146 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
       ))}
       <T x={350} y={214} anchor="middle" accent>
         one shared skeleton
+      </T>
+    </svg>
+  );
+}
+
+/** Data-driven card diagrams. Every one carries its provenance note. */
+export function MetricVizView({ viz }: { viz: MetricViz }) {
+  const W = 480;
+  if (viz.kind === "blocks") {
+    const total = Math.max(viz.before.solid + (viz.before.range ?? 0), viz.after.solid + (viz.after.range ?? 0));
+    const step = Math.min(40, Math.floor(392 / total));
+    const w = step - 4;
+    const row = (r: typeof viz.before, y: number, after: boolean) =>
+      Array.from({ length: r.solid + (r.range ?? 0) }, (_, i) => (
+        <rect
+          key={`${after}${i}`}
+          x={44 + i * step}
+          y={y}
+          width={w}
+          height={28}
+          rx={5}
+          className={i >= r.solid ? (after ? g.accentRing : g.cardWarn) : after ? g.accent : g.card}
+        />
+      ));
+    return (
+      <svg viewBox={`0 0 ${W} 300`} className={`${g.glyph} ${styles.svg}`} role="img" aria-label={`Before: ${viz.before.label}. After: ${viz.after.label}. ${viz.note}`}>
+        <T x={44} y={44}>
+          before · {viz.before.label}
+        </T>
+        {row(viz.before, 62, false)}
+        <T x={44} y={160} accent>
+          after · {viz.after.label}
+        </T>
+        {row(viz.after, 178, true)}
+        <T x={44} y={270}>
+          1 block = 1 {viz.unit} · {viz.note}
+        </T>
+      </svg>
+    );
+  }
+  if (viz.kind === "dots") {
+    return (
+      <svg viewBox={`0 0 ${W} 300`} className={`${g.glyph} ${styles.svg}`} role="img" aria-label={`${viz.filled} of ${viz.total}. ${viz.note}`}>
+        {Array.from({ length: viz.total }, (_, i) => (
+          <circle key={i} cx={68 + (i % 5) * 86} cy={90 + Math.floor(i / 5) * 86} r={26} className={i < viz.filled ? g.accent : g.cardWarn} />
+        ))}
+        <T x={44} y={270}>
+          {viz.note}
+        </T>
+      </svg>
+    );
+  }
+  if (viz.kind === "compare") {
+    return (
+      <svg viewBox={`0 0 ${W} 300`} className={`${g.glyph} ${styles.svg}`} role="img" aria-label={`${viz.rows.map((r) => `${r.label} ${r.value}`).join(", ")}. ${viz.note}`}>
+        {viz.rows.map((r, i) => (
+          <g key={r.label}>
+            <T x={44} y={60 + i * 100} accent={r.accent}>
+              {r.label} · {r.value}
+            </T>
+            <rect x={44} y={74 + i * 100} width={392} height={28} rx={6} className={g.card} />
+            <rect x={44} y={74 + i * 100} width={(392 * r.value) / viz.max} height={28} rx={6} className={r.accent ? g.accent : g.muted} />
+          </g>
+        ))}
+        <T x={44} y={270}>
+          {viz.note}
+        </T>
+      </svg>
+    );
+  }
+  if (viz.kind === "fan") {
+    const n = viz.to.length;
+    const gap = Math.min(52, 200 / Math.max(1, n - 1));
+    const y0 = 140 - ((n - 1) * gap) / 2;
+    return (
+      <svg viewBox={`0 0 ${W} 300`} className={`${g.glyph} ${styles.svg}`} role="img" aria-label={`${viz.from} to ${viz.to.join(", ")}. ${viz.note}`}>
+        {viz.to.map((t, i) => {
+          const y = y0 + i * gap;
+          return (
+            <g key={t}>
+              <path d={`M100 140 C 180 140, 200 ${y}, 270 ${y}`} className={g.strong} />
+              <circle cx={280} cy={y} r={9} className={g.accentRing} />
+              <T x={300} y={y + 4}>
+                {t}
+              </T>
+            </g>
+          );
+        })}
+        <circle cx={86} cy={140} r={14} className={g.accent} />
+        <T x={86} y={180} anchor="middle" accent>
+          {viz.from}
+        </T>
+        <T x={44} y={270}>
+          {viz.note}
+        </T>
+      </svg>
+    );
+  }
+  if (viz.kind === "timeline") {
+    const x = (v: number) => 44 + (392 * v) / viz.end;
+    return (
+      <svg viewBox={`0 0 ${W} 300`} className={`${g.glyph} ${styles.svg}`} role="img" aria-label={`${viz.marks.map((m) => `${m.label} at ${m.at} ${viz.unit}`).join(", ")}. ${viz.note}`}>
+        <path d={`M44 140 H436`} className={g.line} />
+        <T x={44} y={170}>
+          0
+        </T>
+        <T x={436} y={170} anchor="end">
+          {viz.end} {viz.unit}
+        </T>
+        {viz.marks.map((m, i) => (
+          <g key={m.label}>
+            <rect x={x(m.from ?? 0)} y={128 - (i + 1) * 30} width={x(m.at) - x(m.from ?? 0)} height={14} rx={4} className={m.accent ? g.accent : g.accentMid} />
+            <circle cx={x(m.at)} cy={140} r={8} className={m.accent ? g.accent : g.accentRing} />
+            <T x={x(m.at) - 4} y={124 - (i + 1) * 30} anchor="end" accent={m.accent}>
+              {m.label}
+            </T>
+          </g>
+        ))}
+        <T x={44} y={270}>
+          {viz.note}
+        </T>
+      </svg>
+    );
+  }
+  // ticks
+  const step = 392 / (viz.count - 1);
+  return (
+    <svg viewBox={`0 0 ${W} 300`} className={`${g.glyph} ${styles.svg}`} role="img" aria-label={`${viz.label}. ${viz.note}`}>
+      <path d="M44 130 H436" className={g.strong} />
+      {Array.from({ length: viz.count }, (_, i) => (
+        <g key={i}>
+          <circle cx={44 + i * step} cy={130} r={14} className={g.accent} />
+          <path d={`M${38 + i * step} 130 l5 5 9 -10`} fill="none" stroke="var(--surface-raised)" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+      ))}
+      <T x={44} y={180} accent>
+        {viz.label}
+      </T>
+      <T x={44} y={270}>
+        {viz.note}
       </T>
     </svg>
   );

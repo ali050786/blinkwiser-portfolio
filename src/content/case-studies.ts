@@ -239,7 +239,7 @@ export const caseStudies: CaseStudy[] = [
     group: "Health insurance platforms",
     title: "Building an enterprise health-insurance platform from zero",
     short: "White-label platform",
-    dek: "I was brought in to adjust a handful of screens. Underneath was a white-label product with no system, hardcoded colours and every new client rebuilt by hand.",
+    dek: "Asked to adjust a few screens, I found a white-label product with no system, where every new client was a rebuild.",
     meta: {
       role: "Founding UX Designer → UX Lead",
       context: "Mphasis · US health-insurance platform",
@@ -250,10 +250,46 @@ export const caseStudies: CaseStudy[] = [
     cover: {
       screen: "ds-dashboard",
       alt: "Member dashboard page pattern from the design system: coverage status by family member, claims status, resources and find care.",
-      caption: "A member dashboard page pattern, assembled from the library. Every client sees it in its own brand.",
+      caption: "A member dashboard pattern from the library. Every client sees it in its own brand.",
     },
-    headline: { value: "< 24 h", label: "to theme a new client, from weeks" },
+    headline: { value: "< 24 h", label: "to theme a new client, down from weeks (team-observed)" },
     card: { title: "White-label health-insurance platform", widget: "brands", label: "to theme a new client" },
+    hook: {
+      line: "One product. Every client's brand.",
+      turn: "A new client stopped being a rebuild once the brand became a variable.",
+      note: "Illustration in a demo brand, not a client screen.",
+      tabsLabel: "Three things that broke with every new client",
+      picture: {
+        visual: "client-theme",
+        title: "A new client, before and after tokens",
+        chips: ["Same screen", "Same product"],
+        before: {
+          label: "Before: hardcoded",
+          items: ["Brand colour hardcoded: the old client's colour stays", "Two buttons for the same job", "Rebuilt by hand for each client: weeks"],
+        },
+        after: {
+          label: "With three-tier tokens",
+          items: ["Colour comes from the client's tokens", "One button, from the system", "Insurer → employer → member, themed in under a day"],
+        },
+      },
+      findings: [
+        {
+          tab: "The colour",
+          words: "Brand colours were written straight into the code, so nothing could be re-themed.",
+          source: "What I found in the existing product",
+        },
+        {
+          tab: "The buttons",
+          words: "Developers used different components for the same job on different pages.",
+          source: "What I found in the existing product",
+        },
+        {
+          tab: "The rebuild",
+          words: "The business could only sign clients as fast as engineering could re-skin the product.",
+          source: "The growth ceiling",
+        },
+      ],
+    },
     hero: {
       label: "Enterprise platform",
       brief: "Adjust a handful of screens.",
@@ -261,122 +297,97 @@ export const caseStudies: CaseStudy[] = [
       call: "Make the brand a variable, then make engineering build to it.",
     },
     snapshot: {
-      frame:
-        "The ask was a few screen edits. The real problem was a white-label product with no system, developers improvising components, and every new client rebuilt by hand.",
-      decision:
-        "Treat the handoff problem as a platform problem: make the brand a variable through a three-tier token system, then make engineering actually use it.",
-      outcome:
-        "New-client theming went from weeks of rebuild to under 24 hours, delivery settled at about 2 days of design plus 3 of build, and the system became engineering's default.",
+      frame: "The ask was a few screen edits. The real problem: no system, hardcoded colours, every client rebuilt by hand.",
+      decision: "Make the brand a variable with three-tier tokens, then make engineering build to it.",
+      outcome: "Theming a new client: weeks to under 24 hours. Delivery: about 2 days of design, 3 of build. Team-observed.",
     },
     frame: {
-      assumed: "Change a few screens to match new requirements.",
-      actual:
-        "A white-label platform that engineering couldn't maintain, where every client multiplied the cost of every change.",
+      assumed: "Change a few screens.",
+      actual: "Every new client multiplied the cost of every change.",
       body: [
-        "The screens had been designed by someone else, and there was no design system behind them. Two things didn't fit the ask.",
-        "It was a white-label platform, sold to insurers who resell it to employers, who put it in front of their members, so every client needed its own look at every level. And developers were already struggling to maintain what existed. Editing screens one by one would have kept the product exactly as fragile as it was.",
-        "So I didn't treat the ask as a set of edits. I started by documenting what already existed, and that documentation became the design system.",
+        "It was white-label: insurers resell it to employers, who show it to their members. Every level needs its own look.",
+        "There was no system, and developers struggled to maintain what existed. Editing screens one by one would have kept it fragile.",
+        "So I started by documenting what existed. That became the design system.",
       ],
+      exhibit: "white-label-chain",
     },
     stakes: {
-      intro: "The product was failing in three concrete ways.",
+      intro: "It was failing in four ways.",
       items: [
-        { title: "Inconsistency", body: "Developers used different components for the same job on different pages." },
-        { title: "Hardcoded colours", body: "Brand colours were written straight into the code, so nothing could be re-themed." },
-        {
-          title: "Rebuild per client",
-          body: "A growth ceiling: the business could only sign clients as fast as engineering could re-skin the product.",
-        },
-        {
-          title: "Compliance exposure",
-          body: "In US health insurance, an inconsistent eligibility or enrolment screen is a compliance risk, not a polish issue.",
-        },
+        { title: "Inconsistency", body: "Different components for the same job on different pages." },
+        { title: "Hardcoded colours", body: "Brand colours lived in the code, so nothing could be re-themed." },
+        { title: "Rebuild per client", body: "Sales could only grow as fast as engineering could re-skin." },
+        { title: "Compliance exposure", body: "In US health insurance, an inconsistent eligibility screen is a compliance risk." },
       ],
+      exhibit: "growth-ceiling",
     },
     forks: [
       {
         id: "go-underneath",
         title: "Fix the screens, or fix what made them break?",
-        tension: "The requested edits were the expected move and the visible one.",
-        rejected: { label: "Do the edits", detail: "Every future change stays hand-made; every new client stays a rebuild." },
-        chosen: { label: "Go underneath", detail: "Start with documentation, and let it become the system." },
-        why: [
-          "The deciding factor was that the pain belonged to engineering, not design. The system had a real customer before it had a name.",
-        ],
-        cost: "Investing in a foundation nobody had asked for, which had to prove its value before anyone would call it one.",
+        tension: "The edits were the expected, visible move.",
+        rejected: { label: "Do the edits", detail: "Every change stays hand-made; every client a rebuild." },
+        chosen: { label: "Go underneath", detail: "Start with documentation; let it become the system." },
+        why: ["The pain belonged to engineering. The system had a customer before it had a name."],
+        cost: "A foundation nobody asked for, which had to prove itself.",
+        exhibit: "edits-vs-foundation",
       },
       {
         id: "brand-as-variable",
         title: "Per-client builds, or make the brand a variable?",
-        tension: "Each client needed its own identity at three levels. Per-client builds would have reproduced the mess at scale.",
-        rejected: { label: "Per-client builds", detail: "A fork of the product's look for every insurer and employer." },
-        chosen: {
-          label: "Three-tier tokens",
-          detail: "Insurer → employer → member. Each tier inherits from the one above and overrides only what it owns.",
-        },
-        why: [
-          "A new client becomes a configuration, not a project.",
-          "The same foundation runs web, mobile web, iOS and Android, so mobile never became a second theming system to keep in sync by hand.",
-        ],
-        cost: "Discipline: nothing can be styled directly any more. That is precisely the habit engineering had to break.",
+        tension: "Each client needs its own identity at three levels. Per-client builds would scale the mess.",
+        rejected: { label: "Per-client builds", detail: "A fork of the look for every insurer and employer." },
+        chosen: { label: "Three-tier tokens", detail: "Insurer → employer → member. Each tier overrides only what it owns." },
+        why: ["A new client becomes configuration, not a project.", "One foundation runs web, mobile web, iOS and Android."],
+        cost: "Nothing can be styled directly any more. That was the habit to break.",
         exhibit: "theme-cascade",
       },
       {
         id: "adoption",
         title: "Is a design system nobody uses just a Figma file?",
-        tension:
-          "Building the system didn't change behaviour. It lived in a separate file developers had to remember to open, and at first they carried on as before.",
-        rejected: { label: "Specs and good intentions", detail: "How the product had become inconsistent in the first place." },
-        chosen: { label: "Treat adoption as design", detail: "Work it from four sides until the system is the default." },
-        why: ["Adoption took a few months, worked from four sides:"],
+        tension: "At first developers carried on as before. The system lived in a file they had to remember to open.",
+        rejected: { label: "Specs and good intentions", detail: "How the product became inconsistent in the first place." },
+        chosen: { label: "Treat adoption as design", detail: "Work it from four sides until it's the default." },
+        why: ["It took a few months:"],
         bullets: [
-          { title: "Enablement", body: "Walkthrough sessions with the development team." },
-          { title: "Documentation", body: "Usage rules for each component, written into the system itself." },
-          { title: "Quality", body: "Design QA on builds, catching hardcoded values and off-system components before release." },
-          { title: "Policy", body: "An agreement with the tech lead that the design system is the standard engineering builds to." },
+          { title: "Enablement", body: "Walkthroughs with developers." },
+          { title: "Documentation", body: "Usage rules inside the system." },
+          { title: "Quality", body: "Design QA catches hardcoded values before release." },
+          { title: "Policy", body: "Agreed with the tech lead: the system is the standard." },
         ],
-        cost: "Months of enablement and QA effort before the system paid back.",
+        cost: "Months of enablement and QA before it paid back.",
+        exhibit: "adoption-four-sides",
       },
     ],
     followOn: {
       title: "How the work ran",
-      intro: "Research, alignment and the team, the parts of the job that sit around the screens.",
       items: [
-        {
-          title: "Personas for three audiences",
-          body: "Research with internal stakeholders produced personas for each audience the platform serves: insurers, employers and members, three to four of each.",
-        },
-        {
-          title: "Workshops before ideas reach design",
-          body: "Any new idea went through a working session with the business analysts first, so the requirement and the rules behind it were agreed before anything was drawn.",
-        },
-        {
-          title: "Architecture changes, with engineering",
-          body: "Any architectural change to the design system was worked through with engineering in a workshop before it shipped, so the system and the codebase changed together.",
-        },
+        { title: "Personas", body: "Three to four each for insurers, employers and members, from stakeholder research." },
+        { title: "Workshops first", body: "New ideas went to a BA workshop before design, so the rules were agreed first." },
+        { title: "Architecture with engineering", body: "System changes were agreed with engineering before they shipped." },
       ],
+      exhibit: "how-work-ran",
     },
     spotlight: {
       label: "Built on the token system",
       title: "The Branding Hub: the brand variable, in an admin's hands",
-      intro:
-        "The three-tier tokens made the brand a variable in the product. The Branding Hub is the screen that sets it. I designed it, and it is live for admins.",
+      intro: "Tokens made the brand a variable. The Branding Hub is where admins set it. I designed it, and it's live.",
       why: [
-        "The platform is resold to employers, and each one needs the member portal in its own look.",
-        "Tokens make theming possible. Someone still has to set them, for many employers, without breaking what members see.",
-        "Several admins work on themes at once, so changes need drafts, a clear owner and a way back.",
+        "Each employer needs the member portal in its own look.",
+        "Someone has to set the tokens, for many employers, without breaking what members see.",
+        "Several admins work on themes at once.",
       ],
       what: [
-        "A hub of every member-facing theme: its colours, how many employers use it, who edited it last, and default, draft and locked states.",
-        "A theme editor that uses the same roles as the design tokens, with each colour field saying where it appears, plus the font.",
-        "A preview on the member dashboard before publishing, and employer assignment with each employer's own logo, links, contacts and resources.",
-        "Safeguards: save as draft, an edit lock that shows who is editing, change history, and restore for deleted themes.",
+        "A hub of every theme: colours, employers using it, last editor, and draft, default and locked states.",
+        "An editor using the same roles as the tokens, each colour saying where it appears.",
+        "A preview on the member dashboard, then assignment to employers with their own logo and links.",
+        "Drafts, an edit lock showing who's editing, change history and restore.",
       ],
       impact: [
-        "Shipped and in use by admins.",
-        "Theming a client is an admin task in one place, built on the token roles, so every theme stays inside the system.",
-        "Colours are chosen by role and checked on a real dashboard before members see them.",
-        "Admins can work on themes side by side without overwriting each other, and a deleted theme can be brought back.",
+        "Shipped and used by admins.",
+        "Theming a client is one admin task, inside the system.",
+        "Colours are checked on a real dashboard before members see them.",
+        "Admins don't overwrite each other, and deleted themes come back.",
       ],
       provenance: "Qualitative. Shipped; usage not formally measured.",
       exhibit: "branding-screens",
@@ -385,32 +396,63 @@ export const caseStudies: CaseStudy[] = [
       metrics: [
         {
           value: "< 24 h",
-          label: "New-client theming",
-          before: { label: "Weeks", amount: 15 },
-          after: { label: "< 1 day", amount: 1 },
-          unit: "working days",
+          label: "To theme a new client",
+          viz: {
+            kind: "blocks",
+            unit: "working day",
+            before: { solid: 10, label: "weeks" },
+            after: { solid: 1, label: "under a day" },
+            note: "team-observed · weeks drawn at the low end",
+          },
         },
-        { value: "1–2 days", label: "To rebrand white-label iOS and Android apps" },
-        { value: "2 + 3", label: "Days of design + build per feature, predictably" },
-        { value: "120+", label: "Components across four surfaces" },
+        {
+          value: "1–2 days",
+          label: "To rebrand the white-label iOS and Android apps",
+          viz: {
+            kind: "timeline",
+            end: 2,
+            unit: "days",
+            marks: [{ at: 2, label: "iOS and Android rebranded", accent: true }],
+            note: "team-observed",
+          },
+        },
+        {
+          value: "2 + 3",
+          label: "Days of design + build per feature, predictably",
+          viz: {
+            kind: "timeline",
+            end: 5,
+            unit: "days",
+            marks: [
+              { at: 2, label: "design" },
+              { at: 5, from: 2, label: "build", accent: true },
+            ],
+            note: "working days · team-observed",
+          },
+        },
+        {
+          value: "120+",
+          label: "Components on one foundation",
+          viz: { kind: "fan", from: "120+ components", to: ["web", "mobile web", "iOS", "Android"], note: "one token set across four surfaces" },
+        },
       ],
       points: [
-        "Consistency held: hardcoded colours and off-system components are caught in design QA before release, not in production.",
-        "The system serves a set of Fortune-500 and enterprise-tier insurers.",
+        "Hardcoded colours and off-system components are caught in design QA, not in production.",
+        "It serves Fortune-500 and enterprise-tier insurers.",
       ],
-      provenance: "Team-observed figures, not formally tracked.",
+      provenance: "Team-observed, not formally tracked.",
       exhibit: "design-system-screens",
     },
     ownership: {
       mine: [
-        "The reframe, the architecture and the adoption plan. I started as the only designer, interviewed and selected four more, onboarded them onto the system and its standards, and was promoted to UX Lead.",
+        "The reframe, the architecture and the adoption plan.",
+        "I started as the only designer, hired four more, onboarded them, and became UX Lead.",
       ],
       change: [
-        "I'd close the distance between the system and the people using it much earlier. Its rationale lived in my head, and the system lived in a separate file engineers had to go and check. Closing that gap is what I later did by making it machine-readable (case study 03).",
+        "I'd close the gap between the system and its users earlier. Its rationale lived in my head and in a file engineers had to check. Case 03 is how I later closed it.",
       ],
     },
-    signals:
-      "Problem-finding over brief-following, platform architecture with honest costs, and the part most design-system stories skip: driving adoption across engineering.",
+    signals: "Finding the real problem, platform architecture with honest costs, and driving adoption across engineering.",
   },
   /* ------------------------------------------------------------------ 03 */
   {
@@ -434,8 +476,26 @@ export const caseStudies: CaseStudy[] = [
     hook: {
       line: "Same AI. Same components.",
       turn: "It only looked like our product once we wrote the rules down.",
-      visual: "same-request",
       note: "Illustration in a demo brand, not a client screen.",
+      tabsLabel: "Three things the AI got wrong",
+      picture: {
+        visual: "same-request",
+        title: "The same request, given to the AI twice",
+        chips: ["Same AI", "Same components"],
+        before: {
+          label: "Before the skills",
+          items: ["Save on the wrong side", "Link in a button colour", "Side nav left out: docs said 19 components, the file had 20"],
+        },
+        after: {
+          label: "With the skills",
+          items: ["Save on the right", "Link takes the link colour", "Side nav in place: audit matched docs to file, 20 of 20"],
+        },
+      },
+      findings: [
+        { tab: "The button", words: "", empty: "Button · Description", source: "The old button's description (as I remember it)" },
+        { tab: "The colour", words: "Not an exact match, but agreed mapping.", quoted: true, source: "The rebuilt system's note on an old colour" },
+        { tab: "The audit", words: "19 standalone components", quoted: true, source: "The system's index, before the audit (4 Sep 2026)" },
+      ],
     },
     opener: {
       label: "Three things the AI got wrong",
@@ -604,7 +664,7 @@ export const caseStudies: CaseStudy[] = [
     group: "AI-driven UI",
     title: "Blinkwiser: designing trust into an AI product",
     short: "Trust in an AI product",
-    dek: "Getting an AI to produce a plausible LinkedIn carousel took two weeks. Getting one a creator could trust took the rest of the year.",
+    dek: "A plausible AI carousel took two weeks. One a creator could trust took the rest of the year.",
     meta: {
       role: "Independent lab · product, UX, architecture, evaluation",
       context: "Blinkwiser · built by directing AI coding agents",
@@ -617,7 +677,7 @@ export const caseStudies: CaseStudy[] = [
       width: 1600,
       height: 1090,
       alt: "Agentic Carousel by Blinkwiser landing page: 'Carousels that design themselves', a prompt box, and a fan of generated slides in three styles.",
-      caption: "Agentic Carousel by Blinkwiser, live: a crew of agents researches, writes and designs a LinkedIn carousel from a topic, link, video or file.",
+      caption: "Agentic Carousel by Blinkwiser, live: agents research, write and design a LinkedIn carousel from a topic, link, video or file.",
     },
     reel: {
       video: "/work/blinkwiser/run.mp4",
@@ -625,10 +685,35 @@ export const caseStudies: CaseStudy[] = [
       width: 1600,
       height: 800,
       alt: "Screen recording of the studio generating a carousel: each agent step reports in the chat, then the first slides land, marked Draft while the editor is still checking.",
-      caption: "One run, sped up 3×: every agent step reports in the chat, and the first slides land marked Draft while the editor is still checking.",
+      caption: "One run, sped up 3×: each agent step reports in the chat, and the first slides land marked Draft while the checks finish.",
     },
     headline: { value: "Every edit", label: "undoable, and honest about what changed" },
     card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan → Reflect", label: "facts checked before you see it" },
+    hook: {
+      line: "Same model. Same prompt.",
+      turn: "Creators could trust it once facts were checked in code and every edit could be undone.",
+      number: { value: "7 in 10", label: "blind head-to-heads won by the rebuild over v1 (my eval harness, AI judge)" },
+      note: "Illustration with demo content, not a real deck. The live product is shown below.",
+      tabsLabel: "Three ways v1 broke trust",
+      picture: {
+        visual: "trust-edit",
+        title: "One edit, in v1 and in the rebuild",
+        chips: ["Same model", "Same request"],
+        before: {
+          label: "v1: trust the model",
+          items: ["A number with no source", "Claimed an edit it hadn't made", "No way back: undo was a chat message"],
+        },
+        after: {
+          label: "The rebuild: trust built in",
+          items: ["Every number traces to a source", "Says what didn't change, then retries", "Every change saves a restore point"],
+        },
+      },
+      findings: [
+        { tab: "The number", words: "The model invented numbers and stated them with confidence.", source: "What broke in use" },
+        { tab: "The claim", words: "I've rewritten the carousel", quoted: true, source: "v1's chat, when nothing had changed" },
+        { tab: "The way back", words: "Undo was a chat message, not a restore point.", source: "What broke in use" },
+      ],
+    },
     hero: {
       label: "AI product · founder",
       brief: "Turn a topic into a LinkedIn carousel, fast.",
@@ -636,64 +721,51 @@ export const caseStudies: CaseStudy[] = [
       call: "Treat trust as the product: facts checked in code, every edit reversible.",
     },
     snapshot: {
-      frame:
-        "The model invented numbers, claimed edits it hadn't made, kept people waiting and made everything look like generic AI. The real problem wasn't generation. It was trust.",
-      decision:
-        "Treat trust as the product: enforce rules and facts in code, make every change honest and reversible, settle quality-versus-speed with blind evals, and cut features that dilute the design.",
-      outcome:
-        "Creators can see what the agents did and get back from any of it: numbers trace to sources, the chat says what actually changed, and every edit has a restore point. Blind tests back it up: the rebuild beats the first version 7 times in 10. Live, free and pre-revenue.",
+      frame: "The model invented numbers, claimed edits it hadn't made and drifted to generic AI. The problem wasn't generation. It was trust.",
+      decision: "Make trust the product: facts checked in code, every edit honest and reversible, trade-offs settled by blind evals.",
+      outcome: "Numbers trace to sources, the chat says what really changed, every edit can be undone. Live, free, pre-revenue.",
     },
     frame: {
-      assumed: "Turn a topic into a carousel, fast. Generation is the product.",
-      actual:
-        "For someone posting under their own name, trust is the product: is it accurate, did it do what it said, can I get back, and does it look like me?",
+      assumed: "Generation is the product.",
+      actual: "For someone posting under their own name, trust is the product.",
       body: [
-        "The brief was my own. A first version with templates, a two-agent pipeline and PDF export was in beta within two weeks. That was the easy part. The hard part showed up in use.",
-        "A wrong statistic is a reputational cost for a creator, and a tool that lies about its own edits can't be trusted with anything.",
+        "The brief was my own. A first version was in beta within two weeks. The hard part showed up in use.",
+        "A wrong statistic costs a creator their reputation. A tool that lies about its own edits can't be trusted with anything.",
       ],
-      evidence: {
-        title: "What broke in use",
-        items: [
-          "The model invented numbers and stated them with confidence.",
-          "In chat it said “I've rewritten the carousel” when nothing had changed.",
-          "A richer pipeline meant longer waits.",
-          "The output drifted toward generic AI instead of a designed piece.",
-        ],
-      },
+      exhibit: "trust-questions",
     },
     stakes: {
       items: [
         { title: "Creators publish under their own name", body: "Accuracy isn't a nice-to-have." },
-        { title: "An AI editor lives or dies on honesty", body: "If the chat misreports what changed, people stop believing it." },
-        { title: "Speed shapes whether people stay", body: "Every extra quality step adds time." },
+        { title: "An AI editor lives on honesty", body: "If the chat misreports a change, people stop believing it." },
+        { title: "Speed decides who stays", body: "Every extra quality step adds time." },
         { title: "Solo and bootstrapped", body: "Cost per deck matters as much as quality." },
       ],
+      exhibit: "quality-steps",
     },
     forks: [
       {
         id: "enforce-in-code",
         title: "Ask the model nicely, or enforce the rules in code?",
-        tension:
-          "v1 relied on prompts. Character limits, slide counts and “don't make things up” were requests the model could ignore.",
-        rejected: { label: "Better prompts", detail: "Keep asking, and hope the model complies more often." },
-        chosen: { label: "A checked pipeline", detail: "Anything that must be true is verified in code before a slide ships." },
+        tension: "v1 relied on prompts. Limits and “don't make things up” were requests the model could ignore.",
+        rejected: { label: "Better prompts", detail: "Keep asking, and hope." },
+        chosen: { label: "A checked pipeline", detail: "Anything that must be true is checked in code." },
         why: [
-          "Research becomes a numbered fact sheet with sources. An outline fixes the slide count and assigns facts to slides. Four cover options compete on a rubric that code scores.",
-          "Every number in the copy must trace back to the fact sheet, the user's source or their request, or its slide is downgraded. A critic and a fact-checker then review the draft in parallel.",
+          "Research becomes a numbered fact sheet. An outline fixes the slide count and assigns facts to slides.",
+          "Every number must trace to a source, or its slide is downgraded. A critic and a fact-checker review in parallel.",
         ],
-        cost: "More model calls, more latency and more moving parts, which forced the speed fork below.",
+        cost: "More calls and more waiting, which forced the speed fork.",
         exhibit: "pipeline",
       },
       {
         id: "honest-reversible",
         title: "Trust the chat, or make every change honest and reversible?",
-        tension:
-          "I rebuilt the editor around a chat agent, because “make slide 3 punchier” is how people think about edits. That made honesty critical.",
+        tension: "The editor became a chat agent, so honesty became critical.",
         rejected: { label: "Relay the model's claim", detail: "Show whatever the agent says it did." },
         chosen: { label: "Honesty guard and restore points", detail: "State what didn't change; checkpoint every change." },
         why: [
-          "When a small model claimed success on an edit it hadn't made, an honesty guard now states what didn't change instead of repeating the claim, backed by a focused retry.",
-          "Undo stopped being a chat message. Every reply that changes the deck saves a restore point. Restoring fades later replies, and the next message trims them from the agent's memory, so it never reasons about changes that no longer exist.",
+          "When the model claims an edit it didn't make, a guard says so and retries.",
+          "Every change saves a restore point. Restoring trims later turns from the agent's memory.",
         ],
         cost: "A more complex conversation model to build and test.",
         exhibit: "restore-chat",
@@ -701,59 +773,93 @@ export const caseStudies: CaseStudy[] = [
       {
         id: "evidence-not-taste",
         title: "Quality or speed, decided by evidence, not taste?",
-        tension: "v2 was more accurate but slower, at 84 seconds a deck.",
-        rejected: { label: "Guess", detail: "Pick a model setting by feel and ship it." },
-        chosen: { label: "A blind eval harness", detail: "10 golden cases, a blind judge, head-to-heads, accuracy scored against evidence." },
+        tension: "v2 was more accurate but slower: 84 seconds a deck.",
+        rejected: { label: "Guess", detail: "Pick a setting by feel." },
+        chosen: { label: "A blind eval harness", detail: "10 golden cases, a blind judge, head-to-heads." },
         why: [
-          "I fixed the judge first, when I caught it marking correctly sourced numbers as invented.",
-          "The evals then showed that switching off the model's hidden reasoning kept quality level (8.0 vs 8.1) while cutting a deck from 84 to 31 seconds at about half the cost. First slides now appear around 23 seconds while the critic and fact-checker are still working.",
+          "I fixed the judge first: it was marking sourced numbers as invented.",
+          "Reasoning off held quality (8.0 vs 8.1) and cut a deck from 84 to 31 seconds, at about half the cost.",
         ],
-        cost: "Time spent building measurement instead of features.",
+        cost: "Time on measurement instead of features.",
+        exhibit: "blind-eval",
       },
       {
         id: "protect-design",
         title: "Add features, or protect the design?",
-        tension:
-          "I built a freeform canvas template and a looks system (nine styles, font and layout pickers) and tried them across every template.",
+        tension: "I built a freeform canvas and a looks system: nine styles, plus font and layout pickers.",
         rejected: { label: "Ship the flexibility", detail: "More knobs, more generic output." },
-        chosen: { label: "Cut them", detail: "Keep three templates exactly as designed: The Truth, The Sketch, The Statement." },
-        why: [
-          "They made the product more flexible and the output more generic. Each template lost the identity that made it worth choosing.",
-        ],
-        cost: "Throwing away finished work. The alternative was a product that looks like every other AI tool.",
+        chosen: { label: "Cut them", detail: "Three templates, exactly as designed: The Truth, The Sketch, The Statement." },
+        why: ["Flexibility made every template look generic."],
+        cost: "Throwing away finished work.",
+        exhibit: "cut-to-three",
       },
     ],
     outcome: {
       metrics: [
-        { value: "7 / 10", label: "Times a blind judge preferred the rebuilt version over the first one" },
-        { value: "9.5 vs 8.8", label: "Accuracy: how well each carousel's claims hold up against their sources" },
+        {
+          value: "7 / 10",
+          label: "Blind head-to-heads won by the rebuild over v1",
+          viz: { kind: "dots", filled: 7, total: 10, note: "my eval harness · AI judge" },
+        },
+        {
+          value: "9.5 vs 8.8",
+          label: "Accuracy: claims that hold up against their sources",
+          viz: {
+            kind: "compare",
+            rows: [
+              { label: "rebuild", value: 9.5, accent: true },
+              { label: "v1", value: 8.8 },
+            ],
+            max: 10,
+            note: "AI judge, scored against the evidence",
+          },
+        },
         {
           value: "31 s",
-          label: "Per carousel, down from 84 s, with no drop in quality",
-          before: { label: "84 s", amount: 84 },
-          after: { label: "31 s", amount: 31 },
-          unit: "seconds",
+          label: "Per carousel, down from 84 s, same quality",
+          viz: {
+            kind: "compare",
+            rows: [
+              { label: "before", value: 84 },
+              { label: "now", value: 31, accent: true },
+            ],
+            max: 84,
+            note: "seconds per deck · my harness",
+          },
         },
-        { value: "~23 s", label: "Until the first slides appear, marked Draft while the checks finish" },
+        {
+          value: "~23 s",
+          label: "Until the first slides appear, marked Draft",
+          viz: {
+            kind: "timeline",
+            end: 31,
+            unit: "s",
+            marks: [
+              { at: 23, label: "first slides, Draft", accent: true },
+              { at: 31, label: "checks done" },
+            ],
+            note: "a typical run · checks finish after first slides",
+          },
+        },
       ],
       points: [
-        "Every change in the editor saves a restore point, and when an edit didn't happen the chat says so instead of claiming it did.",
-        "Honest about the gaps: v1 still scores higher on flow (8.4 vs 7.5), and that's the next fix.",
-        "Live and free at blinkwiser.com with a handful of real users and no revenue yet. I removed credits and limits so people could use it freely before I monetise.",
+        "Every change saves a restore point, and the chat says when an edit didn't happen.",
+        "Honest gap: v1 still scores higher on flow (8.4 vs 7.5). That's next.",
+        "Live and free at blinkwiser.com, with a handful of real users and no revenue yet.",
       ],
       provenance: "Scores come from my own harness and an AI judge, not from users.",
       exhibit: "eval-board",
     },
     ownership: {
       mine: [
-        "The product, the UX, the pipeline architecture, the eval design and every cut. I built it by directing AI coding agents, reviewing their output and holding it to offline test suites and evals. The judgment was the job; typing the code wasn't.",
+        "Product, UX, pipeline architecture, eval design and every cut.",
+        "Built by directing AI coding agents and holding them to tests and evals. The judgment was the job.",
       ],
       change: [
-        "I rebuilt v2 on the strength of my own evals, before I had enough users to tell me what mattered most. I'd put it in front of real creators earlier, let their behaviour choose the next fix, and start on distribution as seriously as quality.",
+        "I rebuilt v2 on my own evals before real users told me what mattered. I'd ship to creators earlier and take distribution as seriously as quality.",
       ],
     },
-    signals:
-      "Designing for model failure (grounding, honesty, reversibility), deciding trade-offs with evals instead of opinions, and the restraint to cut what dilutes the product.",
+    signals: "Designing for model failure, deciding trade-offs with evals, and the restraint to cut.",
   },
   /* ------------------------------------------------------------------ 05 */
   {
@@ -764,7 +870,7 @@ export const caseStudies: CaseStudy[] = [
     group: "Civic scale",
     title: "Organising a city's services around residents, not departments",
     short: "Dubai Municipality",
-    dek: "Every service had its own rules and a department that wanted it front and centre. Residents only know what they need done.",
+    dek: "Every service had its own rules and a department wanting it up front. Residents only know what they need done.",
     meta: {
       role: "Lead UX Designer, onsite in Dubai",
       context: "Mphasis · Dubai Municipality",
@@ -778,11 +884,43 @@ export const caseStudies: CaseStudy[] = [
       height: 1273,
       full: true,
       alt: "Four screens of the Dubai Municipality app: the home screen in English and in Arabic, the Services screen grouped by need, and the Dashboard tracking every request.",
-      caption:
-        "The live app: search and voice as the front door, services grouped by what residents need, one dashboard for every request, and Arabic as an equal to English.",
+      caption: "The live app: search first, services grouped by need, one dashboard for every request, Arabic equal to English.",
     },
     headline: { value: "One home", label: "for a city's services, organised by what residents need, not by department" },
     card: { title: "Dubai Municipality app", widget: "departments", label: "for 3.5M residents" },
+    hook: {
+      line: "Same services. Same city.",
+      turn: "Residents could find them once they were grouped by need, not by department.",
+      number: { value: "3.5M", label: "residents, with every city service in one home, in Arabic and English" },
+      note: "Illustration with generic labels, not the client's screens. The live app is shown below.",
+      tabsLabel: "Three things the old catalogue got wrong",
+      picture: {
+        visual: "city-home",
+        title: "The services screen, before and after",
+        chips: ["Same services", "Same residents"],
+        before: {
+          label: "Organised by department",
+          items: ["Grouped by who owns the service", "Found only by its official name", "Each service laid out its own way"],
+        },
+        after: {
+          label: "Organised by need",
+          items: ["Grouped by what residents need", "Search first: say what you need", "One pattern: eligibility, documents, fees, status"],
+        },
+      },
+      findings: [
+        {
+          tab: "The grouping",
+          words: "A resident renewing a permit doesn't know or care which department owns it.",
+          source: "Why the catalogue had to change",
+        },
+        { tab: "The name", words: "People rarely know a service's official name.", source: "Why search became the front door" },
+        {
+          tab: "The pattern",
+          words: "Each service had its own rules, documents, fees and approval chain.",
+          source: "The catalogue, as it was",
+        },
+      ],
+    },
     hero: {
       label: "Civic services · bilingual",
       brief: "Redesign the city's services portal.",
@@ -790,93 +928,107 @@ export const caseStudies: CaseStudy[] = [
       call: "Organise by resident need, in Arabic and English as equals.",
     },
     snapshot: {
-      frame:
-        "The brief was a portal redesign. Underneath was a catalogue that mirrored the organisation chart, while residents only know what they need done, not who owns it.",
-      decision:
-        "Organise the city's services around resident needs and one consistent service pattern, designed to be built as-is in the client's low-code platform, in Arabic and English as equals.",
-      outcome:
-        "Every service under one roof, organised by need: search as the way in, one dashboard to track every request, and one pattern for every service in Arabic and English. Signed off at every milestone despite competing departments, and built by the client's team as designed.",
+      frame: "The brief was a portal redesign. The catalogue mirrored the org chart, but residents only know what they need done.",
+      decision: "Organise every service by resident need, in one pattern, buildable in the client's low-code platform, in Arabic and English as equals.",
+      outcome: "One home for every service, search first, one dashboard for every request. Signed off at every milestone and built as designed.",
     },
     frame: {
-      assumed: "Redesign the portal's visual layer.",
-      actual: "Decide how a city's services should be organised for the people using them, then make that survive the people who own them.",
+      assumed: "Redesign the portal's look.",
+      actual: "Decide how a city's services are organised for residents, then defend it.",
       body: [
-        "The portal covered building permits, environmental complaints, facility bookings, waste services and more, for a city of about 3.5 million people, in English and Arabic.",
-        "The catalogue mirrored the organisation that ran it. Each service had its own rules, documents, fees and approval chain, and each belonged to a department that expected prominence. A resident renewing a permit doesn't know or care which department owns it.",
+        "Permits, complaints, bookings, waste and more, for about 3.5 million people, in English and Arabic.",
+        "Each service had its own rules, fees and approvals, and a department expecting prominence.",
       ],
+      exhibit: "org-vs-need",
     },
     stakes: {
       items: [
-        { title: "Residents succeed alone", body: "A public service for a very diverse population in two languages, with no onboarding and no second chance." },
-        { title: "Formal sign-off at every step", body: "Milestone approvals with senior officials, where ambiguity turns into delay." },
-        { title: "Built in low-code", body: "The client's team would build it in Mendix, with a fixed component set. Anything unbuildable there was a wish, not a design." },
-        { title: "Moving requirements", body: "The structure had to absorb change between milestones without being redesigned each time." },
+        { title: "Residents succeed alone", body: "Two languages, a diverse city, no onboarding." },
+        { title: "Formal sign-off at every step", body: "Milestone approvals, where ambiguity means delay." },
+        { title: "Built in low-code", body: "Mendix, with fixed components. Unbuildable is a wish." },
+        { title: "Moving requirements", body: "The structure had to absorb change without a redesign." },
       ],
+      exhibit: "four-constraints",
     },
     forks: [
       {
         id: "resident-need",
         title: "Organise by department, or by resident need?",
-        tension:
-          "Each department wanted its own services up front, and reviews carried competing, often conflicting feedback. Organising by department was the easiest thing to get signed off.",
+        tension: "Each department wanted its services up front. By department was the easiest to sign off.",
         rejected: { label: "By department", detail: "Easy to approve, worst for residents." },
-        chosen: { label: "By resident need", detail: "Search as the main way in, and one place to track every application." },
+        chosen: { label: "By resident need", detail: "Search first, and one place to track every request." },
         why: [
-          "People rarely know a service's official name, so search became the front door, and every resident gets one place to track all their applications regardless of department.",
-          "Mapping the full service structure before any visual work gave me the evidence to defend it: it showed operational teams their services as residents would meet them.",
+          "People rarely know a service's official name, so search became the front door.",
+          "Mapping every service first gave me the evidence to defend it in review.",
         ],
-        cost: "No department got its own front door, and that had to be defended at every milestone.",
+        cost: "No department got its own front door. I defended that at every milestone.",
         exhibit: "service-map",
       },
       {
         id: "service-pattern",
         title: "A bespoke design per service, or one service pattern?",
-        tension: "Designing each service on its own terms would have reproduced its inconsistency for residents and multiplied the build.",
+        tension: "A design per service would copy each one's inconsistency and multiply the build.",
         rejected: { label: "Bespoke per service", detail: "Every service a one-off." },
-        chosen: { label: "One service template", detail: "Eligibility, documents, fees, steps and status, in the same place every time." },
-        why: [
-          "Consistency for residents, a single pattern for the build team, and a structure that absorbed changing requirements: a new or revised service slots into the template instead of reopening the design.",
-        ],
-        cost: "Some services had to fit a shared shape rather than getting a design of their own.",
+        chosen: { label: "One service template", detail: "Eligibility, documents, fees, steps and status, always in the same place." },
+        why: ["One pattern for residents and for the build team. A new service slots in without reopening the design."],
+        cost: "Some services had to fit a shared shape.",
         exhibit: "bilingual-pair",
       },
       {
         id: "buildable",
         title: "Design the ideal, or design what the client can build?",
-        tension: "I wanted custom navigation and components that Mendix didn't support out of the box.",
-        rejected: { label: "The ideal", detail: "An impressive Figma file and a build that stalls or drifts." },
-        chosen: { label: "The buildable", detail: "Redesign within the platform's component set, validated with the client's team." },
-        why: [
-          "Arabic and English were designed side by side from the first wireframes rather than designed in English and flipped, which surfaces right-to-left failures while they're still cheap to fix.",
-        ],
-        cost: "Some navigation and component ideas the ideal design would have had.",
+        tension: "I wanted custom navigation and components Mendix didn't support.",
+        rejected: { label: "The ideal", detail: "A great Figma file and a stalled build." },
+        chosen: { label: "The buildable", detail: "Redesign inside the platform's set, checked with the client's team." },
+        why: ["Arabic and English were designed side by side from the first wireframe, so right-to-left issues surfaced early."],
+        cost: "Some navigation ideas I liked.",
+        exhibit: "ideal-vs-buildable",
       },
     ],
     outcome: {
       metrics: [
-        { value: "One home", label: "For the city's services, grouped by what residents need instead of which department owns them" },
-        { value: "One place", label: "To track every request: in progress, completed, cancelled or waiting on payment" },
-        { value: "Every", label: "Milestone formally signed off, despite competing departments" },
-        { value: "3.5M", label: "Residents in the city it serves" },
+        {
+          value: "One home",
+          label: "For every service, grouped by need, not department",
+          viz: { kind: "fan", from: "one home", to: ["permits", "complaints", "bookings", "waste"], note: "service types from the brief" },
+        },
+        {
+          value: "One place",
+          label: "To track every request",
+          viz: {
+            kind: "fan",
+            from: "one dashboard",
+            to: ["in progress", "completed", "cancelled", "waiting on payment"],
+            note: "request states, as shipped",
+          },
+        },
+        {
+          value: "Every",
+          label: "Milestone formally signed off",
+          viz: { kind: "ticks", count: 5, label: "signed off at every review", note: "number of ticks drawn, not counted" },
+        },
+        {
+          value: "3.5M",
+          label: "Residents in the city it serves",
+          viz: { kind: "fan", from: "one app", to: ["English", "Arabic"], note: "designed side by side from the first wireframe" },
+        },
       ],
       points: [
-        "Launched publicly, built by the client's own team in Mendix with no custom workarounds.",
-        "Arabic designed alongside English from the first wireframes, so it shipped as designed with no right-to-left rework.",
-        "A resident-first structure: services grouped by need, one service pattern, search-first entry and a single place to track applications.",
+        "Built by the client's own team in Mendix, with no custom workarounds.",
+        "Arabic designed with English from the first wireframe: no right-to-left rework.",
       ],
-      provenance: "This was 2020–2021. The live app has changed a lot since; this describes what we designed and shipped at the time.",
+      provenance: "This was 2020–2021. The live app has changed a lot since; this is what we designed and shipped then.",
     },
     ownership: {
       mine: [
-        "Lead UX designer, onsite in Dubai, leading the design team and presenting every milestone directly to senior municipal stakeholders. I owned the structure and defended it in each review.",
+        "Lead UX designer onsite in Dubai. I led the design team, presented every milestone to senior officials, and defended the structure.",
       ],
       change: [
-        "I'd put the Arabic experience in front of Arabic-speaking residents, not just officials. Approval by officials isn't proof that residents understand a task first time.",
-        "I'd write down the right-to-left rules we worked out (layout exceptions, numbers inside Arabic text), so the next bilingual team doesn't start from zero.",
+        "I'd test the Arabic with Arabic-speaking residents, not just officials.",
+        "I'd write down our right-to-left rules so the next bilingual team doesn't start from zero.",
       ],
     },
-    signals:
-      "Structural thinking in a political environment, designing for the build reality rather than the portfolio, and bilingual right-to-left design as a first-class discipline.",
+    signals: "Structure in a political room, designing for the real build, and bilingual right-to-left as a first-class discipline.",
   },
 ];
 

@@ -24,7 +24,19 @@ export type ExhibitId =
   | "two-loops"
   | "prompt-vs-system"
   | "portable-skills"
-  | "adoption-spread";
+  | "adoption-spread"
+  | "white-label-chain"
+  | "growth-ceiling"
+  | "edits-vs-foundation"
+  | "adoption-four-sides"
+  | "how-work-ran"
+  | "trust-questions"
+  | "quality-steps"
+  | "blind-eval"
+  | "cut-to-three"
+  | "org-vs-need"
+  | "four-constraints"
+  | "ideal-vs-buildable";
 
 export type MetricVisualId =
   | "glyph-flow"
@@ -35,6 +47,8 @@ export type MetricVisualId =
   | "story-days"
   | "time-freed"
   | "brand-grid";
+
+export type HookVisualId = "same-request" | "client-theme" | "trust-edit" | "city-home";
 
 export type HeroVisualId = "newborn" | "plan-switch" | "cost" | "save-side" | "link-colour" | "audit";
 
@@ -50,7 +64,18 @@ export interface Metric {
   unit?: string;
   /** Optional small line diagram drawn in the card; replaces the before/after bars. */
   visual?: MetricVisualId;
+  /** Optional data-driven diagram for the card, in the same glyph language. */
+  viz?: MetricViz;
 }
+
+type Run = { solid: number; range?: number; label: string };
+export type MetricViz =
+  | { kind: "blocks"; unit: string; before: Run; after: Run; note: string }
+  | { kind: "dots"; filled: number; total: number; note: string }
+  | { kind: "compare"; rows: { label: string; value: number; accent?: boolean }[]; max: number; note: string }
+  | { kind: "fan"; from: string; to: string[]; note: string }
+  | { kind: "timeline"; end: number; unit: string; marks: { at: number; from?: number; label: string; accent?: boolean }[]; note: string }
+  | { kind: "ticks"; count: number; label: string; note: string };
 
 export type ScreenKey =
   | "old-household"
@@ -180,7 +205,23 @@ export interface CaseStudy {
    * Optional picture-first hero: one line, the headline number and one
    * before/after proof. When set, the opener's story tabs move into the Frame beat.
    */
-  hook?: { line: string; turn: string; visual: "same-request"; note: string };
+  hook?: {
+    line: string;
+    turn: string;
+    /** Defaults to the study's headline when not set. */
+    number?: { value: string; label: string };
+    note: string;
+    tabsLabel: string;
+    picture: {
+      visual: HookVisualId;
+      title: string;
+      chips: string[];
+      before: { label: string; items: string[] };
+      after: { label: string; items: string[] };
+    };
+    /** One per tab, in mark order. `quoted` only for words copied verbatim from the old system. */
+    findings: { tab: string; words: string; source?: string; quoted?: boolean; empty?: string }[];
+  };
   /** The reframe in one breath, for the home page hero deck. */
   hero: { label: string; brief: string; problem: string; call: string };
   snapshot: { frame: string; decision: string; outcome: string };

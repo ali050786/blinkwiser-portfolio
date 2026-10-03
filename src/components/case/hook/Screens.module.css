@@ -1,0 +1,309 @@
+/* Mini screens for the picture-first heroes of cases 02, 04 and 05. Demo brands, generic content. */
+.screen {
+  --demo-old: #4a5b7c;
+  --demo-new: #0f7f73;
+  position: relative;
+  display: grid;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  overflow: visible;
+  font-size: 11px;
+}
+:root[data-theme="dark"] .screen {
+  --demo-old: #8a9bbd;
+  --demo-new: #4fc2b4;
+}
+.body {
+  display: grid;
+  gap: 9px;
+  padding: 10px;
+  min-width: 0;
+}
+.title {
+  position: relative;
+  justify-self: start;
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+}
+.bar {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border-default);
+}
+
+/* 02: client theme */
+.brandBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--demo-new);
+  color: #fff;
+}
+.brandBar[data-stale] {
+  background: var(--demo-old);
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 2px;
+}
+.brandLogo {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 0.85);
+}
+.brandName {
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.cardMini {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-sunken);
+}
+.cardLabel {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+.cta {
+  position: relative;
+  justify-self: start;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--demo-new);
+  color: #fff;
+  font-size: 10px;
+}
+.screen[data-kind="old"] .cta {
+  background: var(--demo-old);
+}
+.cta[data-variant="odd"] {
+  border-radius: 2px;
+  background: transparent !important;
+  color: var(--demo-old);
+  border: 1px solid var(--demo-old);
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 3px;
+}
+.status {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  background: var(--surface-sunken);
+}
+.status[data-bad] {
+  color: var(--text-critical);
+  border: 1px dashed var(--text-critical);
+  background: color-mix(in oklch, var(--text-critical) 6%, transparent);
+}
+.tier {
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--demo-new);
+  color: var(--text-primary);
+}
+
+/* 04: trust edit */
+.slide {
+  display: grid;
+  gap: 4px;
+  margin: 10px 10px 0;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+}
+.slideKicker {
+  font-family: var(--font-family-mono);
+  font-size: 9px;
+  color: var(--text-tertiary);
+}
+.stat {
+  position: relative;
+  justify-self: start;
+  font-size: 22px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.screen[data-kind="old"] .stat {
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.source {
+  margin-left: 4px;
+  vertical-align: super;
+  font-size: 10px;
+  color: var(--accent-solid);
+}
+.slideLine {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+.chat {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+}
+.bubbleUser,
+.bubbleAi {
+  position: relative;
+  max-width: 85%;
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+}
+.bubbleUser {
+  justify-self: end;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+.bubbleAi {
+  justify-self: start;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+}
+.bubbleAi[data-bad] {
+  border: 1px dashed var(--text-critical);
+}
+.footRow {
+  display: flex;
+  padding: 0 10px 10px;
+}
+.undo {
+  position: relative;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-default);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+.undo[data-bad] {
+  border: 1px dashed var(--text-critical);
+  color: var(--text-critical);
+}
+
+/* 05: city home */
+.search {
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-solid);
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+.deptList {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 6px;
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 2px;
+}
+.dept {
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+  font-size: 10px;
+}
+.needs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+.need {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 10px;
+}
+.services {
+  position: relative;
+  display: grid;
+  gap: 5px;
+}
+.screen[data-kind="old"] .services {
+  outline: 1px dashed var(--text-critical);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.serviceOdd,
+.serviceRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-sunken);
+}
+.serviceOdd[data-alt] {
+  flex-direction: row-reverse;
+  border-radius: 2px;
+}
+.serviceOdd .bar,
+.serviceRow .bar {
+  flex: none;
+}
+.serviceRow {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.serviceRow .bar {
+  align-self: stretch;
+  width: auto !important;
+  max-width: 60%;
+}
+.steps {
+  font-size: 9px;
+  color: var(--text-tertiary);
+}
+.miniTag {
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border-default);
+  font-size: 9px;
+  color: var(--text-tertiary);
+}
+
+/* Narrow screens: keep mini UI inside its frame. */
+.cta,
+.miniTag,
+.need,
+.dept {
+  white-space: nowrap;
+}
+.serviceOdd {
+  min-width: 0;
+  overflow: hidden;
+}
+.serviceOdd .bar {
+  flex: 1 1 auto;
+  min-width: 12px;
+}
+.miniTag {
+  flex: none;
+}

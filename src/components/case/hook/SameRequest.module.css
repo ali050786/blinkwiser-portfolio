@@ -56,7 +56,7 @@
   border-radius: 4px;
   background: color-mix(in oklch, var(--text-critical) 6%, transparent);
 }
-.rail .mark {
+.rail [data-mark] {
   top: -8px;
   right: -8px;
 }
@@ -141,121 +141,7 @@
   outline-offset: 3px;
   border-radius: 6px;
 }
-.mark {
-  position: absolute;
-  top: -9px;
-  right: -9px;
-  display: grid;
-  place-items: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--text-critical);
-  color: var(--surface-raised);
-  font-family: var(--font-family-mono);
-  font-size: 10px;
-  line-height: 1;
-}
-.legend {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: m;
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-.legend li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  counter-increment: m;
-}
-.legend li::before {
-  content: counter(m);
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--text-critical);
-  color: var(--surface-raised);
-  font-family: var(--font-family-mono);
-  font-size: 10px;
-}
-.okList {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-.okList li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-.okList li::before {
-  content: "✓";
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--text-positive);
-  color: var(--surface-raised);
-  font-size: 10px;
-}
 :root[data-theme="dark"] .screen {
   --link-bad: #5fc98a;
 }
 
-/* Tabs drive the picture: the active finding stays full strength, the others step back. */
-.wrap {
-  display: grid;
-  gap: 16px;
-}
-.card [data-n] {
-  transition: opacity var(--duration-base) var(--ease-standard);
-}
-.card[data-active="1"] [data-n]:not([data-n="1"]),
-.card[data-active="2"] [data-n]:not([data-n="2"]),
-.card[data-active="3"] [data-n]:not([data-n="3"]) {
-  opacity: 0.3;
-}
-.card[data-active="1"] .mark[data-n="1"],
-.card[data-active="2"] .mark[data-n="2"],
-.card[data-active="3"] .mark[data-n="3"] {
-  box-shadow: 0 0 0 4px color-mix(in oklch, var(--text-critical) 22%, transparent);
-}
-.words {
-  display: grid;
-  gap: 4px;
-  padding: 10px 14px;
-  border-left: 3px solid var(--text-critical);
-  background: var(--surface-sunken);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-}
-.wordsQuote {
-  font-size: var(--font-size-body-s);
-  color: var(--text-primary);
-}
-.emptyWord {
-  display: inline-block;
-  min-width: 64px;
-  padding: 0 8px;
-  border: 1px dashed var(--border-default);
-  border-radius: 4px;
-  color: var(--text-tertiary);
-  font-size: 12px;
-}
-@media (prefers-reduced-motion: reduce) {
-  .card [data-n] {
-    transition: none;
-  }
-}

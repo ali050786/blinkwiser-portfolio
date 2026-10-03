@@ -4,7 +4,8 @@ import { principles } from "@/content/site";
 import { Glyph } from "@/components/ui/Glyph";
 import { Icon } from "@/components/ui/Icon";
 import { HeroStories } from "./HeroStories";
-import { SameRequest } from "./SameRequest";
+import { HookFrame } from "./hook/HookFrame";
+import { hookScreens } from "./hook/screens";
 import styles from "./CaseHero.module.css";
 
 export function CaseHero({ study: c }: { study: CaseStudy }) {
@@ -16,6 +17,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
   ] as const;
 
   const habit = principles.find((p) => p.primary === c.index);
+  const HookScreen = c.hook ? hookScreens[c.hook.picture.visual] : null;
 
   /* The turning point sits in the empty space beside the title on wide screens,
      and under the proof on narrow ones, so the proof stays near the top. Only one
@@ -36,7 +38,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
         <Icon name="arrow-left" size={16} /> All work
       </Link>
 
-      {c.hook ? (
+      {c.hook && HookScreen ? (
         <div className={styles.hook}>
           <div className={styles.hookCopy}>
             <p className="t-label">
@@ -47,12 +49,12 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
             <p className={`t-display-l ${styles.hookLine}`}>{c.hook.line}</p>
             <p className={`t-heading-l ${styles.hookTurn}`}>{c.hook.turn}</p>
             <p className={styles.hookNumber}>
-              <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>
-              <span className="t-body-s c-secondary">{c.headline.label}</span>
+              <span className={`tabular ${styles.headlineValue}`}>{(c.hook.number ?? c.headline).value}</span>
+              <span className="t-body-s c-secondary">{(c.hook.number ?? c.headline).label}</span>
             </p>
           </div>
           <div className={styles.hookVisual}>
-            <SameRequest stories={c.opener?.stories ?? []} />
+            <HookFrame hook={c.hook} before={<HookScreen kind="old" />} after={<HookScreen kind="new" />} />
             <p className="t-label c-tertiary">{c.hook.note}</p>
           </div>
         </div>

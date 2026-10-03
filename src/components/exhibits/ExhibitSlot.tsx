@@ -14,6 +14,9 @@ import { DesignSystemScreens } from "./DesignSystemScreens";
 import { PassiveScreens } from "./PassiveScreens";
 import { BrandingScreens } from "./BrandingScreens";
 import { CoverageGap, TrimVsReorder, TranslateLayer, AskWhenNeeded, PassiveRun } from "./Diagrams";
+import {
+  WhiteLabelChain, GrowthCeiling, EditsVsFoundation, AdoptionFourSides, HowWorkRan, TrustQuestions, QualitySteps, BlindEval, CutToThree, OrgVsNeed, FourConstraints, IdealVsBuildable,
+} from "./CaseDiagrams";
 import { RulesInHeads, TwoLoops, PromptVsSystem, PortableSkills, AdoptionSpread } from "./DsDiagrams";
 
 /**
@@ -45,6 +48,18 @@ const registry: Record<ExhibitId, React.ComponentType> = {
   "prompt-vs-system": PromptVsSystem,
   "portable-skills": PortableSkills,
   "adoption-spread": AdoptionSpread,
+  "white-label-chain": WhiteLabelChain,
+  "growth-ceiling": GrowthCeiling,
+  "edits-vs-foundation": EditsVsFoundation,
+  "adoption-four-sides": AdoptionFourSides,
+  "how-work-ran": HowWorkRan,
+  "trust-questions": TrustQuestions,
+  "quality-steps": QualitySteps,
+  "blind-eval": BlindEval,
+  "cut-to-three": CutToThree,
+  "org-vs-need": OrgVsNeed,
+  "four-constraints": FourConstraints,
+  "ideal-vs-buildable": IdealVsBuildable,
 };
 
 export function ExhibitSlot({ id }: { id: ExhibitId }) {
