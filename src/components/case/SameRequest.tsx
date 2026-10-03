@@ -15,38 +15,50 @@ function Screen({ kind }: { kind: "old" | "new" }) {
         <span className={styles.logo} />
         <span className={styles.topLine} />
       </div>
-      <div className={styles.body}>
-        <span className={styles.pageTitle}>Account summary</span>
-        <div className={styles.tiles}>
-          <div className={styles.tile}>
-            <span className={styles.tileLabel}>Available balance</span>
-            <span className={styles.tileValue}>$950.00</span>
-            <span className={styles.link}>
-              Transactions →{old && <Mark n={2} />}
-            </span>
-          </div>
-          <div className={styles.tile} data-second>
-            <span className={styles.line} style={{ width: "70%" }} />
-            <span className={styles.line} style={{ width: "50%" }} />
-            <span className={styles.line} style={{ width: "60%" }} />
-            {old && <Mark n={3} />}
-          </div>
-        </div>
-        <div className={styles.foot}>
+      <div className={styles.frame}>
+        <div className={styles.rail} data-missing={old || undefined}>
           {old ? (
-            <>
-              <span className={styles.primary}>
-                Save
-                <Mark n={1} />
-              </span>
-              <span className={styles.secondary}>Cancel</span>
-            </>
+            <Mark n={3} />
           ) : (
             <>
-              <span className={styles.secondary}>Cancel</span>
-              <span className={styles.primary}>Save</span>
+              <span className={styles.railItem} data-on />
+              <span className={styles.railItem} />
+              <span className={styles.railItem} />
             </>
           )}
+        </div>
+        <div className={styles.body}>
+          <span className={styles.pageTitle}>Account summary</span>
+          <div className={styles.tiles}>
+            <div className={styles.tile}>
+              <span className={styles.tileLabel}>Available balance</span>
+              <span className={styles.tileValue}>$950.00</span>
+              <span className={styles.link}>
+                Transactions →{old && <Mark n={2} />}
+              </span>
+            </div>
+            <div className={styles.tile} data-second>
+              <span className={styles.line} style={{ width: "70%" }} />
+              <span className={styles.line} style={{ width: "50%" }} />
+              <span className={styles.line} style={{ width: "60%" }} />
+            </div>
+          </div>
+          <div className={styles.foot}>
+            {old ? (
+              <>
+                <span className={styles.primary}>
+                  Save
+                  <Mark n={1} />
+                </span>
+                <span className={styles.secondary}>Cancel</span>
+              </>
+            ) : (
+              <>
+                <span className={styles.secondary}>Cancel</span>
+                <span className={styles.primary}>Save</span>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -74,13 +86,17 @@ export function SameRequest() {
           <ol className={styles.legend}>
             <li>Save on the wrong side</li>
             <li>Link in a button colour</li>
-            <li>Off the grid</li>
+            <li>Side nav left out: docs said 19 components, the file had 20</li>
           </ol>
         </section>
         <section className={base.col} data-kind="new" aria-label="With the skills: on-brand">
           <p className={`t-label ${base.colLabel}`}>With the skills</p>
           <Screen kind="new" />
-          <p className={styles.ok}>Follows the written rules, checked before hand-off</p>
+          <ul className={styles.okList}>
+            <li>Save on the right</li>
+            <li>Link takes the link colour</li>
+            <li>Side nav in place: audit matched docs to file, 20 of 20</li>
+          </ul>
         </section>
       </div>
     </figure>
