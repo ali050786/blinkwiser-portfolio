@@ -1,7 +1,7 @@
 # Case Study Playbook: update from the AI-Readable Design System session
 
 - **Version:** 1.0 · **Status:** Final · **Date:** 2026-10-03
-- **Branch:** case-hook-ai-design-system (from case-hook-open-enrollment)
+- **Branch:** case-studies (all case study work, Enrollment and AI design system, on one branch)
 - **Read with:** the "Playbook for the remaining case studies" in the Case Study Hook Brainstorm doc. Where they differ, this file wins.
 
 ## 1. Pick the hero by the 10-second test
@@ -46,7 +46,7 @@ A recruiter gives the first screen about 10 seconds: a title, one number, one pi
 - `hook` in `types.ts` switches `CaseHero` to the picture-first layout. The `opener.stories` feed its tabs (`SameRequest.tsx` is this case's picture).
 - `HeroStories` has a `compact` mode for showing full story tabs inside a beat.
 - Check desktop, 1100px, phone, dark (localStorage `theme=dark`) and reduced motion before sending screenshots.
-- Commit after each approved change, on the case branch.
+- Commit after each approved change, on the `case-studies` branch.
 
 ## 6. Session process
 
