@@ -50,3 +50,18 @@
 .barWarn {
   fill: var(--text-critical);
 }
+
+/* Desktop draws wide; phones get the vertical drawing when a diagram has one. */
+.mob {
+  display: none;
+}
+@media (max-width: 600px) {
+  .scroll[data-has-mobile] .desk {
+    display: none;
+  }
+  .scroll[data-has-mobile] .mob {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+  }
+}

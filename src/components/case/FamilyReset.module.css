@@ -332,7 +332,9 @@
   font-size: 15px;
   white-space: nowrap;
 }
+/* Phones: before above after, so each mini screen gets the full width. */
 @media (max-width: 560px) {
+  .cols,
   .cols[data-stack-narrow] {
     grid-template-columns: 1fr;
   }

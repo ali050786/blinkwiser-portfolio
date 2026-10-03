@@ -1,34 +1,15 @@
 import g from "@/components/ui/Glyph.module.css";
 import d from "./Diagrams.module.css";
 
-/**
- * Line diagrams in the same visual language as the study glyphs: plain nodes,
- * red dashed nodes for the problem, accent for the fix. Static, readable as stills.
- */
-export function Diagram({ label, viewBox, aria, caption, children }: { label: string; viewBox: string; aria: string; caption: string; children: React.ReactNode }) {
-  return (
-    <figure className={d.fig} data-reveal>
-      <p className={`t-label ${d.label}`}>{label}</p>
-      <div className={d.scroll}>
-        <svg viewBox={viewBox} className={`${g.glyph} ${d.svg}`} role="img" aria-label={aria}>
-          {children}
-        </svg>
-      </div>
-      <figcaption className="t-body-s c-secondary">{caption}</figcaption>
-    </figure>
-  );
-}
-
-export const T = ({ x, y, children, anchor = "start", warn, accent }: { x: number; y: number; children: React.ReactNode; anchor?: "start" | "middle" | "end"; warn?: boolean; accent?: boolean }) => (
-  <text x={x} y={y} textAnchor={anchor} className={`${g.mono} ${warn ? d.warnText : ""} ${accent ? d.accentText : ""}`}>
-    {children}
-  </text>
-);
+export { Diagram, T } from "./DiagramKit";
+import { Diagram, T } from "./DiagramKit";
+import * as M from "./MobileDiagrams";
 
 /** Stakes: miss someone in the window and the gap lasts until the next one. */
 export function CoverageGap() {
   return (
     <Diagram
+      mobile={M.coverageGap()}
       label="Diagram · one coverage year"
       viewBox="0 0 720 230"
       aria="Timeline of one coverage year: the open enrollment window at the start, a birth with 31 days to act, and a red gap where a missed family member stays uncovered until the next window."
@@ -67,6 +48,7 @@ export function TrimVsReorder() {
   const warn = [2, 6];
   return (
     <Diagram
+      mobile={M.trimVsReorder()}
       label="Diagram · the two options"
       viewBox="0 0 720 260"
       aria="Two flows. Trimming screens gives fewer screens with the per-coverage loop still there. Reordering gives 5 steps with no loop and who-needs-what asked once."
@@ -113,6 +95,7 @@ export function TranslateLayer() {
   const target = [2, 0, 1];
   return (
     <Diagram
+      mobile={M.translateLayer()}
       label="Diagram · two orders, one translation"
       viewBox="0 0 720 310"
       aria="Top row: how a family decides, my family, who needs what, which plan. Bottom row: how the backend stores it, coverage, plan, members. Crossing lines pass through a band labelled UI translates."
@@ -158,6 +141,7 @@ export function AskWhenNeeded() {
   const before = ["profile", "dependents", "upload document", "coverage", "review"];
   return (
     <Diagram
+      mobile={M.askWhenNeeded()}
       label="Diagram · ask only when needed"
       viewBox="0 0 720 292"
       aria="Before: a fixed upload document step for everyone. After: a check for whether proof is needed, with the upload step only on that branch."
@@ -218,6 +202,7 @@ export function PassiveRun() {
   const okW = (handled / total) * 640;
   return (
     <Diagram
+      mobile={M.passiveRun()}
       label="Diagram · one passive enrollment run"
       viewBox="0 0 720 286"
       aria={`${total} members who took no action flow into one rule set by the client. ${handled} are handled by the rule; ${review} come back to the admin, each with a reason.`}

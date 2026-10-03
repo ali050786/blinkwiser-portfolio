@@ -41,6 +41,8 @@ A recruiter gives the first screen about 10 seconds: a title, one number, one pi
 - Outcome cards use `MetricVisual` (blocks per hour or day, dashed for the top of a range; a freed-time bar; a brand by platform grid). Label every one team-observed, walked or demo.
 - Snapshot: when the hero already shows the number, the snapshot shows the glyph only (handled in `Snapshot.tsx`).
 - Illustrations use a demo brand and generic names; say so in one line under the picture.
+- Phones: every before/after card stacks before above after under 560px (one rule in `FamilyReset.module.css`).
+- Phones: every line diagram has a vertical drawing in `MobileDiagrams.tsx`, passed as `mobile` to `Diagram` (`DiagramKit.tsx`); under 600px the wide drawing hides and the vertical one shows. "Two options" diagrams use the `twoPaths` helper. A new diagram is not done until it has its phone drawing.
 
 ## 5. Build mechanics
 

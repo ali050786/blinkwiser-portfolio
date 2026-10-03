@@ -1,6 +1,7 @@
 import g from "@/components/ui/Glyph.module.css";
 import d from "./Diagrams.module.css";
-import { Diagram, T } from "./Diagrams";
+import { Diagram, T } from "./DiagramKit";
+import * as M from "./MobileDiagrams";
 
 /**
  * Diagrams for cases 02, 04 and 05, in the shared glyph language: plain nodes,
@@ -15,6 +16,7 @@ export function WhiteLabelChain() {
   const emp = [60, 120, 180, 240];
   return (
     <Diagram
+      mobile={M.whiteLabelChain()}
       label="Diagram · who sees the product"
       viewBox="0 0 720 310"
       aria="One product resold to insurers, who resell it to employers, who put it in front of members. Every level needs its own look. Before, each was re-skinned by hand."
@@ -54,6 +56,7 @@ export function GrowthCeiling() {
   const xs = [60, 190, 320, 450, 580];
   return (
     <Diagram
+      mobile={M.growthCeiling()}
       label="Diagram · the growth ceiling"
       viewBox="0 0 720 220"
       aria="Five new clients in a queue. Each waits for a hand re-skin of weeks before the next can start."
@@ -87,6 +90,7 @@ export function EditsVsFoundation() {
   const xs = [60, 180, 300, 420];
   return (
     <Diagram
+      mobile={M.editsVsFoundation()}
       label="Diagram · the two options"
       viewBox="0 0 720 270"
       aria="Do the edits: every change and every new client is another hand edit, in a loop. Go underneath: document what exists, it becomes the system, a new client becomes configuration."
@@ -144,6 +148,7 @@ export function AdoptionFourSides() {
   ];
   return (
     <Diagram
+      mobile={M.adoptionFourSides()}
       label="Diagram · adoption from four sides"
       viewBox="0 0 720 300"
       aria="The design system in the centre, pushed into engineering's default from four sides: enablement, documentation, quality and policy."
@@ -181,6 +186,7 @@ export function HowWorkRan() {
   const steps = ["new idea", "BA workshop", "design", "eng workshop", "ship"];
   return (
     <Diagram
+      mobile={M.howWorkRan()}
       label="Diagram · how the work ran"
       viewBox="0 0 720 230"
       aria="A new idea goes to a workshop with business analysts, then design, then a workshop with engineering for system changes, then ships. Personas for insurers, employers and members feed design."
@@ -222,6 +228,7 @@ export function TrustQuestions() {
   ];
   return (
     <Diagram
+      mobile={M.trustQuestions()}
       label="Diagram · what a creator needs before posting"
       viewBox="0 0 720 270"
       aria="A carousel posted under your own name raises four questions: is it accurate, did it do what it said, can I get back, does it look like me. Version one failed all four."
@@ -255,6 +262,7 @@ export function QualitySteps() {
   const xs = steps.map((_, i) => 60 + i * 110);
   return (
     <Diagram
+      mobile={M.qualitySteps()}
       label="Diagram · the price of each quality step"
       viewBox="0 0 720 220"
       aria="Six pipeline steps from research to fact-check. Each adds time and cost; the first rebuild took 84 seconds a deck."
@@ -286,6 +294,7 @@ export function QualitySteps() {
 export function BlindEval() {
   return (
     <Diagram
+      mobile={M.blindEval()}
       label="Diagram · deciding by evidence"
       viewBox="0 0 720 270"
       aria="Ten golden cases run through two settings, reasoning on and reasoning off. A blind judge compares them. Result: quality 8.1 versus 8.0, 84 seconds down to 31, about half the cost."
@@ -331,6 +340,7 @@ export function BlindEval() {
 export function CutToThree() {
   return (
     <Diagram
+      mobile={M.cutToThree()}
       label="Diagram · fewer knobs, more design"
       viewBox="0 0 720 250"
       aria="Left: nine styles times font and layout pickers across every template, leading to generic output. Right: three templates kept exactly as designed: The Truth, The Sketch, The Statement."
@@ -373,6 +383,7 @@ export function OrgVsNeed() {
   const depts = [70, 150, 230];
   return (
     <Diagram
+      mobile={M.orgVsNeed()}
       label="Diagram · the catalogue, as the city ran it"
       viewBox="0 0 720 300"
       aria="Left: the municipality splits into departments, each with its own services, rules, fees and approvals. Right: a resident with a need, who doesn't know which department owns it."
@@ -427,6 +438,7 @@ export function FourConstraints() {
   ];
   return (
     <Diagram
+      mobile={M.fourConstraints()}
       label="Diagram · four constraints, one structure"
       viewBox="0 0 720 280"
       aria="Four constraints converge on one structure: residents succeed alone in two languages, formal sign-off at every milestone, a low-code build with fixed components, and requirements that kept moving."
@@ -453,6 +465,7 @@ export function FourConstraints() {
 export function IdealVsBuildable() {
   return (
     <Diagram
+      mobile={M.idealVsBuildable()}
       label="Diagram · the two options"
       viewBox="0 0 720 250"
       aria="The ideal: custom navigation and components not in the low-code platform, so the build stalls or drifts. The buildable: the platform's own components, Arabic and English designed side by side, built as designed."

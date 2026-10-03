@@ -1,6 +1,7 @@
 import g from "@/components/ui/Glyph.module.css";
 import d from "./Diagrams.module.css";
-import { Diagram, T } from "./Diagrams";
+import { Diagram, T } from "./DiagramKit";
+import * as M from "./MobileDiagrams";
 
 /**
  * Diagrams for the AI-readable design system case, in the same language as the
@@ -16,6 +17,7 @@ export function RulesInHeads() {
   const heads = ["which colour = link", "which grid per page", "how screens compose"];
   return (
     <Diagram
+      mobile={M.rulesInHeads()}
       label="Diagram · what the AI had to work with"
       viewBox="0 0 720 290"
       aria="Top row: components, colour variables and type styles, all in the Figma file and read by the AI. Bottom row, red and dashed: which colour is a link, which grid a page uses, how screens compose. These lived in designers' heads and never reached the AI, so its screens came back off-brand."
@@ -71,6 +73,7 @@ export function TwoLoops() {
   ];
   return (
     <Diagram
+      mobile={M.twoLoops()}
       label="Diagram · two queues, one bottleneck"
       viewBox="0 0 720 290"
       aria="Two lanes. BAs and developers: a Jira story waits on a mockup before developers can check feasibility, 1 to 2 weeks per story. Sales: a prospective client waits on a mockup before a branded demo, about 2 days per mockup. Both pass through one red node: a senior designer drawing the screen by hand."
@@ -113,6 +116,7 @@ export function PromptVsSystem() {
   const xs = [60, 180, 300, 420];
   return (
     <Diagram
+      mobile={M.promptVsSystem()}
       label="Diagram · the two options"
       viewBox="0 0 720 270"
       aria="Two paths. Tune the prompts: the same system, a prompt, the AI, an off-brand screen, and a loop back to prompt again. Make the system legible: rules written down, the AI reads them first, a screen checked against the rules, no loop."
@@ -175,6 +179,7 @@ export function PortableSkills() {
   ];
   return (
     <Diagram
+      mobile={M.portableSkills()}
       label="Diagram · portable and self-checking"
       viewBox="0 0 720 300"
       aria="Top: one set of skill files in plain markdown connects to Figma's agent today, and can move to Claude Code through a Figma MCP or to any agent that reads markdown. Bottom: the Figma file and the docs, with an audit skill comparing them every session and a memory skill carrying decisions forward."
@@ -228,6 +233,7 @@ export function PortableSkills() {
 export function AdoptionSpread() {
   return (
     <Diagram
+      mobile={M.adoptionSpread()}
       label="Diagram · how it spread"
       viewBox="0 0 720 230"
       aria="From me, who built and proved it, to the four designers on my team, to the organisation's UAT team, who chose it for their own projects. BAs are a dashed node: held back on purpose."
