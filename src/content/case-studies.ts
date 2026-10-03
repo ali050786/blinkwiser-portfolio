@@ -478,12 +478,9 @@ export const caseStudies: CaseStudy[] = [
       call: "Rebuild it as skill files an agent can read and verify against.",
     },
     snapshot: {
-      frame:
-        "AI kept producing screens that didn't look like our product. The problem wasn't the AI: a six-year-old design system was illegible to a machine, built for humans and largely living in designers' heads.",
-      decision:
-        "Unprompted, rebuild the design system as an AI-readable knowledge base: interlocking skill files for tokens, themes, components, layout, app shells, a build workflow, a self-audit and a memory.",
-      outcome:
-        "New-client mockups went from about 2 days to 3–4 hours, Jira-story turnaround from 1–2 weeks to 3–4 days, and the wider org chose to adopt the process. All figures are team-observed.",
+      frame: "The AI wasn't the problem. Our design rules lived in designers' heads, so it had nothing to follow.",
+      decision: "Unasked, I rewrote the design system as skill files the AI reads before it designs.",
+      outcome: "Mockups: 2 days to 3–4 hours. Jira stories: 1–2 weeks to 3–4 days. Adopted beyond my team. Team-observed.",
     },
     frame: {
       assumed: "The AI isn't good enough yet. Prompt harder, wait for better models, or add designers.",
