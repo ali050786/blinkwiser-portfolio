@@ -483,31 +483,21 @@ export const caseStudies: CaseStudy[] = [
       outcome: "Mockups: 2 days to 3–4 hours. Jira stories: 1–2 weeks to 3–4 days. Adopted beyond my team. Team-observed.",
     },
     frame: {
-      assumed: "The AI isn't good enough yet. Prompt harder, wait for better models, or add designers.",
-      actual:
-        "The design system was built for humans and never written down for a machine. The AI had nothing to reason with.",
+      assumed: "The AI isn't good enough yet.",
+      actual: "Our design system was never written down for a machine.",
       body: [
-        "Two loops were slow. Demos to prospective insurers took days, and the BA-to-developer loop stalled because developers reason from screens, not written requirements, so feasibility couldn't be confirmed until someone mocked it up. I was already bringing AI into the design workflow to attack both, and the org was keen on AI too. But the output wasn't usable.",
-        "We had a design system in Figma, but no descriptions: it was built six years ago, before Figma had a field for them, and patched piecemeal ever since. The rules lived in designers' heads. Components alone weren't enough. Making the system AI-legible meant externalising that tacit knowledge: colour and typography semantics, grid, layout, components and composition.",
-        "Nobody had done this on a veteran six-year project. I looked for a process and found none that worked, so I built one.",
+        "Sales demos and BA-to-developer handoffs both waited on mockups. I brought in AI to speed them up. Its screens weren't usable.",
+        "Our Figma system was six years old, with no descriptions. The rules lived in designers' heads, so the AI had components but no rules.",
+        "No one had made a veteran system AI-readable. I found no process, so I built one.",
       ],
       exhibit: "rules-in-heads",
     },
     stakes: {
-      intro: "Fast, on-brand screens sat on the critical path for two audiences at once.",
+      intro: "Two teams were waiting on fast, on-brand screens.",
       items: [
-        {
-          title: "BAs and developers",
-          body: "Quick mockups to confirm feasibility before committing engineering, because developers reason from screens, not specs.",
-        },
-        {
-          title: "Sales and marketing",
-          body: "Branded demo screens for prospective clients. Slow turnaround meant demos slipped in a live sales cycle.",
-        },
-        {
-          title: "Senior design time",
-          body: "Every slow mockup pulled senior designers off product work. The manual approach didn't scale with the pipeline.",
-        },
+        { title: "BAs and developers", body: "Developers judge feasibility from screens, not specs." },
+        { title: "Sales and marketing", body: "Slow branded demos slipped in live sales cycles." },
+        { title: "Senior design time", body: "Every hand-drawn mockup pulled seniors off product work." },
       ],
       exhibit: "two-loops",
     },
@@ -515,71 +505,55 @@ export const caseStudies: CaseStudy[] = [
       {
         id: "fix-the-system",
         title: "Fix the AI, or fix the system it reads?",
-        tension:
-          "The expected responses were to wait for better AI, prompt harder, or add designers. Nobody asked me to re-architect anything.",
-        rejected: { label: "Tune the prompts", detail: "Keep the system as it is and coax better output from the model." },
-        chosen: { label: "Make the system legible", detail: "Rewrite the design system so a machine can reason with it." },
+        tension: "The expected answers: wait for better AI, prompt harder, or hire. Nobody asked for a rebuild.",
+        rejected: { label: "Tune the prompts", detail: "Coax better output from the same system." },
+        chosen: { label: "Make the system legible", detail: "Rewrite it so a machine can follow it." },
         why: [
-          "I'd been following how skills and agent-readable docs were emerging, and connected that to what I was watching fail. The AI wasn't the variable I could change. The system was.",
-          "No one assigned it. I saw it, and I owned it.",
+          "I'd been watching agent-readable docs emerge. I couldn't change the AI. I could change the system.",
+          "No one assigned it. I owned it.",
         ],
-        cost: "Weeks of unrequested work on a foundation that had to prove itself before anyone would call it one.",
+        cost: "Weeks of unasked work before it proved itself.",
         exhibit: "prompt-vs-system",
       },
       {
         id: "skill-files",
         title: "What does a design system look like when its reader is an agent?",
-        tension:
-          "A variable count or a component library isn't something an agent can reason with. It needs rules: which token for a link, which type style for a caption, which grid for a page.",
-        rejected: { label: "Richer Figma descriptions", detail: "Annotate the existing file and hope the agent infers the rest." },
-        chosen: {
-          label: "Interlocking skill files",
-          detail: "A configuration-driven, multi-brand system written as plain-markdown skills, fed atomically from tokens up.",
-        },
+        tension: "An agent needs rules, not a component count: which colour for a link, which grid for a page.",
+        rejected: { label: "Richer Figma descriptions", detail: "Annotate the file and hope the agent infers the rest." },
+        chosen: { label: "Interlocking skill files", detail: "Plain-markdown skills, built up from tokens." },
         why: [
-          "One system themes into five client brands by mode and is built to add more. Each skill holds a rule an agent needs: semantic colour, typography by intended use, a documented 12-column grid, 43 brand-agnostic component sets, 3 density modes and 141 described variables.",
-          "Fed bottom-up, tokens first and then components that already know their tokens, so the system stays self-consistent as it grows.",
+          "One system themes five client brands by mode: semantic colour, type by use, a 12-column grid, 43 component sets, 3 density modes and 141 described variables.",
+          "Tokens first, then components that know their tokens, so it stays consistent as it grows.",
         ],
-        cost: "More upfront structuring work than annotating what already existed.",
+        cost: "More upfront work than annotating what existed.",
         exhibit: "skill-graph",
       },
       {
         id: "structural-correctness",
         title: "When tokens and components still aren't enough, what makes output correct?",
-        tension:
-          "With tokens, grid and components documented, the AI still failed in ways that only show up on a real, ever-growing system.",
-        rejected: { label: "Accept good-looking output", detail: "Screens that pass a glance but are disconnected from the system." },
-        chosen: { label: "Enforce structure", detail: "Shells, a build workflow with self-verification, and instances instead of redraws." },
+        tension: "Even with tokens, grid and components written down, the output still broke.",
+        rejected: { label: "Accept good-looking output", detail: "Screens that pass a glance but aren't wired to the system." },
+        chosen: { label: "Enforce structure", detail: "App shells, a self-checking build workflow, real instances." },
         why: ["Three fixes mattered most:"],
         bullets: [
-          {
-            title: "Composition",
-            body: "App shells and layout templates, plus a build-screen workflow that classifies the page, duplicates the right shell, uses only sanctioned components and runs a self-verification checklist.",
-          },
-          {
-            title: "An ever-growing system",
-            body: "The skills carry the judgment, not just the catalogue: when to reuse a component, when to add a variant, and when something is genuinely new.",
-          },
-          {
-            title: "Instances, not redraws",
-            body: "Left alone, an agent recreates elements from scratch. It looks right but it's dead. Every element is now placed as an instance of its source component, which cuts token cost and keeps the file traceable.",
-          },
+          { title: "Composition", body: "App shells and a build workflow: pick the shell, use only approved components, run a checklist." },
+          { title: "A growing system", body: "The skills say when to reuse, when to add a variant and when to build new." },
+          { title: "Instances, not redraws", body: "Agents redraw elements from scratch. Every element is now a real instance: cheaper and traceable." },
         ],
-        cost: "Slower first runs in exchange for output that actually met the bar.",
+        cost: "Slower first runs, for output that meets the bar.",
         exhibit: "build-screen",
       },
       {
         id: "portable",
         title: "Build for today's tool, or for the day it starts charging?",
-        tension:
-          "Figma's new agent was free in beta and fast to build on. AI is never free for long, and beta pricing ends.",
-        rejected: { label: "Go all-in on one vendor", detail: "Encode the system in a format only one agent can read." },
-        chosen: { label: "Portable and self-maintaining", detail: "Plain markdown, MCP-drivable, with drift checks and memory built in." },
+        tension: "Figma's agent was free in beta. Beta pricing ends.",
+        rejected: { label: "Go all-in on one vendor", detail: "A format only one agent can read." },
+        chosen: { label: "Portable and self-maintaining", detail: "Plain markdown, any agent, with drift checks and memory." },
         why: [
-          "Anti-drift: an audit skill diffs the live file against the docs, and a memory skill carries decisions across sessions, so the system doesn't rot the way the original did.",
-          "Anti-lock-in: the skills run on Figma's agent today and can move to Claude Code or any agent through a Figma MCP when that makes more sense.",
+          "Anti-drift: an audit compares the file with the docs, and a memory skill carries decisions forward.",
+          "Anti-lock-in: it runs on Figma's agent today and can move to Claude Code or any agent through a Figma MCP.",
         ],
-        cost: "Maintaining governance (versioned backups, a guide page) that a single-vendor setup would have hidden.",
+        cost: "Governance to maintain: versioned backups and a guide page.",
         exhibit: "portable-skills",
       },
     ],
@@ -605,25 +579,21 @@ export const caseStudies: CaseStudy[] = [
         { value: "5 · 3", label: "Client brands and platforms covered by one system", visual: "brand-grid" },
       ],
       points: [
-        "Adoption is the hardest proof: all four designers on my team run on it, and the org's wider UAT team chose the process for their own projects. I didn't have to sell it.",
-        "Designers do the UX, not the busywork. The machine makes the screen; the designer makes the call. Freed hours go to research, flows and edge cases.",
-        "Built in about 4–5 weeks across five brands and three platforms (admin centre, member portal, mobile app). With the method known, I could do it again in 1–2.",
+        "All four designers on my team use it, and the org's UAT team chose it for their projects. I didn't have to sell it.",
+        "The AI makes the screen; designers make the call. Freed hours go to research, flows and edge cases.",
+        "Built in 4–5 weeks across five brands and three platforms. I could redo it in 1–2.",
       ],
-      provenance:
-        "Lived-experience figures, recognised by managers, BAs and senior leadership. Not yet formalised in sprint metrics, because the work is recent.",
+      provenance: "Lived-experience figures, recognised by managers, BAs and leadership. Not yet in sprint metrics.",
       exhibit: "adoption-spread",
     },
     ownership: {
       mine: [
-        "Entirely self-initiated. I worked hit-and-try: build something, prove it works, then bring the team in. It spread from me, to my four designers, to the wider org.",
-        "Where I drew the line: I haven't handed it to BAs yet. They could mock screens with it, but they'd likely skip the UX thinking first. Democratising it further is a process risk I'm managing on purpose.",
+        "Self-initiated. I built it, proved it, then brought the team in.",
+        "I haven't handed it to BAs yet: they'd likely skip the UX thinking. That's on purpose.",
       ],
-      change: [
-        "I'd baseline before-and-after tracking from day one, so the 40% and the day-to-hour gains are measured and reportable, not just widely acknowledged.",
-      ],
+      change: ["I'd track before and after from day one, so the gains are measured, not just acknowledged."],
     },
-    signals:
-      "A design system alone won't drive an AI. You have to teach it your rules, and every time it repeats a mistake, turn the fix into a skill.",
+    signals: "A design system alone won't drive an AI. Teach it your rules, and turn every repeated mistake into a skill.",
   },
   /* ------------------------------------------------------------------ 04 */
   {
