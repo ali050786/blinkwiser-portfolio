@@ -41,7 +41,7 @@ const personJsonLd = {
   email: `mailto:${site.email}`,
   address: { "@type": "PostalAddress", addressLocality: "Pune", addressCountry: "IN" },
   sameAs: [site.linkedin, site.blinkwiser],
-  knowsAbout: ["US health insurance UX", "Benefits enrollment", "Design systems", "Design tokens", "Enterprise UX", "AI-driven UI", "Agentic workflows", "RTL design"],
+  knowsAbout: ["Enterprise SaaS UX", "US health insurance UX", "Benefits enrollment", "Design systems", "Design tokens", "Enterprise UX", "AI-driven UI", "Agentic workflows", "RTL design"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

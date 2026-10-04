@@ -1,9 +1,9 @@
 export const site = {
   name: "Sikandar Ali Abdul",
-  title: "Sikandar Ali Abdul · Lead UX Designer, US Health Insurance",
+  title: "Sikandar Ali Abdul · Lead UX Designer, Regulated Enterprise SaaS",
   url: "https://portfolio.blinkwiser.com",
   description:
-    "Lead UX Designer for US health insurance. Five years leading design on a white-label US health-insurance platform, plus AI products and civic services. Decision-led case studies with real screens: the brief, the real problem, and the call.",
+    "Lead UX designer for regulated enterprise SaaS. Five years leading design on a white-label US health-insurance platform, plus government services and AI products. Case studies with real screens.",
   role: "Lead UX Designer",
   location: "Pune, India",
   availability: "Open to senior and lead UX roles",

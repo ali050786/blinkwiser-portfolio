@@ -10,7 +10,7 @@ export function Hero({ layout = "stacked" }: { layout?: "stacked" | "split" }) {
     <HeroShell
       title={
         <>
-          I design benefits and enrollment software for US health insurance.
+          I lead design on regulated enterprise SaaS, from health insurance to government and AI.
         </>
       }
       lede={
