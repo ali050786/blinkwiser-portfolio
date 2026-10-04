@@ -18,10 +18,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "open-enrollment",
     index: "01",
-    accent: "enrollment",
     glyph: "flow",
     group: "Health insurance platforms",
-    title: "Enrollment: redesigning the decision, not the screens",
+    title: "Health-insurance enrollment, from 9 steps to 5",
     short: "Enrollment",
     dek: "The flow asked questions in the order the backend stores them. I reordered them to match how a family actually decides.",
     meta: {
@@ -78,7 +77,7 @@ export const caseStudies: CaseStudy[] = [
     },
     snapshot: {
       frame:
-        "Clients said the enrollment flow was too long. Length was the symptom: the flow was the data model rendered as UI, so members answered “who's covered” again inside every coverage.",
+        "Clients said the enrollment flow was too long. It was long because it followed how the backend stores data, so members answered “who's covered” again inside every coverage.",
       decision:
         "Reorder the questions to the member's model (my family → who needs what → which plan) and ask “who needs what” once, as a single family-by-coverage grid.",
       outcome:
@@ -86,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
     },
     frame: {
       assumed: "The flow is too long. Trim screens.",
-      actual: "The flow asks questions in the backend's order. Change the order of the questions.",
+      actual: "It asked questions in the order the backend stores them, so members answered the same question many times.",
       body: [
         "Feedback from clients and BAs came in four parts: the flow was too long, members were confused about dependents, cost was unclear until late, and admins struggled when enrolling members on their behalf.",
         "The obvious fix was to trim screens. I looked at why there were so many first. Cutting screens would have shortened the loop without removing it.",
@@ -114,7 +113,7 @@ export const caseStudies: CaseStudy[] = [
     forks: [
       {
         id: "reorder",
-        title: "Trim the screens, or change the order of the questions?",
+        title: "I changed the order of the questions instead of trimming screens",
         tension: "Trimming was faster and would have answered “too long” on paper.",
         rejected: { label: "Trim screens", detail: "Keeps the loop and the duplicated dependent question." },
         chosen: { label: "Reorder the decision", detail: "My family → who needs what → which plan." },
@@ -126,7 +125,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         id: "defaults",
-        title: "What should the common case cost?",
+        title: "I made the most common choice the default",
         tension: "Once the grid exists, most of the work is choosing plans.",
         rejected: { label: "Ask everything, every time", detail: "Equal weight for common and rare paths." },
         chosen: { label: "Design the defaults", detail: "Shared family plan by default; per-member plans as a clear escape hatch." },
@@ -139,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         id: "engineering",
-        title: "Force the data model on members, or a rewrite on engineering?",
+        title: "The UI translates the member's answers for the backend, and the backend changed in phases",
         tension:
           "Engineering pushed back, and fairly: their model is coverage → plan → members, and I was asking them to take answers in reverse order.",
         rejected: { label: "Either extreme", detail: "Ship the backend's order to members, or demand a backend rewrite." },
