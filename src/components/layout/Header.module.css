@@ -54,6 +54,10 @@
   font-size: var(--font-size-label);
   color: var(--text-tertiary);
 }
+/* Nav sits on the right, next to Résumé, instead of centred. */
+.nav {
+  margin-left: auto;
+}
 .nav ul {
   display: flex;
   gap: 4px;
