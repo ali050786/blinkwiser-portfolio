@@ -105,7 +105,6 @@ export function Header() {
                   transition={{ delay: 0.03 * i + 0.04, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link href={item.href} className={styles.sheetLink} onClick={() => setOpen(false)}>
-                    <span className="t-label c-tertiary">0{i + 1}</span>
                     {item.label}
                   </Link>
                 </motion.li>

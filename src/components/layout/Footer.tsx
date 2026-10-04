@@ -18,7 +18,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Case studies" className={styles.col}>
-          <p className="t-label c-tertiary">Case studies</p>
+          <p className="t-eyebrow c-tertiary">Case studies</p>
           <ul>
             {caseStudies.map((c) => (
               <li key={c.slug}>
@@ -31,7 +31,7 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Elsewhere" className={styles.col}>
-          <p className="t-label c-tertiary">Elsewhere</p>
+          <p className="t-eyebrow c-tertiary">Elsewhere</p>
           <ul>
             <li>
               <a href={`mailto:${site.email}`}>Email</a>
@@ -58,8 +58,8 @@ export function Footer() {
         </nav>
       </div>
       <div className={`container ${styles.base}`}>
-        <p className="t-label c-tertiary">© {new Date().getFullYear()} {site.name}</p>
-        <p className="t-label c-tertiary">{site.location}</p>
+        <p className="t-eyebrow c-tertiary">© {new Date().getFullYear()} {site.name}</p>
+        <p className="t-eyebrow c-tertiary">{site.location}</p>
       </div>
     </footer>
   );
