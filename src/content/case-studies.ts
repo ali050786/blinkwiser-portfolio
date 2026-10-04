@@ -664,7 +664,7 @@ export const caseStudies: CaseStudy[] = [
     meta: {
       role: "Independent lab · product, UX, architecture, evaluation",
       context: "Blinkwiser · built by directing AI coding agents",
-      timeline: "Dec 2025–present",
+      timeline: "Jul 2026–present",
       domain: "AI SaaS · creator tools",
     },
     tags: ["Agent pipeline", "Grounding", "Eval harness", "AI UX"],

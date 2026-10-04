@@ -53,7 +53,7 @@ export const career: CareerChapter[] = [
     years: "2020–21",
     brief: "Redesign the portal",
     fix: "Organised by resident need",
-    result: "3.5M residents",
+    result: "Citizens and residents",
     depth: 2,
     href: "/work/dubai-municipality",
     caseIndex: "05",

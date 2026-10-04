@@ -50,10 +50,10 @@ const shared = {
           period: "2021 – Present",
           scope: "The platform's first designer · led **4 designers** (hired 2) · UX sign-off on client releases · **3 live clients**",
           bullets: [
-            "**9 → 5 steps.** Redesigned open enrollment so “who's covered” is asked once; in production for all 3 clients. When engineering pushed back, negotiated a phased backend change they owned instead of resisted.",
-            "**Weeks → under 24h** to theme a new client or prospect demo: three-tier tokens (insurer → employer → member) across a **120+ component** system for web, mobile web, iOS and Android.",
-            "**1–2 weeks → 3–4 days** Jira-story turnaround with BAs (observed), after I rebuilt the design system as AI-readable skill files. Self-initiated; rolled out to my designers, then the wider org; held back from BAs so UX thinking comes before screens.",
-            "Instituted governance: BA workshops before design, design QA on builds, human review of every AI-generated screen, and a tech-lead agreement so each component state is built once, not per page.",
+            "**9 → 5 steps.** Redesigned open enrollment so members say who's covered once, instead of again for every coverage; live for all 3 clients. The new order didn't match the backend's data model, so I agreed a phased backend change with engineering.",
+            "**Weeks → under 24h** to theme a new client or sales demo: three-tier design tokens (insurer → employer → member) behind a **120+ component** system for web, mobile web, iOS and Android.",
+            "**1–2 weeks → 3–4 days** from Jira story to engineering-ready screen with BAs (team-observed), after I rewrote the design system as skill files that AI tools can follow. Self-initiated; used by my designers and adopted by the wider org's UAT team.",
+            "Set up how design runs on the platform: BA workshops before design, design QA on every build, a designer's review of every AI-generated screen, and an agreement with the tech lead that each component state is built once.",
           ],
         },
         {
@@ -61,13 +61,13 @@ const shared = {
           role: "Independent AI product work",
           note: "Lab, alongside Mphasis",
           period: "2025 – Present",
-          body: "Where I test agentic UX patterns before they reach enterprise work. **Carousel Builder**, live with users: Plan → Execute → Reflect, rules enforced in code, every figure sourced, every edit reversible. **Video Course Builder** in beta.",
+          body: "**Carousel Builder**, live with users: turns a topic into a LinkedIn carousel, checks every figure against a source, and lets you undo any edit. Rebuilt in two months by directing AI coding agents. **Video Course Builder** in beta.",
         },
         {
           org: "Mphasis · Dubai Municipality",
           role: "Lead UX Designer, onsite in Dubai",
           period: "2020 – 2021",
-          body: "One home for a city's services for **3.5M residents**, organised by need instead of department. Arabic designed alongside English from the first wireframes; milestones signed off by senior officials.",
+          body: "One place for the city's services, for **citizens and residents**, organised by what people need done instead of by department. Arabic and English designed side by side from the first wireframe; every milestone signed off by senior officials.",
         },
         {
           org: "Mphasis · Jet Airways",
@@ -109,9 +109,9 @@ export const resumeVariants = {
   general: {
     ...shared,
     title: "Lead UX Designer",
-    tagline: "Complex, regulated, multi-audience platforms",
+    tagline: "Regulated enterprise SaaS: health insurance, government and AI",
     summary:
-      "Five years as founding designer, then UX lead, on a white-label enterprise platform serving three audiences (**insurers, employers and members**) in US health insurance, from its first screen to production. Before that, a bilingual civic services platform in Dubai and an airline's consumer apps. Now bringing **AI-assisted delivery** into enterprise UX.",
+      "11 years in enterprise UX. For the last five, founding designer and then UX lead on a white-label US health-insurance platform used by **insurers, employers and members**, from its first screen to production. Before that, Dubai Municipality's bilingual services portal and Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**.",
     domain: undefined as string | undefined,
   },
   "health-tech": {
@@ -119,7 +119,7 @@ export const resumeVariants = {
     title: "Lead UX Designer · US Health Insurance",
     tagline: "Payers, employers & members",
     summary:
-      "Five years as founding designer, then UX lead, on a white-label **US health-insurance** platform, designing for **payers, employers and members** from its first screen to production. Before that, a bilingual civic services platform in Dubai and an airline's consumer apps. Now bringing **AI-assisted delivery** into enterprise UX, with no member data in the loop.",
+      "11 years in enterprise UX. For the last five, founding designer and then UX lead on a white-label **US health-insurance** platform used by **payers, employers and members**, from its first screen to production. Before that, Dubai Municipality's bilingual services portal and Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**, with no member data in the loop.",
     domain:
       "Open & passive enrollment · life-event coverage changes (QLEs) · eligibility rules · eligibility data files from employers (EDI 834) · benefits administration · privacy-aware design (HIPAA) · accessibility (WCAG)" as string | undefined,
   },
