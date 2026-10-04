@@ -2,18 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in oklch, var(--surface-canvas) 0%, transparent);
-  border-bottom: 1px solid transparent;
-  transition:
-    background-color var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard),
-    backdrop-filter var(--duration-base) var(--ease-standard);
-}
-.header[data-scrolled] {
-  background: color-mix(in oklch, var(--surface-canvas) 82%, transparent);
-  border-bottom-color: var(--border-subtle);
-  backdrop-filter: saturate(1.4) blur(14px);
-  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  /* Always opaque, always with a bottom rule: no see-through or blur on scroll. */
+  background: var(--surface-canvas);
+  border-bottom: 1px solid var(--border-subtle);
 }
 .inner {
   display: flex;
