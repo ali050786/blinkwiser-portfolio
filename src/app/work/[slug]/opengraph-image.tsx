@@ -6,13 +6,6 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "Case study";
 
-const accents: Record<string, string> = {
-  automation: "#6d3fd1",
-  blinkwiser: "#b84500",
-  platform: "#1d5fa8",
-  enrollment: "#157068",
-  civic: "#916508",
-};
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -21,7 +14,7 @@ export function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = getCaseStudy(slug)!;
-  const accent = (c.accent && accents[c.accent]) ?? "#047270";
+  const accent = "#047270";
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: "#f9f8f6", color: "#141311", borderTop: `14px solid ${accent}` }}>

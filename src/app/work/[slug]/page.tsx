@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const beat = (id: (typeof BEATS)[number]["id"]) => BEATS.find((b) => b.id === id)!;
 
   return (
-    <article data-accent={c.accent} data-case={c.slug} className={styles.article}>
+    <article data-case={c.slug} className={styles.article}>
       <ReadingProgress />
       <CaseHero study={c} />
       <Snapshot study={c} />
@@ -130,32 +130,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 </h3>
                 <p className="t-body-l c-secondary prose">{c.spotlight.intro}</p>
                 {c.spotlight.lead && <ExhibitSlot id={c.spotlight.lead} />}
-                {/* Case 01 drops these columns (diagram + screens carry it). Case 02 decides at its review. */}
-                {c.slug !== "open-enrollment" && (
-                <>
-                <div className={styles.spotCols}>
-                  {(
-                    [
-                      ["Why", c.spotlight.why],
-                      ["What I designed", c.spotlight.what],
-                      ["Impact", c.spotlight.impact],
-                    ] as const
-                  ).map(([h, items]) => (
-                    <div key={h} className={styles.spotCol} data-reveal>
-                      <h4 className="t-label c-tertiary">{h}</h4>
-                      <ul>
-                        {items.map((it) => (
-                          <li key={it.slice(0, 32)} className="t-body-s c-secondary">
-                            {it}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-                <p className="t-label c-tertiary">{c.spotlight.provenance}</p>
-                </>
-                )}
+                {/* why / what / impact stay in the data but aren't shown: the diagram and screens carry it. */}
                 {c.spotlight.exhibit && <ExhibitSlot id={c.spotlight.exhibit} />}
               </section>
             )}

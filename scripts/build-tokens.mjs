@@ -69,7 +69,7 @@ const darkSemantic = tokens.semantic.filter((t) => t.dark !== undefined);
 
 // Themes: re-point the semantic accent group at another primitive palette.
 const accentTokens = tokens.semantic.filter((t) => t.path.startsWith("semantic.accent."));
-const themes = Object.entries(source.themes).filter(([k]) => !k.startsWith("$"));
+const themes = Object.entries(source.themes ?? {}).filter(([k]) => !k.startsWith("$"));
 const swap = (v, palette) => (v === undefined ? v : String(v).replaceAll("primitive.color.ultramarine.", `primitive.color.${palette}.`));
 
 const themeBlocks = themes
