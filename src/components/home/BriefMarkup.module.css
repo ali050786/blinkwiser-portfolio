@@ -71,7 +71,7 @@
 
 .note {
   margin: 0;
-  font-size: clamp(19px, 2.4cqi, 26px);
+  font-size: clamp(17px, 2cqi, 22px);
   line-height: 1.35;
   color: var(--accent-solid);
 }
