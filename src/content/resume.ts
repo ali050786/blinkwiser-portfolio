@@ -121,7 +121,7 @@ export const resumeVariants = {
     summary:
       "11 years in enterprise UX. For the last five, founding designer and then UX lead on a white-label **US health-insurance** platform used by **payers, employers and members**, from its first screen to production. Before that, Dubai Municipality's bilingual services portal and Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**, with no member data in the loop.",
     domain:
-      "Open & passive enrollment · life-event coverage changes (QLEs) · eligibility rules · eligibility data files from employers (EDI 834) · benefits administration · privacy-aware design (HIPAA) · accessibility (WCAG)" as string | undefined,
+      "Open & passive enrollment · life-event coverage changes · eligibility rules · eligibility data files from employers · benefits administration · privacy-aware design (HIPAA) · accessibility (WCAG)" as string | undefined,
   },
 };
 
