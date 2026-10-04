@@ -254,17 +254,17 @@ em.t-serif,
 @property --accent-solid {
   syntax: "<color>";
   inherits: true;
-  initial-value: #3d3fd1;
+  initial-value: #047270;
 }
 @property --accent-strong {
   syntax: "<color>";
   inherits: true;
-  initial-value: #3033ad;
+  initial-value: #005c5a;
 }
 @property --accent-soft {
   syntax: "<color>";
   inherits: true;
-  initial-value: #eeeefb;
+  initial-value: #ecf4f3;
 }
 body[data-accent-live] {
   transition:

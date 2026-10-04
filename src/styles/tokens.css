@@ -24,6 +24,10 @@
   --color-ultramarine-300: oklch(76% 0.12 268);
   --color-ultramarine-500: oklch(49% 0.22 268);
   --color-ultramarine-600: oklch(42% 0.21 268);
+  --color-turquoise-200: oklch(88% 0.085 190);
+  --color-turquoise-300: oklch(80% 0.12 190);
+  --color-turquoise-500: oklch(50% 0.085 192);
+  --color-turquoise-600: oklch(43% 0.07 192);
   --color-violet-200: oklch(85% 0.075 300);
   --color-violet-300: oklch(77% 0.12 300);
   --color-violet-500: oklch(50% 0.2 300);
@@ -127,9 +131,9 @@
   --border-subtle: var(--color-neutral-200);
   --border-default: var(--color-neutral-300);
   --border-strong: var(--color-neutral-500);
-  --accent-solid: var(--color-ultramarine-500);
-  --accent-strong: var(--color-ultramarine-600);
-  --accent-soft: color-mix(in oklch, var(--color-ultramarine-500) 9%, var(--color-neutral-0));
+  --accent-solid: var(--color-turquoise-500);
+  --accent-strong: var(--color-turquoise-600);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-500) 9%, var(--color-neutral-0));
   --accent-on-solid: var(--color-white);
   --focus-ring: var(--accent-solid);
   --shadow-raised: 0 1px 0 0 oklch(0% 0 0 / 0.04), 0 1px 2px -1px oklch(0% 0 0 / 0.06), 0 8px 24px -12px oklch(0% 0 0 / 0.10);
@@ -218,9 +222,9 @@
   --border-subtle: var(--color-neutral-850);
   --border-default: var(--color-neutral-800);
   --border-strong: var(--color-neutral-500);
-  --accent-solid: var(--color-ultramarine-300);
-  --accent-strong: var(--color-ultramarine-200);
-  --accent-soft: color-mix(in oklch, var(--color-ultramarine-300) 14%, var(--color-neutral-950));
+  --accent-solid: var(--color-turquoise-300);
+  --accent-strong: var(--color-turquoise-200);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-300) 14%, var(--color-neutral-950));
   --accent-on-solid: var(--color-neutral-1000);
   --shadow-raised: 0 0 0 1px oklch(100% 0 0 / 0.04), 0 16px 40px -16px oklch(0% 0 0 / 0.6);
   --shadow-overlay: 0 0 0 1px oklch(100% 0 0 / 0.06), 0 32px 80px -24px oklch(0% 0 0 / 0.75);
@@ -228,66 +232,66 @@
 
 /* Themes · per-case-study accents (override tier 2 only) */
 [data-accent="automation"] {
-  --accent-solid: var(--color-violet-500);
-  --accent-strong: var(--color-violet-600);
-  --accent-soft: color-mix(in oklch, var(--color-violet-500) 9%, var(--color-neutral-0));
+  --accent-solid: var(--color-turquoise-500);
+  --accent-strong: var(--color-turquoise-600);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-500) 9%, var(--color-neutral-0));
   --accent-on-solid: var(--color-white);
 }
 :root[data-theme="dark"] [data-accent="automation"] {
-  --accent-solid: var(--color-violet-300);
-  --accent-strong: var(--color-violet-200);
-  --accent-soft: color-mix(in oklch, var(--color-violet-300) 14%, var(--color-neutral-950));
+  --accent-solid: var(--color-turquoise-300);
+  --accent-strong: var(--color-turquoise-200);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-300) 14%, var(--color-neutral-950));
   --accent-on-solid: var(--color-neutral-1000);
 }
 
 [data-accent="blinkwiser"] {
-  --accent-solid: var(--color-vermilion-500);
-  --accent-strong: var(--color-vermilion-600);
-  --accent-soft: color-mix(in oklch, var(--color-vermilion-500) 9%, var(--color-neutral-0));
+  --accent-solid: var(--color-turquoise-500);
+  --accent-strong: var(--color-turquoise-600);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-500) 9%, var(--color-neutral-0));
   --accent-on-solid: var(--color-white);
 }
 :root[data-theme="dark"] [data-accent="blinkwiser"] {
-  --accent-solid: var(--color-vermilion-300);
-  --accent-strong: var(--color-vermilion-200);
-  --accent-soft: color-mix(in oklch, var(--color-vermilion-300) 14%, var(--color-neutral-950));
+  --accent-solid: var(--color-turquoise-300);
+  --accent-strong: var(--color-turquoise-200);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-300) 14%, var(--color-neutral-950));
   --accent-on-solid: var(--color-neutral-1000);
 }
 
 [data-accent="platform"] {
-  --accent-solid: var(--color-cobalt-500);
-  --accent-strong: var(--color-cobalt-600);
-  --accent-soft: color-mix(in oklch, var(--color-cobalt-500) 9%, var(--color-neutral-0));
+  --accent-solid: var(--color-turquoise-500);
+  --accent-strong: var(--color-turquoise-600);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-500) 9%, var(--color-neutral-0));
   --accent-on-solid: var(--color-white);
 }
 :root[data-theme="dark"] [data-accent="platform"] {
-  --accent-solid: var(--color-cobalt-300);
-  --accent-strong: var(--color-cobalt-200);
-  --accent-soft: color-mix(in oklch, var(--color-cobalt-300) 14%, var(--color-neutral-950));
+  --accent-solid: var(--color-turquoise-300);
+  --accent-strong: var(--color-turquoise-200);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-300) 14%, var(--color-neutral-950));
   --accent-on-solid: var(--color-neutral-1000);
 }
 
 [data-accent="enrollment"] {
-  --accent-solid: var(--color-teal-500);
-  --accent-strong: var(--color-teal-600);
-  --accent-soft: color-mix(in oklch, var(--color-teal-500) 9%, var(--color-neutral-0));
+  --accent-solid: var(--color-turquoise-500);
+  --accent-strong: var(--color-turquoise-600);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-500) 9%, var(--color-neutral-0));
   --accent-on-solid: var(--color-white);
 }
 :root[data-theme="dark"] [data-accent="enrollment"] {
-  --accent-solid: var(--color-teal-300);
-  --accent-strong: var(--color-teal-200);
-  --accent-soft: color-mix(in oklch, var(--color-teal-300) 14%, var(--color-neutral-950));
+  --accent-solid: var(--color-turquoise-300);
+  --accent-strong: var(--color-turquoise-200);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-300) 14%, var(--color-neutral-950));
   --accent-on-solid: var(--color-neutral-1000);
 }
 
 [data-accent="civic"] {
-  --accent-solid: var(--color-sand-500);
-  --accent-strong: var(--color-sand-600);
-  --accent-soft: color-mix(in oklch, var(--color-sand-500) 9%, var(--color-neutral-0));
+  --accent-solid: var(--color-turquoise-500);
+  --accent-strong: var(--color-turquoise-600);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-500) 9%, var(--color-neutral-0));
   --accent-on-solid: var(--color-white);
 }
 :root[data-theme="dark"] [data-accent="civic"] {
-  --accent-solid: var(--color-sand-300);
-  --accent-strong: var(--color-sand-200);
-  --accent-soft: color-mix(in oklch, var(--color-sand-300) 14%, var(--color-neutral-950));
+  --accent-solid: var(--color-turquoise-300);
+  --accent-strong: var(--color-turquoise-200);
+  --accent-soft: color-mix(in oklch, var(--color-turquoise-300) 14%, var(--color-neutral-950));
   --accent-on-solid: var(--color-neutral-1000);
 }
