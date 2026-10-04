@@ -14,16 +14,6 @@
   overflow: hidden;
   isolation: isolate;
 }
-.panel::after {
-  content: "";
-  position: absolute;
-  inset: auto -10% -60% 30%;
-  height: 120%;
-  background: radial-gradient(closest-side, color-mix(in oklch, var(--accent-solid) 38%, transparent), transparent);
-  opacity: 0.55;
-  z-index: -1;
-  filter: blur(20px);
-}
 .kicker {
   color: color-mix(in oklch, var(--text-inverse) 60%, transparent);
 }
@@ -85,10 +75,7 @@
 .fit {
   display: grid;
   gap: 14px;
-  padding: 24px;
-  border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in oklch, var(--text-inverse) 16%, transparent);
-  background: color-mix(in oklch, var(--text-inverse) 4%, transparent);
+  justify-items: end;
 }
 .fit ul {
   display: grid;
@@ -113,5 +100,8 @@
 @media (max-width: 960px) {
   .panel {
     grid-template-columns: 1fr;
+  }
+  .fit {
+    justify-items: start;
   }
 }

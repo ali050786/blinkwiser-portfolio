@@ -8,16 +8,14 @@ export function Contact() {
       <div className="container">
         <div className={styles.panel}>
           <div className={styles.copyCol}>
-          <p className={`t-label ${styles.kicker}`} data-reveal>
-            Contact
-          </p>
           <h2 id="contact-title" className={`t-display-l ${styles.title}`} data-reveal>
-            Let&apos;s find the problem <em className="t-serif-em">under</em> your brief.
+            Get in touch
           </h2>
-          <p className={`t-body-l ${styles.lede}`} data-reveal>
-            {site.availability}. I&apos;m especially interested in teams building AI products or complex, regulated platforms.
+          <p className={`t-body-l ${styles.lede}`}>
+            I&apos;m looking for a senior or lead UX role, ideally in health tech or on an AI product. Email is the fastest way to
+            reach me.
           </p>
-          <div className={styles.actions} data-reveal>
+          <div className={styles.actions}>
             <a href={`mailto:${site.email}`} className={styles.primary}>
               {site.email}
             </a>
@@ -32,14 +30,7 @@ export function Contact() {
             )}
           </div>
           </div>
-          <div className={styles.fit} data-reveal>
-            <p className={`t-label ${styles.kicker}`}>Good fits</p>
-            <ul>
-              <li>Senior and lead UX</li>
-              <li>Design systems leadership</li>
-              <li>Design engineering</li>
-              <li>AI product and forward-deployed roles</li>
-            </ul>
+          <div className={styles.fit}>
             <p className={`t-body-s ${styles.fitNote}`}>Based in {site.location} · IST, UTC+5:30</p>
           </div>
         </div>
