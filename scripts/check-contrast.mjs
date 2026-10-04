@@ -59,7 +59,7 @@ const ratio = (a, b) => {
   return (x + 0.05) / (y + 0.05);
 };
 
-const palettes = ["ultramarine", ...Object.entries(t.themes).filter(([k]) => !k.startsWith("$")).map(([, v]) => v.palette)];
+const palettes = ["turquoise", ...Object.entries(t.themes).filter(([k]) => !k.startsWith("$")).map(([, v]) => v.palette)];
 const pairs = [];
 for (const mode of ["light", "dark"]) {
   const canvas = token("semantic.surface.canvas", mode);
