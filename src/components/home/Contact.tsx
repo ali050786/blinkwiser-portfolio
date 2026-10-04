@@ -25,7 +25,7 @@ export function Contact() {
             </a>
             {site.resumeUrl && (
               <a href={site.resumeUrl} className={styles.secondary}>
-                Résumé
+                Resume
               </a>
             )}
           </div>

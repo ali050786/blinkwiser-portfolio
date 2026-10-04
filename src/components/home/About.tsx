@@ -31,7 +31,7 @@ export function About() {
           {site.resumeUrl && (
             <p className={styles.resumeLinks} data-reveal>
               <a href={site.resumeUrl} className={styles.resumeBtn}>
-                Read my résumé <span aria-hidden="true">→</span>
+                Read my resume <span aria-hidden="true">→</span>
               </a>
               <a href={resumeFile} download className={styles.resumeAlt}>
                 Download PDF

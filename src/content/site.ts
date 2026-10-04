@@ -102,7 +102,7 @@ export const capabilities = [
 ];
 
 export const timeline = [
-  { period: "2025–now", role: "Independent AI product work", org: "Blinkwiser", detail: "A lab alongside Mphasis: AI products designed and shipped by directing coding agents." },
+  { period: "Jul 2026–now", role: "Independent AI product work", org: "Blinkwiser", detail: "A lab alongside Mphasis: AI products designed and shipped by directing coding agents." },
   {
     period: "2021–now",
     role: "Founding UX Designer → UX Lead",

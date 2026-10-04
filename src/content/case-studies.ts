@@ -444,7 +444,7 @@ export const caseStudies: CaseStudy[] = [
     ownership: {
       mine: [
         "The reframe, the architecture and the adoption plan.",
-        "I started as the only designer, hired four more, onboarded them, and became UX Lead.",
+        "I started as the only designer, grew the team to four designers (I hired two), and became UX Lead.",
       ],
       change: [
         "I'd close the gap between the system and its users earlier. Its rationale lived in my head and in a file engineers had to check. Case 03 is how I later closed it.",
@@ -1023,6 +1023,181 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
     signals: "Structure in a political room, designing for the real build, and bilingual right-to-left as a first-class discipline.",
+  },
+  {
+    slug: "jet-airways-booking",
+    index: "06",
+    glyph: "flow",
+    group: "Consumer e-commerce",
+    title: "Jet Airways: booking a flight, from fare to payment",
+    short: "Jet Airways booking",
+    dek: "Five fares per flight, add-ons to sell and three platforms to cover. I designed how people choose a fare, see the full price and add extras, on web, iOS and Android.",
+    meta: {
+      role: "UX Designer, one of several on the team",
+      context: "Mphasis · Jet Airways",
+      timeline: "2015–2019",
+      domain: "Airline e-commerce · web, iOS, Android",
+    },
+    tags: ["E-commerce checkout", "Pricing clarity", "Upsell and add-ons", "Responsive design"],
+    cover: {
+      src: "/work/jet/overview.webp",
+      width: 2321,
+      height: 1782,
+      full: true,
+      alt: "Jet Airways booking screens: the desktop fare grid with five fares per flight, the JetBistro meal picker, and the mobile flight list with one flight opened to show its fares.",
+      caption: "The booking flow as it shipped: the fare grid on desktop, the same choice as a list on mobile, and meals picked per passenger.",
+      note: "Real screens from the shipped product, from my own files.",
+    },
+    headline: { value: "", label: "Booking on web, iOS and Android, live until the airline closed in 2019" },
+    hook: {
+      line: "Five fares per flight don't fit on a phone.",
+      turn: "So on mobile, each flight opens to show its fares as a list.",
+      note: "Illustration with demo content, not the airline's screens. The real screens are shown below.",
+      tabsLabel: "Three things a shrunk grid gets wrong",
+      picture: {
+        visual: "fare-choice",
+        title: "Choosing a fare on a phone",
+        chips: ["Same five fares", "Same flight"],
+        before: {
+          label: "The desktop grid, shrunk",
+          items: ["Five fare columns squeezed side by side", "Prices too small to compare", "No room for seats left or the saving"],
+        },
+        after: {
+          label: "Tap a flight, then pick a fare",
+          items: ["One flight opens at a time", "Each fare gets a full-width row", "Seats left and the old price sit with the fare"],
+        },
+      },
+      findings: [
+        { tab: "The columns", words: "A grid that works on a wide screen turns into five narrow columns on a phone.", source: "Why mobile needed its own layout" },
+        { tab: "The prices", words: "People choose a fare by price, so the price has to be easy to read.", source: "What the list fixes" },
+        { tab: "The details", words: "Seats left and the price before discount help people decide, and need room.", source: "What the list makes room for" },
+      ],
+    },
+    hero: {
+      label: "Airline e-commerce",
+      brief: "Design the booking screens.",
+      problem: "Five fares, add-ons and three platforms made one booking a lot of choices.",
+      call: "Make each choice clear: the fare, the full price and the extras.",
+    },
+    snapshot: {
+      frame: "Booking a flight meant choosing between five fares per flight, then adding extras, on web, iOS and Android.",
+      decision: "A fare grid on desktop and a list on mobile, the full price broken down, every add-on in one step, and the upgrade offer inside the fare choice.",
+      outcome: "Shipped on web, iOS and Android on a shared component library, and live until the airline closed in 2019.",
+    },
+    frame: {
+      assumed: "Design the booking screens.",
+      actual: "Help people choose a fare they understand, on any screen, with no surprises at payment.",
+      body: [
+        "I worked on Jet Airways' booking for four years, as one of several designers. There was no single brief: the work came in pieces, across the whole journey.",
+        "This case covers four calls I made along it: Search, Flights, Guests, Extras, Pay.",
+      ],
+      exhibit: "jet-journey",
+    },
+    stakes: {
+      items: [
+        { title: "Many choices at once", body: "Each flight came in five fares, plus a business-class option." },
+        { title: "Price decides", body: "People compare fares by price, so every number has to be clear." },
+        { title: "Extras matter to the airline", body: "Meals, seats, baggage and insurance were sold during booking." },
+        { title: "Three platforms", body: "Web, iOS and Android had to offer the same choices, each in a way that fits the screen." },
+      ],
+    },
+    forks: [
+      {
+        id: "grid-and-list",
+        title: "I kept the fare grid on desktop and turned it into a list on mobile",
+        tension: "The grid works on a wide screen. On a phone, five fare columns don't fit.",
+        rejected: { label: "One layout everywhere", detail: "Shrink the grid to fit the phone." },
+        chosen: { label: "A grid on desktop, a list on mobile", detail: "Each flight opens to show its fares as full-width rows." },
+        why: [
+          "On desktop, people compare flights and fares at a glance in one grid.",
+          "On a phone, one flight opens at a time, so every fare has room for its price, the old price and seats left.",
+        ],
+        cost: "Two layouts for the same choice, to design and keep in step.",
+        exhibit: "grid-vs-list",
+      },
+      {
+        id: "full-price",
+        title: "I showed the full price, broken down, while people choose",
+        tension: "One total is simpler to show. It also hides what the money is for.",
+        rejected: { label: "Total only", detail: "One number, explained later, if at all." },
+        chosen: { label: "The total, broken down", detail: "Fare, tax, fees and discount in a trip summary beside the flights." },
+        why: [
+          "The trip summary sits next to the fare choice, so people see what they'll pay before they move on.",
+          "Every fee has a line of its own, so the total at payment isn't a surprise.",
+        ],
+        cost: "A longer summary panel, competing with the flight list for space.",
+        exhibit: "total-vs-breakdown",
+      },
+      {
+        id: "extras-step",
+        title: "I put every add-on in one step before payment",
+        tension: "Each add-on could have been its own step, or a pop-up along the way.",
+        rejected: { label: "Add-ons spread through the flow", detail: "A step or a pop-up for each one." },
+        chosen: { label: "One Extras step", detail: "Meals, seats, baggage, priority, miles and insurance, in one list before pay." },
+        why: [
+          "People see every add-on once, choose what they want, and move on.",
+          "Meals are chosen per passenger and per flight, with filters such as veg, hot meals and snacks.",
+        ],
+        cost: "One longer step, so each add-on stays closed until someone opens it.",
+        exhibit: "extras-one-step",
+      },
+      {
+        id: "upsell-inline",
+        title: "I put the business-class offer inside the fare choice",
+        tension: "Upgrades are often sold with a pop-up that interrupts the choice.",
+        rejected: { label: "A pop-up offer", detail: "Stops people mid-choice to sell the upgrade." },
+        chosen: { label: "An offer in place", detail: "Shown under the chosen fare, with what it adds and how much more it costs." },
+        why: [
+          "The offer appears where people are already comparing, in the same terms: what you get and the price difference.",
+          "Saying no takes no extra click.",
+        ],
+        cost: "Quieter than a pop-up, so the offer has to win on what it shows: wider seats and better meals.",
+        exhibit: "upsell-inline",
+      },
+    ],
+    outcome: {
+      metrics: [
+        {
+          value: "3 platforms",
+          label: "Web, iOS and Android, on a shared component library",
+          viz: { kind: "fan", from: "one library", to: ["web", "iOS", "Android"], note: "platforms, as shipped" },
+        },
+        {
+          value: "5 steps",
+          label: "Search, flights, guests, extras, pay",
+          viz: { kind: "fan", from: "one booking", to: ["search", "flights", "guests", "extras", "pay"], note: "the booking steps, as shipped" },
+        },
+        {
+          value: "6 add-ons",
+          label: "In one step before payment",
+          viz: { kind: "fan", from: "one Extras step", to: ["meals", "seats", "baggage", "priority", "miles", "insurance"], note: "add-ons, as shipped" },
+        },
+        {
+          value: "Until 2019",
+          label: "Live in production until the airline closed",
+          viz: { kind: "ticks", count: 5, label: "2015 to 2019", note: "one mark per year" },
+        },
+      ],
+      points: [
+        "Built on a shared component library, so web, iOS and Android offered the same choices.",
+        "The same choices worked on desktop and on a phone, each laid out for its screen.",
+      ],
+      provenance: "This was 2015–2019 and I have no figures from it. These are what we designed and shipped.",
+      exhibit: "jet-screens",
+    },
+    ownership: {
+      mine: [
+        "The four calls above: the grid and the mobile list, the price breakdown, the single Extras step and the in-place upgrade offer.",
+      ],
+      shared: [
+        "I was one of several designers on the airline's digital products. Other parts of the journey were designed by others on the team.",
+      ],
+      change: [
+        "I'd measure as I went: how many people picked each fare, and how many added extras, so the work could be judged by numbers.",
+        "I'd watch people book on a phone, not just review the screens.",
+      ],
+    },
+    signals: "Pricing people can trust, choices that fit the screen, and selling without getting in the way.",
   },
 ];
 

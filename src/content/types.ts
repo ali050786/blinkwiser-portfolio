@@ -36,7 +36,13 @@ export type ExhibitId =
   | "cut-to-three"
   | "org-vs-need"
   | "four-constraints"
-  | "ideal-vs-buildable";
+  | "ideal-vs-buildable"
+  | "jet-journey"
+  | "grid-vs-list"
+  | "total-vs-breakdown"
+  | "extras-one-step"
+  | "upsell-inline"
+  | "jet-screens";
 
 export type MetricVisualId =
   | "glyph-flow"
@@ -48,7 +54,7 @@ export type MetricVisualId =
   | "time-freed"
   | "brand-grid";
 
-export type HookVisualId = "same-request" | "client-theme" | "trust-edit" | "city-home";
+export type HookVisualId = "same-request" | "client-theme" | "trust-edit" | "city-home" | "fare-choice";
 
 export type HeroVisualId = "newborn" | "plan-switch" | "cost" | "save-side" | "link-colour" | "audit";
 
@@ -115,6 +121,8 @@ export interface Shot {
   caption?: string;
   /** Show the whole image (no height cap or fade), e.g. a row of phone screens. */
   full?: boolean;
+  /** Footnote under a cover, when the default ("rebuilt" / "live product") doesn't fit. */
+  note?: string;
 }
 
 export interface Option {
@@ -157,7 +165,7 @@ export interface CaseStudy {
   /** Per-case colour theme. Being removed case by case: no accent means the site turquoise. */
   accent?: Accent;
   glyph: GlyphId;
-  group: "Health insurance platforms" | "AI-driven UI" | "Civic scale";
+  group: "Health insurance platforms" | "AI-driven UI" | "Civic scale" | "Consumer e-commerce";
   title: string;
   /** Short label used in navigation and the index. */
   short: string;

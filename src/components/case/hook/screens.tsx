@@ -1,5 +1,6 @@
 import type { HookVisualId } from "@/content/types";
 import { HookMark as Mark } from "./HookMark";
+import { FareChoice } from "./FareChoice";
 import sr from "./SameRequest.module.css";
 import s from "./Screens.module.css";
 
@@ -214,4 +215,5 @@ export const hookScreens: Record<HookVisualId, React.ComponentType<{ kind: Kind 
   "client-theme": ClientTheme,
   "trust-edit": TrustEdit,
   "city-home": CityHome,
+  "fare-choice": FareChoice,
 };

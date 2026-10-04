@@ -162,3 +162,54 @@ export const brandingStages: ScreenStage[] = [
     after: [shot("bh-assign", "Dialog for assigning employers to a theme, with search and checkboxes.")],
   },
 ];
+
+const img = (src: string, width: number, height: number, alt: string, caption?: string): Shot => ({ src, width, height, alt, caption, full: true });
+
+/** Jet Airways booking: real screens from the shipped product. */
+export const jetStages: ScreenStage[] = [
+  {
+    id: "fares",
+    label: "Fares and price",
+    change:
+      "On desktop, flights are rows and the five fares are columns. Pick a fare and the trip summary beside it breaks the total into fare, tax, fees and discount. The business-class offer sits under the chosen fare.",
+    after: [
+      img(
+        "/work/jet/fares.webp",
+        2400,
+        1890,
+        "Jet Airways fare selection on desktop: flights as rows, five Economy fares as columns, a Première upgrade offer under the selected flight, and a trip summary listing fare, tax, fees, discount and total.",
+        "The fare grid with the trip summary beside it.",
+      ),
+    ],
+  },
+  {
+    id: "extras",
+    label: "Extras",
+    change:
+      "Every add-on in one step before payment. Meals are picked per passenger and per flight, with filters for the kind of meal.",
+    after: [
+      img(
+        "/work/jet/extras.webp",
+        1055,
+        1609,
+        "JetBistro meal picker on mobile with passengers and flights as tabs, a filter panel, and the JetXtras step listing meals, seats, baggage, priority and insurance before Continue to pay.",
+        "Meals per passenger, and every add-on in one step.",
+      ),
+    ],
+  },
+  {
+    id: "xtras-list",
+    label: "Add-on list",
+    change:
+      "Each add-on is one row with a Select button, so people scan the list and open only what they want before Continue to pay.",
+    after: [
+      img(
+        "/work/jet/xtras-ads.webp",
+        2260,
+        3430,
+        "The JetXtras list with one row each for meals, seat select, excess baggage, priority, extra miles and travel insurance, in front of the airline's advertising page.",
+        "One row per add-on, before payment.",
+      ),
+    ],
+  },
+];

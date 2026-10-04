@@ -13,7 +13,7 @@ export function Footer() {
             <span className="c-tertiary"> · {site.role}</span>
           </p>
           <p className="t-body-s c-secondary">
-            Designed and built in-house with Next.js, a three-tier token pipeline, GSAP and Motion. Case studies are public-safe: clients anonymised, visuals redrawn with demo brands.
+            I lead design on regulated enterprise SaaS, from health insurance to government and AI. Open to senior and lead UX roles, ideally in health tech or on an AI product.
           </p>
         </div>
 
@@ -48,12 +48,9 @@ export function Footer() {
             </li>
             {site.resumeUrl && (
               <li>
-                <a href={site.resumeUrl}>Résumé</a>
+                <a href={site.resumeUrl}>Resume</a>
               </li>
             )}
-            <li>
-              <Link href="/colophon">Colophon</Link>
-            </li>
           </ul>
         </nav>
       </div>

@@ -60,7 +60,7 @@ const shared = {
           org: "Blinkwiser",
           role: "Independent AI product work",
           note: "Lab, alongside Mphasis",
-          period: "2025 – Present",
+          period: "Jul 2026 – Present",
           body: "**Carousel Builder**, live with users: turns a topic into a LinkedIn carousel, checks every figure against a source, and lets you undo any edit. Rebuilt in two months by directing AI coding agents. **Video Course Builder** in beta.",
         },
         {

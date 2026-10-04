@@ -67,7 +67,7 @@ export function Header() {
         <div className={styles.actions}>
           {site.resumeUrl && (
             <a href={site.resumeUrl} className={styles.resume}>
-              Résumé
+              Resume
             </a>
           )}
           <ThemeToggle />

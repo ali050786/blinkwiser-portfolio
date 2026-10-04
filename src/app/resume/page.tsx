@@ -4,8 +4,8 @@ import { resume, resumeFile } from "@/content/resume";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Résumé",
-  description: "Résumé of Sikandar Ali Abdul, Lead UX Designer: complex, regulated, multi-audience platforms in US health insurance, enterprise design systems and AI-assisted delivery.",
+  title: "Resume",
+  description: "Resume of Sikandar Ali Abdul, Lead UX Designer: complex, regulated, multi-audience platforms in US health insurance, enterprise design systems and AI-assisted delivery.",
   alternates: { canonical: "/resume" },
 };
 

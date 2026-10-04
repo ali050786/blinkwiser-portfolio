@@ -17,6 +17,8 @@ import { CoverageGap, TrimVsReorder, TranslateLayer, AskWhenNeeded, PassiveRun }
 import {
   WhiteLabelChain, GrowthCeiling, EditsVsFoundation, AdoptionFourSides, HowWorkRan, TrustQuestions, QualitySteps, BlindEval, CutToThree, OrgVsNeed, FourConstraints, IdealVsBuildable,
 } from "./CaseDiagrams";
+import { JetJourney, GridVsList, TotalVsBreakdown, ExtrasOneStep, UpsellInline } from "./JetDiagrams";
+import { JetScreens } from "./JetScreens";
 import { RulesInHeads, TwoLoops, PromptVsSystem, PortableSkills, AdoptionSpread } from "./DsDiagrams";
 
 /**
@@ -60,6 +62,12 @@ const registry: Record<ExhibitId, React.ComponentType> = {
   "org-vs-need": OrgVsNeed,
   "four-constraints": FourConstraints,
   "ideal-vs-buildable": IdealVsBuildable,
+  "jet-journey": JetJourney,
+  "grid-vs-list": GridVsList,
+  "total-vs-breakdown": TotalVsBreakdown,
+  "extras-one-step": ExtrasOneStep,
+  "upsell-inline": UpsellInline,
+  "jet-screens": JetScreens,
 };
 
 export function ExhibitSlot({ id }: { id: ExhibitId }) {

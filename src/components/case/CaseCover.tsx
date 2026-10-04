@@ -12,7 +12,7 @@ export function CaseCover({ shot, label = "The product" }: { shot: Shot; label?:
       <figcaption className={styles.caption}>
         <span className="t-label c-accent">{label}</span>
         {shot.caption && <span className="t-body-s c-secondary">{shot.caption}</span>}
-        <span className="t-label c-tertiary">{shot.screen ? "Rebuilt from the design files in a demo brand." : shot.video ? "Screen recording of the live product." : "Real capture of the live product."}</span>
+        <span className="t-label c-tertiary">{shot.note ?? (shot.screen ? "Rebuilt from the design files in a demo brand." : shot.video ? "Screen recording of the live product." : "Real capture of the live product.")}</span>
       </figcaption>
     </figure>
   );
