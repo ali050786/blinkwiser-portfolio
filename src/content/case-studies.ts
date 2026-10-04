@@ -42,7 +42,7 @@ export const caseStudies: CaseStudy[] = [
       stories: [
         {
           id: "newborn",
-          tab: "New baby",
+          tab: "Adding dependents",
           story: "Dennis just had a baby. He has 31 days to get her covered.",
           quote: "Adding a dependent does not automatically enroll them in coverage.",
           quoteSource: "The old flow, right after he added her",
@@ -51,7 +51,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "plan-switch",
-          tab: "Cheaper plan",
+          tab: "Switching plans",
           story: "Dennis switches to a cheaper dental plan. The old flow forgets his family.",
           quote: "Select Member(s)/Dependent(s) to cover",
           quoteSource: "The old plan page, asking again after he changed plans",
@@ -60,7 +60,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "cost",
-          tab: "Seeing the cost",
+          tab: "Visible cost",
           story: "Dennis is covering six people. What will it cost him each month?",
           quote: "The displayed Premium is only an estimate. The amount may vary if you change network or update Dependents.",
           quoteSource: "The old plan page, word for word",
