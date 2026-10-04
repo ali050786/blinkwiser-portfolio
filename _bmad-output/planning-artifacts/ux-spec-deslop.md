@@ -126,7 +126,7 @@ One metric per case, and it must be a real number. If a case has no honest numbe
 | 02 | < 24 h / < 24 h | keep |
 | 03 | 3–4 days / 3–4 days | keep |
 | 04 | "Every edit" / "7 in 10" | "7 in 10" on both: blind comparisons won by the rebuild |
-| 05 | "3.5M" / "One home" | No number. The card and case lead with who it's for: "One place for city services, for Emiratis and residents, in Arabic and English." Drop "3.5M" from `site.ts` proof and the home card. |
+| 05 | "3.5M" / "One home" | No number. The card and case lead with who it's for: "One place for city services, for citizens and residents, in Arabic and English." Drop "3.5M" from `site.ts` proof and the home card. |
 
 "Team-observed" appears 16 times. Say it once per case, in the outcome section: "These are team estimates, not measured figures."
 
@@ -214,7 +214,7 @@ Extend `scripts/check-copy.mjs` with **warnings** (not failures) so drift shows 
 - ~~Visual baseline~~ Resolved: don't restore; old commit deleted.
 - ~~Voice sample~~ Resolved: none exists; Claude sets the voice using §3.2.
 - ~~Case 04 duration~~ Resolved: two months, built with AI.
-- ~~Case 05 metric~~ Resolved: no number; lead with Emiratis and residents.
+- ~~Case 05 metric~~ Resolved: no number; lead with citizens and residents.
 - ~~How I work~~ Resolved: remove.
 
 ## Decision log
@@ -228,6 +228,6 @@ Extend `scripts/check-copy.mjs` with **warnings** (not failures) so drift shows 
 | 2026-10-04 | Don't restore the earlier design-system work; permanently delete it | Sikandar judged it poor; start the visual layer fresh |
 | 2026-10-04 | Claude owns the voice, following §3.2 | Sikandar has no existing writing sample |
 | 2026-10-04 | Case 04: two-month rebuild, built with AI | Sikandar's correction; "a year" was wrong |
-| 2026-10-04 | Case 05: drop "3.5M"; lead with Emiratis and residents | Sikandar: who it served matters more than the number |
+| 2026-10-04 | Case 05: drop "3.5M"; lead with citizens and residents | Sikandar: who it served matters more than the number |
 | 2026-10-04 | Remove "How I work" | Repeats the case studies; revisit later |
 | 2026-10-04 | Restyle in place: freeze layout geometry, protect connectors and diagrams, screenshot baseline and diff per epic | The rejected attempt removed the fork connectors and misaligned components |

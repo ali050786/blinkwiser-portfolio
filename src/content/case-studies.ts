@@ -881,8 +881,8 @@ export const caseStudies: CaseStudy[] = [
       alt: "Four screens of the Dubai Municipality app: the home screen in English and in Arabic, the Services screen grouped by need, and the Dashboard tracking every request.",
       caption: "The live app: search first, services grouped by need, one dashboard for every request, Arabic equal to English.",
     },
-    headline: { value: "", label: "One place for city services, for Emiratis and residents, in Arabic and English" },
-    card: { title: "Dubai Municipality app", widget: "departments", label: "for Emiratis and residents" },
+    headline: { value: "", label: "One place for city services, for citizens and residents, in Arabic and English" },
+    card: { title: "Dubai Municipality app", widget: "departments", label: "for citizens and residents" },
     hook: {
       line: "Residents don't know who owns a service.",
       turn: "So I organised the city's services by what people need done.",
@@ -930,7 +930,7 @@ export const caseStudies: CaseStudy[] = [
       assumed: "Redesign the portal's look.",
       actual: "Decide how a city's services are organised for residents, then defend it.",
       body: [
-        "Permits, complaints, bookings, waste and more, for Emiratis and residents, in Arabic and English.",
+        "Permits, complaints, bookings, waste and more, for citizens and residents, in Arabic and English.",
         "Each service had its own rules, fees and approvals, and a department expecting prominence.",
       ],
       exhibit: "org-vs-need",
@@ -1003,7 +1003,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           value: "Arabic + English",
-          label: "For Emiratis and residents, designed side by side",
+          label: "For citizens and residents, designed side by side",
           viz: { kind: "fan", from: "one app", to: ["English", "Arabic"], note: "designed side by side from the first wireframe" },
         },
       ],
