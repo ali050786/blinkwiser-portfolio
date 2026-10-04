@@ -96,7 +96,7 @@ export const capabilities = [
       "Design systems rebuilt as machine-readable skill files",
       "Agent workflows with self-verification and drift audits",
       "Grounded generation, honesty guards and blind eval harnesses",
-      "Daily tools: Claude Code, Figma MCP, LangGraph and Lovable",
+      "Daily tools: Claude Code, GitHub Copilot in VS Code, Google Antigravity, Figma MCP, LangGraph and Lovable",
     ],
   },
 ];

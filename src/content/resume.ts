@@ -88,7 +88,7 @@ const shared = {
       compact: true,
       entries: [
         { org: "Design", body: "Design systems & tokens, AI-readable design systems, white-label theming, information architecture, interaction design, usability testing, bilingual / RTL" },
-        { org: "AI-assisted delivery", body: "Design-to-code: Claude Code, Figma MCP · Agent frameworks: LangChain / LangGraph · Prototyping: Lovable" },
+        { org: "AI-assisted delivery", body: "Design-to-code: Claude Code, GitHub Copilot in VS Code, Google Antigravity, Figma MCP · Agent frameworks: LangChain / LangGraph · Prototyping: Lovable" },
         { org: "Design tools", body: "Figma, FigJam, Storybook, Zeplin, Maze, Miro, Adobe XD" },
         { org: "Technical", body: "React / Next.js, TypeScript, HTML / CSS, design tokens" },
       ],
