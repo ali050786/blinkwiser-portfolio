@@ -49,7 +49,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
             <p className={`t-display-l ${styles.hookLine}`}>{c.hook.line}</p>
             <p className={`t-heading-l ${styles.hookTurn}`}>{c.hook.turn}</p>
             <p className={styles.hookNumber}>
-              <span className={`tabular ${styles.headlineValue}`}>{(c.hook.number ?? c.headline).value}</span>
+              {(c.hook.number ?? c.headline).value && <span className={`tabular ${styles.headlineValue}`}>{(c.hook.number ?? c.headline).value}</span>}
               <span className="t-body-s c-secondary">{(c.hook.number ?? c.headline).label}</span>
             </p>
           </div>
@@ -107,7 +107,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           <div className={styles.visual}>
             <Glyph id={c.glyph} />
             <div className={styles.headline}>
-              <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>
+              {c.headline.value && <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>}
               <span className="t-body-s c-secondary">{c.headline.label}</span>
             </div>
           </div>

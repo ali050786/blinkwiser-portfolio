@@ -25,7 +25,7 @@ export function Snapshot({ study: c }: { study: CaseStudy }) {
               {/* With a picture-first hero the number is already above, so the glyph stands alone here. */}
               {!c.hook && (
                 <figcaption className={styles.headline}>
-                  <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>
+                  {c.headline.value && <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>}
                   <span className="t-body-s c-secondary">{c.headline.label}</span>
                 </figcaption>
               )}
