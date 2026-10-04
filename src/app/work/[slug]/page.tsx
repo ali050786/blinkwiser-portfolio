@@ -130,6 +130,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 </h3>
                 <p className="t-body-l c-secondary prose">{c.spotlight.intro}</p>
                 {c.spotlight.lead && <ExhibitSlot id={c.spotlight.lead} />}
+                {/* Case 01 drops these columns (diagram + screens carry it). Case 02 decides at its review. */}
+                {c.slug !== "open-enrollment" && (
+                <>
                 <div className={styles.spotCols}>
                   {(
                     [
@@ -151,6 +154,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   ))}
                 </div>
                 <p className="t-label c-tertiary">{c.spotlight.provenance}</p>
+                </>
+                )}
                 {c.spotlight.exhibit && <ExhibitSlot id={c.spotlight.exhibit} />}
               </section>
             )}

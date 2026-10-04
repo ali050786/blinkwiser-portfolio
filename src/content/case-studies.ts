@@ -173,7 +173,7 @@ export const caseStudies: CaseStudy[] = [
       label: "The admin side",
       title: "Passive enrollment: the members who never open the flow",
       intro:
-        "The redesign made enrollment easier for members who take part. Every year some members don't take part at all, and something still has to happen to their coverage. Each client decides what.",
+        "Members who don't take part in open enrollment used to be handled by admins one at a time. I designed a rule each client sets once and runs themselves, with a record of every run and a list of the members the rule couldn't handle.",
       why: [
         "Members who took no action during open enrollment were handled manually by admins, one member at a time.",
         "Each client has its own rule for them: terminate, carry the current plan forward, or move them to a default plan, sometimes depending on eligibility.",
