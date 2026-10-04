@@ -1,7 +1,7 @@
 import type { CaseStudy } from "@/content/types";
 import styles from "./Ownership.module.css";
 
-export function Ownership({ ownership: o, signals }: { ownership: CaseStudy["ownership"]; signals: string }) {
+export function Ownership({ ownership: o }: { ownership: CaseStudy["ownership"]; signals?: string }) {
   return (
     <div className={styles.wrap}>
       <div className={styles.cols} data-cols={o.shared ? 3 : 2}>
@@ -28,11 +28,6 @@ export function Ownership({ ownership: o, signals }: { ownership: CaseStudy["own
           ))}
         </div>
       </div>
-
-      <blockquote className={styles.quote} data-reveal>
-        <p className="t-label c-tertiary">What this study signals</p>
-        <p className={`t-serif ${styles.quoteText}`}>{signals}</p>
-      </blockquote>
     </div>
   );
 }

@@ -37,8 +37,8 @@
 .tags li {
   padding: 5px 12px;
   border-radius: var(--chip-radius);
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  background: var(--surface-muted);
+  color: var(--text-secondary);
   font-size: 13px;
 }
 .visual {

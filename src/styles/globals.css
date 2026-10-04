@@ -178,13 +178,14 @@ ol {
   font-size: var(--font-size-body-s);
   line-height: 1.55;
 }
+/* Labels: sans, sentence case (was mono uppercase). Same as .t-eyebrow. */
 .t-label {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-label);
-  letter-spacing: var(--font-tracking-label);
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   line-height: 1.4;
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
 }
 /* Sans, sentence-case label. Replaces the mono uppercase .t-label page by page. */
 .t-eyebrow {

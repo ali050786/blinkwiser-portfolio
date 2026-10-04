@@ -4,9 +4,9 @@ import styles from "./Snapshot.module.css";
 
 export function Snapshot({ study: c }: { study: CaseStudy }) {
   const rows = [
-    { k: "Frame", v: c.snapshot.frame, hint: "The reframe" },
-    { k: "Key decision", v: c.snapshot.decision, hint: "The hardest call" },
-    { k: "Outcome", v: c.snapshot.outcome, hint: "What moved" },
+    { k: "The problem", v: c.snapshot.frame, hint: "The reframe" },
+    { k: "What I did", v: c.snapshot.decision, hint: "The hardest call" },
+    { k: "What changed", v: c.snapshot.outcome, hint: "What moved" },
   ];
   /* When the hero opens with a story, the study's core diagram moves here, beside the snapshot. */
   const split = !!c.opener;
@@ -15,9 +15,8 @@ export function Snapshot({ study: c }: { study: CaseStudy }) {
       <div className={styles.card} data-split={split || undefined}>
         <div className={styles.head}>
           <h2 id="snapshot-title" className="t-label">
-            Decision snapshot
+            Summary
           </h2>
-          <p className="t-label c-tertiary">30-second read</p>
         </div>
         <div className={styles.body}>
           {split && (
@@ -36,7 +35,6 @@ export function Snapshot({ study: c }: { study: CaseStudy }) {
             {rows.map((r, i) => (
               <li key={r.k} data-reveal style={{ "--reveal-i": i } as React.CSSProperties}>
                 <p className={styles.k}>
-                  <span className="t-mono c-accent">0{i + 1}</span>
                   <span className="t-heading-m">{r.k}</span>
                 </p>
                 <p className="c-secondary">{r.v}</p>

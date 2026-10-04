@@ -7,7 +7,7 @@ import styles from "./NextCase.module.css";
 export function NextCase({ study: c }: { study: CaseStudy }) {
   return (
     <nav aria-label="Next case study" className={`container ${styles.wrap}`}>
-      <Link href={`/work/${c.slug}`} className={styles.card} data-accent={c.accent}>
+      <Link href={`/work/${c.slug}`} className={styles.card}>
         <div className={styles.copy}>
           <p className="t-label">
             <span className="c-tertiary">Next case · </span>

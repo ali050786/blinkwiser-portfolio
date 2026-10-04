@@ -16,7 +16,7 @@ export type ProofItem = {
   label: string;
   /** Show this text instead of an animated number. */
   text?: string;
-  study: { index: string; slug: string; accent: Accent; title: string };
+  study: { index: string; slug: string; accent?: Accent; title: string };
 };
 
 /** The outcome row: one number per study, each linking to its case. */

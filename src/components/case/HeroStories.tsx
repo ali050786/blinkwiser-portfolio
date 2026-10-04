@@ -68,7 +68,6 @@ export function HeroStories({ opener, compact }: { opener: Opener; compact?: boo
               if (e.key === "ArrowLeft") (e.preventDefault(), go(active - 1));
             }}
           >
-            <span className="t-mono">{String(i + 1).padStart(2, "0")}</span>
             {st.tab}
           </button>
         ))}

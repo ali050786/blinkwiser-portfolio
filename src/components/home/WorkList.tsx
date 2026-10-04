@@ -13,7 +13,7 @@ import styles from "./WorkIndex.module.css";
 export type WorkItem = {
   slug: string;
   index: string;
-  accent: Accent;
+  accent?: Accent;
   glyph: GlyphId;
   group: CaseStudy["group"];
   title: string;

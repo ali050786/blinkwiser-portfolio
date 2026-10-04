@@ -11,7 +11,7 @@ export function ForkBlock({ fork: f, n, total, children }: { fork: Fork; n: numb
     <div id={`fork-${f.id}`} data-fork={f.id} className={styles.fork}>
       <header className={styles.head} data-reveal>
         <p className="t-label">
-          <span className="c-accent">Fork {n}</span>
+          <span className="c-accent">Decision {n}</span>
           <span className="c-tertiary"> of {total}</span>
         </p>
         <h3 className={`t-heading-l ${styles.title}`}>{f.title}</h3>
@@ -27,14 +27,14 @@ export function ForkBlock({ fork: f, n, total, children }: { fork: Fork; n: numb
         <div className={styles.options}>
           <div className={`${styles.option} ${styles.rejected}`}>
             <p className="t-label">
-              <Icon name="cross" size={14} /> Road not taken
+              <Icon name="cross" size={14} /> Not chosen
             </p>
             <h4 className="t-heading-m">{f.rejected.label}</h4>
             <p className="t-body-s">{f.rejected.detail}</p>
           </div>
           <div className={`${styles.option} ${styles.chosen}`}>
             <p className="t-label">
-              <Icon name="check" size={14} /> The call
+              <Icon name="check" size={14} /> Chosen
             </p>
             <h4 className="t-heading-m">{f.chosen.label}</h4>
             <p className="t-body-s c-secondary">{f.chosen.detail}</p>

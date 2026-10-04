@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const beat = (id: (typeof BEATS)[number]["id"]) => BEATS.find((b) => b.id === id)!;
 
   return (
-    <article data-accent={c.accent} className={styles.article}>
+    <article data-accent={c.accent} data-case={c.slug} className={styles.article}>
       <ReadingProgress />
       <CaseHero study={c} />
       <Snapshot study={c} />
@@ -100,7 +100,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <Beat {...beat("decisions")}>
             <p className="t-body-l c-secondary prose">
-              {c.forks.length} forks. Each shows the two credible options, the call, and what choosing it cost.
+              {c.forks.length} decisions. For each: the option I didn&apos;t take, the one I did, and what it cost.
             </p>
             {c.forks.map((f, i) => (
               <ForkBlock key={f.id} fork={f} n={i + 1} total={c.forks.length}>

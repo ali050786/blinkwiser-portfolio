@@ -154,7 +154,8 @@ export type CardWidget = "stepper" | "brands" | "pipeline" | "slides" | "departm
 export interface CaseStudy {
   slug: string;
   index: string;
-  accent: Accent;
+  /** Per-case colour theme. Being removed case by case: no accent means the site turquoise. */
+  accent?: Accent;
   glyph: GlyphId;
   group: "Health insurance platforms" | "AI-driven UI" | "Civic scale";
   title: string;

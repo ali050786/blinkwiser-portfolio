@@ -9,16 +9,19 @@ type Props = {
   note?: string;
 };
 
+/** "Interactive · flow map" -> "Flow map": the prefix and live dot read as decoration. */
+const plainLabel = (l: string) => {
+  const s = l.replace(/^Interactive · /, "");
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 /** Frame for every interactive exhibit: label, title, optional controls, and a public-safe note. */
 export function Exhibit({ label, title, caption, controls, children, note = "Redrawn with demo brands and illustrative data. No client screens or internal files." }: Props) {
   return (
     <figure className={styles.exhibit} data-reveal>
       <header className={styles.head}>
         <div className={styles.titles}>
-          <p className="t-label">
-            <span className={styles.live} aria-hidden="true" />
-            {label}
-          </p>
+          <p className="t-label c-tertiary">{plainLabel(label)}</p>
           <h4 className="t-heading-m">{title}</h4>
         </div>
         {controls && <div className={styles.controls}>{controls}</div>}

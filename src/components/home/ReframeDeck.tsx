@@ -12,7 +12,7 @@ import styles from "./ReframeDeck.module.css";
 export type DeckItem = {
   slug: string;
   index: string;
-  accent: Accent;
+  accent?: Accent;
   glyph: GlyphId;
   tab: string;
   label: string;
