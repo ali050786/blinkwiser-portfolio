@@ -7,7 +7,7 @@ import styles from "./ThemeToggle.module.css";
 type Theme = "light" | "dark";
 
 /** Browser chrome colour per theme (matches --surface-canvas). */
-const chrome: Record<Theme, string> = { light: "#f9f8f6", dark: "#0b0a09" };
+const chrome: Record<Theme, string> = { light: "#f7f9fa", dark: "#060707" };
 const paintChrome = (t: Theme) => document.querySelector('meta[name="theme-color"]')?.setAttribute("content", chrome[t]);
 
 export function ThemeToggle() {

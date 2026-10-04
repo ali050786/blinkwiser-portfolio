@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   // Light by default; ThemeToggle repaints it when a visitor picks dark.
-  themeColor: "#f9f8f6",
+  themeColor: "#f7f9fa",
 };
 
 // Runs before paint: applies a saved theme (light unless the visitor chose

@@ -8,9 +8,9 @@ export const contentType = "image/png";
 export default function OpengraphImage() {
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: "#f9f8f6", color: "#141311" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 72, background: "#f7f9fa", color: "#0b0d0d" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26 }}>
-          <div style={{ width: 52, height: 52, borderRadius: 14, background: "#141311", color: "#f9f8f6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 700 }}>SA</div>
+          <div style={{ width: 52, height: 52, borderRadius: 14, background: "#0b0d0d", color: "#f7f9fa", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 700 }}>SA</div>
           {site.name} · {site.role}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
