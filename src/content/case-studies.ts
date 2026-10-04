@@ -253,8 +253,8 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "< 24 h", label: "to theme a new client, down from weeks (team-observed)" },
     card: { title: "White-label health-insurance platform", widget: "brands", label: "to theme a new client" },
     hook: {
-      line: "Each new client used to mean weeks of re-skinning. With design tokens, it takes under a day.",
-      turn: "Once each client's brand lived in design tokens, setting up a new client became a configuration task.",
+      line: "A new client used to take weeks to set up.",
+      turn: "With each client's brand in design tokens, it takes under a day.",
       note: "Illustration in a demo brand, not a client screen.",
       tabsLabel: "Three things that broke with every new client",
       picture: {
@@ -471,8 +471,8 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "3–4 days", label: "from Jira story to engineering-ready screen, down from 1–2 weeks (team-observed)" },
     card: { title: "A design system AI can read", widget: "pipeline", label: "Jira-story turnaround" },
     hook: {
-      line: "Our AI tool kept putting Save on the wrong side. It had no way to know our rules, so I wrote them down.",
-      turn: "Once the rules were written down, the AI's screens matched our product.",
+      line: "Our AI tool kept putting Save on the wrong side.",
+      turn: "It had no way to know our rules, so I wrote them down. Then its screens matched our product.",
       note: "Illustration in a demo brand, not a client screen.",
       tabsLabel: "Three things the AI got wrong",
       picture: {
@@ -686,8 +686,8 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "7 in 10", label: "blind comparisons won by the rebuild over the first version (my eval harness, AI judge)" },
     card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan → Reflect", label: "facts checked before you see it" },
     hook: {
-      line: "The first version took two weeks and made up its own statistics. The rebuild took two months.",
-      turn: "Now every number traces to a source, and every edit can be undone.",
+      line: "The first version made up its own statistics.",
+      turn: "I rebuilt it in two months, so every number traces to a source and every edit can be undone.",
       number: { value: "7 in 10", label: "blind head-to-heads won by the rebuild over v1 (my eval harness, AI judge)" },
       note: "Illustration with demo content, not a real deck. The live product is shown below.",
       tabsLabel: "Three ways v1 broke trust",
