@@ -17,6 +17,8 @@ import styles from "./BriefMarkup.module.css";
  */
 
 const NS = "http://www.w3.org/2000/svg";
+/** The brief card no longer animates; kept as a switch so the motion code can come back if wanted. */
+const STATIC: boolean = true;
 const HOLD = 2.4;
 const FIRST_DELAY = 0.9;
 /** When the next sheet starts settling in, as the previous one slides away. */
@@ -108,9 +110,8 @@ export function BriefMarkup() {
   const flipTo = (n: number, next: Mode) => {
     const P = paper.current;
     const D = desk.current;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     clearFlip();
-    if (P && D && !reduced && started.current) {
+    if (P && D && STATIC === false && started.current) {
       tl.current?.pause();
       const out = P.cloneNode(true) as HTMLElement;
       out.classList.add(styles.outgoing ?? "");
@@ -165,7 +166,9 @@ export function BriefMarkup() {
     let cancelled = false;
     let ctx: gsap.Context | undefined;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const animate = mode !== "rest" && !reduced;
+    // Static by design: the marks are drawn in place, with no typing, pen or sheet slide.
+    const animate = false;
+    void reduced;
 
     const build = () => {
       const P = paper.current!;
@@ -333,10 +336,10 @@ export function BriefMarkup() {
           <div className={`${styles.sheet} ${styles.s2}`} aria-hidden="true" />
           <div className={`${styles.sheet} ${styles.s1}`} aria-hidden="true" />
           <div ref={paper} className={styles.paper}>
-            <div className={`t-label ${styles.head}`}>
-              <span>Project brief · {p.tag}</span>
+            <div className={`t-eyebrow ${styles.head}`}>
+              <span>Brief · {p.tag}</span>
               <Link href={p.href} className={styles.caseLink}>
-                Case {p.index} →
+                Read the case →
               </Link>
             </div>
             <p className={styles.brief}>
@@ -356,11 +359,11 @@ export function BriefMarkup() {
               </span>
             </p>
             <p className={styles.note}>
-              <span className={`t-label ${styles.label}`}>The real problem</span>
+              <span className={`t-eyebrow ${styles.label}`}>What I found</span>
               <Words text={p.problem} mark={p.key} />
             </p>
             <p className={`${styles.note} ${styles.call}`}>
-              <span className={`t-label ${styles.label}`}>The call</span>
+              <span className={`t-eyebrow ${styles.label}`}>What I did</span>
               <Words text={p.call} tick />
             </p>
             <svg ref={ink} className={styles.ink} aria-hidden="true" focusable="false" />
@@ -375,20 +378,15 @@ export function BriefMarkup() {
         </div>
 
         <div className={styles.index}>
-          <p className={`t-label ${styles.indexTitle}`}>Five briefs, one level down</p>
           <ol className={styles.list}>
             {briefs.map((b, n) => (
               <li key={b.index}>
                 <button type="button" className={styles.item} aria-current={n === page ? "true" : undefined} onClick={() => pick(n)}>
-                  <span className={`t-label ${styles.itemIdx}`}>{b.index}</span>
                   <span className={styles.itemTag}>{b.tag}</span>
                 </button>
               </li>
             ))}
           </ol>
-          <button type="button" className={`t-label ${styles.play}`} onClick={togglePlay}>
-            {playing ? "Pause" : "Play all"}
-          </button>
         </div>
       </div>
     </div>

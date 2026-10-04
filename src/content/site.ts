@@ -6,7 +6,7 @@ export const site = {
     "Lead UX Designer for US health insurance. Five years leading design on a white-label US health-insurance platform, plus AI products and civic services. Decision-led case studies with real screens: the brief, the real problem, and the call.",
   role: "Lead UX Designer",
   location: "Pune, India",
-  availability: "Open to senior and lead roles in UX, AI products and design engineering",
+  availability: "Open to senior and lead UX roles",
   email: "ali050786@gmail.com",
   linkedin: "https://www.linkedin.com/in/sikandar-ux",
   blinkwiser: "https://blinkwiser.com",

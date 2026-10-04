@@ -64,10 +64,7 @@ export function HeroShell({ title, lede, visual, facts, layout = "split", kicker
   const copy = (
     <>
       <p className={styles.kicker} data-hero-fade>
-        <span className={styles.status}>
-          <span className={styles.dot} aria-hidden="true" />
-          {kicker ?? site.availability}
-        </span>
+        <span className={styles.status}>{kicker ?? site.availability}</span>
       </p>
       <h1 id="hero-title" className={`${titleSize === "l" ? "t-display-l" : "t-display-xl"} ${styles.title}`} data-size={titleSize} data-hero-title>
         {title}
@@ -95,7 +92,7 @@ export function HeroShell({ title, lede, visual, facts, layout = "split", kicker
       <dl className={styles.facts} data-hero-fade>
         {facts.map((f) => (
           <div key={f.k}>
-            <dt className="t-label c-tertiary">{f.k}</dt>
+            <dt className="t-eyebrow c-tertiary">{f.k}</dt>
             <dd>{f.v}</dd>
           </div>
         ))}

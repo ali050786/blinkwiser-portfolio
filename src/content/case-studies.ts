@@ -293,8 +293,8 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "Enterprise platform",
       brief: "Adjust a handful of screens.",
-      problem: "A white-label product with no system, rebuilt by hand for every client.",
-      call: "Make the brand a variable, then make engineering build to it.",
+      problem: "Every new client was rebuilt by hand, because the product had no design system.",
+      call: "Turn each client's brand into design tokens, and get engineering to build with them.",
     },
     snapshot: {
       frame: "The ask was a few screen edits. The real problem: no system, hardcoded colours, every client rebuilt by hand.",
@@ -534,8 +534,8 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "AI-driven design system",
       brief: "The AI isn't good enough yet. Prompt harder.",
-      problem: "A six-year-old design system was illegible to a machine.",
-      call: "Rebuild it as skill files an agent can read and verify against.",
+      problem: "Our six-year-old design system lived in designers' heads, so the AI couldn't follow it.",
+      call: "Rewrite it as skill files the AI reads and checks its work against.",
     },
     snapshot: {
       frame: "The AI wasn't the problem. Our design rules lived in designers' heads, so it had nothing to follow.",
@@ -717,8 +717,8 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "AI product · founder",
       brief: "Turn a topic into a LinkedIn carousel, fast.",
-      problem: "Creators couldn't trust what the AI wrote, or what it said it changed.",
-      call: "Treat trust as the product: facts checked in code, every edit reversible.",
+      problem: "Creators couldn't trust the numbers the AI wrote, or its claims about what it changed.",
+      call: "Check every fact in code, and make every edit undoable.",
     },
     snapshot: {
       frame: "The model invented numbers, claimed edits it hadn't made and drifted to generic AI. The problem wasn't generation. It was trust.",
@@ -924,8 +924,8 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "Civic services · bilingual",
       brief: "Redesign the city's services portal.",
-      problem: "The catalogue mirrored the org chart, not what residents need done.",
-      call: "Organise by resident need, in Arabic and English as equals.",
+      problem: "Services were grouped by department, but residents only know what they need done.",
+      call: "Group services by what residents need, in Arabic and English equally.",
     },
     snapshot: {
       frame: "The brief was a portal redesign. The catalogue mirrored the org chart, but residents only know what they need done.",

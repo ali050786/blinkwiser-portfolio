@@ -8,10 +8,10 @@ import { caseStudies } from "./case-studies";
 
 const spec = [
   { index: "01", tag: "Health-insurance enrollment", key: "the order the backend stores them" },
-  { index: "02", tag: "White-label platform", key: "no system" },
-  { index: "03", tag: "AI design systems", key: "illegible to a machine" },
+  { index: "02", tag: "White-label platform", key: "no design system" },
+  { index: "03", tag: "AI design systems", key: "lived in designers' heads" },
   { index: "04", tag: "AI product, Blinkwiser", key: "couldn't trust" },
-  { index: "05", tag: "Civic services, Dubai", key: "the org chart" },
+  { index: "05", tag: "Civic services, Dubai", key: "grouped by department" },
 ] as const;
 
 export type BriefPage = {

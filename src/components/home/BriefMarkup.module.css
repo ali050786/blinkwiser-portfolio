@@ -71,8 +71,6 @@
 
 .note {
   margin: 0;
-  font-family: var(--font-family-serif);
-  font-style: italic;
   font-size: clamp(19px, 2.4cqi, 26px);
   line-height: 1.35;
   color: var(--accent-solid);

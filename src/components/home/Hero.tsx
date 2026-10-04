@@ -4,19 +4,20 @@ import { site } from "@/content/site";
 import { HeroShell } from "./HeroShell";
 import { BriefMarkup } from "./BriefMarkup";
 
-/** The home hero: headline and intro across the top, then a brief being marked up: the request struck out, the real problem written underneath. */
+/** The home hero: headline and intro across the top, then a marked-up brief: the request struck out, what I found and what I did written underneath. */
 export function Hero({ layout = "stacked" }: { layout?: "stacked" | "split" }) {
   return (
     <HeroShell
       title={
         <>
-          I make complex products <em className="t-serif-em">simple</em> for people and readable for AI.
+          I design benefits and enrollment software for US health insurance.
         </>
       }
       lede={
         <>
-          I bring 11 years in enterprise UX, the last five leading design on a white-label US health-insurance platform. Before
-          that, Dubai Municipality and Jet Airways. I work at the systems layer, where the real problem sits one level below the brief.
+          11 years in enterprise UX. For the last five I&apos;ve led design on a white-label health-insurance platform used by
+          insurers, employers and their members. Before that: Dubai Municipality&apos;s services portal and Jet Airways&apos; apps.
+          Lately I&apos;ve been rebuilding our design system so AI tools can follow it.
         </>
       }
       facts={[
