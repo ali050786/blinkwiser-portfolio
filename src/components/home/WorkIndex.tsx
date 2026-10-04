@@ -11,8 +11,8 @@ import styles from "./WorkIndex.module.css";
 const home: Record<string, { domain: string; outcome: { value: string; label: string } }> = {
   "02": { domain: "White-label platform", outcome: { value: "< 24 h", label: "to theme a new client, down from weeks" } },
   "03": { domain: "AI design systems", outcome: { value: "3–4 days", label: "Jira-story turnaround, down from 1–2 weeks" } },
-  "04": { domain: "AI product, Blinkwiser", outcome: { value: "Every edit", label: "undoable, and honest about what changed" } },
-  "05": { domain: "Civic services, Dubai", outcome: { value: "3.5M", label: "residents, with city services organised by need, not department" } },
+  "04": { domain: "AI product, Blinkwiser", outcome: { value: "7 in 10", label: "blind comparisons won by the rebuild over the first version" } },
+  "05": { domain: "Civic services, Dubai", outcome: { value: "", label: "One place for city services, for Emiratis and residents, in Arabic and English" } },
 };
 
 export function WorkIndex() {
@@ -20,7 +20,6 @@ export function WorkIndex() {
   const items: WorkCard[] = rest.map((c) => ({
     slug: c.slug,
     index: c.index,
-    accent: c.accent,
     domain: home[c.index]?.domain ?? c.group,
     title: c.card?.title ?? c.short,
     outcome: home[c.index]?.outcome ?? c.headline,
@@ -37,11 +36,8 @@ export function WorkIndex() {
   return (
     <section id="work" className="section" aria-labelledby="work-title">
       <div className={`container ${styles.head}`}>
-        <p className="t-label c-tertiary" data-reveal>
-          Selected work · 05
-        </p>
         <h2 id="work-title" className="t-display-l" data-reveal>
-          Five decisions, told the way they were <em className="t-serif-em c-accent">made</em>.
+          Case studies
         </h2>
       </div>
       <div className="container">

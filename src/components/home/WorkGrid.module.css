@@ -68,7 +68,7 @@
 }
 .kicker {
   margin: 0;
-  color: var(--accent-solid);
+  color: var(--text-tertiary);
 }
 .title {
   margin: 0;

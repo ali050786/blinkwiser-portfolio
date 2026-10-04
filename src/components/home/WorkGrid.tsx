@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { Accent, Shot } from "@/content/types";
+import type { Shot } from "@/content/types";
 import { ShotMedia } from "@/components/screens/ShotMedia";
 import { Icon } from "@/components/ui/Icon";
 import styles from "./WorkGrid.module.css";
@@ -9,7 +9,6 @@ import styles from "./WorkGrid.module.css";
 export type WorkCard = {
   slug: string;
   index: string;
-  accent: Accent;
   domain: string;
   title: string;
   outcome: { value: string; label: string };
@@ -27,20 +26,18 @@ export function WorkGrid({ items }: { items: WorkCard[] }) {
   return (
     <ul className={styles.grid}>
       {items.map((c) => (
-        <li key={c.slug} data-reveal>
-          <Link href={`/work/${c.slug}`} className={styles.card} data-accent={c.accent}>
+        <li key={c.slug}>
+          <Link href={`/work/${c.slug}`} className={styles.card}>
             <div className={styles.visual}>
               <div className={styles.frame}>
                 <ShotMedia shot={c.visual} />
               </div>
             </div>
             <div className={styles.body}>
-              <p className={`t-label ${styles.kicker}`}>
-                {c.index} · {c.domain}
-              </p>
+              <p className={`t-eyebrow ${styles.kicker}`}>{c.domain}</p>
               <h3 className={`t-heading-l ${styles.title}`}>{c.title}</h3>
               <p className={styles.outcome}>
-                <span className={`tabular ${styles.value}`}>{c.outcome.value}</span>
+                {c.outcome.value && <span className={`tabular ${styles.value}`}>{c.outcome.value}</span>}
                 <span className={`t-body-s c-secondary ${styles.label}`}>{c.outcome.label}</span>
               </p>
               <div className={styles.foot}>

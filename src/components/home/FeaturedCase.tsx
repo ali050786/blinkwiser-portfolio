@@ -13,11 +13,9 @@ import styles from "./FeaturedCase.module.css";
  */
 export function FeaturedCase({ study }: { study: CaseStudy }) {
   return (
-    <Link href={`/work/${study.slug}`} className={styles.card} data-accent={study.accent} data-reveal>
+    <Link href={`/work/${study.slug}`} className={styles.card}>
       <div className={styles.text}>
-        <p className={`t-label ${styles.kicker}`}>
-          {study.index} · Featured case study
-        </p>
+        <p className={`t-eyebrow ${styles.kicker}`}>Featured case study</p>
         <h3 className={`t-display-m ${styles.title}`}>US health-insurance enrollment</h3>
         <ul className={styles.audiences} aria-label="Used by">
           <li>Insurers</li>
@@ -43,7 +41,7 @@ export function FeaturedCase({ study }: { study: CaseStudy }) {
         </div>
 
         <p className={styles.role}>
-          <span className="t-label c-tertiary">Role</span>
+          <span className="t-eyebrow c-tertiary">Role</span>
           <span>Founding UX Designer → UX Lead</span>
         </p>
 
