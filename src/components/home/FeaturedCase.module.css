@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: clamp(24px, 4vw, 56px);
@@ -17,7 +18,7 @@
 .card:hover {
   border-color: var(--accent-solid);
 }
-.card:focus-visible {
+.card:has(.cta:focus-visible) {
   outline: 2px solid var(--accent-solid);
   outline-offset: 4px;
 }
@@ -103,6 +104,18 @@
   background: var(--surface-inverse);
   color: var(--text-inverse);
   font-size: var(--font-size-body-s);
+  text-decoration: none;
+}
+.cta:focus-visible {
+  outline: none;
+}
+/* The link stretches over the whole card, so the card stays one click target. */
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
 }
 
 .visual {
@@ -122,6 +135,13 @@
   pointer-events: none;
 }
 
+.visual[data-video] {
+  max-height: none;
+}
+.visual[data-video]::after {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .card {
     grid-template-columns: 1fr;
@@ -129,5 +149,8 @@
   .visual {
     order: -1;
     max-height: 260px;
+  }
+  .visual[data-video] {
+    max-height: none;
   }
 }

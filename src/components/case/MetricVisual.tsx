@@ -130,7 +130,7 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
 
   if (id === "time-freed")
     return (
-      <svg viewBox="0 0 480 300" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Before: a designer's production time, the whole bar. After: about 60 percent, with about 40 percent freed for research, flows and edge cases.">
+      <svg viewBox="0 0 480 300" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Before: a designer's production time, the whole bar. After: about 60 percent, with about 40 percent freed for research, flows, and edge cases.">
         <T x={44} y={44}>
           before · production time
         </T>
@@ -152,7 +152,7 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
   if (id === "brand-grid") {
     const platforms = ["admin", "member", "mobile"];
     return (
-      <svg viewBox="0 0 480 300" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="One design system feeding a grid of five client brands by three platforms: admin centre, member portal and mobile app.">
+      <svg viewBox="0 0 480 300" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="One design system feeding a grid of five client brands by three platforms: admin center, member portal, and mobile app.">
         {[0, 1, 2, 3, 4].map((r) => (
           <g key={r}>
             <path d={`M78 150 C 130 150, 130 ${70 + r * 40}, 176 ${70 + r * 40}`} className={g.strong} />
@@ -184,7 +184,7 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
   const entries = ["open enrollment", "life event", "new hire", "admin on behalf"];
   const xs = [250, 300, 350, 400, 450];
   return (
-    <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Four ways in, open enrollment, life event, new hire and admin on behalf, all joining one shared five-step skeleton.">
+    <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Four ways in, open enrollment, life event, new hire, and admin on behalf, all joining one shared five-step skeleton.">
       {entries.map((e, i) => {
         const y = 70 + i * 60;
         return (

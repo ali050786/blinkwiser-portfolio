@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Colophon",
-  description: "How this portfolio is built: three-tier design tokens, motion principles, accessibility and public-safe case studies.",
+  description: "How this portfolio is built: three-tier design tokens, motion principles, accessibility, and public-safe case studies.",
   alternates: { canonical: "/colophon" },
 };
 
@@ -16,11 +16,11 @@ const decisions = [
   },
   {
     title: "GSAP for choreography, Motion for state",
-    body: "GSAP (ScrollTrigger, SplitText) runs the headline reveals and the scroll-linked layer stack on this page. Motion handles state-driven UI: the home page's reframe deck and every exhibit's layout transitions, presence and springs. Scroll reveals are CSS plus one shared IntersectionObserver, so server components stay server components.",
+    body: "GSAP (ScrollTrigger, SplitText) runs the headline reveals and the scroll-linked layer stack on this page. Motion handles state-driven UI: the home page's reframe deck and every exhibit's layout transitions, presence, and springs. Scroll reveals are CSS plus one shared IntersectionObserver, so server components stay server components.",
   },
   {
     title: "CSS 3D instead of WebGL",
-    body: "The exploded layer stack on this page is DOM and CSS 3D. Text stays crisp vector type, colour tokens drive it directly, and it ships no 3D engine. Three.js was considered and rejected here: it would rasterise the UI onto textures and add weight for a diagram.",
+    body: "The exploded layer stack on this page is DOM and CSS 3D. Text stays crisp vector type, color tokens drive it directly, and it ships no 3D engine. Three.js was considered and rejected here: it would rasterize the UI onto textures and add weight for a diagram.",
   },
   {
     title: "Static HTML first, islands second",
@@ -28,11 +28,11 @@ const decisions = [
   },
   {
     title: "Accessible by construction",
-    body: "A script checks 50 token pairs against WCAG AA in both modes. Reduced-motion visitors get final states with no autoplay; anything that advances on its own pauses on hover, focus and offscreen, and has a pause control. Exhibits use native inputs, radio groups and live regions, and every one is keyboard operable.",
+    body: "A script checks 50 token pairs against WCAG AA in both modes. Reduced-motion visitors get final states with no autoplay; anything that advances on its own pauses on hover, focus, and offscreen, and has a pause control. Exhibits use native inputs, radio groups, and live regions, and every one is keyboard operable.",
   },
   {
     title: "Public-safe case studies",
-    body: "Clients are anonymised, the employer is named once as attribution, and every visual is redrawn with demo brands and illustrative data. No client screens, internal codenames or file links.",
+    body: "Clients are anonymized, the employer is named once as attribution, and every visual is redrawn with demo brands and illustrative data. No client screens, internal codenames, or file links.",
   },
 ];
 

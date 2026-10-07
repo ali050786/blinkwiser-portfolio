@@ -114,7 +114,7 @@ export function JetJourney() {
       mobile={mobile}
       label="Diagram · one booking, five steps"
       viewBox="0 0 720 260"
-      aria="The booking flow in five steps: search, flights, guests, extras, pay. Three of my calls sit in the flights step: the fare grid and mobile list, the full price breakdown and the upgrade offer. The fourth, every add-on in one step, is the extras step."
+      aria="The booking flow in five steps: search, flights, guests, extras, pay. Three of my calls sit in the flights step: the fare grid and mobile list, the full price breakdown, and the upgrade offer. The fourth, every add-on in one step, is the extras step."
       caption="Four calls along one booking. Three are in choosing a flight, where most of the decisions are made; the fourth is the extras step before payment."
     >
       <path d={`M${x(0)} 70 H${x(4)}`} className={g.strong} />
@@ -165,7 +165,7 @@ export function TotalVsBreakdown() {
   return (
     <TwoOptions
       label="Diagram · the two options"
-      aria="Total only: pick a fare, see one number, learn what it is made of at payment. Broken down: pick a fare, see fare, tax, fees and discount, and the total beside the flights."
+      aria="Total only: pick a fare, see one number, learn what it is made of at payment. Broken down: pick a fare, see the fare, tax, fees, and discount, with the total beside the flights."
       caption="A single total is cleaner and leaves the questions for payment. The breakdown answers them while people are still choosing."
       warnAt={2}
       top={{ title: "total only", items: ["pick a fare", "one number", "explained at payment"], note: "a surprise at the end" }}

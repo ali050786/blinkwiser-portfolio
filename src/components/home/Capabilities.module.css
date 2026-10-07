@@ -1,0 +1,196 @@
+/*
+ * What I bring: a framed 2x2 grid (hairlines and crosshair corners, as in the proof list).
+ * Static at every size: two columns from 860px, one below.
+ */
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(40px, 5vw, 64px);
+  border: 1px solid var(--border-default);
+}
+.c1,
+.c2,
+.c3,
+.c4 {
+  position: absolute;
+  z-index: 1;
+}
+.c1 {
+  top: -6px;
+  left: -6px;
+}
+.c2 {
+  top: -6px;
+  right: -6px;
+}
+.c3 {
+  bottom: -6px;
+  left: -6px;
+}
+.c4 {
+  bottom: -6px;
+  right: -6px;
+}
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(28px, 3.2vw, 48px);
+  border-bottom: 1px solid var(--border-default);
+}
+.cell:nth-of-type(odd) {
+  border-right: 1px solid var(--border-default);
+}
+.cell:nth-last-of-type(-n + 2) {
+  border-bottom: 0;
+}
+
+/* ---- copy */
+.tag {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.title {
+  margin-top: 28px;
+  font-size: clamp(1.5rem, 1.15rem + 0.9vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+.line {
+  max-width: 38ch;
+  margin-top: 10px;
+  font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--accent-solid);
+}
+.items {
+  display: grid;
+  gap: 8px;
+  max-width: 50ch;
+  margin-top: 20px;
+}
+.items li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.items li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.68em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+}
+/* Chips sit at the foot of every cell, so the two cells in a row line up. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.chips a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+.chips a:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+}
+
+/* ---- the glyph: line art on the canvas, no frame, kept small */
+.visual {
+  width: 100%;
+  margin-top: 24px;
+}
+.glyph {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+.gCheck {
+  fill: none;
+  stroke: var(--accent-on-solid);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gCheckAccent {
+  fill: none;
+  stroke: var(--accent-solid);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gDash {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 5;
+}
+.gDashAccent {
+  fill: none;
+  stroke: var(--accent-solid);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.gOrbit {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent-solid) 45%, transparent);
+  stroke-dasharray: 2 6;
+}
+.gStrong,
+.gAccent {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+.gStrong {
+  fill: var(--text-primary);
+}
+.gAccent {
+  fill: var(--accent-solid);
+}
+.gHalo {
+  paint-order: stroke;
+  stroke: var(--surface-canvas);
+  stroke-width: 6px;
+}
+
+
+@media (max-width: 859px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cell:nth-of-type(odd) {
+    border-right: 0;
+  }
+  .cell:nth-last-of-type(2) {
+    border-bottom: 1px solid var(--border-default);
+  }
+}

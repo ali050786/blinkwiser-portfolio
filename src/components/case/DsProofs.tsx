@@ -123,7 +123,7 @@ export function SaveSide() {
   );
 }
 
-/* ------------------------------------------------------------ 02 The colour */
+/* ------------------------------------------------------------ 02 The color */
 
 const swatches = [
   { id: "a", look: "Green", job: "Button" },
@@ -138,7 +138,7 @@ export function LinkColour() {
     const pick = kind === "old" ? "a" : "b";
     return (
       <Col kind={kind} label={kind === "old" ? "Before the skills" : "With the skills"}>
-        <p className={styles.sub}>{kind === "old" ? "Colours named for how they look" : "Colours named for their job"}</p>
+        <p className={styles.sub}>{kind === "old" ? "Colors named for how they look" : "Colors named for their job"}</p>
         <ul className={styles.swatches}>
           {swatches.map((s) => (
             <li key={s.id} className={styles.swatchRow} data-picked={(done && s.id === pick) || undefined} data-kind={kind}>
@@ -155,9 +155,9 @@ export function LinkColour() {
           </span>
         </div>
         {kind === "old" ? (
-          <Result word off value="Guess" label="nothing said which colour a link takes" />
+          <Result word off value="Guess" label="nothing said which color a link takes" />
         ) : (
-          <Result word value="Rule" label="the link takes the colour named Link" />
+          <Result word value="Rule" label="the link takes the color named Link" />
         )}
       </Col>
     );
@@ -166,9 +166,9 @@ export function LinkColour() {
   return (
     <figure className={base.card}>
       <header className={base.head}>
-        <p className={base.title}>Which colour the AI gave a link</p>
+        <p className={base.title}>Which color the AI gave a link</p>
         <p className={base.change}>
-          <span className={base.to}>Same three colours</span>
+          <span className={base.to}>Same three colors</span>
           <span className="c-tertiary">named two ways</span>
         </p>
       </header>

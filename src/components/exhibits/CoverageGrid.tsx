@@ -83,7 +83,7 @@ export function CoverageGrid() {
       label="Interactive · family-by-coverage grid"
       title="Ask “who needs what” once"
       caption="Toggle who is covered, change or waive a plan, or switch to per-member plans. The total follows every change."
-      note="Demo household and illustrative prices. Not a client product."
+      note="Demo household and illustrative prices. Not the real product."
       controls={
         <Segmented<Unit>
           label="Show cost"

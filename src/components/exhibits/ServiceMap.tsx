@@ -40,10 +40,10 @@ export function ServiceMap() {
 
   return (
     <Exhibit
-      label="Interactive · service catalogue"
-      title="The same twelve services, organised two ways"
+      label="Interactive · service catalog"
+      title="The same twelve services, organized two ways"
       caption="Switch the grouping, or search the way residents do: by what they need, not by official service names."
-      note="Generic service names for illustration. Not the client's catalogue."
+      note="Generic service names for illustration. Not the client's catalog."
       controls={
         <Segmented<View>
           label="Group services by"

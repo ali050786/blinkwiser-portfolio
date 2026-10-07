@@ -74,8 +74,9 @@
   border-color: color-mix(in oklch, var(--accent-solid) 45%, var(--border-subtle));
   background: var(--accent-soft);
 }
+/* Unrelated skills step back by colour, not opacity, so their text keeps AA contrast. */
 .skill[data-dim] {
-  opacity: 0.62;
+  color: var(--text-tertiary);
 }
 .skill[aria-pressed="true"] {
   border-color: var(--accent-solid);

@@ -81,7 +81,7 @@ export function HeroStories({ opener, compact }: { opener: Opener; compact?: boo
               <figure className={styles.quote}>
                 <p className={styles.emptyField}>
                   <span className="t-label c-tertiary">{s.quoteEmpty.field}</span>
-                  <span className={styles.emptyBox} aria-label="empty" />
+                  <span className={styles.emptyBox} role="img" aria-label="empty" />
                 </p>
                 {s.quoteSource && <figcaption className="t-label c-tertiary">{s.quoteSource}</figcaption>}
               </figure>

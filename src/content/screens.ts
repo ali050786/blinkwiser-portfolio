@@ -24,12 +24,12 @@ export const enrollmentStages: ScreenStage[] = [
     id: "household",
     label: "Who's covered",
     change:
-      "Before, the household was a list of names, and who each coverage applied to came later, once per coverage. After, one grid answers who needs medical, dental and vision for the whole family, up front.",
+      "Before, the household was a list of names, and who each coverage applied to came later, once per coverage. After, one grid answers who needs medical, dental, and vision for the whole family, up front.",
     before: [
       shot("old-household", "Old flow: a dependents list showing three family members by name, with no coverage information.", "A list of names. Who is covered by what is asked later."),
     ],
     after: [
-      shot("new-household", "New flow: each family member as a row with checkboxes for Medical, Dental, Vision and Supplemental.", "Family against coverage, answered once."),
+      shot("new-household", "New flow: each family member as a row with checkboxes for Medical, Dental, Vision, and Supplemental.", "Family against coverage, answered once."),
     ],
   },
   {
@@ -38,7 +38,7 @@ export const enrollmentStages: ScreenStage[] = [
     change:
       "Before, a coverage hub sent members into each coverage, where they picked a plan and then chose again who it covered. After, plan selection reads the grid: the plan page already knows who it covers, and a shared family plan is the default.",
     before: [
-      shot("old-coverage-hub", "Old flow: a coverage hub listing Medical, Dental and Vision, each with an Update button.", "The hub. Each coverage is its own loop."),
+      shot("old-coverage-hub", "Old flow: a coverage hub listing Medical, Dental, and Vision, each with an Update button.", "The hub. Each coverage is its own loop."),
       shot("old-who-again", "Old flow: inside the medical plan, a list of family members with Add and Remove buttons.", "Inside every coverage: choose who it covers, again."),
     ],
     after: [
@@ -77,27 +77,27 @@ export const designSystemStages: ScreenStage[] = [
     id: "tokens",
     label: "Theme tokens",
     change:
-      "Theme colours are named by role, not by value: Primary, Secondary, Text, Background, each with an opacity ramp. Swap a client's brand values and every screen follows.",
-    after: [shot("ds-tokens", "Design system colour page: theme colours, feedback colours and tint ramps, all named by role.")],
+      "Theme colors are named by role, not by value: Primary, Secondary, Text, Background, each with an opacity ramp. Swap a client's brand values and every screen follows.",
+    after: [shot("ds-tokens", "Design system color page: theme colors, feedback colors, and tint ramps, all named by role.")],
   },
   {
     id: "components",
     label: "Components",
-    change: "Every component documents its variations, emphasis levels, sizes and states, so engineering builds each state once instead of improvising it per page.",
-    after: [shot("ds-buttons", "Design system button page: variations, emphasis levels, sizes, and default, hover, focus and disabled states.")],
+    change: "Every component documents its variations, emphasis levels, sizes, and states, so engineering builds each state once instead of improvising it per page.",
+    after: [shot("ds-buttons", "Design system button page: variations, emphasis levels, sizes, and default, hover, focus, and disabled states.")],
   },
   {
     id: "domain",
     label: "Domain components",
     change:
-      "Health-insurance patterns become components too. The enrollment product card carries plan, networks, deductibles and premium, with default, selected, current and current-selected states.",
+      "Health-insurance patterns become components too. The enrollment product card carries plan, networks, deductibles, and premium, with default, selected, current, and current-selected states.",
     after: [shot("ds-product-card", "Design system product card for enrollment, with its four states.")],
   },
   {
     id: "pattern",
     label: "Page patterns",
-    change: "Pages start from patterns, not blank frames. The member dashboard assembles coverage status, claims, resources and find-care from library components.",
-    after: [shot("ds-dashboard", "Member dashboard page pattern: coverage status by family member, claims status, resources and find care.")],
+    change: "Pages start from patterns, not blank frames. The member dashboard assembles coverage status, claims, resources, and find-care from library components.",
+    after: [shot("ds-dashboard", "Member dashboard page pattern: coverage status by family member, claims status, resources, and find care.")],
   },
 ];
 
@@ -107,22 +107,22 @@ export const passiveStages: ScreenStage[] = [
     id: "rule",
     label: "Pick the rule",
     change:
-      "Each client picks one of four rules for members who don't act, in plain language, with the options that rule needs: a termination reason, or a default-plan file. Excluding members with supplemental products is a single checkbox.",
+      "Each employer picks one of four rules for members who don't act, in plain language, with the options that rule needs: a termination reason or a default-plan file. Excluding members with supplemental products is a single checkbox.",
     after: [shot("pe-rule", "Passive enrollment settings: coverage effective date, four rules as radio options with descriptions, termination status and reason, an exclude-supplemental checkbox, and a utility log.")],
   },
   {
     id: "confirm",
     label: "Confirm the run",
     change:
-      "Before anything changes, the admin sees the date, rule and file the run will use, how many members it will touch, and a plain warning that it cannot be undone.",
-    after: [shot("pe-confirm", "Confirmation dialog listing the effective date, rule and file, a warning that the run cannot be undone, and the number of members affected.")],
+      "Before anything changes, the admin sees the date, rule, and file the run will use, how many members it will touch, and a plain warning that it cannot be undone.",
+    after: [shot("pe-confirm", "Confirmation dialog listing the effective date, rule, and file, a warning that the run cannot be undone, and the number of members affected.")],
   },
   {
     id: "running",
     label: "Locked while running",
     change:
       "While a run is in progress the settings are read-only and say why: two runs can't touch the same members. The log shows the run in progress next to every past run.",
-    after: [shot("pe-running", "Settings disabled during a run, with an uploaded default-plan file, a 'utility running' notice and the run listed as in progress.")],
+    after: [shot("pe-running", "Settings disabled during a run, with an uploaded default-plan file, a 'utility running' notice, and the run listed as in progress.")],
   },
   {
     id: "report",
@@ -139,26 +139,26 @@ export const brandingStages: ScreenStage[] = [
     id: "hub",
     label: "Theme hub",
     change:
-      "Every member-facing theme in one place, with its colours, how many employers use it and who edited it last. Drafts, defaults and themes someone else is editing are marked, so two admins don't overwrite each other.",
-    after: [shot("bh-hub", "Branding hub listing themes as cards with colour chips, employer counts, draft, default and locked states.")],
+      "Every member-facing theme in one place, with its colors, how many employers use it, and who edited it last. Drafts, defaults, and themes someone else is editing are marked, so two admins don't overwrite each other.",
+    after: [shot("bh-hub", "Branding hub listing themes as cards with color chips, employer counts, and draft, default, and locked states.")],
   },
   {
     id: "editor",
     label: "Theme editor",
     change:
-      "The same roles as the design tokens, in admin language. Each colour field says where it shows up, so admins choose by role instead of guessing what a hex code will change.",
-    after: [shot("bh-editor", "Theme editor with name, font, twelve role-named colour fields each with a usage description, employer assignment, and save or publish.")],
+      "The same roles as the design tokens, in admin language. Each color field says where it shows up, so admins choose by role instead of guessing what a hex code will change.",
+    after: [shot("bh-editor", "Theme editor with name, font, twelve role-named color fields each with a usage description, employer assignment, and save or publish.")],
   },
   {
     id: "preview",
     label: "Preview",
     change: "Before publishing, the theme is applied to a real member dashboard, so admins judge the result, not the swatches.",
-    after: [shot("bh-preview", "Preview of the member dashboard in the new theme's colours.")],
+    after: [shot("bh-preview", "Preview of the member dashboard in the new theme's colors.")],
   },
   {
     id: "assign",
     label: "Assign employers",
-    change: "A theme goes live for the employers it's assigned to. Each employer then gets its own logo, links, contacts and resources on top.",
+    change: "A theme goes live for the employers it's assigned to. Each employer then gets its own logo, links, contacts, and resources on top.",
     after: [shot("bh-assign", "Dialog for assigning employers to a theme, with search and checkboxes.")],
   },
 ];
@@ -171,13 +171,13 @@ export const jetStages: ScreenStage[] = [
     id: "fares",
     label: "Fares and price",
     change:
-      "On desktop, flights are rows and the five fares are columns. Pick a fare and the trip summary beside it breaks the total into fare, tax, fees and discount. The business-class offer sits under the chosen fare.",
+      "On desktop, flights are rows and the five fares are columns. Pick a fare and the trip summary beside it breaks the total into fare, tax, fees, and discount. The business-class offer sits under the chosen fare.",
     after: [
       img(
         "/work/jet/fares.webp",
         2400,
         1890,
-        "Jet Airways fare selection on desktop: flights as rows, five Economy fares as columns, a Première upgrade offer under the selected flight, and a trip summary listing fare, tax, fees, discount and total.",
+        "Jet Airways fare selection on desktop: flights as rows, five Economy fares as columns, a Première upgrade offer under the selected flight, and a trip summary listing fare, tax, fees, discount, and total.",
         "The fare grid with the trip summary beside it.",
       ),
     ],
@@ -192,7 +192,7 @@ export const jetStages: ScreenStage[] = [
         "/work/jet/extras.webp",
         1055,
         1609,
-        "JetBistro meal picker on mobile with passengers and flights as tabs, a filter panel, and the JetXtras step listing meals, seats, baggage, priority and insurance before Continue to pay.",
+        "JetBistro meal picker on mobile with passengers and flights as tabs, a filter panel, and the JetXtras step listing meals, seats, baggage, priority, and insurance before Continue to pay.",
         "Meals per passenger, and every add-on in one step.",
       ),
     ],
@@ -207,7 +207,7 @@ export const jetStages: ScreenStage[] = [
         "/work/jet/xtras-ads.webp",
         2260,
         3430,
-        "The JetXtras list with one row each for meals, seat select, excess baggage, priority, extra miles and travel insurance, in front of the airline's advertising page.",
+        "The JetXtras list with one row each for meals, seat select, excess baggage, priority, extra miles, and travel insurance, in front of the airline's advertising page.",
         "One row per add-on, before payment.",
       ),
     ],

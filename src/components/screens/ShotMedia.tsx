@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import type { Shot } from "@/content/types";
 import { useReducedMotionSafe as useReducedMotion } from "@/lib/motion";
 import { ScreenView } from "./index";
+import { AutoVideo } from "@/components/ui/AutoVideo";
 
 /** Renders any Shot: a rebuilt screen, a real image, or a muted looping video. */
 export function ShotMedia({ shot, maxScale, eager }: { shot: Shot; maxScale?: number; eager?: boolean }) {
@@ -20,6 +21,8 @@ export function ShotMedia({ shot, maxScale, eager }: { shot: Shot; maxScale?: nu
   }, [reduce]);
 
   if (shot.screen) return <ScreenView id={shot.screen} alt={shot.alt} maxScale={maxScale} />;
+  if (shot.video && shot.sound !== undefined && shot.poster)
+    return <AutoVideo src={shot.video} poster={shot.poster} label={shot.alt} sound={shot.sound} />;
   if (shot.video)
     return (
       <video

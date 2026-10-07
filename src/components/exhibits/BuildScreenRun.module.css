@@ -18,8 +18,13 @@
     background-color var(--duration-base) var(--ease-standard),
     opacity var(--duration-base) var(--ease-standard);
 }
-.step[data-state="pending"] {
+/* Pending steps step back: the icon fades, the text drops to the tertiary token (AA), never opacity. */
+.step[data-state="pending"] .status {
   opacity: 0.45;
+}
+.step[data-state="pending"] .stepTitle,
+.step[data-state="pending"] .stepDetail {
+  color: var(--text-tertiary);
 }
 .step[data-state="active"] {
   background: var(--surface-raised);

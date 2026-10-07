@@ -13,14 +13,14 @@ import * as M from "./MobileDiagrams";
 export function RulesInHeads() {
   const xs = [40, 192, 344];
   const ai = { x: 572, y: 140 };
-  const read = ["components", "colour variables", "type styles"];
-  const heads = ["which colour = link", "which grid per page", "how screens compose"];
+  const read = ["components", "color variables", "type styles"];
+  const heads = ["which color = link", "which grid per page", "how screens compose"];
   return (
     <Diagram
       mobile={M.rulesInHeads()}
       label="Diagram · what the AI had to work with"
       viewBox="0 0 720 290"
-      aria="Top row: components, colour variables and type styles, all in the Figma file and read by the AI. Bottom row, red and dashed: which colour is a link, which grid a page uses, how screens compose. These lived in designers' heads and never reached the AI, so its screens came back off-brand."
+      aria="Top row: components, color variables, and type styles. All were in the Figma file, and the AI read them. Bottom row, in red and dashed: which color is a link, which grid a page uses, and how screens compose. These rules lived only in designers' heads, so the AI's screens came back off-brand."
       caption="The AI could read every component and variable in the file. The rules for using them were never written down, so they never reached it, and each screen came back off-brand. Illustration with generic names."
     >
       <T x={40} y={28}>
@@ -68,7 +68,7 @@ export function RulesInHeads() {
 export function TwoLoops() {
   const mid = { x: 360, y: 140 };
   const lanes = [
-    { y: 64, from: "Jira story", to: "dev checks feasibility", who: "BAs and developers", time: "1–2 weeks per story" },
+    { y: 64, from: "Jira story", to: "dev checks feasibility", who: "Business analysts and developers", time: "1–2 weeks per story" },
     { y: 216, from: "prospective client", to: "branded sales demo", who: "Sales and marketing", time: "~2 days per demo mockup" },
   ];
   return (
@@ -76,7 +76,7 @@ export function TwoLoops() {
       mobile={M.twoLoops()}
       label="Diagram · two queues, one bottleneck"
       viewBox="0 0 720 290"
-      aria="Two lanes. BAs and developers: a Jira story waits on a mockup before developers can check feasibility, 1 to 2 weeks per story. Sales: a prospective client waits on a mockup before a branded demo, about 2 days per mockup. Both pass through one red node: a senior designer drawing the screen by hand."
+      aria="Two lanes share one bottleneck. In the first, business analysts and developers wait 1 to 2 weeks per Jira story for a mockup before developers can check feasibility. In the second, sales waits about 2 days per mockup for a branded demo. Both wait on one senior designer drawing screens by hand."
       caption="Every feasibility check and every sales demo waited on the same thing: a senior designer drawing the screen by hand. Timings are team-observed, not measured."
     >
       {lanes.map((l) => (
@@ -182,7 +182,7 @@ export function PortableSkills() {
       mobile={M.portableSkills()}
       label="Diagram · portable and self-checking"
       viewBox="0 0 720 300"
-      aria="Top: one set of skill files in plain markdown connects to Figma's agent today, and can move to Claude Code through a Figma MCP or to any agent that reads markdown. Bottom: the Figma file and the docs, with an audit skill comparing them every session and a memory skill carrying decisions forward."
+      aria="Top: one set of skill files in plain markdown. They connect to Figma's agent today, and can move to Claude Code through a Figma MCP or to any agent that reads markdown. Bottom: an audit skill compares the Figma file with the docs every session. A memory skill carries decisions forward."
       caption="The rules are plain text, so no one vendor owns them. The audit compares the docs with the file every session, so the system can't quietly drift the way the old one did."
     >
       {[2, 1, 0].map((i) => (
@@ -236,8 +236,8 @@ export function AdoptionSpread() {
       mobile={M.adoptionSpread()}
       label="Diagram · how it spread"
       viewBox="0 0 720 230"
-      aria="From me, who built and proved it, to the four designers on my team, to the organisation's UAT team, who chose it for their own projects. BAs are a dashed node: held back on purpose."
-      caption="No mandate. I built it and proved it, my four designers moved onto it, and a team outside mine chose it for their own projects. BAs are held back on purpose: they could mock screens with it, but would likely skip the UX thinking first."
+      aria="From me, who built and proved it, to the four designers on my team, to the organization's UAT team, who chose it for their own projects. Business analysts are a dashed node: held back on purpose."
+      caption="No mandate. I built it and proved it, my four designers moved onto it, and a team outside mine chose it for their own projects. Business analysts are held back on purpose: they could mock screens with it, but would likely skip the UX thinking first."
     >
       <path d="M84 110 H180" className={g.strong} />
       <path d="M244 110 H340" className={g.strong} />
@@ -273,7 +273,7 @@ export function AdoptionSpread() {
 
       <circle cx={620} cy={110} r={10} className={g.cardWarn} />
       <T x={620} y={70} anchor="middle" warn>
-        BAs
+        business analysts
       </T>
       <T x={620} y={150} anchor="middle">
         not yet, on purpose

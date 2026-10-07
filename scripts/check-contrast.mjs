@@ -59,26 +59,23 @@ const ratio = (a, b) => {
   return (x + 0.05) / (y + 0.05);
 };
 
-const palettes = ["turquoise", ...Object.entries(t.themes ?? {}).filter(([k]) => !k.startsWith("$")).map(([, v]) => v.palette)];
 const pairs = [];
 for (const mode of ["light", "dark"]) {
   const canvas = token("semantic.surface.canvas", mode);
   const raised = token("semantic.surface.raised", mode);
   const sunken = token("semantic.surface.sunken", mode);
-  pairs.push([mode, "text.primary / canvas", token("semantic.text.primary", mode), canvas, 4.5]);
-  pairs.push([mode, "text.secondary / canvas", token("semantic.text.secondary", mode), canvas, 4.5]);
-  pairs.push([mode, "text.tertiary / canvas", token("semantic.text.tertiary", mode), canvas, 4.5]);
-  pairs.push([mode, "text.tertiary / sunken", token("semantic.text.tertiary", mode), sunken, 4.5]);
+  const highlight = token("semantic.surface.highlight", mode);
+  for (const [bgName, bg] of [["canvas", canvas], ["raised", raised], ["sunken", sunken], ["highlight", highlight]]) {
+    pairs.push([mode, `text.primary / ${bgName}`, token("semantic.text.primary", mode), bg, 4.5]);
+    pairs.push([mode, `text.secondary / ${bgName}`, token("semantic.text.secondary", mode), bg, 4.5]);
+    pairs.push([mode, `text.tertiary / ${bgName}`, token("semantic.text.tertiary", mode), bg, 4.5]);
+    pairs.push([mode, `accent.solid / ${bgName}`, token("semantic.accent.solid", mode), bg, 4.5]);
+  }
   pairs.push([mode, "text.positive / raised", token("semantic.text.positive", mode), raised, 4.5]);
   pairs.push([mode, "text.critical / raised", token("semantic.text.critical", mode), raised, 4.5]);
   pairs.push([mode, "border.strong / canvas (UI)", token("semantic.border.strong", mode), canvas, 3]);
-  for (const p of palettes) {
-    const solid = token(`primitive.color.${p}.${mode === "dark" ? "300" : "500"}`, mode);
-    const onSolid = token("semantic.accent.on-solid", mode);
-    pairs.push([mode, `${p} accent / canvas`, solid, canvas, 4.5]);
-    pairs.push([mode, `${p} accent / sunken`, solid, sunken, 4.5]);
-    pairs.push([mode, `on-solid / ${p} accent`, onSolid, solid, 4.5]);
-  }
+  pairs.push([mode, "on-solid / accent.solid", token("semantic.accent.on-solid", mode), token("semantic.accent.solid", mode), 4.5]);
+  pairs.push([mode, "on-solid / accent.strong", token("semantic.accent.on-solid", mode), token("semantic.accent.strong", mode), 4.5]);
 }
 
 let fail = 0;

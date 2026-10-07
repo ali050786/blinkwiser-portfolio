@@ -67,7 +67,7 @@ export function ThemeCascade() {
             <span className="t-mono">T1</span> Insurer
           </legend>
           <p className="t-body-s c-tertiary">
-            Owns brand colour, shape and logo
+            Owns brand color, shape, and logo
           </p>
           <div
             className={styles.brandPick}

@@ -16,7 +16,7 @@ export type CareerChapter = {
   /** The result, shown under the fix. */
   result: string;
   depth: 1 | 2 | 3 | 4;
-  /** Marks the current chapter (accent colour, "Now"). */
+  /** Marks the current chapter (accent color, "Now"). */
   current?: boolean;
   href?: string;
   /** Case index for the "Read case" line, e.g. "03". */
@@ -52,7 +52,7 @@ export const career: CareerChapter[] = [
     org: "Dubai Municipality",
     years: "2020–21",
     brief: "Redesign the portal",
-    fix: "Organised by resident need",
+    fix: "Organized by resident need",
     result: "Citizens and residents",
     depth: 2,
     href: "/work/dubai-municipality",

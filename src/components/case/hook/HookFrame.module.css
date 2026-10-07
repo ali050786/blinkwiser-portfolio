@@ -80,10 +80,24 @@
 .card [data-n] {
   transition: opacity var(--duration-base) var(--ease-standard);
 }
-.card[data-active="1"] [data-n]:not([data-n="1"]),
-.card[data-active="2"] [data-n]:not([data-n="2"]),
-.card[data-active="3"] [data-n]:not([data-n="3"]) {
+/* Pictures step back with opacity; legend text steps back with a token colour, so it keeps AA contrast. */
+.card[data-active="1"] [data-n]:not([data-n="1"]):not(li),
+.card[data-active="2"] [data-n]:not([data-n="2"]):not(li),
+.card[data-active="3"] [data-n]:not([data-n="3"]):not(li) {
   opacity: 0.3;
+}
+.card .legend li {
+  transition: color var(--duration-base) var(--ease-standard);
+}
+.card[data-active="1"] .legend li:not([data-n="1"]),
+.card[data-active="2"] .legend li:not([data-n="2"]),
+.card[data-active="3"] .legend li:not([data-n="3"]) {
+  color: var(--text-tertiary);
+}
+.card[data-active="1"] .legend li:not([data-n="1"])::before,
+.card[data-active="2"] .legend li:not([data-n="2"])::before,
+.card[data-active="3"] .legend li:not([data-n="3"])::before {
+  background: var(--text-tertiary);
 }
 .card[data-active="1"] .mark[data-n="1"],
 .card[data-active="2"] .mark[data-n="2"],
@@ -94,9 +108,9 @@
   display: grid;
   gap: 4px;
   padding: 10px 14px;
-  border-left: 3px solid var(--text-critical);
+  border: 1px solid color-mix(in oklch, var(--text-critical) 35%, var(--border-default));
   background: var(--surface-sunken);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-radius: var(--radius-md);
 }
 .wordsQuote {
   font-size: var(--font-size-body-s);

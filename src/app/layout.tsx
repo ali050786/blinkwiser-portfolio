@@ -23,12 +23,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  // Light by default; ThemeToggle repaints it when a visitor picks dark.
-  themeColor: "#f7f9fa",
+  // Dark by default; ThemeToggle repaints it when a visitor picks light.
+  themeColor: "#0A0C0F",
 };
 
-// Runs before paint: applies a saved theme (light unless the visitor chose
-// dark) and records the motion preference, so there is no flash of the wrong
+// Runs before paint: applies a saved theme (dark unless the visitor chose
+// light) and records the motion preference, so there is no flash of the wrong
 // theme and reveal styles only apply when reduced motion isn't requested.
 const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}d.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'ok';})();`;
 
@@ -46,7 +46,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={fontVariables} suppressHydrationWarning>
+    <html lang="en" className={fontVariables} data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />

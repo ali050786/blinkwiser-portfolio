@@ -12,7 +12,7 @@ const oldSteps = [
   { id: "den", label: "Dental plan page → Add Noor", kind: "todo" },
 ] as const;
 
-/** Trips back into a coverage after adding her; the warning is not a trip. */
+/** Extra steps back into a coverage after adding her; the warning is not a step. */
 const stepNo = { med: 1, den: 2 } as const;
 
 const grid = [
@@ -64,7 +64,7 @@ export function NewbornAdd() {
           </ol>
           <p className={styles.result} data-off={done || undefined}>
             <span className={`tabular ${styles.count}`}>{done ? 2 : "\u00a0"}</span>
-            <span className={styles.resultLabel}>extra trips, one per coverage, to cover her</span>
+            <span className={styles.resultLabel}>extra steps, one per coverage, to cover her</span>
           </p>
         </section>
         <section className={styles.col} data-kind="new" aria-label="Redesign">
@@ -95,7 +95,7 @@ export function NewbornAdd() {
           </div>
           <p className={styles.result}>
             <span className={`tabular ${styles.count}`}>{done ? 0 : "\u00a0"}</span>
-            <span className={styles.resultLabel}>extra trips: ticked in the row where he added her</span>
+            <span className={styles.resultLabel}>extra steps: ticked in the row where he added her</span>
           </p>
         </section>
       </div>

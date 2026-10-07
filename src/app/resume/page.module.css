@@ -155,6 +155,12 @@
   .links {
     grid-template-columns: 1fr;
   }
+  /* Phones: give each contact link a 24px tap height (WCAG 2.2 target size). */
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
   .section {
     gap: var(--space-4);
   }

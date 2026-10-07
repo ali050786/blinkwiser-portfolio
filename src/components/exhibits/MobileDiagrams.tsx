@@ -223,7 +223,7 @@ export const rulesInHeads = (): MobileDrawing => ({
       <T x={24} y={24}>
         in the Figma file · the AI could read it
       </T>
-      {["components", "colour variables", "type styles"].map((t, i) => (
+      {["components", "color variables", "type styles"].map((t, i) => (
         <g key={t}>
           <path d={`M224 ${55 + i * 38} C 270 ${55 + i * 38}, 300 150, 300 186`} className={g.faint} />
           <rect x={24} y={40 + i * 38} width={200} height={30} rx={8} className={g.card} />
@@ -247,7 +247,7 @@ export const rulesInHeads = (): MobileDrawing => ({
       <T x={24} y={346} warn>
         in designers&apos; heads · never reached the AI
       </T>
-      {["which colour = link", "which grid per page", "how screens compose"].map((t, i) => (
+      {["which color = link", "which grid per page", "how screens compose"].map((t, i) => (
         <g key={t}>
           <rect x={24} y={360 + i * 36} width={200} height={28} rx={8} className={g.cardWarn} />
           <T x={124} y={378 + i * 36} anchor="middle" warn>
@@ -264,7 +264,7 @@ export const twoLoops = (): MobileDrawing => ({
   node: (
     <>
       <T x={90} y={24} anchor="middle">
-        BAs + developers
+        analysts + developers
       </T>
       <T x={270} y={24} anchor="middle">
         sales + marketing
@@ -417,7 +417,7 @@ export const adoptionSpread = (): MobileDrawing => ({
       </T>
       <circle cx={60} cy={330} r={10} className={g.cardWarn} />
       <T x={110} y={326} warn>
-        BAs
+        business analysts
       </T>
       <T x={110} y={342}>
         not yet, on purpose
@@ -561,7 +561,7 @@ export const adoptionFourSides = (): MobileDrawing => {
 };
 
 export const howWorkRan = (): MobileDrawing => {
-  const steps = ["new idea", "BA workshop", "design", "eng workshop", "ship"];
+  const steps = ["new idea", "analyst workshop", "design", "eng workshop", "ship"];
   return {
     viewBox: vb(380),
     node: (
@@ -768,7 +768,7 @@ export const orgVsNeed = (): MobileDrawing => {
           each with its own rules, documents,
         </T>
         <T x={24} y={272}>
-          fees and approvals
+          fees, and approvals
         </T>
         {depts.map((y) => (
           <path key={`q${y}`} d={`M290 364 C 290 300, 270 ${y}, 240 ${y}`} className={d.gapThin} />

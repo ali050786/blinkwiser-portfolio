@@ -95,9 +95,9 @@
   gap: 4px 12px;
   margin: 0;
   padding: 8px 14px;
-  border-left: 2px solid var(--accent-solid);
+  border: 1px solid var(--border-subtle);
   background: var(--surface-sunken);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   justify-self: start;
 }
 
@@ -154,8 +154,8 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 6px;
   margin: 0;
-  padding: 16px 0 0 20px;
-  border-left: 3px solid var(--accent-solid);
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border-default);
   max-width: 64ch;
 }
 .turn blockquote {

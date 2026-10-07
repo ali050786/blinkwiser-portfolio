@@ -125,7 +125,7 @@
   padding: 18px 22px;
   border-radius: var(--radius-lg);
   background: color-mix(in oklch, var(--text-critical) 7%, var(--surface-raised));
-  border-left: 3px solid var(--text-critical);
+  border: 1px solid color-mix(in oklch, var(--text-critical) 30%, var(--border-default));
 }
 .cost :global(.t-label) {
   color: var(--text-critical);

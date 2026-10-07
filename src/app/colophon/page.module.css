@@ -71,10 +71,10 @@
   justify-content: center;
   padding-bottom: 6px;
 }
-.ramp li:nth-child(n + 8) {
+.ramp li:nth-child(n + 9) {
   color: var(--color-neutral-25);
 }
-.ramp li:nth-child(-n + 7) {
+.ramp li:nth-child(-n + 8) {
   color: var(--color-neutral-950);
 }
 .ramp :global(.t-mono) {

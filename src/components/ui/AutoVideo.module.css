@@ -1,0 +1,55 @@
+.wrap {
+  position: relative;
+  width: 100%;
+}
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #f4f5f8;
+}
+.controls {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(17 24 39 / 0.62);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.75;
+  backdrop-filter: blur(6px);
+  transition: opacity var(--duration-base, 160ms) ease, background-color var(--duration-base, 160ms) ease;
+}
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+.wrap:hover .btn,
+.btn:focus-visible {
+  opacity: 1;
+}
+.btn:hover {
+  background: rgb(17 24 39 / 0.85);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring, #0f766e);
+  outline-offset: 2px;
+}
+@media (hover: none) {
+  .btn {
+    opacity: 1;
+  }
+}

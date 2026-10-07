@@ -71,7 +71,7 @@ export function FlowCompare() {
       label="Interactive · flow map"
       title="Same decisions, reordered"
       caption="Highlighted steps ask who is covered. Before, members answered it for the household and again inside every coverage."
-      note="Redrawn and simplified flow map. No client screens."
+      note="Redrawn and simplified flow map. Not the shipped screens."
       controls={
         <Segmented<View>
           label="Flow version"

@@ -1,129 +1,147 @@
+/* Taste Skill's nav rules: one line, 64px, one shape system (no pill boxes
+ * around links), a visible current-section state, no decorative dots. */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  /* Always opaque, always with a bottom rule: no see-through or blur on scroll. */
-  background: var(--surface-canvas);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard);
+}
+.header[data-scrolled] {
+  background: color-mix(in srgb, var(--surface-canvas) 84%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--border-default);
 }
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  height: 68px;
+  height: 64px;
 }
+
 .brand {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 12px;
-  border-radius: var(--radius-sm);
-}
-.mark {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background: var(--surface-inverse);
-  color: var(--text-inverse);
-  font-size: 13px;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.04em;
-  padding-inline: 7px;
-  transition: transform var(--duration-base) var(--ease-emphasized);
-}
-.mark span:last-child {
-  color: color-mix(in oklch, var(--text-inverse) 55%, transparent);
-}
-.brand:hover .mark {
-  transform: rotate(-6deg);
-}
-.brandText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
+  border-radius: var(--radius-xs);
 }
 .name {
-  font-weight: var(--font-weight-medium);
   font-size: 15px;
-  letter-spacing: -0.01em;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
 }
 .role {
-  font-size: var(--font-size-label);
+  font-size: 13px;
   color: var(--text-tertiary);
 }
-/* Nav sits on the right, next to Résumé, instead of centred. */
-.nav {
-  margin-left: auto;
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 .nav ul {
   display: flex;
+  align-items: center;
   gap: 4px;
 }
 .link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  height: 36px;
+  height: 64px;
   padding-inline: 14px;
-  border-radius: var(--radius-pill);
-  font-size: var(--font-size-body-s);
+  font-size: 14px;
   color: var(--text-secondary);
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent-solid);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-emphasized);
 }
 .link:hover {
   color: var(--text-primary);
-  background: var(--surface-muted);
 }
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.link[aria-current] {
+  color: var(--text-primary);
+}
+.link[aria-current]::after {
+  transform: scaleX(1);
+}
+.link:focus-visible {
+  outline-offset: -8px;
+}
+.rule {
+  width: 1px;
+  height: 18px;
+  margin-inline: 10px;
+  background: var(--border-default);
 }
 .resume {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   height: 36px;
-  padding-inline: 14px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-default);
-  font-size: var(--font-size-body-s);
+  padding-inline: 10px;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  border-radius: var(--radius-xs);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.resume svg {
+  color: var(--accent-solid);
+  transition: transform var(--duration-base) var(--ease-emphasized);
+}
+.resume:hover {
+  color: var(--accent-solid);
+}
+.resume:hover svg {
+  transform: translate(2px, -2px);
 }
 .menuButton {
   display: none;
   place-items: center;
   width: 40px;
   height: 40px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
 }
 .sheet {
-  border-top: 1px solid var(--border-subtle);
-  padding-block: 12px 20px;
+  border-top: 1px solid var(--border-default);
+  background: var(--surface-canvas);
+  padding-block: 8px 20px;
 }
 .sheetLink {
   display: flex;
-  align-items: baseline;
-  gap: 14px;
-  padding-block: 12px;
-  font-size: 28px;
+  padding-block: 14px;
+  font-size: 24px;
+  font-weight: var(--font-weight-medium);
   letter-spacing: -0.02em;
   border-bottom: 1px solid var(--border-subtle);
 }
 @media (max-width: 760px) {
   .nav,
-  .resume {
+  .rule,
+  .resume,
+  .role {
     display: none;
   }
   .menuButton {
     display: inline-grid;
-  }
-  .role {
-    display: none;
   }
 }
 @media (min-width: 761px) {

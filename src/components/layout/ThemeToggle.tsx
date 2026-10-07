@@ -6,16 +6,16 @@ import styles from "./ThemeToggle.module.css";
 
 type Theme = "light" | "dark";
 
-/** Browser chrome colour per theme (matches --surface-canvas). */
-const chrome: Record<Theme, string> = { light: "#f7f9fa", dark: "#060707" };
+/** Browser chrome color per theme (matches --surface-canvas). */
+const chrome: Record<Theme, string> = { light: "#F5F6F9", dark: "#0A0C0F" };
 const paintChrome = (t: Theme) => document.querySelector('meta[name="theme-color"]')?.setAttribute("content", chrome[t]);
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
-  // Light unless the visitor has chosen dark; the OS setting is not consulted.
+  // Dark unless the visitor has chosen light; the OS setting is not consulted.
   useEffect(() => {
-    const t: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const t: Theme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
     setTheme(t);
     paintChrome(t);
   }, []);

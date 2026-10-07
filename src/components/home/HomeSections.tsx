@@ -1,12 +1,16 @@
-import { WorkIndex } from "./WorkIndex";
-import { Contact } from "./Contact";
+import { Proof } from "./Proof";
+import { CaseCards } from "./CaseCards";
+import { Capabilities } from "./Capabilities";
+import { Call } from "./Call";
 
-/** Everything on the home page below the hero. */
+/** Everything below the hero, in Deploy's order. */
 export function HomeSections() {
   return (
     <>
-      <WorkIndex />
-      <Contact />
+      <Proof />
+      <CaseCards />
+      <Capabilities />
+      <Call />
     </>
   );
 }

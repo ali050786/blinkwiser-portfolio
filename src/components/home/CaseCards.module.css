@@ -1,0 +1,175 @@
+/* A faint blueprint grid behind the cards, so the work sits on a canvas. */
+.canvas {
+  isolation: isolate;
+}
+.canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
+
+.headRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.controls {
+  display: flex;
+  gap: 8px;
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+.arrow:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+}
+
+.track {
+  --edge: max(var(--layout-gutter), calc((100% - 1120px) / 2));
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(380px, 82vw);
+  gap: 20px;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: 4px var(--edge) 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: none;
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+.track > li {
+  scroll-snap-align: start;
+  display: grid;
+}
+.card {
+  display: grid;
+  grid-template-rows: 190px 1fr;
+  min-height: 470px;
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-raised) 70%, transparent);
+  color: inherit;
+  overflow: hidden;
+  transition:
+    border-color var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-emphasized);
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent-solid) 60%, transparent);
+  transform: translateY(-3px);
+}
+.card:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+.art {
+  display: grid;
+  place-items: center;
+  padding: 24px 32px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+.art svg {
+  max-height: 166px;
+  width: auto;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px 24px;
+}
+.tag {
+  padding: 4px 8px;
+  border: 1px solid var(--border-default);
+  border-radius: 4px;
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.title {
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+.facts {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+.facts li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.facts li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--text-tertiary);
+}
+.facts li:first-child {
+  color: var(--text-primary);
+}
+.facts li:first-child::before {
+  color: var(--accent-solid);
+}
+.more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.card:hover .more {
+  color: var(--accent-solid);
+}
+.more svg {
+  transition: transform var(--duration-base) var(--ease-emphasized);
+}
+.card:hover .more svg {
+  transform: translateX(3px);
+}
+@media (max-width: 720px) {
+  .controls {
+    display: none;
+  }
+}

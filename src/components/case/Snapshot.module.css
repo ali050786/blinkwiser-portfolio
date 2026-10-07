@@ -10,13 +10,6 @@
   box-shadow: var(--card-shadow);
   overflow: hidden;
 }
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: var(--accent-solid);
-}
 .head {
   display: flex;
   justify-content: space-between;

@@ -12,7 +12,7 @@ export type Node = { id: string; name: string; kind: Kind; detail: string };
 export type Col = { nodes: Node[]; start: number; end: number; parallel?: boolean };
 
 export const cols: Col[] = [
-  { start: 0, end: 1, nodes: [{ id: "topic", name: "Topic", kind: "input", detail: "The creator's topic, source material or request." }] },
+  { start: 0, end: 1, nodes: [{ id: "topic", name: "Topic", kind: "input", detail: "The creator's topic, source material, or request." }] },
   { start: 1, end: 8, nodes: [{ id: "research", name: "Fact sheet", kind: "model", detail: "Research becomes a numbered fact sheet with sources, the only place numbers may come from." }] },
   { start: 8, end: 12, nodes: [{ id: "outline", name: "Outline", kind: "model", detail: "Fixes the slide count and assigns facts to slides, so length and structure are decided before writing." }] },
   {
@@ -24,11 +24,11 @@ export const cols: Col[] = [
       { id: "writer", name: "Writer", kind: "model", detail: "Drafts slide copy against the outline and the fact sheet." },
     ],
   },
-  { start: 19, end: 20.5, nodes: [{ id: "rules", name: "Rules", kind: "code", detail: "Character limits, slide counts and accent highlights are checked, not requested." }] },
+  { start: 19, end: 20.5, nodes: [{ id: "rules", name: "Rules", kind: "code", detail: "Character limits, slide counts, and accent highlights are checked, not requested." }] },
   {
     start: 20.5,
     end: 22.5,
-    nodes: [{ id: "grounding", name: "Grounding", kind: "code", detail: "Every number must trace to the fact sheet, the user's source or their request, or its slide is downgraded." }],
+    nodes: [{ id: "grounding", name: "Grounding", kind: "code", detail: "Every number must trace to the fact sheet, the user's source, or their request, or its slide is downgraded." }],
   },
   {
     start: 23,

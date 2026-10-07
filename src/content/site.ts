@@ -1,9 +1,9 @@
 export const site = {
   name: "Sikandar Ali Abdul",
-  title: "Sikandar Ali Abdul · Lead UX Designer, Regulated Enterprise SaaS",
+  title: "Sikandar Ali Abdul · Lead UX Designer, regulated enterprise SaaS",
   url: "https://portfolio.blinkwiser.com",
   description:
-    "Lead UX designer for regulated enterprise SaaS. Five years leading design on a white-label US health-insurance platform, plus government services and AI products. Case studies with real screens.",
+    "Lead UX designer for regulated enterprise SaaS. Five years leading design on a white-label US health-insurance platform, plus civic services and AI products. Case studies with real screens.",
   role: "Lead UX Designer",
   location: "Pune, India",
   availability: "Open to senior and lead UX roles",
@@ -22,9 +22,9 @@ export const nav = [
 export const proof = [
   { value: 5, prefix: "9 → ", suffix: "", label: "enrollment steps, with \u201cwho's covered\u201d asked once", study: "01" },
   { value: 24, prefix: "< ", suffix: "h", label: "to theme a new client on a white-label health-insurance platform, down from weeks", study: "02" },
-  { value: 0, text: "1–2 wks → 3–4 days", prefix: "", suffix: "", label: "Jira-story turnaround with BAs, once the design system was readable by AI", study: "03" },
+  { value: 0, text: "1–2 wks → 3–4 days", prefix: "", suffix: "", label: "Jira-story turnaround with business analysts, once the design system was readable by AI", study: "03" },
   { value: 0, text: "Plan → Execute → Reflect", prefix: "", suffix: "", label: "an agent workflow on every carousel: research the facts, write, then check its own work", study: "04" },
-  { value: 3.5, decimals: 1, prefix: "", suffix: "M", label: "residents' city services, organised by need instead of department", study: "05" },
+  { value: 3.5, decimals: 1, prefix: "", suffix: "M", label: "residents' city services, organized by need instead of department", study: "05" },
 ];
 
 export const principles = [
@@ -46,7 +46,7 @@ export const principles = [
     title: "Design for the build reality",
     /** The one study this habit leads, shown at the top of that study. */
     primary: "05",
-    body: "A design that can't be built as specified is a wish. I design within the platform's constraints, and translate between the user's model and the system's instead of forcing either.",
+    body: "A design that can't be built as specified is a wish. I design within the platform's constraints and translate between the user's model and the system's, instead of forcing either.",
     refs: ["01", "05"],
   },
   {
@@ -60,44 +60,72 @@ export const principles = [
     title: "Adoption is part of the design",
     /** The one study this habit leads, shown at the top of that study. */
     primary: "02",
-    body: "A system nobody uses is a file. Enablement, documentation, design QA and an agreement with engineering are design work too.",
+    body: "A system nobody uses is a file. Enablement, documentation, design QA, and an agreement with engineering are design work too.",
     refs: ["02", "03"],
   },
 ];
 
-export const capabilities = [
+/**
+ * What I bring: the home page's scroll-pinned stepper (after LangChain's lifecycle section).
+ * `tag` is the stage name on the ring, `line` the one-line summary, `cases` link to the studies
+ * that show it, `visual` picks the card on the right.
+ */
+export const capabilities: {
+  tag: string;
+  title: string;
+  line: string;
+  items: string[];
+  cases: string[];
+  visual: "domain" | "systems" | "people" | "ai";
+}[] = [
   {
+    tag: "Domain",
     title: "US health insurance",
+    line: "Enrollment and eligibility, where a missed step can leave a family uncovered.",
     items: [
-      "Enrollment, life-event and eligibility flows for members and admins",
-      "A white-label benefits platform for insurers, employers and members",
+      "Enrollment, life-event, and eligibility flows for members and admins",
+      "A white-label benefits platform for insurers, employers, and members",
       "Multi-tenant compliance and audit logging, designed in",
     ],
+    cases: ["open-enrollment", "enterprise-platform-from-zero"],
+    visual: "domain",
   },
   {
+    tag: "Systems",
     title: "Enterprise design systems",
+    line: "Every client's brand runs on one design system.",
     items: [
       "Three-tier token architecture and white-label theming",
-      "120+ components across web, mobile web, iOS and Android",
-      "Design QA, governance and adoption across engineering",
+      "120+ components across web, mobile web, iOS, and Android",
+      "Design QA, governance, and adoption across engineering",
     ],
+    cases: ["enterprise-platform-from-zero", "ai-readable-design-system"],
+    visual: "systems",
   },
   {
+    tag: "People",
     title: "Research and team leadership",
+    line: "Research with every audience, and a design team I grew and led.",
     items: [
-      "Stakeholder research and personas for insurers, employers and members",
-      "Workshops with BAs and engineering before ideas or system changes ship",
-      "Hired, onboarded and led a team of four designers",
+      "Stakeholder research and personas for insurers, employers, and members",
+      "Workshops with business analysts and engineering before ideas or system changes ship",
+      "Led a team of four designers, two of them my own hires",
     ],
+    cases: ["enterprise-platform-from-zero", "ai-readable-design-system"],
+    visual: "people",
   },
   {
+    tag: "Artificial intelligence",
     title: "AI-driven UI",
+    line: "Design systems AI tools can follow, and AI output people can check.",
     items: [
       "Design systems rebuilt as machine-readable skill files",
       "Agent workflows with self-verification and drift audits",
-      "Grounded generation, honesty guards and blind eval harnesses",
-      "Daily tools: Claude Code, GitHub Copilot in VS Code, Google Antigravity, Figma MCP, LangGraph and Lovable",
+      "Grounded generation, honesty guards, and blind eval harnesses",
+      "Daily tools: Claude Code, GitHub Copilot in VS Code, Google Antigravity, Figma MCP, LangGraph, and Lovable",
     ],
+    cases: ["ai-readable-design-system", "designing-trust-into-ai"],
+    visual: "ai",
   },
 ];
 
@@ -119,7 +147,7 @@ export const timeline = [
     period: "2015–2019",
     role: "Consumer products",
     org: "Mphasis · Jet Airways",
-    detail: "Web, iOS, Android and Apple Watch, all in production until 2019.",
+    detail: "Web, iOS, Android, and Apple Watch, all in production until 2019.",
   },
 ];
 

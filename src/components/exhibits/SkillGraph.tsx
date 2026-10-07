@@ -13,9 +13,9 @@ const REF = ["ds-index", "ds-tokens", "ds-themes", "ds-components", "ds-layout"]
 
 const skills: Skill[] = [
   { id: "ds-index", layer: "Reference", role: "The map: system overview, universal rules, and routing to the right sub-skill.", worksWith: REF.slice(1) },
-  { id: "ds-tokens", layer: "Reference", role: "Colour, spacing, typography, radius and effects, each documented with its intended use.", worksWith: ["ds-themes", "ds-components", "ds-layout"] },
-  { id: "ds-themes", layer: "Reference", role: "Five-brand theming through variable modes: colour, logos and brand text switch together.", worksWith: ["ds-tokens"] },
-  { id: "ds-components", layer: "Reference", role: "A catalogue of 43 component sets, and when and how to use each.", worksWith: ["ds-tokens"] },
+  { id: "ds-tokens", layer: "Reference", role: "Color, spacing, typography, radius, and effects, each documented with its intended use.", worksWith: ["ds-themes", "ds-components", "ds-layout"] },
+  { id: "ds-themes", layer: "Reference", role: "Five-brand theming through variable modes: color, logos, and brand text switch together.", worksWith: ["ds-tokens"] },
+  { id: "ds-components", layer: "Reference", role: "A catalog of 43 component sets, and when and how to use each.", worksWith: ["ds-tokens"] },
   { id: "ds-layout", layer: "Reference", role: "The 12-column grid, containers, and secured versus unsecured page structure.", worksWith: ["ds-tokens"] },
   { id: "app-shells", layer: "Build", role: "Ready page templates every screen starts from.", worksWith: ["ds-layout", "ds-components"] },
   {
@@ -24,10 +24,10 @@ const skills: Skill[] = [
     role: "The workflow: Jira story → classify page → pick shell → compose sanctioned components → self-verify.",
     worksWith: ["ds-index", "ds-tokens", "ds-themes", "ds-components", "ds-layout", "app-shells", "memory"],
   },
-  { id: "sync-semantic-colors", layer: "Build", role: "Regenerates opacity ramps across every brand when a base colour changes.", worksWith: ["ds-tokens", "ds-themes"] },
+  { id: "sync-semantic-colors", layer: "Build", role: "Regenerates opacity ramps across every brand when a base color changes.", worksWith: ["ds-tokens", "ds-themes"] },
   { id: "ds-audit", layer: "Upkeep", role: "End-of-session drift check: diffs the live file against the docs and updates them.", worksWith: [...REF, "memory"] },
   { id: "memory", layer: "Upkeep", role: "Cross-session decisions and conventions, so the agent doesn't relearn them.", worksWith: ["build-screen", "ds-audit"] },
-  { id: "manage-skills-workflow", layer: "Upkeep", role: "Governance: every skill saved to the design file, version control and a guide page.", worksWith: ["ds-index", "ds-audit"] },
+  { id: "manage-skills-workflow", layer: "Upkeep", role: "Governance: every skill saved to the design file, version control, and a guide page.", worksWith: ["ds-index", "ds-audit"] },
   { id: "document-feature", layer: "Upkeep", role: "Captures a finished feature as a reusable spec for the next one.", worksWith: ["ds-components", "memory"] },
 ];
 

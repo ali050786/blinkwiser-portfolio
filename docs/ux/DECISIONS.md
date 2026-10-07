@@ -1,0 +1,52 @@
+# Decisions
+
+- 2026-10-06: Current look reads as generic SaaS template ("uncle's website"). Goal: hiring manager sees a designer, not only a researcher or business thinker.
+- 2026-10-06: References chosen: deploy.buildfastwithai.com (lead, engineered feel) and halaska.com/work/circuit (support, work shown large).
+- 2026-10-06: Direction is decided first and written into these spines. Taste Skill is installed afterwards as a checker, not as the driver.
+- 2026-10-06: Taste Skill's Tailwind default rejected for this repo; tokens + CSS modules stay.
+- 2026-10-06: URLs, slugs and copy rules (no em dashes, no client names) unchanged.
+
+- 2026-10-06: Dark is the default mode.
+- 2026-10-06: Palette taken from Deploy's live styles (canvas #0A0C0F, text #E0E2F0 / #9A9EAC, accent #5A8DDE, hairline rgba(151,163,201,0.16)). Old accent hues (turquoise, ultramarine, violet, vermilion) retired.
+- 2026-10-06: Accent button text is dark navy #080E1A; white on #5A8DDE fails contrast (3.3:1).
+- 2026-10-06: Work panels follow Halaska's strategy: each is a pre-composed image or video with its backdrop colour baked in (about 4:3, 16px radius), not a CSS-coloured panel.
+- 2026-10-06: Tertiary text set to #888C9B (5.9:1 canvas, 5.1:1 raised) instead of Deploy's white 40% (3.8:1). Rule: no opacity-based text colours; all text passes AA on canvas and raised.
+- 2026-10-06: One blue kept. A darker blue for white button text was rejected: it would drop the blue headline text to 3.9:1 on canvas.
+- 2026-10-06: v3 home built. Hero: index line, two-beat headline, spec list, and a live inspector on rebuilt product screens (hover, tap or arrow keys to measure). Then 01 Selected work (rows, work shown large), 02 The reframe (brief vs. what I found vs. what I did), 03 Contact.
+- 2026-10-06: Headlines reuse Ali's existing copy, split into two beats; no new positioning copy written.
+- 2026-10-06: Case 05 and 06 outcome figures ("2" languages, "3" platforms) are restated from their existing labels so every row has a figure. Ali to confirm or drop.
+- 2026-10-06: Work panels are CSS-staged (dot grid, registration marks) until Ali's composed images exist; swap the media without touching layout.
+- 2026-10-06: Header is floating pills: brand, centred nav, Resume as the accent action.
+- 2026-10-06: Ali: v3 looked messy and too large. Halaska dropped; home rebuilt on Deploy's structure and scale (78px h1, 54px h2, 1120px content, 128px sections). Inspector, work rows and page-wide guide lines removed.
+- 2026-10-06: New copy written to fit Deploy's shapes, for Ali to confirm: rotating words (regulated SaaS, health insurance, civic services, AI products), "I've already designed inside these teams", "That gap is the work", "A designer who works inside your team".
+- 2026-10-06: Ali: the SA monogram orbit in the hero didn't work. Replaced with a deck of five real screens (Taste Skill: real screenshots, no div-built fake UI).
+- 2026-10-06: Ali: the pill nav read as AI slop. Header rebuilt to Taste Skill's nav rules: 64px, one line, text links with a current-section underline, no boxes.
+- 2026-10-06: Habits panel now shows a diagram of each habit's own points, not the diagram of the case it leads.
+- 2026-10-06: Capabilities headline changed to "A designer who leads your design team."
+- 2026-10-06: Ali: the habits section read as AI slop and hype. Replaced with a plain "How I work" process (Research, Workshop, Design, Review) taken from how the platform work actually ran. Rule for copy: say what happens, not what it proves about Ali.
+- 2026-10-07: Ali: the stacked screens read as junior ("cascade of designed screens"), and the hero should be conceptual, not facts. Replaced with a canvas piece: complexity settling into one clear path. Screen deck and its images removed.
+- 2026-10-07: Ali: remove the right side. Hero is now one centred column; the type carries it.
+- 2026-10-07: Hero background: Deploy's wave animation, using the same React Bits GradientWaves component (MIT + Commons Clause, credited in the file) and Deploy's settings, recoloured per theme. New dependency: ogl. Still frame under reduced motion; nothing renders without WebGL2.
+- 2026-10-07: Ali: the waves didn't match the brand hue. Wave colours now come from the tokens (canvas, accent, and a mix of the two). The Deploy navy surfaces and lavender text leaned violet (hue 226-232); re-hued to the accent's 217deg at the same lightness, so contrast is unchanged. Accent-glow colour-mixes moved from oklch to srgb, which had been shifting hue.
+- 2026-10-07: Ali: remove the wave background. Hero keeps only the soft accent glow; the ogl dependency is uninstalled. The brand-hue surface fix stays.
+- 2026-10-07: Section labels lost the blue square and numbers (plain text only). Hero's rotating phrase: tried an RGB-split glitch; Ali rejected it as not corporate.
+- 2026-10-07: Rotating phrase now uses Taste Skill's low-motion band for regulated B2B: opacity and a 0.18em rise only, old phrase out (260ms) then new in (600ms, emphasized ease), every 4s; width fixed to the longest phrase so the centred line never shifts. Static under reduced motion.
+- 2026-10-07: UX writing audit applied to the home page. House style: Oxford commas in lists; "Lead UX Designer" capitalised as a title, "Lead UX designer" in running text; "business analysts" spelled out (no "BAs"). Headlines: "My work has shipped inside these teams", "I lead design teams that ship." Footer case links renamed: "AI design systems", "Blinkwiser AI carousels". Case pages are not yet on the new comma and BA style.
+- 2026-10-07: Audit suggestions changed on the way in: no Oxford comma in the meta description (two-item list); Mphasis line is "My employer for the airline, city, and platform work" (the audit's "Earlier work" was wrong, the platform work is current); card 06 role is "UX Designer, one of several" ("a larger team" had no comparison).
+- 2026-10-07: Contact line stacks one item per line under 560px so no separator hangs at a line end. Proof rows keep the last word, separator and dates together.
+- 2026-10-07: Ali: IIT Roorkee is a credential, not a team where work shipped. Removed from "Where I've designed" and shown as one line at the foot of the hero, above the ruler (after the button on phones), led by the institution name. Briefly tried in the AI column of "What I bring"; Ali moved it to the hero. The list now has five items; an odd last item spans the full row.
+
+- 2026-10-07: Ali: the work section title is now just "Case studies" (", with the real screens" removed). "What changed" removed (headline, side note and three numbers; the numbers stay on the case cards). Its blueprint grid moved behind the work section, so the cards sit on a canvas. The reframe now follows the work.
+- 2026-10-07: Ali: "What I bring" rebuilt after LangChain's "Agent Development Lifecycle" section: pinned on scroll, a ring of stage names (Domain, Systems, People, AI), a title, an accent one-liner, the existing points, chips to the case studies that show it, and a card bleeding off the right edge. Cards: the rebuilt enrollment screen, the design system colour page, a who-I-work-with diagram (no real screen exists for People), and the live Blinkwiser capture. The one-liners are new copy for Ali to confirm. The section's intro ("Open to senior and lead UX roles…") dropped here; it still appears in Get in touch and the footer.
+
+- 2026-10-07: Ali: wide screens showed the whole ring and a stretched card. The ring's radius now follows the screen so its centre always sits off the left edge (only an arc shows); stage spacing is a fixed distance along the ring. The card's overhang is capped at 200px and its last 180px fade out; heading and stage are one block, centred in the pinned screen.
+- 2026-10-07: Ali: "The reframe" removed from the home page. Each case study still opens with its own reframe. The brief lines (`hero.brief`, `hero.problem`) are no longer shown anywhere.
+- 2026-10-07: Ali: "What I bring" visuals are now frameless line glyphs in the case-card glyph language, one drawn per stage (coverage grid, brand → role → component, lead and team, skills → agent → screen with a check). The rebuilt screens, the Blinkwiser capture and the card frame are gone from this section.
+- 2026-10-07: Ali: no glows here. The glow behind each glyph and the glow at the ring's marker were removed; the ring is neutral grey. The active stage is a solid accent chip plus a short solid accent arc on the ring.
+
+## Open
+- Real protagonist for the key flow.
+- Light mode values (derive from the dark palette later).
+- 2026-10-07: Ali: the pinned ring in "What I bring" felt wrong; he wanted it clean and simple. Replaced with a static framed 2x2 grid: every area visible at once, no scroll pinning or ring. Copy, glyphs and chips unchanged.
+- 2026-10-07: Ali: removed "How I work" (Process) from the home page. A hiring-panel review found it the most generic section and repeated by "What I bring" (workshops with business analysts, research and personas). Order is now hero, Where I've designed, The work, What I bring, Get in touch.
+- 2026-10-07: Impeccable audit and polish. Coloured side stripes (case hero habit and turn, Not chosen cost, old-flow quotes, hook words, Summary card top) replaced with 1px tinted borders or a top hairline. Dimmed text (hook legend, skill graph, pending build steps) now steps back with the tertiary token instead of opacity, per the no-opacity-text rule. Outcome bars animate transform, not width. Header brand link uses its visible text as its name. Résumé contact links are 24px tall on phones. Colophon ramp label 8 switched to dark text for contrast.

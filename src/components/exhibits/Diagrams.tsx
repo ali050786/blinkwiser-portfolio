@@ -12,8 +12,8 @@ export function CoverageGap() {
       mobile={M.coverageGap()}
       label="Diagram · one coverage year"
       viewBox="0 0 720 230"
-      aria="Timeline of one coverage year: the open enrollment window at the start, a birth with 31 days to act, and a red gap where a missed family member stays uncovered until the next window."
-      caption="The deadline is the stake. Miss a family member in the window and they stay uncovered for the year, unless a life event like a birth reopens a 31-day window."
+      aria="Timeline of one coverage year: the open enrollment window at the start, a birth that opens a short window to act, and a red gap where a missed family member stays uncovered until the next window."
+      caption="Miss the window and a family member stays uncovered for the year, unless a life event like a birth opens a short one."
     >
       <path d="M40 110 H680" className={g.line} />
       <rect x="40" y="96" width="80" height="28" rx="6" className={g.soft} />
@@ -25,7 +25,7 @@ export function CoverageGap() {
       <rect x="320" y="100" width="44" height="20" rx="5" className={g.accentMid} />
       <circle cx="320" cy="110" r="7" className={g.accent} />
       <T x={320} y={82} anchor="middle">
-        a birth · 31 days to act
+        a birth · about 30 days to act
       </T>
       <path d="M120 160 H600" className={d.gap} />
       <circle cx="120" cy="160" r="6" className={g.cardWarn} />
@@ -205,7 +205,7 @@ export function PassiveRun() {
       mobile={M.passiveRun()}
       label="Diagram · one passive enrollment run"
       viewBox="0 0 720 286"
-      aria={`${total} members who took no action flow into one rule set by the client. ${handled} are handled by the rule; ${review} come back to the admin, each with a reason.`}
+      aria={`${total} members who took no action flow into one rule set by the employer. ${handled} are handled by the rule; ${review} come back to the admin, each with a reason.`}
       caption="The admin sets the rule once and confirms the run. The rule handles most members; the rest come back with a reason instead of getting lost in the batch. Demo figures, matching the rebuilt screens below."
     >
       {dots
@@ -228,7 +228,7 @@ export function PassiveRun() {
       </T>
 
       <T x={rule.x} y={74} anchor="middle">
-        one rule, set by the client
+        one rule, set by the employer
       </T>
       <T x={rule.x} y={92} anchor="middle" accent>
         default to another plan

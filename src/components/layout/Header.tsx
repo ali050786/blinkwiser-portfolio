@@ -10,9 +10,17 @@ import { ThemeToggle } from "./ThemeToggle";
 import { Icon } from "@/components/ui/Icon";
 import styles from "./Header.module.css";
 
+/*
+ * One line, 64px, no boxes: the name on the left; on the right the two
+ * section links, a hairline, then Resume and the theme switch. The link for
+ * the part of the page you're in is marked (an accent underline), so the bar
+ * also tells you where you are. Transparent at the top, a blurred bar with a
+ * bottom hairline once the page scrolls.
+ */
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [section, setSection] = useState<string | null>(null);
   const pathname = usePathname();
   const reduce = useReducedMotion();
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -23,6 +31,32 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Which nav target is on screen: case pages are always "work"; on home, watch the sections.
+  useEffect(() => {
+    if (pathname.startsWith("/work")) {
+      setSection("work");
+      return;
+    }
+    if (pathname !== "/") {
+      setSection(null);
+      return;
+    }
+    const ids = nav.map((n) => n.href.split("#")[1]).filter(Boolean) as string[];
+    const seen = new Map<string, boolean>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) seen.set(e.target.id, e.isIntersecting);
+        setSection(ids.filter((id) => seen.get(id)).pop() ?? null);
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+    return () => io.disconnect();
+  }, [pathname]);
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -41,33 +75,32 @@ export function Header() {
   return (
     <header className={styles.header} data-scrolled={scrolled || open || undefined}>
       <div className={`container ${styles.inner}`}>
-        <Link href="/" className={styles.brand} aria-label={`${site.name}, home`}>
-          <span className={styles.mark} aria-hidden="true">
-            <span>S</span>
-            <span>A</span>
-          </span>
-          <span className={styles.brandText}>
-            <span className={styles.name}>{site.name}</span>
-            <span className={styles.role}>{site.role}</span>
-          </span>
+        <Link href="/" className={styles.brand}>
+          <span className={styles.name}>{site.name}</span>
+          <span className={styles.role}>{site.role}</span>
         </Link>
 
-        <nav aria-label="Primary" className={styles.nav}>
-          <ul>
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={styles.link}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className={styles.actions}>
+        <div className={styles.right}>
+          <nav aria-label="Primary" className={styles.nav}>
+            <ul>
+              {nav.map((item) => {
+                const id = item.href.split("#")[1];
+                const on = id === section;
+                return (
+                  <li key={item.href}>
+                    <Link href={item.href} className={styles.link} aria-current={on ? "location" : undefined}>
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+          <span className={styles.rule} aria-hidden="true" />
           {site.resumeUrl && (
             <a href={site.resumeUrl} className={styles.resume}>
               Resume
+              <Icon name="arrow-up-right" size={14} />
             </a>
           )}
           <ThemeToggle />
@@ -91,24 +124,26 @@ export function Header() {
             id="mobile-menu"
             aria-label="Mobile"
             className={styles.sheet}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.24, ease: [0.2, 0, 0, 1] }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            transition={{ duration: 0.22, ease: [0.2, 0, 0, 1] }}
           >
             <ul className="container">
-              {nav.map((item, i) => (
-                <motion.li
-                  key={item.href}
-                  initial={reduce ? false : { opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.03 * i + 0.04, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
+              {nav.map((item) => (
+                <li key={item.href}>
                   <Link href={item.href} className={styles.sheetLink} onClick={() => setOpen(false)}>
                     {item.label}
                   </Link>
-                </motion.li>
+                </li>
               ))}
+              {site.resumeUrl && (
+                <li>
+                  <a href={site.resumeUrl} className={styles.sheetLink}>
+                    Resume
+                  </a>
+                </li>
+              )}
             </ul>
           </motion.nav>
         )}

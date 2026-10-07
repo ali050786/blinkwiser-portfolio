@@ -1,144 +1,196 @@
 .hero {
   position: relative;
-  padding-block: clamp(32px, 5vw, 72px) clamp(48px, 6vw, 88px);
+  /* Runs under the floating header, as Deploy's does. */
+  margin-top: -64px;
+  min-height: max(100svh, 720px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 128px 96px;
   overflow: clip;
 }
-.grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(32px, 5vw, 80px);
-  align-items: center;
-}
-.copy {
-  display: grid;
-  gap: clamp(20px, 2.4vw, 32px);
-}
-.kicker {
-  display: flex;
-}
-.status {
-  font-size: var(--font-size-body-s);
-  color: var(--text-secondary);
-}
-.dot {
-  position: relative;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-positive);
-}
-.dot::after {
+.hero::before {
   content: "";
   position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid var(--text-positive);
-  animation: ping 2.4s var(--ease-standard) infinite;
+  inset: 0;
+  background:
+    radial-gradient(42% 46% at 50% 46%, color-mix(in srgb, var(--accent-solid) 10%, transparent), transparent 72%),
+    radial-gradient(60% 40% at 50% 100%, color-mix(in srgb, var(--accent-solid) 5%, transparent), transparent 70%);
+  pointer-events: none;
 }
-@keyframes ping {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.9;
-  }
-  80%,
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+
+/* The frame: two verticals inset from the content, crosshairs, a ruler. */
+.frame {
+  --fx: max(16px, calc((100% - 1120px) / 2 - 40px));
+  position: absolute;
+  inset: 128px 0 40px;
+  pointer-events: none;
+}
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-default);
+}
+.frame::before {
+  left: var(--fx);
+}
+.frame::after {
+  right: var(--fx);
+}
+.cTL,
+.cTR,
+.cBL,
+.cBR {
+  position: absolute;
+}
+.cTL,
+.cTR {
+  top: -5px;
+}
+.cBL,
+.cBR {
+  bottom: -5px;
+}
+.cTL,
+.cBL {
+  left: calc(var(--fx) - 5px);
+}
+.cTR,
+.cBR {
+  right: calc(var(--fx) - 5px);
+}
+.ruler {
+  position: absolute;
+  left: var(--fx);
+  right: var(--fx);
+  bottom: 0;
+  height: 10px;
+  border-bottom: 1px solid var(--border-default);
+  background-image:
+    linear-gradient(to right, var(--border-strong) 1px, transparent 1px),
+    linear-gradient(to right, var(--border-default) 1px, transparent 1px);
+  background-size:
+    80px 10px,
+    10px 5px;
+  background-repeat: repeat-x;
+  background-position:
+    0 0,
+    0 100%;
+}
+
+/* One column, centred: the type carries the hero. */
+.grid {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-block: auto;
+}
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 980px;
+  text-align: center;
 }
 .title {
-  max-width: 12ch;
+  font-size: clamp(2.75rem, 0.9rem + 5.3vw, 5.9rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
 }
-.title[data-size="l"] {
-  max-width: 24ch;
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
 }
-.title em {
+.mask > span {
+  display: block;
+}
+/* All phrases share one grid cell, so the line keeps the width of the longest
+ * and nothing re-centres when the phrase changes. */
+.turnWrap {
+  display: inline-grid !important;
+  justify-items: center;
+}
+.turn {
+  grid-area: 1 / 1;
   color: var(--accent-solid);
-  padding-right: 0.04em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(0.18em);
+  transition:
+    opacity 600ms var(--ease-emphasized),
+    transform 600ms var(--ease-emphasized);
 }
-.line {
-  padding-bottom: 0.06em;
+/* A clean handover: the old phrase leaves first, then the new one arrives,
+ * so the two never overlap. */
+.turn[data-state="in"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 260ms;
+}
+.turn[data-state="out"] {
+  opacity: 0;
+  transform: translateY(-0.18em);
+  transition-duration: 260ms;
+  transition-timing-function: var(--ease-exit);
+}
+@media (prefers-reduced-motion: reduce) {
+  .turn {
+    transition: none;
+  }
 }
 .lede {
-  max-width: 54ch;
+  font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 600px;
 }
 .ctas {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 24px;
-}
-.facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 40px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-subtle);
-}
-.facts div {
-  display: grid;
-  gap: 4px;
-}
-.facts dd {
-  font-size: var(--font-size-body-s);
-}
-.visual {
-  position: relative;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
 }
 
-/* Stacked layout: headline and lede full width, actions under them, then a wide visual and the facts. */
-.stackTop {
+/* The credential: one quiet line at the foot of the hero, above the ruler. */
+.cred {
   position: relative;
-  display: grid;
-  gap: clamp(16px, 2vw, 24px);
+  margin-top: 48px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
 }
-.stacked .title,
-.stacked .title[data-size="l"] {
-  max-width: none;
-}
-.stackMid {
-  position: relative;
-  display: grid;
-  gap: clamp(20px, 2.4vw, 28px);
-  margin-top: clamp(20px, 2.4vw, 28px);
-}
-.stackMid .lede {
-  max-width: none;
-}
-.stackVisual {
-  position: relative;
-  margin-top: clamp(40px, 5vw, 72px);
-}
-.stackFacts {
-  position: relative;
-  margin-top: clamp(40px, 4.5vw, 64px);
+.credOrg {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
 }
 
-/* Hidden until GSAP reveals it; a failsafe shows it if scripts never run. */
-[data-motion="ok"] .title,
-[data-motion="ok"] .hero [data-hero-fade] {
-  visibility: hidden;
-  animation: failsafe 0s 3s forwards;
-}
-@keyframes failsafe {
-  to {
-    visibility: visible;
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: 0;
+    padding-block: 132px 72px;
   }
 }
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-  .title {
-    max-width: 14ch;
-  }
-}
-
-/* Phones get the short intro: role, years and names. The systems-layer line is desktop only. */
-@media (max-width: 760px) {
-  .desktopOnly {
+@media (max-width: 960px) {
+  .frame::before,
+  .frame::after,
+  .cTL,
+  .cTR,
+  .cBL,
+  .cBR {
     display: none;
+  }
+  .frame {
+    inset: auto 0 32px;
   }
 }

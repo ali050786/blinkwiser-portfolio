@@ -117,7 +117,7 @@ export function HeroStack() {
   return (
     <div ref={wrap} className={styles.wrap} data-brand={brand} data-focus={focus ?? undefined}>
       <p className="sr-only">
-        Illustration: four layers of a design system (tokens, components, app shell and a finished screen) stacked in an exploded
+        Illustration: four layers of a design system (tokens, components, app shell, and a finished screen) stacked in an exploded
         view. Switching the demo brand re-themes every layer at once. Currently showing {current.name}.
       </p>
 

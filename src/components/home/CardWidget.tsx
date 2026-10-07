@@ -1,7 +1,7 @@
 import type { CardWidget as Kind } from "@/content/types";
 import styles from "./CardWidget.module.css";
 
-/* Invented demo brands, never client colours. */
+/* Invented demo brands, never client colors. */
 const brands = ["#0f766e", "#7c3aed", "#c2410c"];
 
 const labels: Record<Kind, string> = {

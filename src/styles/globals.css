@@ -32,6 +32,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+  position: relative;
+  isolation: isolate;
   transition: background-color var(--duration-base) var(--ease-standard), color var(--duration-base) var(--ease-standard);
 }
 img,
@@ -81,7 +83,7 @@ ol {
   list-style: none;
 }
 ::selection {
-  background: color-mix(in oklch, var(--accent-solid) 22%, transparent);
+  background: color-mix(in srgb, var(--accent-solid) 22%, transparent);
   color: var(--text-primary);
 }
 
@@ -144,19 +146,19 @@ ol {
   font-size: var(--font-size-display-xl);
   line-height: var(--font-leading-tight);
   letter-spacing: var(--font-tracking-display);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
 }
 .t-display-l {
   font-size: var(--font-size-display-l);
   line-height: 1.02;
   letter-spacing: var(--font-tracking-display);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
 }
 .t-display-m {
   font-size: var(--font-size-display-m);
   line-height: 1.06;
   letter-spacing: var(--font-tracking-heading);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
 }
 .t-heading-l {
   font-size: var(--font-size-heading-l);
@@ -212,6 +214,15 @@ em.t-serif,
   font-weight: 400;
   letter-spacing: 0.005em;
 }
+/* Mono, uppercase index label: "01 · SELECTED WORK". The engineered layer. */
+.t-index {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-micro);
+  line-height: 1.4;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--font-tracking-label);
+  text-transform: uppercase;
+}
 .tabular {
   font-variant-numeric: tabular-nums;
 }
@@ -264,17 +275,17 @@ em.t-serif,
 @property --accent-solid {
   syntax: "<color>";
   inherits: true;
-  initial-value: #047270;
+  initial-value: #5a8dde;
 }
 @property --accent-strong {
   syntax: "<color>";
   inherits: true;
-  initial-value: #005c5a;
+  initial-value: #84a9e8;
 }
 @property --accent-soft {
   syntax: "<color>";
   inherits: true;
-  initial-value: #ecf4f3;
+  initial-value: #182235;
 }
 body[data-accent-live] {
   transition:

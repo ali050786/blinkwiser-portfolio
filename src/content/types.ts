@@ -123,6 +123,12 @@ export interface Shot {
   full?: boolean;
   /** Footnote under a cover, when the default ("rebuilt" / "live product") doesn't fit. */
   note?: string;
+  /** Label above the caption, when "The product" doesn't fit. */
+  label?: string;
+  /** Show the media alone, with no label, caption or footnote under it. */
+  bare?: boolean;
+  /** Autoplaying video with a pause button; true adds a sound toggle (muted by default). */
+  sound?: boolean;
 }
 
 export interface Option {
@@ -162,7 +168,7 @@ export type CardWidget = "stepper" | "brands" | "pipeline" | "slides" | "departm
 export interface CaseStudy {
   slug: string;
   index: string;
-  /** Per-case colour theme. Being removed case by case: no accent means the site turquoise. */
+  /** Per-case color theme. Being removed case by case: no accent means the site turquoise. */
   accent?: Accent;
   glyph: GlyphId;
   group: "Health insurance platforms" | "AI-driven UI" | "Civic scale" | "Consumer e-commerce";

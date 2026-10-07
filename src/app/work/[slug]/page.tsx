@@ -55,7 +55,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <ReadingProgress />
       <CaseHero study={c} />
       <Snapshot study={c} />
-      {c.cover && <CaseCover shot={c.cover} />}
+      {c.cover && <CaseCover shot={c.cover} label={c.cover.label} />}
       {c.reel && <CaseCover shot={c.reel} label="The product, running" />}
 
       <div className={`container ${styles.body}`}>

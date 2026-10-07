@@ -16,7 +16,7 @@ export function Glyph({ id, className }: { id: GlyphId; className?: string }) {
 const labels: Record<GlyphId, string> = {
   skills: "Diagram: stacked skill files feeding a composed screen",
   pipeline: "Diagram: an agent pipeline that forks into parallel steps and merges into a deck",
-  tiers: "Diagram: three inheriting theme tiers, insurer, employer and member",
+  tiers: "Diagram: three inheriting theme tiers, insurer, employer, and member",
   flow: "Diagram: nine steps with a repeating loop collapsing into five linear steps",
   services: "Diagram: a search bar above services grouped by resident need",
 };

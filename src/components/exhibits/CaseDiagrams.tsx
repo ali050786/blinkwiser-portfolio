@@ -151,8 +151,8 @@ export function AdoptionFourSides() {
       mobile={M.adoptionFourSides()}
       label="Diagram · adoption from four sides"
       viewBox="0 0 720 300"
-      aria="The design system in the centre, pushed into engineering's default from four sides: enablement, documentation, quality and policy."
-      caption="Building the system didn't change behaviour. Working it from four sides for a few months made it what engineering builds to."
+      aria="The design system in the center, pushed into engineering's default from four sides: enablement, documentation, quality, and policy."
+      caption="Building the system didn't change behavior. Working it from four sides for a few months made it what engineering builds to."
     >
       {sides.map((p) => (
         <path key={p.t} d={`M${p.x} ${p.y} L${c.x} ${c.y}`} className={g.strong} />
@@ -183,14 +183,14 @@ export function AdoptionFourSides() {
 /** Follow-on: how an idea moved from workshop to build. */
 export function HowWorkRan() {
   const xs = [60, 210, 360, 510, 660];
-  const steps = ["new idea", "BA workshop", "design", "eng workshop", "ship"];
+  const steps = ["new idea", "analyst workshop", "design", "eng workshop", "ship"];
   return (
     <Diagram
       mobile={M.howWorkRan()}
       label="Diagram · how the work ran"
       viewBox="0 0 720 230"
-      aria="A new idea goes to a workshop with business analysts, then design, then a workshop with engineering for system changes, then ships. Personas for insurers, employers and members feed design."
-      caption="Rules were agreed with BAs before anything was drawn, and system changes were agreed with engineering before they shipped. Personas for all three audiences fed the design."
+      aria="A new idea goes to a workshop with business analysts, then design, then a workshop with engineering for system changes, then ships. Personas for insurers, employers, and members feed design."
+      caption="Rules were agreed with business analysts before anything was drawn, and system changes were agreed with engineering before they shipped. Personas for all three audiences fed the design."
     >
       <rect x={250} y={20} width={220} height={34} rx={8} className={g.card} />
       <T x={360} y={42} anchor="middle">
@@ -378,16 +378,16 @@ export function CutToThree() {
 
 /* ================================================================ 05 Dubai Municipality */
 
-/** Frame: the catalogue mirrored the org chart; a resident only knows the need. */
+/** Frame: the catalog mirrored the org chart; a resident only knows the need. */
 export function OrgVsNeed() {
   const depts = [70, 150, 230];
   return (
     <Diagram
       mobile={M.orgVsNeed()}
-      label="Diagram · the catalogue, as the city ran it"
+      label="Diagram · the catalog, as the city ran it"
       viewBox="0 0 720 300"
-      aria="Left: the municipality splits into departments, each with its own services, rules, fees and approvals. Right: a resident with a need, who doesn't know which department owns it."
-      caption="The catalogue mirrored the organisation that ran it. A resident renewing a permit doesn't know or care which department owns it."
+      aria="Left: the municipality splits into departments, each with its own services, rules, fees, and approvals. Right: a resident with a need, who doesn't know which department owns it."
+      caption="The catalog mirrored the organization that ran it. A resident renewing a permit doesn't know or care which department owns it."
     >
       <circle cx={60} cy={150} r={14} className={g.nodeModel} />
       <T x={60} y={190} anchor="middle">
@@ -442,7 +442,7 @@ export function FourConstraints() {
       label="Diagram · four constraints, one structure"
       viewBox="0 0 720 280"
       aria="Four constraints converge on one structure: residents succeed alone in two languages, formal sign-off at every milestone, a low-code build with fixed components, and requirements that kept moving."
-      caption="Whatever the structure was, it had to work for residents alone, survive every review, be buildable in low-code and absorb change without a redesign."
+      caption="Whatever the structure was, it had to work for residents alone, survive every review, be buildable in low-code, and absorb change without a redesign."
     >
       {ins.map((p) => (
         <g key={p.t}>

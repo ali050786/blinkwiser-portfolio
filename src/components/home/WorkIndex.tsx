@@ -30,7 +30,7 @@ export function WorkIndex() {
       c.cover ??
       ({
         screen: "ds-tokens",
-        alt: "The design system's colour tokens, named by role: the same system the AI agent reads.",
+        alt: "The design system's color tokens, named by role: the same system the AI agent reads.",
       } as const),
   }));
 

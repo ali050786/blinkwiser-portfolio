@@ -1,0 +1,130 @@
+.band {
+  background: var(--surface-highlight);
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+.head {
+  max-width: 440px;
+}
+.list {
+  position: relative;
+  border: 1px solid var(--border-default);
+}
+.c1,
+.c2,
+.c3,
+.c4 {
+  position: absolute;
+}
+.c1 {
+  top: -6px;
+  left: -6px;
+}
+.c2 {
+  top: -6px;
+  right: -6px;
+}
+.c3 {
+  bottom: -6px;
+  left: -6px;
+}
+.c4 {
+  bottom: -6px;
+  right: -6px;
+}
+.list ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.list li {
+  border-bottom: 1px solid var(--border-default);
+}
+.list li:nth-child(odd) {
+  border-right: 1px solid var(--border-default);
+}
+.list li:last-child,
+.list li:nth-last-child(2):nth-child(odd) {
+  border-bottom: 0;
+}
+/* An odd item out spans the full row, so the grid never ends on an empty cell. */
+.list li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  border-right: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 96px;
+  padding: 16px 20px;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+a.row:hover {
+  background: color-mix(in srgb, var(--surface-canvas) 35%, transparent);
+}
+a.row:hover .name {
+  color: var(--accent-solid);
+}
+.mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border-default);
+  background: var(--surface-raised);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+.text {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.name {
+  font-size: 15px;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.sub {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+.idx {
+  align-self: start;
+  margin-top: 4px;
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+}
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .list ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .list li:nth-child(odd) {
+    border-right: 0;
+  }
+  .list li:nth-last-child(2) {
+    border-bottom: 1px solid var(--border-default);
+  }
+}
+
+/* The separator and the date range stay together on one line. */
+.when {
+  white-space: nowrap;
+}

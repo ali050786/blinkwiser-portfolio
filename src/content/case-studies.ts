@@ -3,7 +3,7 @@ import type { CaseStudy } from "./types";
 /*
  * Source of truth: sentry/02-career/portfolio-enhancement/*.md (as of 2026-09-24).
  * Public-safe rules applied from case-study-framework.md:
- *  - clients anonymised (no client or client-product names)
+ *  - clients anonymized (no client or client-product names)
  *  - employer named once per study, as attribution only
  *  - no internal codenames, file keys or repo names
  *  - metrics are team-observed and labelled as such
@@ -29,16 +29,18 @@ export const caseStudies: CaseStudy[] = [
       timeline: "Live in production",
       domain: "Enterprise SaaS · US health insurance",
     },
-    tags: ["US health insurance", "Decision modelling", "Defaults", "Regulated flows"],
+    tags: ["US health insurance", "Decision modeling", "Defaults", "Regulated flows"],
     cover: {
-      screen: "new-plan",
-      alt: "Redesigned enrollment screen: Select a Plan for Medical, with the family's coverage already filled in, plans priced per month and a running total premium in the header.",
-      caption: "The redesign, live in production: who's covered is already known when plans are chosen, and cost is per month on every step.",
+      video: "/work/enrollment/trailer.mp4",
+      poster: "/work/enrollment/trailer-poster.webp",
+      sound: true,
+      bare: true,
+      alt: "Trailer of the enrollment redesign. Old flow: Dennis adds his newborn and is told she isn't covered. He goes through a coverage hub and re-adds his family inside the Medical plan. He sees only an annual estimate. He loses his family list when he changes plan. New flow: one grid sets who needs what. There's no hub. Each plan already knows who it covers. Prices are monthly, with a running total. Switching plans keeps the family.",
     },
     headline: { value: "9 → 5", label: "steps, with one question asked once" },
     opener: {
-      scope: "One flow, three enrollment modules: Open Enrollment, Life Event and New Hire.",
-      note: "Dennis is a design persona, and these are illustrations, not the shipped screens. Counts come from walking the old and new flows; prices are demo values, not client data.",
+      scope: "One flow, three enrollment modules: Open Enrollment, Life Event, and New Hire.",
+      note: "Dennis is a design persona, and these are illustrations, not the shipped screens. Counts come from walking the old and new flows; prices are demo values, not real data.",
       stories: [
         {
           id: "newborn",
@@ -47,7 +49,7 @@ export const caseStudies: CaseStudy[] = [
           quote: "Adding a dependent does not automatically enroll them in coverage.",
           quoteSource: "The old flow, right after he added her",
           visual: "newborn",
-          caption: "The old flow made adding a person and covering her two separate jobs, one trip per coverage. The redesign does both in the same row."
+          caption: "The old flow treated adding a person and covering her as two separate tasks, with an extra step for every coverage. The redesign does both in the same row."
         },
         {
           id: "plan-switch",
@@ -61,11 +63,11 @@ export const caseStudies: CaseStudy[] = [
         {
           id: "cost",
           tab: "Visible cost",
-          story: "Dennis is covering six people. What will it cost him each month?",
+          story: "Dennis picks plans for six people. He never sees the total.",
           quote: "The displayed Premium is only an estimate. The amount may vary if you change network or update Dependents.",
-          quoteSource: "The old plan page, word for word",
+          quoteSource: "Printed under every price in the old flow",
           visual: "cost",
-          caption: "Each coverage is picked on its own screen. The old flow never added them up, so Dennis committed without a total. The redesign carries a cart-style monthly total across every screen.",
+          caption: "Each plan showed its own price, and nothing added them up. The redesign keeps a running total at the top of every coverage screen.",
         },
       ],
     },
@@ -77,17 +79,17 @@ export const caseStudies: CaseStudy[] = [
     },
     snapshot: {
       frame:
-        "Clients said the enrollment flow was too long. It was long because it followed how the backend stores data, so members answered “who's covered” again inside every coverage.",
+        "Users said the enrollment flow was too long. It was long because it followed how the backend stores data, so members answered “who's covered” again inside every coverage.",
       decision:
-        "Reorder the questions to the member's model (my family → who needs what → which plan) and ask “who needs what” once, as a single family-by-coverage grid.",
+        "I reordered the questions to match the member's model (my family → who needs what → which plan) and asked “who needs what” once, as a single family-by-coverage grid.",
       outcome:
-        "9 steps became 5, the per-coverage loop disappeared, cost is visible at every step, and the flow is live for open enrollment, life events and new hires.",
+        "9 steps became 5, the per-coverage loop disappeared, cost is visible at every step, and the flow is live for open enrollment, life events, and new hires.",
     },
     frame: {
       assumed: "The flow is too long. Trim screens.",
-      actual: "It asked questions in the order the backend stores them, so members answered the same question many times.",
+      actual: "It asked questions in the order the backend stores them, so members answered the same question repeatedly.",
       body: [
-        "Feedback from clients and BAs came in four parts: the flow was too long, members were confused about dependents, cost was unclear until late, and admins struggled when enrolling members on their behalf.",
+        "Feedback from users and business analysts came in four parts: the flow was too long, members were confused about dependents, cost was unclear until late, and admins struggled when enrolling members on their behalf.",
         "The obvious fix was to trim screens. I looked at why there were so many first. Cutting screens would have shortened the loop without removing it.",
       ],
       evidence: {
@@ -102,11 +104,11 @@ export const caseStudies: CaseStudy[] = [
       exhibit: "flow-compare",
     },
     stakes: {
-      intro: "Open enrollment is a once-a-year window; a life event like a birth gives 31 days. Either way there is a deadline, and the choices lock for the year.",
+      intro: "Open enrollment is a once-a-year window. A life event like a birth opens a short one, usually 30 to 31 days. Miss it, and adding someone generally waits until the next open enrollment.",
       items: [
         { title: "Missed family members", body: "Someone missed on one coverage stays uncovered until the next window or a qualifying life event." },
         { title: "Late cost", body: "A cost that only becomes clear at the end means members commit before they understand what they'll pay." },
-        { title: "Admins repeat every flaw", body: "Every weakness in the member flow repeats for admins enrolling on members' behalf, across every client." },
+        { title: "Admins repeat every flaw", body: "Every weakness in the member flow repeats for admins enrolling on members' behalf." },
       ],
       exhibit: "coverage-gap",
     },
@@ -120,7 +122,7 @@ export const caseStudies: CaseStudy[] = [
         why: [
           "“Who needs what” is now asked once, as a grid of family members against coverage types, and plan selection follows from that grid instead of re-asking it per coverage.",
         ],
-        cost: "It no longer matched how the backend stored enrollments. That became the third fork.",
+        cost: "It no longer matched how the backend stored enrollments. That became decision 3.",
         exhibit: "trim-vs-reorder",
       },
       {
@@ -144,7 +146,7 @@ export const caseStudies: CaseStudy[] = [
         rejected: { label: "Either extreme", detail: "Ship the backend's order to members, or demand a backend rewrite." },
         chosen: { label: "Translate, then phase", detail: "The UI collects the grid and translates it; the backend changes only where translation isn't enough." },
         why: [
-          "I walked engineering through the member's decision order against the specific client complaints. We split the work and shipped in phases rather than one cut-over.",
+          "I walked engineering through the member's decision order against the specific user complaints. We split the work and shipped in phases rather than one cut-over.",
         ],
         cost: "A slower rollout, in exchange for a change engineering owned rather than resisted.",
         exhibit: "translate-layer",
@@ -160,7 +162,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           title: "One review, not scattered confirmations",
-          body: "A single page to check everything before a year-long commitment: what changed, fix in place, disclaimer and e-signature in the same step.",
+          body: "A single page to check everything before a year-long commitment: what changed, edit in place, disclaimer and e-signature in the same step.",
         },
         {
           title: "Ask only when needed",
@@ -173,21 +175,21 @@ export const caseStudies: CaseStudy[] = [
       label: "The admin side",
       title: "Passive enrollment: the members who never open the flow",
       intro:
-        "Members who don't take part in open enrollment used to be handled by admins one at a time. I designed a rule each client sets once and runs themselves, with a record of every run and a list of the members the rule couldn't handle.",
+        "Members who don't act during open enrollment used to be handled one at a time by admins. I designed a rule each employer sets once and runs themselves, with a record of every run and a list of members the rule couldn't handle.",
       why: [
         "Members who took no action during open enrollment were handled manually by admins, one member at a time.",
-        "Each client has its own rule for them: terminate, carry the current plan forward, or move them to a default plan, sometimes depending on eligibility.",
+        "Each employer has its own rule for them: terminate, carry the current plan forward, or move them to a default plan, sometimes depending on eligibility.",
         "It all lands at the deadline of a once-a-year window, where a missed member stays uncovered until the next window or a qualifying life event.",
       ],
       what: [
-        "A Passive Enrollment tab in each client's enrollment settings: four rules in plain language, each showing only the options it needs.",
+        "A Passive Enrollment tab in each employer's enrollment settings: four rules in plain language, each showing only the options it needs.",
         "Termination status and reason, an exclusion for members with supplemental products, and a default-plan mapping file with a downloadable template.",
-        "Save, or save and run now. Before a run the admin sees the rule, the file and the number of members affected, with a plain warning that it cannot be undone; settings lock while a run is in progress.",
+        "Save, or save and run now. Before a run the admin sees the rule, the file, and the number of members affected, with a plain warning that it cannot be undone; settings lock while a run is in progress.",
         "A log of every run, and a report that separates processed members from the ones needing review, each with a reason and Enroll or Terminate in the row.",
-        "The business owned the rules. I designed how admins set them, run them and handle what they can't decide.",
+        "The business owned the rules. I designed how admins set them, run them, and handle what they can't decide.",
       ],
       impact: [
-        "A manual, member-by-member job became a rule each client's admin sets once and runs themselves.",
+        "A manual, member-by-member job became a rule each employer's admin sets once and runs themselves.",
         "Every run leaves a record: who ran it, when, with which rule and file, and how many members it touched.",
         "Members a rule can't handle are no longer lost in the batch. They come back with a reason and are resolved in place.",
       ],
@@ -207,7 +209,7 @@ export const caseStudies: CaseStudy[] = [
         },
         { value: "1×", label: "“Who's covered” asked once, not once per coverage", visual: "asked-once" },
         { value: "Every step", label: "Cost visible, in the unit people pay", visual: "cost-every-step" },
-        { value: "4 flows", label: "One skeleton for open enrollment, life events, new hires, admin-on-behalf", visual: "four-flows" },
+        { value: "4 flows", label: "One skeleton for open enrollment, life events, new hires, and admin on behalf", visual: "four-flows" },
       ],
       points: [
         "Live in production. The complaints that triggered the redesign have dropped, and admins enrolling on behalf get through it faster.",
@@ -217,13 +219,13 @@ export const caseStudies: CaseStudy[] = [
     },
     ownership: {
       mine: [
-        "The reframe, the new question order, the family-plan default, the running monthly total and the single editable review.",
+        "The reframe, the new question order, the family-plan default, the running monthly total, and the single editable review.",
       ],
       shared: [
         "Reusing one skeleton across enrollment types and actors, decided with product and engineering. I also designed the admin screens for passive enrollment; the business owned the rules behind it.",
       ],
       change: [
-        "I'd get evidence in earlier. The redesign rested on client and BA feedback plus analysis of the flow, not observed member behaviour. I'd also instrument the old flow first, so the improvement could be measured, not just described.",
+        "I'd get evidence in earlier. The redesign rested on user and business-analyst feedback plus analysis of the flow, not observed member behavior. I'd also instrument the old flow first, so the improvement could be measured, not just described.",
       ],
     },
     signals:
@@ -247,7 +249,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ["US health insurance", "Three-tier tokens", "White-label", "Design system adoption"],
     cover: {
       screen: "ds-dashboard",
-      alt: "Member dashboard page pattern from the design system: coverage status by family member, claims status, resources and find care.",
+      alt: "Member dashboard page pattern from the design system: coverage status by family member, claims status, resources, and find care.",
       caption: "A member dashboard pattern from the library. Every client sees it in its own brand.",
     },
     headline: { value: "< 24 h", label: "to theme a new client, down from weeks (team-observed)" },
@@ -263,17 +265,17 @@ export const caseStudies: CaseStudy[] = [
         chips: ["Employer B, a new client"],
         before: {
           label: "Before: hardcoded",
-          items: ["Brand colour hardcoded: the old client's colour stays", "Two buttons for the same job", "Rebuilt by hand for each client: weeks"],
+          items: ["Brand color hardcoded: the old client's color stays", "Two buttons for the same job", "Rebuilt by hand for each client: weeks"],
         },
         after: {
           label: "With three-tier tokens",
-          items: ["Colour comes from the client's tokens", "One button, from the system", "Insurer → employer → member, themed in under a day"],
+          items: ["Color comes from the client's tokens", "One button, from the system", "Insurer → employer → member, themed in under a day"],
         },
       },
       findings: [
         {
-          tab: "The colour",
-          words: "Brand colours were written straight into the code, so nothing could be re-themed.",
+          tab: "The color",
+          words: "Brand colors were written straight into the code, so nothing could be re-themed.",
           source: "What I found in the existing product",
         },
         {
@@ -291,11 +293,11 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "Enterprise platform",
       brief: "Adjust a handful of screens.",
-      problem: "Every new client was rebuilt by hand, because the product had no design system.",
+      problem: "Every new client was rebuilt by hand because the product had no design system.",
       call: "Turn each client's brand into design tokens, and get engineering to build with them.",
     },
     snapshot: {
-      frame: "I was asked for a few screen edits. The product had no design system: colours were hardcoded and every client was rebuilt by hand.",
+      frame: "I was asked for a few screen edits. The product had no design system: colors were hardcoded and every client was rebuilt by hand.",
       decision: "I put each client's brand into three-tier design tokens, and worked with engineering until building with them was the default.",
       outcome: "Theming a new client: weeks to under 24 hours. Delivery: about 2 days of design, 3 of build. Team-observed.",
     },
@@ -313,7 +315,7 @@ export const caseStudies: CaseStudy[] = [
       intro: "It was failing in four ways.",
       items: [
         { title: "Inconsistency", body: "Different components for the same job on different pages." },
-        { title: "Hardcoded colours", body: "Brand colours lived in the code, so nothing could be re-themed." },
+        { title: "Hardcoded colors", body: "Brand colors lived in the code, so nothing could be re-themed." },
         { title: "Rebuild per client", body: "Sales could only grow as fast as engineering could re-skin." },
         { title: "Compliance exposure", body: "In US health insurance, an inconsistent eligibility screen is a compliance risk." },
       ],
@@ -334,9 +336,9 @@ export const caseStudies: CaseStudy[] = [
         id: "brand-as-variable",
         title: "Each client's brand became a set of design tokens",
         tension: "Each client needs its own identity at three levels. Per-client builds would scale the mess.",
-        rejected: { label: "Per-client builds", detail: "A fork of the look for every insurer and employer." },
+        rejected: { label: "Per-client builds", detail: "A separate copy of the look for every insurer and employer." },
         chosen: { label: "Three-tier tokens", detail: "Insurer → employer → member. Each tier overrides only what it owns." },
-        why: ["A new client becomes configuration, not a project.", "One foundation runs web, mobile web, iOS and Android."],
+        why: ["A new client becomes configuration, not a project.", "One foundation runs web, mobile web, iOS, and Android."],
         cost: "Developers could no longer style things directly, and that habit took time to break.",
         exhibit: "theme-cascade",
       },
@@ -360,8 +362,8 @@ export const caseStudies: CaseStudy[] = [
     followOn: {
       title: "How the work ran",
       items: [
-        { title: "Personas", body: "Three to four each for insurers, employers and members, from stakeholder research." },
-        { title: "Workshops first", body: "New ideas went to a BA workshop before design, so the rules were agreed first." },
+        { title: "Personas", body: "Three to four each for insurers, employers, and members, from stakeholder research." },
+        { title: "Workshops first", body: "New ideas went to a workshop with business analysts before design, so the rules were agreed first." },
         { title: "Architecture with engineering", body: "System changes were agreed with engineering before they shipped." },
       ],
       exhibit: "how-work-ran",
@@ -376,15 +378,15 @@ export const caseStudies: CaseStudy[] = [
         "Several admins work on themes at once.",
       ],
       what: [
-        "A hub of every theme: colours, employers using it, last editor, and draft, default and locked states.",
-        "An editor using the same roles as the tokens, each colour saying where it appears.",
+        "A hub of every theme: colors, employers using it, last editor, and draft, default, and locked states.",
+        "An editor using the same roles as the tokens, each color saying where it appears.",
         "A preview on the member dashboard, then assignment to employers with their own logo and links.",
-        "Drafts, an edit lock showing who's editing, change history and restore.",
+        "Drafts, an edit lock showing who's editing, change history, and restore.",
       ],
       impact: [
         "Shipped and used by admins.",
         "Theming a client is one admin task, inside the system.",
-        "Colours are checked on a real dashboard before members see them.",
+        "Colors are checked on a real dashboard before members see them.",
         "Admins don't overwrite each other, and deleted themes come back.",
       ],
       provenance: "Qualitative. Shipped; usage not formally measured.",
@@ -435,7 +437,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       points: [
-        "Hardcoded colours and off-system components are caught in design QA, not in production.",
+        "Hardcoded colors and off-system components are caught in design QA, not in production.",
         "It serves Fortune-500 and enterprise-tier insurers.",
       ],
       provenance: "Team-observed, not formally tracked.",
@@ -443,7 +445,7 @@ export const caseStudies: CaseStudy[] = [
     },
     ownership: {
       mine: [
-        "The reframe, the architecture and the adoption plan.",
+        "The reframe, the architecture, and the adoption plan.",
         "I started as the only designer, grew the team to four designers (I hired two), and became UX Lead.",
       ],
       change: [
@@ -481,22 +483,22 @@ export const caseStudies: CaseStudy[] = [
         chips: ["Same AI", "Same components"],
         before: {
           label: "Before the skills",
-          items: ["Save on the wrong side", "Link in a button colour", "Side nav left out: docs said 19 components, the file had 20"],
+          items: ["Save on the wrong side", "Link in a button color", "Side nav left out: docs said 19 components, the file had 20"],
         },
         after: {
           label: "With the skills",
-          items: ["Save on the right", "Link takes the link colour", "Side nav in place: audit matched docs to file, 20 of 20"],
+          items: ["Save on the right", "Link takes the link color", "Side nav in place: audit matched docs to file, 20 of 20"],
         },
       },
       findings: [
         { tab: "The button", words: "", empty: "Button · Description", source: "The old button's description (as I remember it)" },
-        { tab: "The colour", words: "Not an exact match, but agreed mapping.", quoted: true, source: "The rebuilt system's note on an old colour" },
+        { tab: "The color", words: "Not an exact match, but agreed mapping.", quoted: true, source: "The rebuilt system's note on an old color" },
         { tab: "The audit", words: "19 standalone components", quoted: true, source: "The system's index, before the audit (4 Sep 2026)" },
       ],
     },
     opener: {
       label: "Three things the AI got wrong",
-      scope: "A six-year-old design system, five client brands and three platforms, rewritten as files an AI reads before it designs.",
+      scope: "A six-year-old design system, five client brands, and three platforms, rewritten as files an AI reads before it designs.",
       note: "Illustrations with generic names, not client screens. Quotes come from the skill files.",
       stories: [
         {
@@ -510,12 +512,12 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "link-colour",
-          tab: "The colour",
-          story: "Our links have one colour. The AI picked another.",
+          tab: "The color",
+          story: "Our links have one color. The AI picked another.",
           quote: "Not an exact match, but agreed mapping.",
-          quoteSource: "The rebuilt system's note on an old colour",
+          quoteSource: "The rebuilt system's note on an old color",
           visual: "link-colour",
-          caption: "The old colours were named for how they look, so any could be a link. Now each is named for its job.",
+          caption: "The old colors were named for how they look, so any could be a link. Now each is named for its job.",
         },
         {
           id: "audit",
@@ -531,7 +533,7 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "AI-driven design system",
       brief: "The AI isn't good enough yet. Prompt harder.",
-      problem: "Our six-year-old design system lived in designers' heads, so the AI couldn't follow it.",
+      problem: "The six-year-old design system lived in designers' heads, so the AI couldn't follow it.",
       call: "Rewrite it as skill files the AI reads and checks its work against.",
     },
     snapshot: {
@@ -543,7 +545,7 @@ export const caseStudies: CaseStudy[] = [
       assumed: "The AI isn't good enough yet.",
       actual: "Our design system was never written down for a machine.",
       body: [
-        "Sales demos and BA-to-developer handoffs both waited on mockups. I brought in AI to speed them up. Its screens weren't usable.",
+        "Sales demos and handoffs from business analysts to developers both waited on mockups. I brought in AI to speed them up. Its screens weren't usable.",
         "Our Figma system was six years old, with no descriptions. The rules lived in designers' heads, so the AI had components but no rules.",
         "No one had made a veteran system AI-readable. I found no process, so I built one.",
       ],
@@ -552,7 +554,7 @@ export const caseStudies: CaseStudy[] = [
     stakes: {
       intro: "Two teams were waiting on fast, on-brand screens.",
       items: [
-        { title: "BAs and developers", body: "Developers judge feasibility from screens, not specs." },
+        { title: "Business analysts and developers", body: "Developers judge feasibility from screens, not specs." },
         { title: "Sales and marketing", body: "Slow branded demos slipped in live sales cycles." },
         { title: "Senior design time", body: "Every hand-drawn mockup pulled seniors off product work." },
       ],
@@ -575,11 +577,11 @@ export const caseStudies: CaseStudy[] = [
       {
         id: "skill-files",
         title: "I wrote the system as linked skill files, built up from tokens",
-        tension: "An agent needs rules, not a component count: which colour for a link, which grid for a page.",
+        tension: "An agent needs rules, not a component count: which color for a link, which grid for a page.",
         rejected: { label: "Richer Figma descriptions", detail: "Annotate the file and hope the agent infers the rest." },
         chosen: { label: "Interlocking skill files", detail: "Plain-markdown skills, built up from tokens." },
         why: [
-          "One system themes five client brands by mode: semantic colour, type by use, a 12-column grid, 43 component sets, 3 density modes and 141 described variables.",
+          "One system themes five client brands by mode: semantic color, type by use, a 12-column grid, 43 component sets, 3 density modes, and 141 described variables.",
           "Tokens first, then components that know their tokens, so it stays consistent as it grows.",
         ],
         cost: "More upfront work than annotating what existed.",
@@ -588,13 +590,13 @@ export const caseStudies: CaseStudy[] = [
       {
         id: "structural-correctness",
         title: "I made the AI build from real components and check its own work",
-        tension: "Even with tokens, grid and components written down, the output still broke.",
+        tension: "Even with tokens, grid, and components written down, the output still broke.",
         rejected: { label: "Accept good-looking output", detail: "Screens that pass a glance but aren't wired to the system." },
         chosen: { label: "Enforce structure", detail: "App shells, a self-checking build workflow, real instances." },
         why: ["Three fixes mattered most:"],
         bullets: [
           { title: "Composition", body: "App shells and a build workflow: pick the shell, use only approved components, run a checklist." },
-          { title: "A growing system", body: "The skills say when to reuse, when to add a variant and when to build new." },
+          { title: "A growing system", body: "The skills say when to reuse, when to add a variant, and when to build new." },
           { title: "Instances, not redraws", body: "Agents redraw elements from scratch. Every element is now a real instance: cheaper and traceable." },
         ],
         cost: "Slower first runs, for output that meets the bar.",
@@ -626,7 +628,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           value: "3–4 days",
-          label: "Jira story to engineering-ready screen, with BAs",
+          label: "Jira story to engineering-ready screen, with business analysts",
           before: { label: "1–2 weeks", amount: 7.5 },
           after: { label: "3–4 days", amount: 3.5 },
           unit: "working days",
@@ -637,16 +639,16 @@ export const caseStudies: CaseStudy[] = [
       ],
       points: [
         "All four designers on my team use it, and the org's UAT team chose it for their projects. I didn't have to sell it.",
-        "The AI drafts the screens and designers make the decisions. The time saved goes to research, flows and edge cases.",
+        "The AI drafts the screens and designers make the decisions. The time saved goes to research, flows, and edge cases.",
         "Built in 4–5 weeks across five brands and three platforms. I could redo it in 1–2.",
       ],
-      provenance: "Lived-experience figures, recognised by managers, BAs and leadership. Not yet in sprint metrics.",
+      provenance: "Team-observed figures, recognized by managers, business analysts, and leadership. Not yet in sprint metrics.",
       exhibit: "adoption-spread",
     },
     ownership: {
       mine: [
         "Self-initiated. I built it, proved it, then brought the team in.",
-        "I haven't handed it to BAs yet: they'd likely skip the UX thinking. That's on purpose.",
+        "I haven't handed it to business analysts yet: they'd likely skip the UX thinking. That's on purpose.",
       ],
       change: ["I'd track before and after from day one, so the gains are measured, not just acknowledged."],
     },
@@ -659,7 +661,7 @@ export const caseStudies: CaseStudy[] = [
     glyph: "pipeline",
     group: "AI-driven UI",
     title: "Blinkwiser: making an AI carousel tool you can check",
-    short: "Trust in an AI product",
+    short: "Blinkwiser AI carousels",
     dek: "The first version took two weeks and made up its own statistics. Over the next two months, building with AI coding agents, I rebuilt it so every number traces to a source and every edit can be undone.",
     meta: {
       role: "Independent lab · product, UX, architecture, evaluation",
@@ -673,7 +675,7 @@ export const caseStudies: CaseStudy[] = [
       width: 1600,
       height: 1090,
       alt: "Agentic Carousel by Blinkwiser landing page: 'Carousels that design themselves', a prompt box, and a fan of generated slides in three styles.",
-      caption: "Agentic Carousel by Blinkwiser, live: agents research, write and design a LinkedIn carousel from a topic, link, video or file.",
+      caption: "Agentic Carousel by Blinkwiser, live: agents research, write, and design a LinkedIn carousel from a topic, link, video, or file.",
     },
     reel: {
       video: "/work/blinkwiser/run.mp4",
@@ -717,9 +719,9 @@ export const caseStudies: CaseStudy[] = [
       call: "Check every fact in code, and make every edit undoable.",
     },
     snapshot: {
-      frame: "The model made up numbers, claimed edits it hadn't made and drifted into generic AI writing. Creators couldn't trust what it produced.",
+      frame: "The model made up numbers, claimed edits it hadn't made, and drifted into generic AI writing. Creators couldn't trust what it produced.",
       decision: "I moved the rules from the prompt into code, made every edit reversible and clear about what changed, and settled trade-offs with blind tests.",
-      outcome: "Numbers trace to sources, the chat says what really changed, every edit can be undone. Live, free, pre-revenue.",
+      outcome: "Numbers trace to sources, the chat says what really changed, and every edit can be undone. Live, free, pre-revenue.",
     },
     frame: {
       assumed: "Generation is the product.",
@@ -750,7 +752,7 @@ export const caseStudies: CaseStudy[] = [
           "Research becomes a numbered fact sheet. An outline fixes the slide count and assigns facts to slides.",
           "Every number must trace to a source, or its slide is downgraded. A critic and a fact-checker review in parallel.",
         ],
-        cost: "More calls and more waiting, which forced the speed fork.",
+        cost: "More calls and more waiting, which forced decision 3.",
         exhibit: "pipeline",
       },
       {
@@ -848,7 +850,7 @@ export const caseStudies: CaseStudy[] = [
     },
     ownership: {
       mine: [
-        "Product, UX, pipeline architecture, eval design and every cut.",
+        "Product, UX, pipeline architecture, eval design, and every cut.",
         "Built by directing AI coding agents and holding them to tests and evals.",
       ],
       change: [
@@ -865,7 +867,7 @@ export const caseStudies: CaseStudy[] = [
     group: "Civic scale",
     title: "Dubai Municipality: one place for a city's services",
     short: "Dubai Municipality",
-    dek: "Every service had its own rules, and each department wanted its services up front. I organised them by what residents need done, in Arabic and English.",
+    dek: "Every service had its own rules, and each department wanted its services up front. I organized them by what residents need done, in Arabic and English.",
     meta: {
       role: "Lead UX Designer, onsite in Dubai",
       context: "Mphasis · Dubai Municipality",
@@ -879,25 +881,25 @@ export const caseStudies: CaseStudy[] = [
       height: 1273,
       full: true,
       alt: "Four screens of the Dubai Municipality app: the home screen in English and in Arabic, the Services screen grouped by need, and the Dashboard tracking every request.",
-      caption: "The live app: search first, services grouped by need, one dashboard for every request, Arabic equal to English.",
+      caption: "The live app: search first, services grouped by need, one dashboard for every request, and Arabic equal to English.",
     },
     headline: { value: "", label: "One place for city services, for citizens and residents, in Arabic and English" },
     card: { title: "Dubai Municipality app", widget: "departments", label: "for citizens and residents" },
     hook: {
       line: "Residents don't know who owns a service.",
-      turn: "So I organised the city's services by what people need done.",
+      turn: "So I organized the city's services by what people need done.",
       note: "Illustration with generic labels, not the client's screens. The live app is shown below.",
-      tabsLabel: "Three things the old catalogue got wrong",
+      tabsLabel: "Three things the old catalog got wrong",
       picture: {
         visual: "city-home",
         title: "The services screen, before and after",
         chips: ["Every city service", "Arabic and English"],
         before: {
-          label: "Organised by department",
+          label: "Organized by department",
           items: ["Grouped by who owns the service", "Found only by its official name", "Each service laid out its own way"],
         },
         after: {
-          label: "Organised by need",
+          label: "Organized by need",
           items: ["Grouped by what residents need", "Search first: say what you need", "One pattern: eligibility, documents, fees, status"],
         },
       },
@@ -905,13 +907,13 @@ export const caseStudies: CaseStudy[] = [
         {
           tab: "The grouping",
           words: "A resident renewing a permit doesn't know or care which department owns it.",
-          source: "Why the catalogue had to change",
+          source: "Why the catalog had to change",
         },
         { tab: "The name", words: "People rarely know a service's official name.", source: "Why search became the front door" },
         {
           tab: "The pattern",
-          words: "Each service had its own rules, documents, fees and approval chain.",
-          source: "The catalogue, as it was",
+          words: "Each service had its own rules, documents, fees, and approval chain.",
+          source: "The catalog, as it was",
         },
       ],
     },
@@ -923,15 +925,15 @@ export const caseStudies: CaseStudy[] = [
     },
     snapshot: {
       frame: "The brief was a portal redesign. Services were grouped by department, but residents only know what they need done.",
-      decision: "Organise every service by resident need, in one pattern, buildable in the client's low-code platform, in Arabic and English as equals.",
-      outcome: "One home for every service, search first, one dashboard for every request. Signed off at every milestone and built as designed.",
+      decision: "I organized every service by resident need, in one pattern the client's low-code platform could build, with Arabic and English as equals.",
+      outcome: "One home for every service, search first, and one dashboard for every request. Signed off at every milestone and built as designed.",
     },
     frame: {
       assumed: "Redesign the portal's look.",
-      actual: "Decide how a city's services are organised for residents, then defend it.",
+      actual: "Decide how a city's services are organized for residents, then defend it.",
       body: [
-        "Permits, complaints, bookings, waste and more, for citizens and residents, in Arabic and English.",
-        "Each service had its own rules, fees and approvals, and a department expecting prominence.",
+        "Permits, complaints, bookings, waste, and more, for citizens and residents, in Arabic and English.",
+        "Each service had its own rules, fees, and approvals, and a department expecting prominence.",
       ],
       exhibit: "org-vs-need",
     },
@@ -963,7 +965,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Every service follows one template",
         tension: "A design per service would copy each one's inconsistency and multiply the build.",
         rejected: { label: "Bespoke per service", detail: "Every service a one-off." },
-        chosen: { label: "One service template", detail: "Eligibility, documents, fees, steps and status, always in the same place." },
+        chosen: { label: "One service template", detail: "Eligibility, documents, fees, steps, and status, always in the same place." },
         why: ["One pattern for residents and for the build team. A new service slots in without reopening the design."],
         cost: "Some services had to fit a shared shape.",
         exhibit: "bilingual-pair",
@@ -992,7 +994,7 @@ export const caseStudies: CaseStudy[] = [
           viz: {
             kind: "fan",
             from: "one dashboard",
-            to: ["in progress", "completed", "cancelled", "waiting on payment"],
+            to: ["in progress", "completed", "canceled", "waiting on payment"],
             note: "request states, as shipped",
           },
         },
@@ -1031,9 +1033,9 @@ export const caseStudies: CaseStudy[] = [
     group: "Consumer e-commerce",
     title: "Jet Airways: booking a flight, from fare to payment",
     short: "Jet Airways booking",
-    dek: "Five fares per flight, add-ons to sell and three platforms to cover. I designed how people choose a fare, see the full price and add extras, on web, iOS and Android.",
+    dek: "Five fares per flight, add-ons to sell, and three platforms to cover. I designed how people choose a fare, see the full price, and add extras, on web, iOS, and Android.",
     meta: {
-      role: "UX Designer, one of several on the team",
+      role: "UX Designer, on a larger team",
       context: "Mphasis · Jet Airways",
       timeline: "2015–2019",
       domain: "Airline e-commerce · web, iOS, Android",
@@ -1048,7 +1050,7 @@ export const caseStudies: CaseStudy[] = [
       caption: "The booking flow as it shipped: the fare grid on desktop, the same choice as a list on mobile, and meals picked per passenger.",
       note: "Real screens from the shipped product, from my own files.",
     },
-    headline: { value: "", label: "Booking on web, iOS and Android, live until the airline closed in 2019" },
+    headline: { value: "", label: "Booking on web, iOS, and Android, live until the airline closed in 2019" },
     hook: {
       line: "Five fares per flight don't fit on a phone.",
       turn: "So on mobile, each flight opens to show its fares as a list.",
@@ -1076,20 +1078,20 @@ export const caseStudies: CaseStudy[] = [
     hero: {
       label: "Airline e-commerce",
       brief: "Design the booking screens.",
-      problem: "Five fares, add-ons and three platforms made one booking a lot of choices.",
-      call: "Make each choice clear: the fare, the full price and the extras.",
+      problem: "Five fares, add-ons, and three platforms made one booking a lot of choices.",
+      call: "Make each choice clear: the fare, the full price, and the extras.",
     },
     snapshot: {
-      frame: "Booking a flight meant choosing between five fares per flight, then adding extras, on web, iOS and Android.",
-      decision: "A fare grid on desktop and a list on mobile, the full price broken down, every add-on in one step, and the upgrade offer inside the fare choice.",
-      outcome: "Shipped on web, iOS and Android on a shared component library, and live until the airline closed in 2019.",
+      frame: "Booking a flight meant choosing between five fares per flight, then adding extras, on web, iOS, and Android.",
+      decision: "I designed a fare grid for desktop and a list for mobile, a full price breakdown, one step for every add-on, and the upgrade offer inside the fare choice.",
+      outcome: "Shipped on web, iOS, and Android on a shared component library, and live until the airline closed in 2019.",
     },
     frame: {
       assumed: "Design the booking screens.",
       actual: "Help people choose a fare they understand, on any screen, with no surprises at payment.",
       body: [
-        "I worked on Jet Airways' booking for four years, as one of several designers. There was no single brief: the work came in pieces, across the whole journey.",
-        "This case covers four calls I made along it: Search, Flights, Guests, Extras, Pay.",
+        "I worked on Jet Airways' booking for four years, on a larger design team. There was no single brief: the work came in pieces, across the whole journey.",
+        "The journey ran Search, Flights, Guests, Extras, Pay. This case covers four calls I made along it.",
       ],
       exhibit: "jet-journey",
     },
@@ -1097,8 +1099,8 @@ export const caseStudies: CaseStudy[] = [
       items: [
         { title: "Many choices at once", body: "Each flight came in five fares, plus a business-class option." },
         { title: "Price decides", body: "People compare fares by price, so every number has to be clear." },
-        { title: "Extras matter to the airline", body: "Meals, seats, baggage and insurance were sold during booking." },
-        { title: "Three platforms", body: "Web, iOS and Android had to offer the same choices, each in a way that fits the screen." },
+        { title: "Extras matter to the airline", body: "Meals, seats, baggage, and insurance were sold during booking." },
+        { title: "Three platforms", body: "Web, iOS, and Android had to offer the same choices, each in a way that fits the screen." },
       ],
     },
     forks: [
@@ -1110,7 +1112,7 @@ export const caseStudies: CaseStudy[] = [
         chosen: { label: "A grid on desktop, a list on mobile", detail: "Each flight opens to show its fares as full-width rows." },
         why: [
           "On desktop, people compare flights and fares at a glance in one grid.",
-          "On a phone, one flight opens at a time, so every fare has room for its price, the old price and seats left.",
+          "On a phone, one flight opens at a time, so every fare has room for its price, the old price, and seats left.",
         ],
         cost: "Two layouts for the same choice, to design and keep in step.",
         exhibit: "grid-vs-list",
@@ -1120,7 +1122,7 @@ export const caseStudies: CaseStudy[] = [
         title: "I showed the full price, broken down, while people choose",
         tension: "One total is simpler to show. It also hides what the money is for.",
         rejected: { label: "Total only", detail: "One number, explained later, if at all." },
-        chosen: { label: "The total, broken down", detail: "Fare, tax, fees and discount in a trip summary beside the flights." },
+        chosen: { label: "The total, broken down", detail: "Fare, tax, fees, and discount in a trip summary beside the flights." },
         why: [
           "The trip summary sits next to the fare choice, so people see what they'll pay before they move on.",
           "Every fee has a line of its own, so the total at payment isn't a surprise.",
@@ -1133,10 +1135,10 @@ export const caseStudies: CaseStudy[] = [
         title: "I put every add-on in one step before payment",
         tension: "Each add-on could have been its own step, or a pop-up along the way.",
         rejected: { label: "Add-ons spread through the flow", detail: "A step or a pop-up for each one." },
-        chosen: { label: "One Extras step", detail: "Meals, seats, baggage, priority, miles and insurance, in one list before pay." },
+        chosen: { label: "One Extras step", detail: "Meals, seats, baggage, priority, miles, and insurance, in one list before pay." },
         why: [
           "People see every add-on once, choose what they want, and move on.",
-          "Meals are chosen per passenger and per flight, with filters such as veg, hot meals and snacks.",
+          "Meals are chosen per passenger and per flight, with filters such as veg, hot meals, and snacks.",
         ],
         cost: "One longer step, so each add-on stays closed until someone opens it.",
         exhibit: "extras-one-step",
@@ -1159,7 +1161,7 @@ export const caseStudies: CaseStudy[] = [
       metrics: [
         {
           value: "3 platforms",
-          label: "Web, iOS and Android, on a shared component library",
+          label: "Web, iOS, and Android, on a shared component library",
           viz: { kind: "fan", from: "one library", to: ["web", "iOS", "Android"], note: "platforms, as shipped" },
         },
         {
@@ -1179,7 +1181,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       points: [
-        "Built on a shared component library, so web, iOS and Android offered the same choices.",
+        "Built on a shared component library, so web, iOS, and Android offered the same choices.",
         "The same choices worked on desktop and on a phone, each laid out for its screen.",
       ],
       provenance: "This was 2015–2019 and I have no figures from it. These are what we designed and shipped.",
@@ -1187,10 +1189,10 @@ export const caseStudies: CaseStudy[] = [
     },
     ownership: {
       mine: [
-        "The four calls above: the grid and the mobile list, the price breakdown, the single Extras step and the in-place upgrade offer.",
+        "The four calls above: the grid and the mobile list, the price breakdown, the single Extras step, and the in-place upgrade offer.",
       ],
       shared: [
-        "I was one of several designers on the airline's digital products. Other parts of the journey were designed by others on the team.",
+        "I was on a larger design team for the airline's digital products. Other designers on the team owned the rest of the journey.",
       ],
       change: [
         "I'd measure as I went: how many people picked each fare, and how many added extras, so the work could be judged by numbers.",

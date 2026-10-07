@@ -46,7 +46,7 @@
   background: color-mix(in oklch, var(--surface-raised) 88%, transparent);
   border: 1px solid var(--border-default);
   box-shadow:
-    0 1px 0 color-mix(in oklch, var(--surface-raised) 60%, transparent) inset,
+    0 1px 0 color-mix(in srgb, var(--surface-raised) 70%, transparent) inset,
     -18px 28px 40px -24px oklch(0% 0 0 / 0.28);
   transform: translateZ(calc(var(--i) * var(--gap) + var(--lift) + var(--hover)));
   transition:

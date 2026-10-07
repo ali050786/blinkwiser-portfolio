@@ -1,29 +1,78 @@
 .footer {
+  padding: 80px 0 48px;
   border-top: 1px solid var(--border-subtle);
-  padding-top: clamp(48px, 7vw, 88px);
+}
+.wrap {
+  width: 100%;
+  max-width: calc(1120px + 2 * var(--layout-gutter));
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
 }
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 0.7fr);
-  gap: clamp(32px, 5vw, 80px);
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
 }
 .lead {
-  display: grid;
-  gap: 12px;
-  align-content: start;
-  max-width: 46ch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 340px;
 }
-.col {
-  display: grid;
-  gap: 14px;
-  align-content: start;
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+.role {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.blurb {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.mail i,
+.label i {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-solid);
+}
+.mail:hover {
+  color: var(--accent-solid);
+}
+.label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
 }
 .col ul {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 .col a {
-  font-size: var(--font-size-body-s);
+  font-size: 15px;
   color: var(--text-secondary);
   transition: color var(--duration-fast) var(--ease-standard);
 }
@@ -31,16 +80,19 @@
   color: var(--text-primary);
 }
 .base {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: clamp(48px, 7vw, 88px);
-  padding-block: 24px;
-  border-top: 1px solid var(--border-subtle);
+  margin-top: 64px;
 }
-@media (max-width: 860px) {
+.base p {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+}
+@media (max-width: 800px) {
   .grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .lead {
     grid-column: 1 / -1;
