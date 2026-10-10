@@ -3,7 +3,7 @@ import { Icon } from "@/components/ui/Icon";
 import { MetricVisual, MetricVizView } from "./MetricVisual";
 import styles from "./OutcomePanel.module.css";
 
-export function OutcomePanel({ outcome }: { outcome: CaseStudy["outcome"] }) {
+export function OutcomePanel({ outcome, metricsOnly = false }: { outcome: CaseStudy["outcome"]; metricsOnly?: boolean }) {
   return (
     <div className={styles.wrap}>
       <ul className={styles.metrics}>
@@ -40,6 +40,8 @@ export function OutcomePanel({ outcome }: { outcome: CaseStudy["outcome"] }) {
         })}
       </ul>
 
+      {!metricsOnly && (
+      <>
       <ul className={styles.points}>
         {outcome.points.map((p) => (
           <li key={p.slice(0, 24)} data-reveal>
@@ -56,6 +58,8 @@ export function OutcomePanel({ outcome }: { outcome: CaseStudy["outcome"] }) {
           <p className="t-body-s c-secondary">{outcome.provenance}</p>
         </div>
       </aside>
+      </>
+      )}
     </div>
   );
 }

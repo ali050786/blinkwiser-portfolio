@@ -19,9 +19,9 @@ export function Proof() {
         <SectionHead
           label="Where I've designed"
           id="proof-title"
-          lead="My work has shipped"
-          turn="inside these teams."
-          intro="Every name here is work that shipped. Four have a case study, with the real screens."
+          lead="The teams I've"
+          turn="shipped products with."
+          intro="An airline, a city government, a US health-insurance platform and my own AI lab."
           className={styles.head}
         />
 

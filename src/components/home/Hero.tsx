@@ -60,9 +60,9 @@ export function Hero() {
             <Eyebrow label="Lead UX Designer, enterprise SaaS" />
           </div>
           <h1 id="hero-title" className={styles.title}>
-            <span className="sr-only">I lead design on regulated SaaS: health insurance, civic services, and AI products.</span>
+            <span className="sr-only">I lead design in regulated SaaS: health insurance, civic services, and AI products.</span>
             <span className={styles.mask} aria-hidden="true">
-              <span data-line>I lead design on</span>
+              <span data-line>I lead design in</span>
             </span>
             <span className={styles.mask} aria-hidden="true">
               <span data-line className={styles.turnWrap}>
@@ -80,8 +80,8 @@ export function Hero() {
             </span>
           </h1>
           <p className={styles.lede} data-fade>
-            11 years in enterprise UX. For the last five, I&apos;ve led design on a white-label health-insurance platform used by
-            insurers, employers, and their members.
+            I&apos;ve spent 11 years in UX, and for the last five I&apos;ve led design on a white-label health-insurance platform
+            used by insurers, employers and their members.
           </p>
           <div className={styles.ctas} data-fade>
             <ButtonLink href="/#work">Read the case studies</ButtonLink>

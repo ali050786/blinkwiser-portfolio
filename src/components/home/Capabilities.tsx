@@ -18,7 +18,7 @@ export function Capabilities() {
   return (
     <section className={s.section} aria-labelledby="cap-title">
       <div className={s.wrap}>
-        <SectionHead label="What I bring" id="cap-title" lead="I lead design teams" turn="that ship." />
+        <SectionHead label="Strengths" id="cap-title" lead="What I'd bring" turn="to your team." />
 
         <div className={styles.grid} data-reveal>
           <Cross className={styles.c1} />

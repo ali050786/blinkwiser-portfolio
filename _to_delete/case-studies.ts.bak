@@ -235,7 +235,7 @@ export const caseStudies: CaseStudy[] = [
           rail: "The brief",
           title: "Everyone said the flow was too long",
           blocks: [
-            { kind: "p", text: "The feedback reached me from two places, users and our business analysts, and it boiled down to four complaints. The enrollment flow felt too long, members got confused about dependents, they didn't see the cost until late, and admins struggled whenever they enrolled someone on a member's behalf." },
+            { kind: "p", text: "The feedback reached me from two places, users and our business analysts, and it boiled down to four complaints. The enrollment flow felt too long, members got confused about dependents, nobody saw the cost until the very end, and admins struggled whenever they enrolled someone on a member's behalf." },
             { kind: "p", text: "The obvious fix was to trim a few screens. Before doing that, I wanted to know why there were so many in the first place, so I walked through the whole flow step by step, the way a member would." },
             { kind: "exhibit", id: "flow-compare" },
             { kind: "p", text: "What I found was the backend's data model, turned straight into screens. It took three screens just to manage the household. Then every coverage had its own loop: pick Medical, browse plans, pick one, choose who it covers, go back to the hub, and do it all again for Dental and Vision. So members answered “who's covered” once for the household and again inside every coverage, and the price they saw was a yearly estimate that could still change." },
@@ -349,7 +349,7 @@ export const caseStudies: CaseStudy[] = [
     group: "Health insurance platforms",
     title: "Building an enterprise health-insurance platform from zero",
     short: "White-label platform",
-    dek: "I was asked to adjust a few screens and found a white-label product with no system underneath, where every new client was a rebuild.",
+    dek: "Asked to adjust a few screens, I found a white-label product with no system, where every new client was a rebuild.",
     meta: {
       role: "Founding UX Designer, now UX Lead",
       context: "Mphasis · US health-insurance platform",
@@ -362,7 +362,7 @@ export const caseStudies: CaseStudy[] = [
       alt: "Member dashboard page pattern from the design system: coverage status by family member, claims status, resources, and find care.",
       caption: "A member dashboard pattern from the library. Every client sees it in its own brand.",
     },
-    headline: { value: "Under a day", label: "to theme a new client, down from weeks (what the team has seen)" },
+    headline: { value: "< 24 h", label: "to theme a new client, down from weeks (team-observed)" },
     card: { title: "White-label health-insurance platform", widget: "brands", label: "to theme a new client" },
     hook: {
       line: "A new client used to take weeks to set up.",
@@ -379,7 +379,7 @@ export const caseStudies: CaseStudy[] = [
         },
         after: {
           label: "With three-tier tokens",
-          items: ["Color comes from the client's tokens", "One button, from the system", "Insurer, employer and member, themed in under a day"],
+          items: ["Color comes from the client's tokens", "One button, from the system", "Insurer → employer → member, themed in under a day"],
         },
       },
       findings: [
@@ -407,9 +407,9 @@ export const caseStudies: CaseStudy[] = [
       call: "Turn each client's brand into design tokens, and get engineering to build with them.",
     },
     snapshot: {
-      frame: "I was asked for a few screen edits. Underneath them, the product had no design system: colors were hardcoded and every client was rebuilt by hand.",
-      decision: "I put each client's brand into three tiers of design tokens and worked with engineering until building with them was the default.",
-      outcome: "Theming a new client went from weeks to under a day, and a feature now takes about two days of design and three of build. That's what the team has seen, not a tracked figure.",
+      frame: "I was asked for a few screen edits. The product had no design system: colors were hardcoded and every client was rebuilt by hand.",
+      decision: "I put each client's brand into three-tier design tokens, and worked with engineering until building with them was the default.",
+      outcome: "Theming a new client: weeks to under 24 hours. Delivery: about 2 days of design, 3 of build. Team-observed.",
     },
     frame: {
       assumed: "Change a few screens.",
@@ -447,7 +447,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Each client's brand became a set of design tokens",
         tension: "Each client needs its own identity at three levels. Per-client builds would scale the mess.",
         rejected: { label: "Per-client builds", detail: "A separate copy of the look for every insurer and employer." },
-        chosen: { label: "Three-tier tokens", detail: "Insurer, then employer, then member. Each tier overrides only what it owns." },
+        chosen: { label: "Three-tier tokens", detail: "Insurer → employer → member. Each tier overrides only what it owns." },
         why: ["A new client becomes configuration, not a project.", "One foundation runs web, mobile web, iOS, and Android."],
         cost: "Developers could no longer style things directly, and that habit took time to break.",
         exhibit: "theme-cascade",
@@ -462,7 +462,7 @@ export const caseStudies: CaseStudy[] = [
         bullets: [
           { title: "Enablement", body: "Walkthroughs with developers." },
           { title: "Documentation", body: "Usage rules inside the system." },
-          { title: "Quality", body: "UX validation catches hardcoded values before a build goes to testing." },
+          { title: "Quality", body: "Design QA catches hardcoded values before release." },
           { title: "Policy", body: "Agreed with the tech lead: the system is the standard." },
         ],
         cost: "Months of enablement and QA before it paid back.",
@@ -505,7 +505,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: {
       metrics: [
         {
-          value: "Under a day",
+          value: "< 24 h",
           label: "To theme a new client",
           viz: {
             kind: "blocks",
@@ -516,7 +516,7 @@ export const caseStudies: CaseStudy[] = [
           },
         },
         {
-          value: "1 or 2 days",
+          value: "1–2 days",
           label: "To rebrand the white-label iOS and Android apps",
           viz: {
             kind: "timeline",
@@ -527,8 +527,8 @@ export const caseStudies: CaseStudy[] = [
           },
         },
         {
-          value: "5 days",
-          label: "Per feature: about two days of design and three of build",
+          value: "2 + 3",
+          label: "Days of design + build per feature, predictably",
           viz: {
             kind: "timeline",
             end: 5,
@@ -547,7 +547,7 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
       points: [
-        "Hardcoded colors and off-system components are caught in UX validation, not in production.",
+        "Hardcoded colors and off-system components are caught in design QA, not in production.",
         "It serves Fortune-500 and enterprise-tier insurers.",
       ],
       provenance: "Team-observed, not formally tracked.",
@@ -560,107 +560,6 @@ export const caseStudies: CaseStudy[] = [
       ],
       change: [
         "I'd close the gap between the system and its users earlier. Its rationale lived in my head and in a file engineers had to check. Case 03 is how I later closed it.",
-      ],
-    },
-    story: {
-      chapters: [
-        {
-          id: "the-ask",
-          rail: "The ask",
-          title: "I was asked to change a few screens",
-          blocks: [
-            { kind: "p", text: "The request was small: adjust a handful of screens. This was 2021, and I was the only designer on the product." },
-            { kind: "p", text: "The product was white-label. Insurers resell it to employers, and employers show it to their members, so every level needs its own look. As I went through the screens I'd been asked to change, I kept finding the same problems underneath them." },
-            { kind: "exhibit", id: "white-label-chain" },
-            { kind: "p", text: "Brand colors were written straight into the code, so nothing could be re-themed. Developers had used different components for the same job on different pages. And every new client meant re-skinning the product by hand, which took weeks." },
-            { kind: "reframe", assumed: "Change a few screens.", actual: "Every new client made every change cost more, because there was no system underneath the product." },
-          ],
-        },
-        {
-          id: "stakes",
-          rail: "Why it mattered",
-          title: "The business could only grow as fast as engineering could repaint",
-          blocks: [
-            { kind: "p", text: "Sales could sign a new insurer or employer, and then that client waited in line for a hand re-skin, one after another. The business could only take on clients as fast as engineering could repaint the product." },
-            { kind: "exhibit", id: "growth-ceiling" },
-            { kind: "p", text: "There was a quieter risk too. In US health insurance, an eligibility screen that behaves differently from one page to the next is a compliance risk, on top of being confusing. The developers maintaining all this were struggling as well, and editing screens one by one would have left it just as fragile." },
-          ],
-        },
-        {
-          id: "foundation",
-          rail: "Decision 1: foundation",
-          title: "I started underneath the screens",
-          blocks: [
-            { kind: "p", text: "The edits were what everyone expected, and they would have shown results quickly. But they would have left every future change hand-made and every new client a rebuild." },
-            { kind: "exhibit", id: "edits-vs-foundation" },
-            { kind: "p", text: "So I started by documenting what already existed: the colors, the components and the different patterns developers were using for the same job. That document turned into the design system. Engineering felt the pain more than anyone, so they became its first users." },
-            { kind: "note", label: "What it cost", text: "I was building a foundation nobody had asked for, so it had to prove itself before anyone would rely on it." },
-          ],
-        },
-        {
-          id: "tokens",
-          rail: "Decision 2: tokens",
-          title: "Each client's brand became a set of design tokens",
-          blocks: [
-            { kind: "p", text: "Each client needed its own identity, and at three levels. Building a separate copy of the look for every insurer and employer would only have multiplied the mess." },
-            { kind: "p", text: "So I set up three tiers of design tokens, one for the insurer, one for the employer and one for the member, and each tier overrides only what it owns. A new client stopped being a project and became configuration, and the same foundation runs web, mobile web, iOS and Android." },
-            { kind: "exhibit", id: "theme-cascade" },
-            { kind: "note", label: "What it cost", text: "Developers could no longer style things directly, and that habit took time to break." },
-          ],
-        },
-        {
-          id: "adoption",
-          rail: "Decision 3: adoption",
-          title: "Getting developers to actually use it",
-          blocks: [
-            { kind: "p", text: "At first, developers carried on as before. Design tokens were still rare back then, and nobody on the engineering side was eager to work with them. The tech leads weren't against the idea, but they weren't excited about it either, and the developers weren't happy about giving up styling things directly." },
-            { kind: "p", text: "So I treated adoption as part of the design work. I didn't want to lecture anyone, so I guided them instead. I'd demo it in Figma, where our tokens lived as color styles: change a style and show every screen change with it, so they could see what it would mean for them in the long run." },
-            { kind: "p", text: "Checking whether they'd actually used the tokens was the hard part. There was no tool for it at the time, so I'd open inspect element in the browser and check each color by hand to see whether it pointed to a token or a fixed color. The other giveaway came when we switched a screen to a different client's brand and some colors just didn't change. Those were the hardcoded ones." },
-            { kind: "p", text: "Most of these got caught in UX validation, a design check that happens before a build even goes to testing. Between the demos, the usage rules written inside the system, those checks and an agreement with the tech lead that the system is the standard, building with tokens slowly became the default." },
-            { kind: "exhibit", id: "adoption-four-sides" },
-            { kind: "note", label: "What it cost", text: "It took months of demos and manual checks before it paid back." },
-          ],
-        },
-        {
-          id: "how-it-ran",
-          rail: "How the work ran",
-          title: "How the work actually ran",
-          blocks: [
-            { kind: "p", text: "I did stakeholder research with all three audiences and wrote three to four personas each for insurers, employers and members. New ideas went to a workshop with business analysts before any design started, so we agreed the rules first, and changes to the system were agreed with engineering before they shipped." },
-            { kind: "exhibit", id: "how-work-ran" },
-          ],
-        },
-        {
-          id: "branding-hub",
-          rail: "Branding Hub",
-          title: "The Branding Hub, where admins set each client's brand",
-          blocks: [
-            { kind: "p", text: "Once brands lived in tokens, someone still had to set those tokens for a lot of employers without breaking what members see, and often several admins were working on themes at the same time. So I designed the Branding Hub, and it's live." },
-            { kind: "p", text: "Admins see every theme in one place, with its colors, the employers using it, who edited it last and whether it's a draft, the default or locked. The editor uses the same color roles as the tokens, and each color tells you where it appears. Before assigning a theme to employers, each with their own logo and links, the admin checks it on a real member dashboard." },
-            { kind: "p", text: "Because several people edit at once, a theme shows who's editing it and stays locked for everyone else. There's a change history, and deleted themes can be restored. We haven't measured usage formally, but theming a client is now one admin task inside the system instead of an engineering job." },
-            { kind: "exhibit", id: "branding-screens" },
-          ],
-        },
-        {
-          id: "outcome",
-          rail: "What changed",
-          title: "What changed",
-          blocks: [
-            { kind: "p", text: "Theming a new client used to take weeks. Now it takes under a day, and rebranding the white-label iOS and Android apps takes one or two days. Features come in at a predictable pace, about two days of design and three of build. The library has grown past 120 components on one foundation, and it serves Fortune 500 and enterprise insurers." },
-            { kind: "metrics" },
-            { kind: "p", text: "Hardcoded colors and off-system components now get caught in UX validation instead of in production. To be clear, these numbers are what the team has seen, not figures we formally tracked." },
-            { kind: "exhibit", id: "design-system-screens" },
-          ],
-        },
-        {
-          id: "next-time",
-          rail: "Next time",
-          title: "What I'd do differently",
-          blocks: [
-            { kind: "p", text: "I started as the only designer on this product. Over time I grew the team to four designers, hired two of them myself, and became UX Lead. The reframe, the architecture and the adoption plan were mine." },
-            { kind: "p", text: "If I did it again, I'd close the gap between the system and the people using it much earlier. Its reasoning lived in my head and in a file engineers had to remember to check. Case 03 is how I eventually closed that gap." },
-          ],
-        },
       ],
     },
     signals: "Finding the real problem, platform architecture with honest costs, and driving adoption across engineering.",
@@ -677,11 +576,11 @@ export const caseStudies: CaseStudy[] = [
     meta: {
       role: "UX Lead",
       context: "Mphasis · US health-insurance platform",
-      timeline: "Built Aug to Sep 2026",
+      timeline: "Built Aug–Sep 2026",
       domain: "Enterprise SaaS · US health insurance",
     },
     tags: ["Agentic design workflow", "Design systems", "Figma variables", "MCP"],
-    headline: { value: "3 or 4 days", label: "from Jira story to engineering-ready screen, down from one or two weeks (what the team has seen)" },
+    headline: { value: "3–4 days", label: "from Jira story to engineering-ready screen, down from 1–2 weeks (team-observed)" },
     card: { title: "A design system AI can read", widget: "pipeline", label: "Jira-story turnaround" },
     hook: {
       line: "Our AI tool kept putting Save on the wrong side.",
@@ -719,12 +618,12 @@ export const caseStudies: CaseStudy[] = [
           quoteEmpty: { field: "Button · Description" },
           quoteSource: "The old button's description (as I remember it)",
           visual: "save-side",
-          caption: "The habit lived in our heads, and now it's one line the AI reads before every screen.",
+          caption: "The habit lived in our heads. Now it's one line the AI reads before every screen.",
         },
         {
           id: "link-colour",
           tab: "The color",
-          story: "Our links have one color, and the AI picked another.",
+          story: "Our links have one color. The AI picked another.",
           quote: "Not an exact match, but agreed mapping.",
           quoteSource: "The rebuilt system's note on an old color",
           visual: "link-colour",
@@ -750,7 +649,7 @@ export const caseStudies: CaseStudy[] = [
     snapshot: {
       frame: "We were using AI to draft screens, and the drafts didn't match our product. Our design rules lived in designers' heads, so the AI had nothing to follow.",
       decision: "Without being asked, I rewrote the design system as skill files the AI reads before it designs.",
-      outcome: "Mockups went from about two days to three or four hours, and Jira stories from one or two weeks to three or four days. Teams beyond mine adopted it too. These are what the team has seen.",
+      outcome: "Mockups: 2 days to 3–4 hours. Jira stories: 1–2 weeks to 3–4 days. Adopted beyond my team. Team-observed.",
     },
     frame: {
       assumed: "The AI isn't good enough yet.",
@@ -830,28 +729,28 @@ export const caseStudies: CaseStudy[] = [
     outcome: {
       metrics: [
         {
-          value: "3 or 4 hours",
+          value: "3–4 h",
           label: "New-client and demo mockups",
-          before: { label: "about 2 days", amount: 16 },
-          after: { label: "3 or 4 hours", amount: 3.5 },
+          before: { label: "~2 days", amount: 16 },
+          after: { label: "3–4 hours", amount: 3.5 },
           unit: "working hours",
           visual: "mockup-hours",
         },
         {
-          value: "3 or 4 days",
+          value: "3–4 days",
           label: "Jira story to engineering-ready screen, with business analysts",
-          before: { label: "1 or 2 weeks", amount: 7.5 },
-          after: { label: "3 or 4 days", amount: 3.5 },
+          before: { label: "1–2 weeks", amount: 7.5 },
+          after: { label: "3–4 days", amount: 3.5 },
           unit: "working days",
           visual: "story-days",
         },
-        { value: "About 40%", label: "Less design production time overall", visual: "time-freed" },
-        { value: "5 and 3", label: "Client brands and platforms covered by one system", visual: "brand-grid" },
+        { value: "~40%", label: "Less design production time overall", visual: "time-freed" },
+        { value: "5 · 3", label: "Client brands and platforms covered by one system", visual: "brand-grid" },
       ],
       points: [
         "All four designers on my team use it, and the org's UAT team chose it for their projects. I didn't have to sell it.",
         "The AI drafts the screens and designers make the decisions. The time saved goes to research, flows, and edge cases.",
-        "Built in four to five weeks across five brands and three platforms. I could redo it in one or two.",
+        "Built in 4–5 weeks across five brands and three platforms. I could redo it in 1–2.",
       ],
       provenance: "Team-observed figures, recognized by managers, business analysts, and leadership. Not yet in sprint metrics.",
       exhibit: "adoption-spread",
@@ -862,103 +761,6 @@ export const caseStudies: CaseStudy[] = [
         "I haven't handed it to business analysts yet: they'd likely skip the UX thinking. That's on purpose.",
       ],
       change: ["I'd track before and after from day one, so the gains are measured, not just acknowledged."],
-    },
-    story: {
-      chapters: [
-        {
-          id: "the-problem",
-          rail: "The problem",
-          title: "The AI kept drawing screens that didn't look like ours",
-          blocks: [
-            { kind: "p", text: "Sales demos and handoffs from business analysts to developers both had to wait on mockups, and every mockup drawn by hand pulled a senior designer off product work. So I brought in AI to speed things up. The screens it made weren't usable." },
-            { kind: "stories" },
-            { kind: "p", text: "Nothing in our Figma file told it otherwise. The system was six years old and its components had no descriptions, so rules like where Save goes or which color a link takes lived only in designers' heads. The AI could read every component we had, but none of our rules." },
-            { kind: "exhibit", id: "rules-in-heads" },
-            { kind: "reframe", assumed: "The AI isn't good enough yet, so prompt harder.", actual: "Our design system was never written down in a way a machine could follow." },
-          ],
-        },
-        {
-          id: "stakes",
-          rail: "Who was waiting",
-          title: "Two teams were waiting on these screens",
-          blocks: [
-            { kind: "p", text: "Developers judge whether something is feasible from screens, not from specs, so business analysts couldn't hand over a Jira story until the mockups existed. Sales and marketing needed branded demos for clients, and when those were slow, they slipped in the middle of live sales cycles. Both of these pulled senior designers off product work." },
-            { kind: "exhibit", id: "two-loops" },
-          ],
-        },
-        {
-          id: "fix-the-system",
-          rail: "Decision 1: the system",
-          title: "I rewrote the design system instead of tuning prompts",
-          blocks: [
-            { kind: "p", text: "The expected answers were to wait for better AI, write better prompts, or hire more designers. A better prompt would have been fine if I only had to design one screen, one time. But this was never one scenario. The designers on my team and I would be using it many times a day, for all kinds of screens." },
-            { kind: "p", text: "So my gut said the only way was to build a system first, then plug in skills that could give us the right result every time. Nobody had asked for that, and I couldn't find anyone who had made a veteran design system readable by AI, so there was no process to follow. I decided to build one anyway." },
-            { kind: "exhibit", id: "prompt-vs-system" },
-            { kind: "note", label: "What it cost", text: "Weeks of work nobody had asked for, before it proved itself." },
-          ],
-        },
-        {
-          id: "skill-files",
-          rail: "Decision 2: skill files",
-          title: "I wrote the rules down as skill files, starting from tokens",
-          blocks: [
-            { kind: "p", text: "An AI agent doesn't need to know how many components you have. It needs the rules, like which color a link takes or which grid a page sits on. I could have added richer descriptions in Figma and hoped the agent worked out the rest, but I wrote the whole system as a set of linked skill files in plain markdown instead." },
-            { kind: "p", text: "I started with tokens and built up from there, so every component knows which tokens it uses and the system stays consistent as it grows. One system now themes five client brands through modes, with semantic colors, type named by use, a 12-column grid, 43 component sets, 3 density modes and 141 described variables." },
-            { kind: "exhibit", id: "skill-graph" },
-            { kind: "note", label: "What it cost", text: "It took more work upfront than annotating what already existed." },
-          ],
-        },
-        {
-          id: "check-its-work",
-          rail: "Decision 3: real components",
-          title: "I made the AI build from real components and check its own work",
-          blocks: [
-            { kind: "p", text: "Even with the tokens, grid and components written down, the output still broke. The screens looked fine at a glance but weren't actually wired to the system, so I fixed three things." },
-            {
-              kind: "cards",
-              items: [
-                { title: "Composition", body: "App shells and a build workflow. The AI picks the shell, uses only approved components and runs a checklist before it's done." },
-                { title: "A system that can grow", body: "The skills say when to reuse a component, when to add a variant and when to build something new." },
-                { title: "Instances, not redraws", body: "AI agents like to redraw elements from scratch. Now every element is a real instance, which is cheaper and traceable." },
-              ],
-            },
-            { kind: "exhibit", id: "build-screen" },
-            { kind: "note", label: "What it cost", text: "First runs got slower, but the output now meets the bar." },
-          ],
-        },
-        {
-          id: "portable",
-          rail: "Decision 4: portable",
-          title: "I kept the skills portable, so any AI tool can use them",
-          blocks: [
-            { kind: "p", text: "We were using Figma's agent, which was free while it was in beta, and beta pricing ends. So I kept the skill files in plain markdown that any agent can read. They run on Figma's agent today and can move to Claude Code or another agent through a Figma MCP." },
-            { kind: "p", text: "I also had to stop the new system drifting the way the old one had. Even with the rules written down, the docs once said 19 components while the file had 20. Unchecked patches like that are how the old system drifted, so now an audit compares the docs with the file every session, and a memory skill carries decisions forward." },
-            { kind: "exhibit", id: "portable-skills" },
-            { kind: "note", label: "What it cost", text: "There's governance to maintain now: versioned backups and a guide page." },
-          ],
-        },
-        {
-          id: "outcome",
-          rail: "What changed",
-          title: "What changed",
-          blocks: [
-            { kind: "p", text: "New-client and demo mockups used to take about two days, and now they take three or four hours. Working with business analysts, a Jira story gets to an engineering-ready screen in three or four days instead of one or two weeks. Overall we spend about 40% less time on design production, and one system covers five client brands and three platforms." },
-            { kind: "metrics" },
-            { kind: "p", text: "The AI drafts the screens and designers make the decisions, and the time we save goes into research, flows and edge cases. All four designers on my team use it, and the organization's UAT team chose it for their projects too, without me having to sell it." },
-            { kind: "p", text: "I built it in four to five weeks across five brands and three platforms, and I could do it again in one or two. These figures are what the team has seen. Managers, business analysts and leadership have recognized them, but they're not in our sprint metrics yet." },
-            { kind: "exhibit", id: "adoption-spread" },
-          ],
-        },
-        {
-          id: "next-time",
-          rail: "Next time",
-          title: "What I'd do differently",
-          blocks: [
-            { kind: "p", text: "Nobody asked me to build this. I built it, proved it, then brought the team in. I haven't handed it to business analysts yet, and that's on purpose, because I think they'd likely skip the UX thinking that has to come before the screens." },
-            { kind: "p", text: "If I started again, I'd track before and after from day one, so the gains were measured and not just acknowledged." },
-          ],
-        },
-      ],
     },
     signals: "A design system alone won't drive an AI. Teach it your rules, and turn every repeated mistake into a skill.",
   },
@@ -974,7 +776,7 @@ export const caseStudies: CaseStudy[] = [
     meta: {
       role: "Independent lab · product, UX, architecture, evaluation",
       context: "Blinkwiser · built by directing AI coding agents",
-      timeline: "Jul 2026–now",
+      timeline: "Jul 2026–present",
       domain: "AI SaaS · creator tools",
     },
     tags: ["Agent pipeline", "Grounding", "Eval harness", "AI UX"],
@@ -991,10 +793,10 @@ export const caseStudies: CaseStudy[] = [
       width: 1600,
       height: 800,
       alt: "Screen recording of the studio generating a carousel: each agent step reports in the chat, then the first slides land, marked Draft while the editor is still checking.",
-      caption: "One run, sped up three times: each agent step reports in the chat, and the first slides land marked Draft while the checks finish.",
+      caption: "One run, sped up 3×: each agent step reports in the chat, and the first slides land marked Draft while the checks finish.",
     },
     headline: { value: "7 in 10", label: "blind comparisons won by the rebuild over the first version (my eval harness, AI judge)" },
-    card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan, write, check", label: "facts checked before you see it" },
+    card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan → Reflect", label: "facts checked before you see it" },
     hook: {
       line: "The first version made up its own statistics.",
       turn: "I rebuilt it in two months, so every number traces to a source and every edit can be undone.",
@@ -1084,7 +886,7 @@ export const caseStudies: CaseStudy[] = [
         chosen: { label: "A blind eval harness", detail: "10 golden cases, a blind judge, head-to-heads." },
         why: [
           "I fixed the judge first: it was marking sourced numbers as invented.",
-          "Reasoning off held quality (8.0 against 8.1) and cut a deck from 84 to 31 seconds, at about half the cost.",
+          "Reasoning off held quality (8.0 vs 8.1) and cut a deck from 84 to 31 seconds, at about half the cost.",
         ],
         cost: "Time on measurement instead of features.",
         exhibit: "blind-eval",
@@ -1103,12 +905,12 @@ export const caseStudies: CaseStudy[] = [
     outcome: {
       metrics: [
         {
-          value: "7 in 10",
+          value: "7 / 10",
           label: "Blind head-to-heads won by the rebuild over v1",
           viz: { kind: "dots", filled: 7, total: 10, note: "my eval harness · AI judge" },
         },
         {
-          value: "9.5 against 8.8",
+          value: "9.5 vs 8.8",
           label: "Accuracy: claims that hold up against their sources",
           viz: {
             kind: "compare",
@@ -1121,8 +923,8 @@ export const caseStudies: CaseStudy[] = [
           },
         },
         {
-          value: "31 seconds",
-          label: "Per carousel, down from 84 seconds, at the same quality",
+          value: "31 s",
+          label: "Per carousel, down from 84 s, same quality",
           viz: {
             kind: "compare",
             rows: [
@@ -1134,7 +936,7 @@ export const caseStudies: CaseStudy[] = [
           },
         },
         {
-          value: "About 23 seconds",
+          value: "~23 s",
           label: "Until the first slides appear, marked Draft",
           viz: {
             kind: "timeline",
@@ -1150,7 +952,7 @@ export const caseStudies: CaseStudy[] = [
       ],
       points: [
         "Every change saves a restore point, and the chat says when an edit didn't happen.",
-        "Still behind: v1 scores higher on flow, 8.4 against 7.5, and that's what I'm working on next.",
+        "Still behind: v1 scores higher on flow (8.4 vs 7.5). That's next.",
         "Live and free at blinkwiser.com, with a handful of real users and no revenue yet.",
       ],
       provenance: "Scores come from my own harness and an AI judge, not from users.",
@@ -1163,96 +965,6 @@ export const caseStudies: CaseStudy[] = [
       ],
       change: [
         "I rebuilt v2 on my own evals before real users told me what mattered. I'd ship to creators earlier and take distribution as seriously as quality.",
-      ],
-    },
-    story: {
-      chapters: [
-        {
-          id: "first-version",
-          rail: "The first version",
-          title: "The first version made up its own statistics",
-          blocks: [
-            { kind: "p", text: "The brief was my own: turn a topic into a LinkedIn carousel, fast. I had a first version in beta within two weeks, and the hard part only showed up once people started using it." },
-            { kind: "p", text: "The model invented numbers and stated them with confidence. When I asked it to change something, it would reply “I've rewritten the carousel” when nothing had changed. And if you didn't like an edit, the only way back was another chat message." },
-            { kind: "reframe", assumed: "Generation is the product.", actual: "People post these carousels under their own name, so every fact has to be right." },
-            { kind: "exhibit", id: "trust-questions" },
-            { kind: "p", text: "A wrong statistic costs a creator their reputation, and a tool that lies about its own edits can't be trusted with anything else." },
-          ],
-        },
-        {
-          id: "stakes",
-          rail: "What was at stake",
-          title: "Trust, speed and cost all pulled against each other",
-          blocks: [
-            { kind: "p", text: "Creators publish these under their own name, so accuracy isn't optional. The editor is a chat, so if it misreports a change even once, people stop believing it. But every extra quality step adds time, speed decides who keeps using a tool like this, and for a solo, bootstrapped product the cost of every deck mattered as much as its quality." },
-            { kind: "exhibit", id: "quality-steps" },
-          ],
-        },
-        {
-          id: "enforce-in-code",
-          rail: "Decision 1: code",
-          title: "I moved the rules out of the prompt and into code",
-          blocks: [
-            { kind: "p", text: "Version one relied on prompts. Limits and “don't make things up” were requests, and the model could ignore them. Writing better prompts would only have meant asking more nicely and hoping." },
-            { kind: "p", text: "So anything that has to be true is now checked in code. Research turns into a numbered fact sheet, and an outline fixes the slide count and assigns facts to slides. Every number has to trace back to a source or its slide gets downgraded, and a critic and a fact-checker review the deck at the same time." },
-            { kind: "exhibit", id: "pipeline" },
-            { kind: "note", label: "What it cost", text: "More calls meant more waiting, and that's what forced my third decision." },
-          ],
-        },
-        {
-          id: "honest-reversible",
-          rail: "Decision 2: honesty",
-          title: "Every change is checked and can be undone",
-          blocks: [
-            { kind: "p", text: "Once the editor became a chat agent, its honesty mattered more than anything else. I could have just shown whatever the agent said it did, but that's exactly what had gone wrong in version one." },
-            { kind: "p", text: "Now, when the model claims an edit it didn't make, a guard catches it, tells you what didn't change and tries again. Every change saves a restore point, and restoring one also trims the later turns from the agent's memory." },
-            { kind: "exhibit", id: "restore-chat" },
-            { kind: "note", label: "What it cost", text: "The conversation model got more complex to build and test." },
-          ],
-        },
-        {
-          id: "evidence",
-          rail: "Decision 3: blind tests",
-          title: "I settled quality versus speed with blind tests",
-          blocks: [
-            { kind: "p", text: "The rebuild was more accurate, but it was slow, at 84 seconds a deck. I didn't want to pick a setting by feel, so I built a blind eval harness with 10 golden cases, a blind judge and head-to-head comparisons." },
-            { kind: "p", text: "The first thing I had to fix was the judge itself, because it was marking correctly sourced numbers as invented. Once the judge was right, the evals showed that turning reasoning off kept the quality almost the same (8.0 against 8.1) and cut a deck from 84 seconds to 31, at about half the cost." },
-            { kind: "exhibit", id: "blind-eval" },
-            { kind: "note", label: "What it cost", text: "Time I spent measuring instead of building features." },
-          ],
-        },
-        {
-          id: "the-cut",
-          rail: "Decision 4: the cut",
-          title: "I cut finished features to protect the templates",
-          blocks: [
-            { kind: "p", text: "I'd built a freeform canvas and a looks system with nine styles, plus pickers for fonts and layouts. The more options I added, the more every template looked like every other AI tool." },
-            { kind: "p", text: "So I cut them, and kept three templates exactly as designed: The Truth, The Sketch and The Statement." },
-            { kind: "exhibit", id: "cut-to-three" },
-            { kind: "note", label: "What it cost", text: "I threw away work that was already finished." },
-          ],
-        },
-        {
-          id: "outcome",
-          rail: "What changed",
-          title: "What changed",
-          blocks: [
-            { kind: "p", text: "In blind head-to-heads, the rebuild beat version one 7 times out of 10. Its claims hold up against their sources better, 9.5 against 8.8, and a carousel takes 31 seconds instead of 84 at the same quality. The first slides show up after about 23 seconds, marked Draft while the checks finish." },
-            { kind: "metrics" },
-            { kind: "p", text: "Every change saves a restore point, and the chat tells you when an edit didn't happen. It isn't better everywhere, though. Version one still scores higher on flow, 8.4 against 7.5, and that's what I'm working on next." },
-            { kind: "p", text: "Blinkwiser is live and free at blinkwiser.com, with a handful of real users and no revenue yet. All of these scores come from my own harness and an AI judge, not from users." },
-            { kind: "exhibit", id: "eval-board" },
-          ],
-        },
-        {
-          id: "next-time",
-          rail: "Next time",
-          title: "What I'd do differently",
-          blocks: [
-            { kind: "p", text: "The product, the UX, the pipeline architecture, the eval design and every cut were mine. I built it by directing AI coding agents and holding them to tests and evals." },
-            { kind: "p", text: "Looking back, I rebuilt version two on my own evals before real users told me what mattered. I'd ship to creators earlier, and I'd take distribution as seriously as quality." },
-          ],
-        },
       ],
     },
     signals: "Designing for model failure, deciding trade-offs with evals, and the restraint to cut.",
@@ -1270,7 +982,7 @@ export const caseStudies: CaseStudy[] = [
       role: "Lead UX Designer, onsite in Dubai",
       context: "Mphasis · Dubai Municipality",
       timeline: "2020–2021",
-      domain: "Government · bilingual English and Arabic",
+      domain: "Government · bilingual English–Arabic",
     },
     tags: ["Information architecture", "Stakeholder alignment", "RTL design", "Low-code constraints"],
     cover: {
@@ -1402,7 +1114,7 @@ export const caseStudies: CaseStudy[] = [
           viz: { kind: "ticks", count: 5, label: "signed off at every review", note: "number of ticks drawn, not counted" },
         },
         {
-          value: "Arabic and English",
+          value: "Arabic + English",
           label: "For citizens and residents, designed side by side",
           viz: { kind: "fan", from: "one app", to: ["English", "Arabic"], note: "designed side by side from the first wireframe" },
         },
@@ -1411,7 +1123,7 @@ export const caseStudies: CaseStudy[] = [
         "Built by the client's own team in Mendix, with no custom workarounds.",
         "Arabic designed with English from the first wireframe: no right-to-left rework.",
       ],
-      provenance: "This was 2020 and 2021. The live app has changed a lot since, and this is what we designed and shipped then.",
+      provenance: "This was 2020–2021. The live app has changed a lot since; this is what we designed and shipped then.",
     },
     ownership: {
       mine: [
@@ -1420,82 +1132,6 @@ export const caseStudies: CaseStudy[] = [
       change: [
         "I'd test the Arabic with Arabic-speaking residents, not just officials.",
         "I'd write down our right-to-left rules so the next bilingual team doesn't start from zero.",
-      ],
-    },
-    story: {
-      chapters: [
-        {
-          id: "the-brief",
-          rail: "The brief",
-          title: "I was asked to redesign a portal and found a catalog problem",
-          blocks: [
-            { kind: "p", text: "The brief was to redesign the city's services portal. It covered permits, complaints, bookings, waste and more, for citizens and residents, in Arabic and English. I was there as the lead UX designer, onsite in Dubai." },
-            { kind: "p", text: "Every service had its own rules, fees and approvals, and every department expected its services to be up front. The catalog was organized the way the city ran it, by department. But a resident renewing a permit doesn't know or care which department owns it, and people rarely know a service's official name." },
-            { kind: "exhibit", id: "org-vs-need" },
-            { kind: "reframe", assumed: "Redesign the portal's look.", actual: "Decide how a city's services are organized for residents, then defend it." },
-          ],
-        },
-        {
-          id: "constraints",
-          rail: "The constraints",
-          title: "Four things the structure had to survive",
-          blocks: [
-            { kind: "p", text: "Whatever structure I came up with had to work for residents on their own, in two languages, across a very diverse city, with no onboarding. Every milestone needed formal sign-off from senior officials, where anything unclear meant delay. The client's team was building it in Mendix, a low-code platform with a fixed set of components, so every design had to be buildable with them. And the requirements kept moving, so the structure had to absorb change without a redesign." },
-            { kind: "exhibit", id: "four-constraints" },
-          ],
-        },
-        {
-          id: "by-need",
-          rail: "Decision 1: by need",
-          title: "I grouped services by what residents need done",
-          blocks: [
-            { kind: "p", text: "Each department wanted its services up front, and grouping by department would have been the easiest thing to get signed off. It would also have been the worst option for residents." },
-            { kind: "p", text: "So I grouped services by need instead. Since people rarely know a service's official name, search became the front door, and there's one place to track every request. Before taking it into review, I mapped every service, and that map gave me the evidence to defend the structure in the room." },
-            { kind: "exhibit", id: "service-map" },
-            { kind: "note", label: "What it cost", text: "No department got its own front door, and I had to defend that at every milestone." },
-          ],
-        },
-        {
-          id: "one-template",
-          rail: "Decision 2: one template",
-          title: "Every service follows one template",
-          blocks: [
-            { kind: "p", text: "Designing each service separately would have copied each one's inconsistency and multiplied the build. So every service follows one template, with eligibility, documents, fees, steps and status always in the same place." },
-            { kind: "p", text: "That gave residents one pattern to learn and gave the build team one pattern to build. A new service slots in without reopening the design." },
-            { kind: "exhibit", id: "bilingual-pair" },
-            { kind: "note", label: "What it cost", text: "Some services had to bend to fit a shared shape." },
-          ],
-        },
-        {
-          id: "buildable",
-          rail: "Decision 3: buildable",
-          title: "I designed within what the low-code platform could build",
-          blocks: [
-            { kind: "p", text: "I wanted custom navigation and components that Mendix didn't support. That ideal version would have made a great Figma file and a stalled build." },
-            { kind: "p", text: "So I redesigned inside the platform's set of components and checked it with the client's team as I went. Arabic and English were designed side by side from the first wireframe, so right-to-left issues showed up early instead of at the end." },
-            { kind: "exhibit", id: "ideal-vs-buildable" },
-            { kind: "note", label: "What it cost", text: "I gave up some navigation ideas I liked." },
-          ],
-        },
-        {
-          id: "outcome",
-          rail: "What shipped",
-          title: "What shipped",
-          blocks: [
-            { kind: "p", text: "Residents got one home for every service, grouped by need instead of department, with search first and one dashboard to track every request, whether it's in progress, completed, canceled or waiting on payment. Every milestone was formally signed off." },
-            { kind: "metrics" },
-            { kind: "p", text: "The client's own team built it in Mendix with no custom workarounds, and because Arabic was designed alongside English from the first wireframe, there was no right-to-left rework. This was 2020 and 2021, and the live app has changed a lot since. What's shown here is what we designed and shipped then." },
-          ],
-        },
-        {
-          id: "next-time",
-          rail: "Next time",
-          title: "What I'd do differently",
-          blocks: [
-            { kind: "p", text: "I led the design team onsite, presented every milestone to senior officials and defended the structure in those rooms." },
-            { kind: "p", text: "If I did it again, I'd test the Arabic with Arabic-speaking residents, not just officials. I'd also write down our right-to-left rules, so the next bilingual team doesn't have to start from zero." },
-          ],
-        },
       ],
     },
     signals: "Structure in a political room, designing for the real build, and bilingual right-to-left as a first-class discipline.",
@@ -1636,29 +1272,29 @@ export const caseStudies: CaseStudy[] = [
         {
           value: "3 platforms",
           label: "Web, iOS, and Android, on a shared component library",
-          visual: "jet-platforms",
+          viz: { kind: "fan", from: "one library", to: ["web", "iOS", "Android"], note: "platforms, as shipped" },
         },
         {
           value: "5 steps",
           label: "Search, flights, guests, extras, pay",
-          visual: "jet-steps",
+          viz: { kind: "fan", from: "one booking", to: ["search", "flights", "guests", "extras", "pay"], note: "the booking steps, as shipped" },
         },
         {
           value: "6 add-ons",
           label: "In one step before payment",
-          visual: "jet-extras",
+          viz: { kind: "fan", from: "one Extras step", to: ["meals", "seats", "baggage", "priority", "miles", "insurance"], note: "add-ons, as shipped" },
         },
         {
           value: "Until 2019",
           label: "Live in production until the airline closed",
-          visual: "jet-years",
+          viz: { kind: "ticks", count: 5, label: "2015 to 2019", note: "one mark per year" },
         },
       ],
       points: [
         "Built on a shared component library, so web, iOS, and Android offered the same choices.",
         "The same choices worked on desktop and on a phone, each laid out for its screen.",
       ],
-      provenance: "This was between 2015 and 2019, and I have no figures from it. These are what we designed and shipped.",
+      provenance: "This was 2015–2019 and I have no figures from it. These are what we designed and shipped.",
       exhibit: "jet-screens",
     },
     ownership: {
@@ -1671,83 +1307,6 @@ export const caseStudies: CaseStudy[] = [
       change: [
         "I'd measure as I went: how many people picked each fare, and how many added extras, so the work could be judged by numbers.",
         "I'd watch people book on a phone, not just review the screens.",
-      ],
-    },
-    story: {
-      chapters: [
-        {
-          id: "the-work",
-          rail: "The work",
-          title: "Four years on an airline's booking flow",
-          blocks: [
-            { kind: "p", text: "I worked on Jet Airways' booking for four years, as one of the designers on a larger team. There was no single brief. The work came in pieces, across the whole journey from search to payment." },
-            { kind: "p", text: "The journey ran Search, Flights, Guests, Extras and Pay. Each flight came in five fares, plus a business-class option, and meals, seats, baggage and insurance were sold along the way, on web, iOS and Android. People compare fares by price, so every number had to be clear, and the airline needed the extras to sell. This case covers four calls I made along that journey." },
-            { kind: "exhibit", id: "jet-journey" },
-            { kind: "reframe", assumed: "Design the booking screens.", actual: "Help people choose a fare they understand, on any screen, with no surprises at payment." },
-          ],
-        },
-        {
-          id: "grid-and-list",
-          rail: "Decision 1: grid and list",
-          title: "Five fares don't fit on a phone",
-          blocks: [
-            { kind: "p", text: "On a wide screen the fare grid works well, and people can compare flights and fares at a glance. On a phone, the same grid turns into five narrow columns, with prices too small to compare and no room for anything else." },
-            { kind: "p", text: "So I kept the grid on desktop and turned it into a list on mobile. You tap a flight, it opens, and each fare gets a full-width row with room for its price, the old price and how many seats are left." },
-            { kind: "exhibit", id: "grid-vs-list" },
-            { kind: "note", label: "What it cost", text: "Two layouts for the same choice, which we had to design and keep in step." },
-          ],
-        },
-        {
-          id: "full-price",
-          rail: "Decision 2: full price",
-          title: "I showed the full price, broken down, while people choose",
-          blocks: [
-            { kind: "p", text: "Showing one total would have been simpler, but it also hides what the money is for. So the trip summary sits right next to the fare choice, with the fare, tax, fees and discount each on a line of its own. People see what they'll pay before they move on, and the total at payment isn't a surprise." },
-            { kind: "exhibit", id: "total-vs-breakdown" },
-            { kind: "note", label: "What it cost", text: "A longer summary panel, competing with the flight list for space." },
-          ],
-        },
-        {
-          id: "extras-step",
-          rail: "Decision 3: extras",
-          title: "Every add-on in one step before payment",
-          blocks: [
-            { kind: "p", text: "Each add-on could have had its own step, or popped up somewhere along the way. Instead I put meals, seats, baggage, priority, miles and insurance into one Extras step just before payment, so people see every add-on once, pick what they want and move on." },
-            { kind: "p", text: "Meals are chosen per passenger and per flight, with filters like veg, hot meals and snacks." },
-            { kind: "exhibit", id: "extras-one-step" },
-            { kind: "note", label: "What it cost", text: "It made one longer step, so each add-on stays closed until someone opens it." },
-          ],
-        },
-        {
-          id: "upsell",
-          rail: "Decision 4: the upgrade",
-          title: "The business-class offer sits inside the fare choice",
-          blocks: [
-            { kind: "p", text: "Upgrades are often sold with a pop-up that interrupts you mid-choice. I put the offer under the chosen fare instead, showing what it adds and how much more it costs, in the same terms people were already comparing. Saying no takes no extra click." },
-            { kind: "exhibit", id: "upsell-inline" },
-            { kind: "note", label: "What it cost", text: "It's quieter than a pop-up, so the offer has to win on what it shows: wider seats and better meals." },
-          ],
-        },
-        {
-          id: "outcome",
-          rail: "What shipped",
-          title: "What shipped",
-          blocks: [
-            { kind: "p", text: "The booking flow shipped on web, iOS and Android, built on a shared component library so all three offered the same choices, each laid out for its own screen. It stayed live until the airline closed in 2019." },
-            { kind: "metrics" },
-            { kind: "p", text: "This was between 2015 and 2019, and I don't have figures from it. What you see here is what we designed and shipped, taken from my own files." },
-            { kind: "exhibit", id: "jet-screens" },
-          ],
-        },
-        {
-          id: "next-time",
-          rail: "Next time",
-          title: "What I'd do differently",
-          blocks: [
-            { kind: "p", text: "The four calls in this case were mine: the grid and the mobile list, the price breakdown, the single Extras step and the in-place upgrade offer. Other designers on the team owned the rest of the journey." },
-            { kind: "p", text: "If I did it again, I'd measure as I went, like how many people picked each fare and how many added extras, so the work could be judged by numbers. And I'd watch people book on a phone, not just review the screens." },
-          ],
-        },
       ],
     },
     signals: "Pricing people can trust, choices that fit the screen, and selling without getting in the way.",

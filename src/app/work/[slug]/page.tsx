@@ -15,6 +15,7 @@ import { NextCase } from "@/components/case/NextCase";
 import { ReadingProgress } from "@/components/case/ReadingProgress";
 import { ExhibitSlot } from "@/components/exhibits/ExhibitSlot";
 import { HeroStories } from "@/components/case/HeroStories";
+import { Story } from "@/components/case/Story";
 import styles from "./page.module.css";
 
 export const dynamicParams = false;
@@ -58,6 +59,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       {c.cover && <CaseCover shot={c.cover} label={c.cover.label} />}
       {c.reel && <CaseCover shot={c.reel} label="The product, running" />}
 
+      {c.story ? (
+        <div className={`container ${styles.body}`}>
+          <BeatRail beats={c.story.chapters.map((ch, i) => ({ id: ch.id, n: String(i + 1).padStart(2, "0"), label: ch.rail }))} forks={[]} />
+          <div className={styles.content}>
+            <Story study={c} />
+          </div>
+        </div>
+      ) : (
       <div className={`container ${styles.body}`}>
         <BeatRail beats={BEATS.map(({ id, n, label }) => ({ id, n, label }))} forks={c.forks.map((f) => ({ id: f.id, title: f.title }))} />
 
@@ -146,6 +155,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </Beat>
         </div>
       </div>
+      )}
 
       <NextCase study={next} />
     </article>

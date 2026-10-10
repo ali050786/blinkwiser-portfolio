@@ -85,7 +85,7 @@ export const capabilities: {
     items: [
       "Enrollment, life-event, and eligibility flows for members and admins",
       "A white-label benefits platform for insurers, employers, and members",
-      "Multi-tenant compliance and audit logging, designed in",
+      "Compliance and audit logging for a platform shared by many clients",
     ],
     cases: ["open-enrollment", "enterprise-platform-from-zero"],
     visual: "domain",
@@ -97,7 +97,7 @@ export const capabilities: {
     items: [
       "Three-tier token architecture and white-label theming",
       "120+ components across web, mobile web, iOS, and Android",
-      "Design QA, governance, and adoption across engineering",
+      "UX validation, governance, and adoption across engineering",
     ],
     cases: ["enterprise-platform-from-zero", "ai-readable-design-system"],
     visual: "systems",
@@ -120,8 +120,8 @@ export const capabilities: {
     line: "Design systems AI tools can follow, and AI output people can check.",
     items: [
       "Design systems rebuilt as machine-readable skill files",
-      "Agent workflows with self-verification and drift audits",
-      "Grounded generation, honesty guards, and blind eval harnesses",
+      "Agent workflows that check their own output and catch drift from the design system",
+      "AI output tied to real sources, with blind side-by-side tests to judge whether a change made it better",
       "Daily tools: Claude Code, GitHub Copilot in VS Code, Google Antigravity, Figma MCP, LangGraph, and Lovable",
     ],
     cases: ["ai-readable-design-system", "designing-trust-into-ai"],

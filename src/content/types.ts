@@ -52,7 +52,11 @@ export type MetricVisualId =
   | "mockup-hours"
   | "story-days"
   | "time-freed"
-  | "brand-grid";
+  | "brand-grid"
+  | "jet-platforms"
+  | "jet-steps"
+  | "jet-extras"
+  | "jet-years";
 
 export type HookVisualId = "same-request" | "client-theme" | "trust-edit" | "city-home" | "fare-choice";
 
@@ -163,6 +167,26 @@ export interface Spotlight {
   exhibit?: ExhibitId;
 }
 
+/** One piece of a story chapter: a paragraph, a visual, or a small supporting element. */
+export type StoryBlock =
+  | { kind: "p"; text: string }
+  | { kind: "exhibit"; id: ExhibitId }
+  | { kind: "reframe"; assumed: string; actual: string }
+  | { kind: "note"; label: string; text: string }
+  | { kind: "cards"; items: { title: string; body: string }[] }
+  | { kind: "metrics" }
+  /** The study's opener stories (tabs with a before/after picture), shown inside a chapter. */
+  | { kind: "stories" };
+
+/** A chapter of a story-led case study: a plain heading in the author's voice, then text and visuals in reading order. */
+export interface StoryChapter {
+  id: string;
+  /** Short label for the side rail. */
+  rail: string;
+  title: string;
+  blocks: StoryBlock[];
+}
+
 export type CardWidget = "stepper" | "brands" | "pipeline" | "slides" | "departments";
 
 export interface CaseStudy {
@@ -263,4 +287,6 @@ export interface CaseStudy {
     change: string[];
   };
   signals: string;
+  /** Optional story layout. When set, the page tells the study as chapters instead of the five beats. */
+  story?: { chapters: StoryChapter[] };
 }

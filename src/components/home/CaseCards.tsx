@@ -11,11 +11,11 @@ import styles from "./CaseCards.module.css";
 
 /* One line each, the same facts the case studies open with. */
 const META: Record<string, { domain: string; outcome: string }> = {
-  "01": { domain: "Health insurance", outcome: "9 → 5 enrollment steps, live in production" },
-  "02": { domain: "White-label SaaS", outcome: "< 24 h to theme a new client, down from weeks" },
-  "03": { domain: "Design systems", outcome: "3–4 days from Jira story to screen, down from 1–2 weeks" },
-  "04": { domain: "AI product", outcome: "7 in 10 blind comparisons won by the rebuild" },
-  "05": { domain: "Civic services", outcome: "City services by need, Arabic equal to English" },
+  "01": { domain: "Health insurance", outcome: "Enrollment cut from 9 steps to 5, live in production" },
+  "02": { domain: "White-label SaaS", outcome: "A new client themed in under a day, down from weeks" },
+  "03": { domain: "Design systems", outcome: "Jira story to screen in three to four days, down from one to two weeks" },
+  "04": { domain: "AI product", outcome: "The rebuild won 7 in 10 blind comparisons" },
+  "05": { domain: "Civic services", outcome: "City services organized by need, with Arabic equal to English" },
   "06": { domain: "Airline e-commerce", outcome: "Fares, full price, and extras on web, iOS, and Android" },
 };
 
@@ -37,7 +37,7 @@ export function CaseCards() {
           label="The work"
           id="work-title"
           lead="Case studies"
-          intro="Six projects, from a US health-insurance platform to an airline. Each one opens with the brief and what I found under it."
+          intro="Six projects, from a US health-insurance platform to an airline."
         />
         <div className={styles.controls}>
           <button type="button" className={styles.arrow} onClick={() => step(-1)} aria-label="Previous case studies">

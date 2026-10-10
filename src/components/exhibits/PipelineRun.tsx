@@ -133,10 +133,10 @@ export function PipelineRun() {
         <div className={styles.bar}>
           <span className={styles.fill} style={{ transform: `scaleX(${t / TOTAL})` }} />
           <span className={styles.marker} style={{ left: `${(23 / TOTAL) * 100}%` }} data-hit={firstSlides || undefined}>
-            <span className="t-label">~23 s · first slides</span>
+            <span className="t-label">about 23 s · first slides</span>
           </span>
           <span className={styles.marker} style={{ left: "100%" }} data-hit={t >= TOTAL || undefined}>
-            <span className="t-label">~32 s · deck</span>
+            <span className="t-label">about 31 s · deck</span>
           </span>
         </div>
         <span className={`t-mono tabular ${styles.clock}`}>{t.toFixed(1)} s</span>

@@ -35,7 +35,7 @@ const data: Record<Tab, { rows: Row[]; summary: string }> = {
     rows: [
       { metric: "Judged quality", a: { label: "Off", value: 8.0, display: "8.0" }, b: { label: "On", value: 8.1, display: "8.1" }, max: 10, note: "Level within noise" },
       { metric: "Seconds per deck", a: { label: "Off", value: 31, display: "31 s" }, b: { label: "On", value: 84, display: "84 s" }, max: 84, lowerIsBetter: true },
-      { metric: "Relative cost per deck", a: { label: "Off", value: 0.5, display: "~½×" }, b: { label: "On", value: 1, display: "1×" }, max: 1, lowerIsBetter: true },
+      { metric: "Relative cost per deck", a: { label: "Off", value: 0.5, display: "about half" }, b: { label: "On", value: 1, display: "full" }, max: 1, lowerIsBetter: true },
     ],
   },
 };

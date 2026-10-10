@@ -99,7 +99,7 @@ export function TranslateLayer() {
       label="Diagram · two orders, one translation"
       viewBox="0 0 720 310"
       aria="Top row: how a family decides, my family, who needs what, which plan. Bottom row: how the backend stores it, coverage, plan, members. Crossing lines pass through a band labelled UI translates."
-      caption="The member's order and the backend's order cross. Instead of forcing either side to change, the UI collects the grid and translates it; the backend changed only where translation wasn't enough."
+      caption="The member's order and the backend's order cross. Instead of forcing either side to change, the UI collects the grid and translates it, and the backend changed only where that wasn't enough."
     >
       <T x={40} y={30}>
         how a family decides
@@ -206,7 +206,7 @@ export function PassiveRun() {
       label="Diagram · one passive enrollment run"
       viewBox="0 0 720 286"
       aria={`${total} members who took no action flow into one rule set by the employer. ${handled} are handled by the rule; ${review} come back to the admin, each with a reason.`}
-      caption="The admin sets the rule once and confirms the run. The rule handles most members; the rest come back with a reason instead of getting lost in the batch. Demo figures, matching the rebuilt screens below."
+      caption="The admin sets the rule once and confirms the run. The rule handles most members, and the rest come back with a reason instead of getting lost in the batch. Demo figures, matching the rebuilt screens below."
     >
       {dots
         .filter((p, i) => p.warn || i % 4 === 3)

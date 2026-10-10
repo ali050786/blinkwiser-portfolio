@@ -15,6 +15,123 @@ const covs = ["medical", "dental", "vision"];
 export function MetricVisual({ id }: { id: MetricVisualId }) {
   if (id === "glyph-flow") return <Glyph id="flow" className={styles.svg} />;
 
+  if (id === "jet-platforms") {
+    // The same fare card on a browser window, an iPhone and an Android phone, all fed by one library row.
+    const Fare = ({ x, y, w }: { x: number; y: number; w: number }) => (
+      <g>
+        <rect x={x} y={y} width={w} height={34} rx={6} className={g.soft} />
+        <rect x={x + 8} y={y + 9} width={w * 0.38} height={6} rx={3} className={g.ink} />
+        <rect x={x + 8} y={y + 20} width={w * 0.24} height={5} rx={2.5} className={g.ink} />
+        <rect x={x + w - 30} y={y + 10} width={22} height={14} rx={4} className={g.accent} />
+      </g>
+    );
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="The same fare card shown on a web browser, an iPhone and an Android phone, all built from one shared component library.">
+        <rect x={36} y={40} width={210} height={150} rx={10} className={g.card} />
+        <rect x={36} y={40} width={210} height={22} rx={10} className={g.muted} />
+        <rect x={36} y={52} width={210} height={10} className={g.muted} />
+        {[50, 60, 70].map((cx) => (
+          <circle key={cx} cx={cx} cy={51} r={3} className={g.tile} />
+        ))}
+        <Fare x={52} y={78} w={178} />
+        <Fare x={52} y={120} w={178} />
+        <rect x={276} y={40} width={78} height={150} rx={14} className={g.card} />
+        <rect x={302} y={48} width={26} height={5} rx={2.5} className={g.muted} />
+        <Fare x={284} y={70} w={62} />
+        <Fare x={284} y={110} w={62} />
+        <rect x={378} y={40} width={78} height={150} rx={8} className={g.card} />
+        <circle cx={417} cy={50} r={3} className={g.muted} />
+        <Fare x={386} y={70} w={62} />
+        <Fare x={386} y={110} w={62} />
+        <T x={141} y={210} anchor="middle">web</T>
+        <T x={315} y={210} anchor="middle">iOS</T>
+        <T x={417} y={210} anchor="middle">Android</T>
+        {[141, 315, 417].map((x) => (
+          <path key={x} d={`M${x} 222 V246`} className={g.strong} />
+        ))}
+        <path d="M60 246 H440" className={g.strong} />
+        {[60, 128, 196, 264, 332, 400].map((x, i) => (
+          <rect key={x} x={x} y={258} width={44} height={24} rx={5} className={i === 2 ? g.accent : g.tile} />
+        ))}
+        <T x={60} y={306} accent>one shared component library</T>
+      </svg>
+    );
+  }
+
+  if (id === "jet-steps") {
+    // The booking progress bar as people saw it: five steps, each one done before the next.
+    const steps = ["search", "flights", "guests", "extras", "pay"];
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="A booking progress bar with five steps in order: search, flights, guests, extras and pay.">
+        <rect x={36} y={60} width={408} height={88} rx={12} className={g.card} />
+        {steps.map((s, i) => {
+          const x = 52 + i * 78;
+          const done = i < 4;
+          return (
+            <g key={s}>
+              <rect x={x} y={84} width={70} height={10} rx={5} className={done ? g.accent : g.accentRing} />
+              <T x={x} y={124}>{`${i + 1}  ${s}`}</T>
+            </g>
+          );
+        })}
+        <rect x={36} y={176} width={408} height={104} rx={12} className={g.cardBack} />
+        <rect x={56} y={196} width={120} height={8} rx={4} className={g.ink} />
+        <rect x={56} y={216} width={200} height={6} rx={3} className={g.muted} />
+        <rect x={56} y={232} width={160} height={6} rx={3} className={g.muted} />
+        <rect x={344} y={240} width={80} height={24} rx={12} className={g.accent} />
+      </svg>
+    );
+  }
+
+  if (id === "jet-extras") {
+    // One Extras step: every add-on is a row in the same list, opened only if someone wants it.
+    const rows = ["meals", "seats", "baggage", "priority", "miles", "insurance"];
+    const picked = [0, 1];
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="One Extras step listing six add-ons as rows: meals, seats, baggage, priority, miles and insurance. Meals and seats are picked.">
+        <rect x={90} y={24} width={300} height={276} rx={12} className={g.card} />
+        <T x={110} y={50}>extras · one step</T>
+        {rows.map((r, i) => {
+          const y = 66 + i * 38;
+          const on = picked.includes(i);
+          return (
+            <g key={r}>
+              {i > 0 && <path d={`M106 ${y - 4} H374`} className={g.faint} />}
+              <rect x={110} y={y + 6} width={20} height={20} rx={5} className={on ? g.accentMid : g.tile} />
+              <T x={142} y={y + 21}>{r}</T>
+              <rect x={326} y={y + 7} width={36} height={18} rx={9} className={on ? g.accent : g.muted} />
+              <circle cx={on ? 353 : 335} cy={y + 16} r={6} className={g.card} />
+            </g>
+          );
+        })}
+      </svg>
+    );
+  }
+
+  if (id === "jet-years") {
+    // Five years on a time axis: live the whole way, ending when the airline closed.
+    const years = [2015, 2016, 2017, 2018, 2019];
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="A timeline from 2015 to 2019. The booking flow is live the whole time and stops when the airline closed in 2019.">
+        <path d="M56 200 H424" className={g.faint} />
+        {years.map((y, i) => {
+          const x = 56 + i * 84;
+          return (
+            <g key={y}>
+              <path d={`M${x} 192 V208`} className={g.strong} />
+              <T x={x} y={234} anchor="middle">{String(y)}</T>
+            </g>
+          );
+        })}
+        <rect x={56} y={140} width={336} height={22} rx={6} className={g.accent} />
+        <T x={64} y={124} accent>live in production</T>
+        <path d="M392 120 V214" className={g.strong} />
+        <rect x={384} y={140} width={16} height={22} rx={3} className={g.cardWarn} />
+        <T x={396} y={110} anchor="middle" warn>airline closed</T>
+      </svg>
+    );
+  }
+
   if (id === "asked-once")
     return (
       <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Before: who's covered asked inside each of three coverages. After: asked once, feeding all three.">
@@ -90,8 +207,8 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
   if (id === "mockup-hours" || id === "story-days") {
     // One block per working hour or working day. Dashed blocks are the top of a range.
     const hours = id === "mockup-hours";
-    const before = hours ? { solid: 16, range: 0, label: "~2 days" } : { solid: 5, range: 5, label: "1–2 weeks" };
-    const after = hours ? { solid: 3, range: 1, label: "3–4 hours" } : { solid: 3, range: 1, label: "3–4 days" };
+    const before = hours ? { solid: 16, range: 0, label: "about 2 days" } : { solid: 5, range: 5, label: "1 or 2 weeks" };
+    const after = hours ? { solid: 3, range: 1, label: "3 or 4 hours" } : { solid: 3, range: 1, label: "3 or 4 days" };
     const w = hours ? 22 : 36;
     const step = hours ? 24 : 40;
     const row = (b: typeof before, y: number, kind: "before" | "after") =>

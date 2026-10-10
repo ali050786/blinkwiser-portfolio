@@ -143,7 +143,7 @@ export function AdoptionFourSides() {
   const sides = [
     { x: 360, y: 46, t: "enablement", s: "walkthroughs with developers", a: "start" as const },
     { x: 490, y: 150, t: "documentation", s: "usage rules inside the system", a: "start" as const },
-    { x: 360, y: 254, t: "quality", s: "design QA on every build", a: "start" as const },
+    { x: 360, y: 254, t: "quality", s: "UX validation on every build", a: "start" as const },
     { x: 230, y: 150, t: "policy", s: "tech lead: build to the system", a: "end" as const },
   ];
   return (
@@ -174,7 +174,7 @@ export function AdoptionFourSides() {
       })}
       <circle cx={c.x} cy={c.y} r={22} className={g.accent} />
       <T x={c.x - 30} y={c.y + 44} anchor="end" accent>
-        the system → the default
+        the system becomes the default
       </T>
     </Diagram>
   );
@@ -322,9 +322,9 @@ export function BlindEval() {
       <T x={442} y={98} anchor="middle" accent>
         blind judge
       </T>
-      <T x={500} y={104}>quality 8.1 → 8.0</T>
+      <T x={500} y={104}>quality 8.1, now 8.0</T>
       <T x={500} y={128} accent>
-        84 s → 31 s a deck
+        84 s down to 31 s a deck
       </T>
       <T x={500} y={152} accent>
         about half the cost

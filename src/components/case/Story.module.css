@@ -1,0 +1,66 @@
+.chapter {
+  padding-bottom: clamp(64px, 9vw, 112px);
+  scroll-margin-top: 96px;
+}
+.chapter + .chapter {
+  padding-top: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--border-default);
+}
+.head {
+  display: grid;
+  gap: 12px;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+.head :global(.t-mono) {
+  font-size: 12px;
+}
+.title {
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.body {
+  display: grid;
+  gap: 1.25em;
+}
+/* Story paragraphs read at body size in the main text colour, at a comfortable measure. */
+.p {
+  max-width: var(--layout-prose);
+  color: var(--text-primary);
+}
+/* Visuals get room above and below so text and picture alternate clearly. */
+.visual {
+  margin-block: clamp(16px, 2.5vw, 32px);
+}
+.note {
+  display: grid;
+  gap: 6px;
+  max-width: var(--layout-prose);
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-block: 8px;
+}
+.cards[data-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.cards li {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 22px;
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+@media (max-width: 760px) {
+  .cards,
+  .cards[data-count="2"] {
+    grid-template-columns: 1fr;
+  }
+}

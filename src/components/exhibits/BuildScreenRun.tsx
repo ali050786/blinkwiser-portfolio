@@ -17,7 +17,7 @@ const steps = [
   { title: "Self-verify", detail: "Run the checklist before handing back" },
 ];
 
-const checks = ["Zero hardcoded colors", "Published styles only", "Every element is an instance", "Theme switch tested, Brand A → B"];
+const checks = ["Zero hardcoded colors", "Published styles only", "Every element is an instance", "Theme switch tested, from Brand A to B"];
 const failures = [
   "Colors hardcoded per component",
   "A different grid from screen to screen",

@@ -68,8 +68,8 @@ export function RulesInHeads() {
 export function TwoLoops() {
   const mid = { x: 360, y: 140 };
   const lanes = [
-    { y: 64, from: "Jira story", to: "dev checks feasibility", who: "Business analysts and developers", time: "1–2 weeks per story" },
-    { y: 216, from: "prospective client", to: "branded sales demo", who: "Sales and marketing", time: "~2 days per demo mockup" },
+    { y: 64, from: "Jira story", to: "dev checks feasibility", who: "Business analysts and developers", time: "1 or 2 weeks per story" },
+    { y: 216, from: "prospective client", to: "branded sales demo", who: "Sales and marketing", time: "about 2 days per demo mockup" },
   ];
   return (
     <Diagram
@@ -77,7 +77,7 @@ export function TwoLoops() {
       label="Diagram · two queues, one bottleneck"
       viewBox="0 0 720 290"
       aria="Two lanes share one bottleneck. In the first, business analysts and developers wait 1 to 2 weeks per Jira story for a mockup before developers can check feasibility. In the second, sales waits about 2 days per mockup for a branded demo. Both wait on one senior designer drawing screens by hand."
-      caption="Every feasibility check and every sales demo waited on the same thing: a senior designer drawing the screen by hand. Timings are team-observed, not measured."
+      caption="Every feasibility check and every sales demo waited on the same thing: a senior designer drawing the screen by hand. Timings are what the team has seen, not measurements."
     >
       {lanes.map((l) => (
         <g key={l.from}>

@@ -24,10 +24,13 @@ mindmap
     03 What I bring: static 2x2 framed grid, four areas
     04 Get in touch: framed call box
 ```
-Case study pages, /resume and /colophon keep their structure and pick up the tokens. URLs and slugs do not change.
+/resume and /colophon keep their structure and pick up the tokens. URLs and slugs do not change.
+
+Case study pages are moving, one study at a time, from the five beats (Frame, Stakes, Decisions, Outcome, Ownership) to a story layout: hero and summary unchanged, then numbered chapters with a plain first-person heading, paragraphs, and the study's diagrams and screens placed between the paragraphs where the story needs them. The side rail lists the chapters. A study opts in with `story` in its content; studies without it keep the beats. All six studies are converted (2026-10-10).
 
 ## Voice and Tone
-Short, declarative, a little confrontational, like the references. Headlines in two beats: the claim, then the turn. No em dashes. No client names.
+Home: short and confident. Headlines in two beats: the claim, then the turn.
+Everywhere: Ali's own voice, first person, the way he'd explain it to a colleague. Medium-length sentences joined with "and", "but", "so"; contractions; plain words. No arrows or dash ranges in prose ("from 9 steps to 5", not "9 → 5"), no buzzwords, no clipped slogan lines, no "not X, it's Y" formula. Copy is checked against the human-story-writer skill. No em dashes. No client names.
 
 ## Component Patterns
 | Component | Behaviour |

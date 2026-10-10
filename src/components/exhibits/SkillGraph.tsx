@@ -21,7 +21,7 @@ const skills: Skill[] = [
   {
     id: "build-screen",
     layer: "Build",
-    role: "The workflow: Jira story → classify page → pick shell → compose sanctioned components → self-verify.",
+    role: "The workflow: read the Jira story, classify the page, pick the shell, compose approved components, then check its own work.",
     worksWith: ["ds-index", "ds-tokens", "ds-themes", "ds-components", "ds-layout", "app-shells", "memory"],
   },
   { id: "sync-semantic-colors", layer: "Build", role: "Regenerates opacity ramps across every brand when a base color changes.", worksWith: ["ds-tokens", "ds-themes"] },

@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 const decisions = [
   {
     title: "Three tiers of tokens, not a utility framework",
-    body: "tokens/tokens.json (W3C DTCG format) compiles to CSS custom properties: primitives, semantic intent with light and dark modes, then component tokens. References stay as var() chains, so each case study re-themes by overriding only the semantic accent, exactly like a client brand on the white-label platform in case study 02.",
+    body: "tokens/tokens.json (W3C DTCG format) compiles to CSS custom properties: primitives, semantic intent with light and dark modes, then component tokens. References stay as var() chains, so light and dark mode only override the semantic tier, the same way a client brand works on the white-label platform in case study 02.",
   },
   {
     title: "GSAP for choreography, Motion for state",
-    body: "GSAP (ScrollTrigger, SplitText) runs the headline reveals and the scroll-linked layer stack on this page. Motion handles state-driven UI: the home page's reframe deck and every exhibit's layout transitions, presence, and springs. Scroll reveals are CSS plus one shared IntersectionObserver, so server components stay server components.",
+    body: "GSAP (ScrollTrigger, SplitText) runs the headline reveals and the scroll-linked layer stack on this page. Motion handles state-driven UI: every exhibit's layout transitions, presence, and springs. Scroll reveals are CSS plus one shared IntersectionObserver, so server components stay server components.",
   },
   {
     title: "CSS 3D instead of WebGL",
@@ -28,11 +28,11 @@ const decisions = [
   },
   {
     title: "Accessible by construction",
-    body: "A script checks 50 token pairs against WCAG AA in both modes. Reduced-motion visitors get final states with no autoplay; anything that advances on its own pauses on hover, focus, and offscreen, and has a pause control. Exhibits use native inputs, radio groups, and live regions, and every one is keyboard operable.",
+    body: "A script checks every text and UI color pair against WCAG AA in both modes. Reduced-motion visitors get final states with no autoplay; anything that advances on its own pauses on hover, focus, and offscreen, and has a pause control. Exhibits use native inputs, radio groups, and live regions, and every one is keyboard operable.",
   },
   {
     title: "Public-safe case studies",
-    body: "Clients are anonymized, the employer is named once as attribution, and every visual is redrawn with demo brands and illustrative data. No client screens, internal codenames, or file links.",
+    body: "The US health-insurance clients are never named, and every visual of that work is redrawn with demo brands and illustrative data, with no client screens, internal codenames, or file links. Jet Airways and Dubai Municipality are named because that work was public, and the Jet Airways screens are real ones from my own files.",
   },
 ];
 
@@ -102,7 +102,7 @@ export default function Colophon() {
                 </li>
               ))}
             </ul>
-            <p className="t-label c-tertiary">Tier 1 · primitive · accents, one per case study</p>
+            <p className="t-label c-tertiary">Tier 1 · primitive · accent palettes</p>
             <ul className={styles.palettes}>
               {palettes.map(([name, steps]) => (
                 <li key={name}>
