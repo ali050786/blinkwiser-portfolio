@@ -12,7 +12,7 @@ const home: Record<string, { domain: string; outcome: { value: string; label: st
   "02": { domain: "White-label platform", outcome: { value: "< 24 h", label: "to theme a new client, down from weeks" } },
   "03": { domain: "AI design systems", outcome: { value: "3–4 days", label: "Jira-story turnaround, down from 1–2 weeks" } },
   "04": { domain: "AI product, Blinkwiser", outcome: { value: "7 in 10", label: "blind comparisons won by the rebuild over the first version" } },
-  "05": { domain: "Civic services, Dubai", outcome: { value: "", label: "One place for city services, for citizens and residents, in Arabic and English" } },
+  "05": { domain: "Civic services, Dubai", outcome: { value: "", label: "Nine city apps brought into one, in Arabic and English" } },
   "06": { domain: "Airline e-commerce", outcome: { value: "", label: "Choosing a fare, seeing the full price and adding extras, on web, iOS and Android" } },
 };
 

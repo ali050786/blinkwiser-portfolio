@@ -3,6 +3,7 @@ import type { CaseStudy } from "@/content/types";
 import { principles } from "@/content/site";
 import { Glyph } from "@/components/ui/Glyph";
 import { Icon } from "@/components/ui/Icon";
+import { LiveLinks } from "./LiveLinks";
 import { HeroStories } from "./HeroStories";
 import { HookFrame } from "./hook/HookFrame";
 import { hookScreens } from "./hook/screens";
@@ -122,6 +123,11 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           </div>
         ))}
       </dl>
+      {c.live && (
+        <div className={styles.links}>
+          <LiveLinks live={c.live} />
+        </div>
+      )}
     </header>
   );
 }

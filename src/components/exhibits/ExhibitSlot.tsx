@@ -19,6 +19,7 @@ import {
 } from "./CaseDiagrams";
 import { JetJourney, GridVsList, TotalVsBreakdown, ExtrasOneStep, UpsellInline } from "./JetDiagrams";
 import { JetScreens } from "./JetScreens";
+import { NineIntoOne, CardSort, MendixLimits, RtlTemplate } from "./DmDiagrams";
 import { RulesInHeads, TwoLoops, PromptVsSystem, PortableSkills, AdoptionSpread } from "./DsDiagrams";
 
 /**
@@ -68,6 +69,10 @@ const registry: Record<ExhibitId, React.ComponentType> = {
   "extras-one-step": ExtrasOneStep,
   "upsell-inline": UpsellInline,
   "jet-screens": JetScreens,
+  "dm-nine-into-one": NineIntoOne,
+  "dm-card-sort": CardSort,
+  "dm-mendix": MendixLimits,
+  "dm-rtl-template": RtlTemplate,
 };
 
 export function ExhibitSlot({ id }: { id: ExhibitId }) {

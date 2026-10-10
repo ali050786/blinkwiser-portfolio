@@ -6,7 +6,7 @@ import styles from "./Proof.module.css";
 /* Where the work happened: Deploy's client grid, with organizations instead of logos. */
 const ITEMS: { mark: string; name: string; sub: string; when: string; href?: string }[] = [
   { mark: "HI", name: "US health-insurance platform", sub: "White-label SaaS for insurers, employers, and members", when: "2021–now", href: "/work/enterprise-platform-from-zero" },
-  { mark: "DM", name: "Dubai Municipality", sub: "City services in Arabic and English", when: "2020–2021", href: "/work/dubai-municipality" },
+  { mark: "DM", name: "Dubai Municipality", sub: "Nine city apps into one, in Arabic and English", when: "2020–2021", href: "/work/dubai-municipality" },
   { mark: "JA", name: "Jet Airways", sub: "Booking on web, iOS, and Android", when: "2015–2019", href: "/work/jet-airways-booking" },
   { mark: "BW", name: "Blinkwiser", sub: "My AI product lab", when: "2026–now", href: "/work/designing-trust-into-ai" },
   { mark: "MP", name: "Mphasis", sub: "My employer for the airline, city, and platform work", when: "2015–now" },

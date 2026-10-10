@@ -64,3 +64,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.image {
+  display: grid;
+  gap: 12px;
+  margin-block: clamp(16px, 2.5vw, 32px);
+}
+.image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+.narrow {
+  max-width: 360px;
+}
+.image figcaption {
+  display: grid;
+  gap: 4px;
+}

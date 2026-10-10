@@ -1,0 +1,65 @@
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px 40px;
+  padding: clamp(22px, 3vw, 32px) clamp(22px, 3vw, 36px);
+  border: 1px solid var(--border-default);
+  background:
+    radial-gradient(70% 140% at 100% 50%, color-mix(in srgb, var(--accent-solid) 14%, transparent), transparent 70%),
+    var(--surface-raised);
+}
+.c1,
+.c2,
+.c3,
+.c4 {
+  position: absolute;
+}
+.c1 {
+  top: -6px;
+  left: -6px;
+}
+.c2 {
+  top: -6px;
+  right: -6px;
+}
+.c3 {
+  bottom: -6px;
+  left: -6px;
+}
+.c4 {
+  bottom: -6px;
+  right: -6px;
+}
+.copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-solid);
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-positive);
+  outline: 4px solid color-mix(in srgb, var(--text-positive) 22%, transparent);
+}
+.title {
+  color: var(--text-primary);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 760px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,6 +3,7 @@ import { ExhibitSlot } from "@/components/exhibits/ExhibitSlot";
 import { Reframe } from "./Reframe";
 import { OutcomePanel } from "./OutcomePanel";
 import { HeroStories } from "./HeroStories";
+import { LiveLinks } from "./LiveLinks";
 import styles from "./Story.module.css";
 
 /**
@@ -72,6 +73,23 @@ function Block({ block: b, study: c }: { block: StoryBlock; study: CaseStudy }) 
           <HeroStories opener={c.opener} compact />
         </div>
       ) : null;
+    case "links":
+      return c.live ? (
+        <div className={styles.visual}>
+          <LiveLinks live={c.live} />
+        </div>
+      ) : null;
+    case "image":
+      return (
+        <figure className={`${styles.image} ${b.narrow ? styles.narrow : ""}`} data-reveal>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={b.src} alt={b.alt} width={b.width} height={b.height} loading="lazy" decoding="async" />
+          <figcaption>
+            <span className="t-body-s c-secondary">{b.caption}</span>
+            {b.note && <span className="t-label c-tertiary">{b.note}</span>}
+          </figcaption>
+        </figure>
+      );
     case "metrics":
       return (
         <div className={styles.visual}>

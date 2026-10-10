@@ -141,7 +141,7 @@ export const timeline = [
     period: "2020–2021",
     role: "Lead UX Designer, onsite",
     org: "Mphasis · Dubai Municipality",
-    detail: "Bilingual civic services portal, presented milestone by milestone to senior officials.",
+    detail: "Nine city apps brought into one, in Arabic and English, with every design presented to the stakeholders myself.",
   },
   {
     period: "2015–2019",

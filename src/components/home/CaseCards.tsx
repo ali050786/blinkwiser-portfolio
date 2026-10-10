@@ -15,7 +15,7 @@ const META: Record<string, { domain: string; outcome: string }> = {
   "02": { domain: "White-label SaaS", outcome: "A new client themed in under a day, down from weeks" },
   "03": { domain: "Design systems", outcome: "Jira story to screen in three to four days, down from one to two weeks" },
   "04": { domain: "AI product", outcome: "The rebuild won 7 in 10 blind comparisons" },
-  "05": { domain: "Civic services", outcome: "City services organized by need, with Arabic equal to English" },
+  "05": { domain: "Civic services", outcome: "Nine city apps brought into one, in Arabic and English" },
   "06": { domain: "Airline e-commerce", outcome: "Fares, full price, and extras on web, iOS, and Android" },
 };
 

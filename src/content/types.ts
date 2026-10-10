@@ -42,7 +42,11 @@ export type ExhibitId =
   | "total-vs-breakdown"
   | "extras-one-step"
   | "upsell-inline"
-  | "jet-screens";
+  | "jet-screens"
+  | "dm-nine-into-one"
+  | "dm-card-sort"
+  | "dm-mendix"
+  | "dm-rtl-template";
 
 export type MetricVisualId =
   | "glyph-flow"
@@ -56,7 +60,11 @@ export type MetricVisualId =
   | "jet-platforms"
   | "jet-steps"
   | "jet-extras"
-  | "jet-years";
+  | "jet-years"
+  | "dm-apps"
+  | "dm-tabs"
+  | "dm-months"
+  | "dm-rtl";
 
 export type HookVisualId = "same-request" | "client-theme" | "trust-edit" | "city-home" | "fare-choice";
 
@@ -176,7 +184,11 @@ export type StoryBlock =
   | { kind: "cards"; items: { title: string; body: string }[] }
   | { kind: "metrics" }
   /** The study's opener stories (tabs with a before/after picture), shown inside a chapter. */
-  | { kind: "stories" };
+  | { kind: "stories" }
+  /** The study's live-product links, as buttons. */
+  | { kind: "links" }
+  /** A screenshot or image, with its own caption and an honest note about where it comes from. */
+  | { kind: "image"; src: string; alt: string; width: number; height: number; caption: string; note?: string; narrow?: boolean };
 
 /** A chapter of a story-led case study: a plain heading in the author's voice, then text and visuals in reading order. */
 export interface StoryChapter {
@@ -208,6 +220,8 @@ export interface CaseStudy {
     timeline: string;
     domain: string;
   };
+  /** Optional live-product panel: where to see or download the real thing. Shown under the meta row and with the outcome. */
+  live?: { title: string; note: string; links: { label: string; href: string }[] };
   tags: string[];
   /** Optional product screen shown under the snapshot, rebuilt in a demo brand. */
   cover?: Shot;

@@ -15,6 +15,84 @@ const covs = ["medical", "dental", "vision"];
 export function MetricVisual({ id }: { id: MetricVisualId }) {
   if (id === "glyph-flow") return <Glyph id="flow" className={styles.svg} />;
 
+  if (id === "dm-apps") {
+    // Nine small app tiles, each a different shape, collapsing into one app.
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Nine separate app icons on the left, one app icon on the right.">
+        {Array.from({ length: 9 }, (_, i) => {
+          const x = 52 + (i % 3) * 62;
+          const y = 70 + Math.floor(i / 3) * 62;
+          return <rect key={i} x={x} y={y} width={46} height={46} rx={6 + (i % 3) * 7} className={g.cardBack} />;
+        })}
+        <path d="M250 163 H318" className={g.strong} />
+        <rect x={330} y={110} width={106} height={106} rx={24} className={g.accent} />
+        <T x={52} y={270}>nine apps</T>
+        <T x={383} y={270} anchor="middle" accent>one app</T>
+      </svg>
+    );
+  }
+
+  if (id === "dm-tabs") {
+    // The app's five tabs, as the bottom bar people see.
+    const tabs = ["Home", "Dashboard", "Services", "Media", "More"];
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="A bottom tab bar with five tabs: Home, Dashboard, Services, Media Center and More.">
+        <rect x={60} y={50} width={360} height={150} rx={14} className={g.cardBack} />
+        <rect x={80} y={74} width={160} height={10} rx={5} className={g.muted} />
+        <rect x={80} y={96} width={320} height={34} rx={8} className={g.tile} />
+        <rect x={80} y={140} width={320} height={34} rx={8} className={g.tile} />
+        <rect x={60} y={210} width={360} height={64} rx={14} className={g.card} />
+        {tabs.map((tb, i) => {
+          const x = 96 + i * 72;
+          return (
+            <g key={tb}>
+              <rect x={x - 11} y={222} width={22} height={18} rx={4} className={i === 1 ? g.accent : g.nodeModel} />
+              <T x={x} y={262} anchor="middle" accent={i === 1}>{tb}</T>
+            </g>
+          );
+        })}
+      </svg>
+    );
+  }
+
+  if (id === "dm-months") {
+    // Eight months onsite, one block each.
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Eight blocks, one for each month spent onsite in Dubai.">
+        {Array.from({ length: 8 }, (_, i) => (
+          <rect key={i} x={44 + i * 50} y={130} width={42} height={42} rx={8} className={i === 7 ? g.accent : g.accentMid} />
+        ))}
+        <T x={44} y={110}>onsite in Dubai</T>
+        <T x={44} y={206}>month 1</T>
+        <T x={436} y={206} anchor="end" accent>launch</T>
+      </svg>
+    );
+  }
+
+  if (id === "dm-rtl") {
+    // Two small screens, the second a mirror of the first.
+    const Mini = ({ x, rtl }: { x: number; rtl?: boolean }) => (
+      <g transform={`translate(${x} 60)`}>
+        <rect width={150} height={190} rx={14} className={g.card} />
+        {[24, 70, 116].map((y) => (
+          <g key={y}>
+            <circle cx={rtl ? 124 : 26} cy={y + 14} r={10} className={g.accentRing} />
+            <rect x={rtl ? 30 : 46} y={y + 10} width={74} height={8} rx={4} className={g.muted} />
+          </g>
+        ))}
+      </g>
+    );
+    return (
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="An English screen and its Arabic mirror, built from the same layout.">
+        <Mini x={50} />
+        <path d="M240 60 V250" className={g.faint} strokeDasharray="4 5" />
+        <Mini x={280} rtl />
+        <T x={125} y={282} anchor="middle">English</T>
+        <T x={355} y={282} anchor="middle" accent>Arabic, mirrored</T>
+      </svg>
+    );
+  }
+
   if (id === "jet-platforms") {
     // The same fare card on a browser window, an iPhone and an Android phone, all fed by one library row.
     const Fare = ({ x, y, w }: { x: number; y: number; w: number }) => (

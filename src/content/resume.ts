@@ -67,7 +67,7 @@ const shared = {
           org: "Mphasis · Dubai Municipality",
           role: "Lead UX Designer, onsite in Dubai",
           period: "2020 – 2021",
-          body: "One place for the city's services, for **citizens and residents**, organized by what people need done instead of by department. Arabic and English designed side by side from the first wireframe; every milestone signed off by senior officials.",
+          body: "Led the design of one app that replaced **nine separate Municipality apps**: the five-tab structure, the dashboard, and service groups built with stakeholders in a card sorting workshop. Arabic set up as a right-to-left template, all within the limits of a low-code platform. It launched while I was there.",
         },
         {
           org: "Mphasis · Jet Airways",
@@ -111,7 +111,7 @@ export const resumeVariants = {
     title: "Lead UX Designer",
     tagline: "Regulated enterprise SaaS: health insurance, government, and AI",
     summary:
-      "I've spent 11 years in UX. For the last five, I've been the founding designer and then UX lead on a white-label US health-insurance platform used by **insurers, employers, and members**, from its first screen to production. Before that, I designed Dubai Municipality's bilingual services portal and Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**.",
+      "I've spent 11 years in UX. For the last five, I've been the founding designer and then UX lead on a white-label US health-insurance platform used by **insurers, employers, and members**, from its first screen to production. Before that, I brought nine Dubai Municipality apps into one, in Arabic and English, and designed Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**.",
     domain: undefined as string | undefined,
   },
   "health-tech": {
@@ -119,7 +119,7 @@ export const resumeVariants = {
     title: "Lead UX Designer · US Health Insurance",
     tagline: "Payers, employers & members",
     summary:
-      "I've spent 11 years in UX. For the last five, I've been the founding designer and then UX lead on a white-label **US health-insurance** platform used by **payers, employers, and members**, from its first screen to production. Before that, I designed Dubai Municipality's bilingual services portal and Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**, with no member data in the loop.",
+      "I've spent 11 years in UX. For the last five, I've been the founding designer and then UX lead on a white-label **US health-insurance** platform used by **payers, employers, and members**, from its first screen to production. Before that, I brought nine Dubai Municipality apps into one, in Arabic and English, and designed Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**, with no member data in the loop.",
     domain:
       "Open & passive enrollment · life-event coverage changes · eligibility rules · eligibility data files from employers · benefits administration · privacy-aware design (HIPAA) · accessibility (WCAG)" as string | undefined,
   },
