@@ -247,7 +247,7 @@ export const rulesInHeads = (): MobileDrawing => ({
       <T x={24} y={346} warn>
         in designers&apos; heads · never reached the AI
       </T>
-      {["which color = link", "which grid per page", "how screens compose"].map((t, i) => (
+      {["which color is a link", "which grid per page", "how screens compose"].map((t, i) => (
         <g key={t}>
           <rect x={24} y={360 + i * 36} width={200} height={28} rx={8} className={g.cardWarn} />
           <T x={124} y={378 + i * 36} anchor="middle" warn>
@@ -423,7 +423,7 @@ export const adoptionSpread = (): MobileDrawing => ({
         not yet, on purpose
       </T>
       <T x={24} y={386}>
-        team-observed · not to scale
+        not to scale
       </T>
     </>
   ),
@@ -502,7 +502,7 @@ export const growthCeiling = (): MobileDrawing => ({
         );
       })}
       <T x={24} y={392} warn>
-        clients signed ≤ re-skins engineering can do
+        no more clients than engineering can re-skin
       </T>
     </>
   ),

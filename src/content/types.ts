@@ -179,7 +179,7 @@ export interface Spotlight {
 export type StoryBlock =
   | { kind: "p"; text: string }
   | { kind: "exhibit"; id: ExhibitId }
-  | { kind: "reframe"; assumed: string; actual: string }
+  | { kind: "reframe"; assumed: string; actual: string; /** Defaults to "What I was asked". */ assumedLabel?: string }
   | { kind: "note"; label: string; text: string }
   | { kind: "cards"; items: { title: string; body: string }[] }
   | { kind: "metrics" }

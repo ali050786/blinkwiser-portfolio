@@ -51,17 +51,17 @@ export function EvalBoard() {
   return (
     <Exhibit
       label="Interactive · blind eval harness"
-      title="Trade-offs settled by evidence, not taste"
+      title="How I settled the trade-offs: blind tests"
       caption={d.summary}
-      note="Scores from my own harness and an AI judge, not from users."
+      note="Scores from my own harness and an AI judge."
       controls={
         <Segmented<Tab>
           label="Comparison"
           value={tab}
           onChange={setTab}
           options={[
-            { value: "versions", label: "v2 vs v1" },
-            { value: "reasoning", label: "Reasoning off vs on" },
+            { value: "versions", label: "v2 against v1" },
+            { value: "reasoning", label: "Reasoning off against on" },
           ]}
         />
       }

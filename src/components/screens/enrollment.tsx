@@ -10,7 +10,8 @@ import { AppFrame, Btn, Cb, CovIcon, Foot, I, Ok, Person, family } from "./kit";
  */
 
 const { member, spouse, kids } = family;
-const adopted = "Timothy Brown";
+/** The newborn the life event is about, as in the trailer and the hero. */
+const adopted = "Noor Reed";
 
 /* ------------------------------------------------------------------ steps */
 
@@ -326,7 +327,7 @@ export function OldReview() {
             </Btn>
           </div>
           <div className={s.sectionHead}>
-            <Person name={adopted} role="Son" />
+            <Person name={adopted} role="Daughter" />
             <span className={s.chip}>Newly added</span>
           </div>
           <div className={s.rule} />
@@ -420,7 +421,7 @@ export function NewPlan() {
         <div className={s.coverageBar}>
           <h3>Coverage includes: Family</h3>
           <p>
-            {member} (Member) · {spouse} (Spouse) · {kids[0]} (Child) · {kids[1]} (Child) · {adopted} (Adopted child){" "}
+            {member} (Member) · {spouse} (Spouse) · {kids[0]} (Child) · {kids[1]} (Child) · {adopted} (Newborn){" "}
             <span className={s.link}>Update</span>
           </p>
         </div>
@@ -508,7 +509,7 @@ const summaries = [
     total: "$80.00",
     lines: [
       { plan: "Dental Preventive Care (dependent only)", who: spouse, price: "$80.00" },
-      { plan: "Waive / opt out", who: `${adopted} (adopted child)`, price: "$0.00" },
+      { plan: "Waive / opt out", who: `${adopted} (newborn)`, price: "$0.00" },
     ],
   },
   {
@@ -556,7 +557,7 @@ export function NewReview() {
     [kids[0]!, "Child (active)"],
     [kids[1]!, "Child (active)"],
     [kids[2]!, "Child (to be terminated)", <span key="t" className={`${s.chip} ${s.chipBad}`}>To be terminated</span>],
-    [adopted, "Adopted child (active)", <span key="n" className={s.chip}>Newly added</span>],
+    [adopted, "Newborn (active)", <span key="n" className={s.chip}>Newly added</span>],
   ];
   const Upd = () => (
     <Btn ghost sm>

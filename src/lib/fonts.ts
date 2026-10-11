@@ -23,6 +23,14 @@ export const instrumentSerif = localFont({
   display: "swap",
 });
 
+/** Display serif for the home page headings (Newsreader, OFL; optical size and weight axes). */
+export const newsreader = localFont({
+  src: "../fonts/newsreader-latin-opsz-normal.woff2",
+  variable: "--font-newsreader",
+  weight: "200 800",
+  display: "swap",
+});
+
 /** Only the Dubai exhibit uses Arabic, so it is not preloaded. */
 export const plexArabic = localFont({
   src: [
@@ -34,4 +42,4 @@ export const plexArabic = localFont({
   preload: false,
 });
 
-export const fontVariables = [geist.variable, geistMono.variable, instrumentSerif.variable, plexArabic.variable].join(" ");
+export const fontVariables = [geist.variable, geistMono.variable, instrumentSerif.variable, newsreader.variable, plexArabic.variable].join(" ");

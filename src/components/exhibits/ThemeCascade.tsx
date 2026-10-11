@@ -58,7 +58,7 @@ export function ThemeCascade() {
   return (
     <Exhibit
       label="Interactive · three-tier theming"
-      title="A new client is a configuration, not a project"
+      title="Setting up a new client, tier by tier"
       caption="Each tier inherits from the one above and overrides only what it owns. Watch where each token resolves from."
     >
       <div className={styles.tiers}>

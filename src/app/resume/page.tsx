@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Fragment } from "react";
 import { resume, resumeFile } from "@/content/resume";
+import { Icon } from "@/components/ui/Icon";
+import button from "@/components/ui/ButtonLink.module.css";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Resume of Sikandar Ali Abdul, Lead UX Designer: complex, regulated, multi-audience platforms in US health insurance, enterprise design systems, and AI-assisted delivery.",
+  description:
+    "Resume of Sikandar Ali Abdul, Lead UX Designer. 11 years in UX, the last six leading design on a white-label US health-insurance platform.",
   alternates: { canonical: "/resume" },
 };
 
@@ -23,17 +27,17 @@ export default function ResumePage() {
   return (
     <div className={styles.wrap}>
       <div className={styles.toolbar}>
-        <a href="/" className={styles.back}>
-          ← Portfolio
-        </a>
-        <a href={resumeFile} download className={styles.download}>
-          Download PDF
+        <Link href="/" className={styles.back}>
+          <Icon name="arrow-left" size={16} /> Portfolio
+        </Link>
+        <a href={resumeFile} download className={`${button.button} ${button.primary}`}>
+          <span>Download PDF</span>
         </a>
       </div>
 
       <article className={styles.sheet} aria-labelledby="resume-name">
         <header className={styles.head}>
-          <div>
+          <div className={styles.who}>
             <h1 id="resume-name" className={styles.name}>
               {resume.name}
             </h1>

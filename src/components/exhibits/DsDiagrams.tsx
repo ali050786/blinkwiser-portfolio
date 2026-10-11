@@ -14,7 +14,7 @@ export function RulesInHeads() {
   const xs = [40, 192, 344];
   const ai = { x: 572, y: 140 };
   const read = ["components", "color variables", "type styles"];
-  const heads = ["which color = link", "which grid per page", "how screens compose"];
+  const heads = ["which color is a link", "which grid per page", "how screens compose"];
   return (
     <Diagram
       mobile={M.rulesInHeads()}
@@ -77,7 +77,7 @@ export function TwoLoops() {
       label="Diagram · two queues, one bottleneck"
       viewBox="0 0 720 290"
       aria="Two lanes share one bottleneck. In the first, business analysts and developers wait 1 to 2 weeks per Jira story for a mockup before developers can check feasibility. In the second, sales waits about 2 days per mockup for a branded demo. Both wait on one senior designer drawing screens by hand."
-      caption="Every feasibility check and every sales demo waited on the same thing: a senior designer drawing the screen by hand. Timings are what the team has seen, not measurements."
+      caption="Every feasibility check and every sales demo waited on the same thing: a senior designer drawing the screen by hand."
     >
       {lanes.map((l) => (
         <g key={l.from}>
@@ -279,7 +279,7 @@ export function AdoptionSpread() {
         not yet, on purpose
       </T>
       <T x={40} y={206}>
-        team-observed · team size of the UAT group not shown to scale
+        the UAT group is not shown to scale
       </T>
     </Diagram>
   );

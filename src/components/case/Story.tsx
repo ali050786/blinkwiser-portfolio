@@ -46,7 +46,7 @@ function Block({ block: b, study: c }: { block: StoryBlock; study: CaseStudy }) 
     case "reframe":
       return (
         <div className={styles.visual}>
-          <Reframe assumed={b.assumed} actual={b.actual} />
+          <Reframe assumed={b.assumed} actual={b.actual} assumedLabel={b.assumedLabel} />
         </div>
       );
     case "note":
@@ -82,8 +82,10 @@ function Block({ block: b, study: c }: { block: StoryBlock; study: CaseStudy }) 
     case "image":
       return (
         <figure className={`${styles.image} ${b.narrow ? styles.narrow : ""}`} data-reveal>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={b.src} alt={b.alt} width={b.width} height={b.height} loading="lazy" decoding="async" />
+          <div className={styles.imageFrame}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={b.src} alt={b.alt} width={b.width} height={b.height} loading="lazy" decoding="async" />
+          </div>
           <figcaption>
             <span className="t-body-s c-secondary">{b.caption}</span>
             {b.note && <span className="t-label c-tertiary">{b.note}</span>}

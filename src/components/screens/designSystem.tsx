@@ -254,13 +254,13 @@ function ProductCard({ selected, current }: { selected?: boolean; current?: bool
           <b>Enroll dependents</b>
           <span className={s.sub}>(1 dependent)</span>
           <span className={s.pill} data-on>
-            Jane <i>−</i>
+            Ana <i>−</i>
           </span>
           <span className={s.pill}>
-            Harry <i>+</i>
+            Leo <i>+</i>
           </span>
           <span className={s.pill}>
-            Carrie <i>+</i>
+            Maya <i>+</i>
           </span>
         </div>
       )}

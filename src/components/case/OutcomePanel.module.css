@@ -17,10 +17,12 @@
   border: 1px solid var(--card-border);
 }
 .value {
+  font-family: var(--font-family-display);
+  font-variation-settings: "opsz" 60;
   font-size: var(--font-size-display-m);
   line-height: 1;
-  letter-spacing: -0.04em;
-  font-weight: var(--font-weight-medium);
+  letter-spacing: -0.015em;
+  font-weight: 450;
   color: var(--accent-solid);
 }
 .bars {

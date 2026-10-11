@@ -11,10 +11,10 @@
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-default);
-  background: transparent;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: none;
   color: var(--text-secondary);
   font: inherit;
   font-size: var(--font-size-body-s);
@@ -26,17 +26,18 @@
   font-size: 11px;
   color: var(--text-tertiary);
 }
+/* The same quiet tabs as the home page: a raised fill and a hairline on the current one. */
 .tab:hover {
-  border-color: var(--accent-solid);
+  background: var(--surface-raised);
   color: var(--text-primary);
 }
 .tab[aria-selected="true"] {
-  background: var(--accent-solid);
-  border-color: var(--accent-solid);
-  color: var(--accent-on-solid);
+  background: var(--surface-raised);
+  border-color: var(--border-default);
+  color: var(--text-primary);
 }
 .tab[aria-selected="true"] :global(.t-mono) {
-  color: inherit;
+  color: var(--accent-solid);
 }
 .tab:focus-visible {
   outline: 2px solid var(--focus-ring);

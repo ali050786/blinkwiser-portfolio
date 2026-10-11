@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { CaseStudy } from "@/content/types";
-import { principles } from "@/content/site";
-import { Glyph } from "@/components/ui/Glyph";
+import { deck, type CaseSlug } from "@/content/home";
 import { Icon } from "@/components/ui/Icon";
 import { LiveLinks } from "./LiveLinks";
 import { HeroStories } from "./HeroStories";
@@ -17,7 +16,8 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
     ["Domain", c.meta.domain],
   ] as const;
 
-  const habit = principles.find((p) => p.primary === c.index);
+  // The same domain label and screen as the case's card on the home page.
+  const card = deck[c.slug as CaseSlug];
   const HookScreen = c.hook ? hookScreens[c.hook.picture.visual] : null;
 
   /* The turning point sits in the empty space beside the title on wide screens,
@@ -44,7 +44,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           <div className={styles.hookCopy}>
             <p className="t-label">
               <span className="c-accent">Case {c.index}</span>
-              <span className="c-tertiary"> · {c.group}</span>
+              <span className="c-tertiary"> · {card.domain}</span>
             </p>
             <h1 className={`t-heading-m c-secondary ${styles.titleSmall}`}>{c.title}</h1>
             <p className={`t-display-l ${styles.hookLine}`}>{c.hook.line}</p>
@@ -65,7 +65,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
             <div className={styles.openerHead}>
               <p className="t-label">
                 <span className="c-accent">Case {c.index}</span>
-                <span className="c-tertiary"> · {c.group}</span>
+                <span className="c-tertiary"> · {card.domain}</span>
               </p>
               <h1 className={`t-heading-m c-secondary ${styles.titleSmall}`}>{c.title}</h1>
               {c.opener.lead ? (
@@ -86,32 +86,24 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
         </div>
       ) : (
         <div className={styles.grid}>
+          {/* No picture here: the product image right under the hero is the visual for this case. */}
           <div className={styles.copy}>
             <p className="t-label">
               <span className="c-accent">Case {c.index}</span>
-              <span className="c-tertiary"> · {c.group}</span>
+              <span className="c-tertiary"> · {card.domain}</span>
             </p>
             <h1 className="t-display-l">{c.title}</h1>
             <p className={`t-body-l c-secondary ${styles.dek}`}>{c.dek}</p>
-            {habit && (
-              <p className={styles.habit}>
-                <span className="t-label c-tertiary">How I worked</span>
-                <span>{habit.title}</span>
-              </p>
-            )}
             <ul className={styles.tags} aria-label="Topics">
               {c.tags.map((t) => (
                 <li key={t}>{t}</li>
               ))}
             </ul>
           </div>
-          <div className={styles.visual}>
-            <Glyph id={c.glyph} />
-            <div className={styles.headline}>
-              {c.headline.value && <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>}
-              <span className="t-body-s c-secondary">{c.headline.label}</span>
-            </div>
-          </div>
+          <p className={styles.hookNumber}>
+            {c.headline.value && <span className={`tabular ${styles.headlineValue}`}>{c.headline.value}</span>}
+            <span className="t-body-s c-secondary">{c.headline.label}</span>
+          </p>
         </div>
       )}
 

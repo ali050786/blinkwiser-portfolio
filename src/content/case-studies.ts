@@ -29,7 +29,7 @@ export const caseStudies: CaseStudy[] = [
       timeline: "Live in production",
       domain: "Enterprise SaaS · US health insurance",
     },
-    tags: ["US health insurance", "Decision modeling", "Defaults", "Regulated flows"],
+    tags: ["US health insurance", "Enrollment", "Life events", "Defaults"],
     cover: {
       video: "/work/enrollment/trailer.mp4",
       poster: "/work/enrollment/trailer-poster.webp",
@@ -207,8 +207,8 @@ export const caseStudies: CaseStudy[] = [
           unit: "steps",
           visual: "glyph-flow",
         },
-        { value: "Once", label: "“Who's covered” is asked once, instead of once for every coverage", visual: "asked-once" },
-        { value: "Every step", label: "Cost is visible, shown the way people actually pay it", visual: "cost-every-step" },
+        { value: "Asked once", label: "“Who's covered” is asked once, instead of once for every coverage", visual: "asked-once" },
+        { value: "Cost on every step", label: "Cost is visible, shown the way people actually pay it", visual: "cost-every-step" },
         { value: "4 flows", label: "One flow structure shared by open enrollment, life events, new hires and admins enrolling on someone's behalf", visual: "four-flows" },
       ],
       points: [
@@ -240,17 +240,7 @@ export const caseStudies: CaseStudy[] = [
             { kind: "exhibit", id: "flow-compare" },
             { kind: "p", text: "What I found was the backend's data model, turned straight into screens. It took three screens just to manage the household. Then every coverage had its own loop: pick Medical, browse plans, pick one, choose who it covers, go back to the hub, and do it all again for Dental and Vision. So members answered “who's covered” once for the household and again inside every coverage, and the price they saw was a yearly estimate that could still change." },
             { kind: "reframe", assumed: "The flow is too long, so trim some screens.", actual: "It asked questions in the order the backend stores them, so members kept answering the same question." },
-            { kind: "p", text: "Cutting screens would have made that loop shorter, but members would still be answering the same question over and over. The real problem was the order of the questions." },
-          ],
-        },
-        {
-          id: "stakes",
-          rail: "Why it matters",
-          title: "Why a missed step matters so much here",
-          blocks: [
-            { kind: "p", text: "Open enrollment happens once a year. A life event like a birth opens a much shorter window, usually 30 or 31 days, and if someone gets missed in that window, adding them usually has to wait until the next open enrollment." },
-            { kind: "exhibit", id: "coverage-gap" },
-            { kind: "p", text: "So the problems in this flow weren't small annoyances. A family member missed on one coverage stayed uncovered until the next window. When the cost only showed up at the end, people committed before they knew what they'd pay. And because admins enroll members on their behalf, every weakness in the member flow hit them too." },
+            { kind: "p", text: "Cutting screens would have made that loop shorter, but members would still answer the same question over and over. And here a repeated question is more than an annoyance. A birth opens a window of 30 or 31 days, and a family member missed on one coverage stays uncovered until the next open enrollment." },
           ],
         },
         {
@@ -258,9 +248,7 @@ export const caseStudies: CaseStudy[] = [
           rail: "Decision 1: the order",
           title: "I changed the order of the questions instead of trimming screens",
           blocks: [
-            { kind: "p", text: "Trimming would have been the quicker fix, and on paper it would have answered “too long”. But it would have kept the loop, and members would still answer the dependent question twice." },
-            { kind: "exhibit", id: "trim-vs-reorder" },
-            { kind: "p", text: "So I reordered the flow to follow how a family actually thinks it through: first my family, then who needs what, then which plan. “Who needs what” is now asked once, in one grid with family members down the side and coverages across the top. Picking plans builds on that grid instead of asking the same thing again for every coverage." },
+            { kind: "p", text: "Instead of trimming, I reordered the flow to follow how a family actually thinks it through: first my family, then who needs what, then which plan. “Who needs what” is now asked once, in one grid with family members down the side and coverages across the top. Picking plans builds on that grid instead of asking the same thing again for every coverage." },
             { kind: "note", label: "What it cost", text: "The new order didn't match how the backend stored enrollments anymore. That turned into my third decision." },
           ],
         },
@@ -292,16 +280,7 @@ export const caseStudies: CaseStudy[] = [
           rail: "What followed",
           title: "Small things the new order made possible",
           blocks: [
-            { kind: "p", text: "Once the questions came in the right order, a few other improvements became possible. These were my calls too." },
-            {
-              kind: "cards",
-              items: [
-                { title: "Cost where you decide", body: "A running total on every step, shown per month or per paycheck deduction, instead of a yearly estimate at the very end." },
-                { title: "One review page before signing", body: "One page to check everything before a commitment that lasts a year. You can see what changed, edit it right there, and accept the disclaimer and e-sign in the same step." },
-                { title: "Documents only when needed", body: "Document upload used to be a fixed step for everyone. Now it only shows up when a member's situation actually needs a document." },
-              ],
-            },
-            { kind: "exhibit", id: "ask-when-needed" },
+            { kind: "p", text: "Once the questions came in the right order, two more of my calls became possible. There's now one review page before signing, where members see what changed, edit it right there and e-sign in the same step. And document upload, which used to be a fixed step for everyone, only shows up when a member's situation needs a document." },
           ],
         },
         {
@@ -309,9 +288,8 @@ export const caseStudies: CaseStudy[] = [
           rail: "The admin side",
           title: "The members who never open the flow",
           blocks: [
-            { kind: "p", text: "Every open enrollment, some members do nothing at all. Admins used to sort them out by hand, one member at a time, and every employer had its own rule for them. Some terminate those members, some carry the current plan forward and some move them to a default plan, sometimes depending on eligibility. All of it landed right at the deadline, where a missed member stays uncovered until the next window." },
+            { kind: "p", text: "Every open enrollment, some members do nothing at all. Admins used to sort them out by hand, one member at a time, and every employer had its own rule for them. Some terminate those members, some carry the current plan forward and some move them to a default plan, and all of it landed right at the deadline." },
             { kind: "p", text: "The business owned those rules. My part was designing how admins set them up, run them and deal with the cases a rule can't decide. Each employer now has a Passive Enrollment tab with four rules written in plain language. Before a run, the admin sees the rule, the file and how many members it will affect, with a plain warning that it can't be undone." },
-            { kind: "exhibit", id: "passive-funnel" },
             { kind: "p", text: "Every run leaves a record of who ran it, when, and with which rule and file. The report separates the members who were processed from the ones who need a look, and those come back with a reason and Enroll or Terminate buttons right in the row, so nobody gets lost in the batch. We didn't measure the effort before and after, but a job that used to be done member by member is now a rule each employer sets once." },
             { kind: "exhibit", id: "passive-screens" },
           ],
@@ -321,8 +299,7 @@ export const caseStudies: CaseStudy[] = [
           rail: "What changed",
           title: "What changed",
           blocks: [
-            { kind: "p", text: "The new flow is live in production for open enrollment, life events and new hires, and admins use the same structure when they enroll someone on a member's behalf. It went from 9 steps to 5: Welcome, Profile, Dependents, Coverage and Review." },
-            { kind: "metrics" },
+            { kind: "p", text: "The new flow is live in production for open enrollment, life events and new hires, and admins use the same structure when they enroll someone on a member's behalf. Using that one structure everywhere was a decision I made with product and engineering. It went from 9 steps to 5: Welcome, Profile, Dependents, Coverage and Review." },
             { kind: "p", text: "The complaints that started the redesign have dropped, and admins get through enrolling on someone's behalf faster. To be honest, these are signals we've seen rather than formal measurements, which is something I'd fix next time." },
             { kind: "exhibit", id: "enrollment-screens" },
           ],
@@ -333,7 +310,6 @@ export const caseStudies: CaseStudy[] = [
           title: "What I'd do differently",
           blocks: [
             { kind: "p", text: "I'd get evidence in earlier. The redesign was based on feedback from users and business analysts plus my own analysis of the flow, not on watching real members use it. I'd also add tracking to the old flow before changing anything, so I could show the improvement in numbers instead of only describing it." },
-            { kind: "p", text: "To be clear about who did what: the reframe, the new order of questions, the family-plan default, the running monthly total and the single review page were my calls. Using one flow structure for every enrollment type was a decision I made with product and engineering, and the business owned the rules behind passive enrollment." },
           ],
         },
       ],
@@ -353,7 +329,7 @@ export const caseStudies: CaseStudy[] = [
     meta: {
       role: "Founding UX Designer, now UX Lead",
       context: "Mphasis · US health-insurance platform",
-      timeline: "2021–now",
+      timeline: "Oct 2020 to now",
       domain: "Enterprise SaaS · US health insurance",
     },
     tags: ["US health insurance", "Three-tier tokens", "White-label", "Design system adoption"],
@@ -362,7 +338,7 @@ export const caseStudies: CaseStudy[] = [
       alt: "Member dashboard page pattern from the design system: coverage status by family member, claims status, resources, and find care.",
       caption: "A member dashboard pattern from the library. Every client sees it in its own brand.",
     },
-    headline: { value: "Under a day", label: "to theme a new client, down from weeks (what the team has seen)" },
+    headline: { value: "Under a day", label: "to theme a new client, down from weeks" },
     card: { title: "White-label health-insurance platform", widget: "brands", label: "to theme a new client" },
     hook: {
       line: "A new client used to take weeks to set up.",
@@ -448,7 +424,7 @@ export const caseStudies: CaseStudy[] = [
         tension: "Each client needs its own identity at three levels. Per-client builds would scale the mess.",
         rejected: { label: "Per-client builds", detail: "A separate copy of the look for every insurer and employer." },
         chosen: { label: "Three-tier tokens", detail: "Insurer, then employer, then member. Each tier overrides only what it owns." },
-        why: ["A new client becomes configuration, not a project.", "One foundation runs web, mobile web, iOS, and Android."],
+        why: ["Setting up a new client is configuration now.", "One foundation runs web, mobile web, iOS, and Android."],
         cost: "Developers could no longer style things directly, and that habit took time to break.",
         exhibit: "theme-cascade",
       },
@@ -512,7 +488,7 @@ export const caseStudies: CaseStudy[] = [
             unit: "working day",
             before: { solid: 10, label: "weeks" },
             after: { solid: 1, label: "under a day" },
-            note: "team-observed · weeks drawn at the low end",
+            note: "weeks drawn at the low end",
           },
         },
         {
@@ -523,7 +499,7 @@ export const caseStudies: CaseStudy[] = [
             end: 2,
             unit: "days",
             marks: [{ at: 2, label: "iOS and Android rebranded", accent: true }],
-            note: "team-observed",
+            note: "working days",
           },
         },
         {
@@ -537,7 +513,7 @@ export const caseStudies: CaseStudy[] = [
               { at: 2, label: "design" },
               { at: 5, from: 2, label: "build", accent: true },
             ],
-            note: "working days · team-observed",
+            note: "working days",
           },
         },
         {
@@ -569,21 +545,12 @@ export const caseStudies: CaseStudy[] = [
           rail: "The ask",
           title: "I was asked to change a few screens",
           blocks: [
-            { kind: "p", text: "The request was small: adjust a handful of screens. This was 2021, and I was the only designer on the product." },
+            { kind: "p", text: "The request was small: adjust a handful of screens. This was late 2020, and I was the only designer on the product." },
             { kind: "p", text: "The product was white-label. Insurers resell it to employers, and employers show it to their members, so every level needs its own look. As I went through the screens I'd been asked to change, I kept finding the same problems underneath them." },
             { kind: "exhibit", id: "white-label-chain" },
             { kind: "p", text: "Brand colors were written straight into the code, so nothing could be re-themed. Developers had used different components for the same job on different pages. And every new client meant re-skinning the product by hand, which took weeks." },
             { kind: "reframe", assumed: "Change a few screens.", actual: "Every new client made every change cost more, because there was no system underneath the product." },
-          ],
-        },
-        {
-          id: "stakes",
-          rail: "Why it mattered",
-          title: "The business could only grow as fast as engineering could repaint",
-          blocks: [
-            { kind: "p", text: "Sales could sign a new insurer or employer, and then that client waited in line for a hand re-skin, one after another. The business could only take on clients as fast as engineering could repaint the product." },
-            { kind: "exhibit", id: "growth-ceiling" },
-            { kind: "p", text: "There was a quieter risk too. In US health insurance, an eligibility screen that behaves differently from one page to the next is a compliance risk, on top of being confusing. The developers maintaining all this were struggling as well, and editing screens one by one would have left it just as fragile." },
+            { kind: "p", text: "Sales could sign a new client, and then that client waited in line for a hand re-skin, so the business could only grow as fast as engineering could repaint the product. There was a quieter risk too. In US health insurance, an eligibility screen that behaves differently from one page to the next is a compliance risk, on top of being confusing." },
           ],
         },
         {
@@ -592,7 +559,6 @@ export const caseStudies: CaseStudy[] = [
           title: "I started underneath the screens",
           blocks: [
             { kind: "p", text: "The edits were what everyone expected, and they would have shown results quickly. But they would have left every future change hand-made and every new client a rebuild." },
-            { kind: "exhibit", id: "edits-vs-foundation" },
             { kind: "p", text: "So I started by documenting what already existed: the colors, the components and the different patterns developers were using for the same job. That document turned into the design system. Engineering felt the pain more than anyone, so they became its first users." },
             { kind: "note", label: "What it cost", text: "I was building a foundation nobody had asked for, so it had to prove itself before anyone would rely on it." },
           ],
@@ -617,17 +583,8 @@ export const caseStudies: CaseStudy[] = [
             { kind: "p", text: "So I treated adoption as part of the design work. I didn't want to lecture anyone, so I guided them instead. I'd demo it in Figma, where our tokens lived as color styles: change a style and show every screen change with it, so they could see what it would mean for them in the long run." },
             { kind: "p", text: "Checking whether they'd actually used the tokens was the hard part. There was no tool for it at the time, so I'd open inspect element in the browser and check each color by hand to see whether it pointed to a token or a fixed color. The other giveaway came when we switched a screen to a different client's brand and some colors just didn't change. Those were the hardcoded ones." },
             { kind: "p", text: "Most of these got caught in UX validation, a design check that happens before a build even goes to testing. Between the demos, the usage rules written inside the system, those checks and an agreement with the tech lead that the system is the standard, building with tokens slowly became the default." },
-            { kind: "exhibit", id: "adoption-four-sides" },
+            { kind: "p", text: "The rest of the work ran the same way. I did stakeholder research with all three audiences and wrote three to four personas each for insurers, employers and members. New ideas went to a workshop with business analysts before any design started, so we agreed the rules first, and changes to the system were agreed with engineering before they shipped." },
             { kind: "note", label: "What it cost", text: "It took months of demos and manual checks before it paid back." },
-          ],
-        },
-        {
-          id: "how-it-ran",
-          rail: "How the work ran",
-          title: "How the work actually ran",
-          blocks: [
-            { kind: "p", text: "I did stakeholder research with all three audiences and wrote three to four personas each for insurers, employers and members. New ideas went to a workshop with business analysts before any design started, so we agreed the rules first, and changes to the system were agreed with engineering before they shipped." },
-            { kind: "exhibit", id: "how-work-ran" },
           ],
         },
         {
@@ -647,7 +604,6 @@ export const caseStudies: CaseStudy[] = [
           title: "What changed",
           blocks: [
             { kind: "p", text: "Theming a new client used to take weeks. Now it takes under a day, and rebranding the white-label iOS and Android apps takes one or two days. Features come in at a predictable pace, about two days of design and three of build. The library has grown past 120 components on one foundation, and it serves Fortune 500 and enterprise insurers." },
-            { kind: "metrics" },
             { kind: "p", text: "Hardcoded colors and off-system components now get caught in UX validation instead of in production. To be clear, these numbers are what the team has seen, not figures we formally tracked." },
             { kind: "exhibit", id: "design-system-screens" },
           ],
@@ -673,7 +629,7 @@ export const caseStudies: CaseStudy[] = [
     group: "AI-driven UI",
     title: "Rewriting our design system so AI tools can follow it",
     short: "AI-readable design system",
-    dek: "AI kept drawing screens that didn't look like our product, because six years of design rules lived only in designers' heads. I wrote them down as files the AI reads before it designs and checks its work against.",
+    dek: "AI kept generating screens that didn't look like our product, because six years of design rules lived only in designers' heads. I wrote them down as files the AI reads before it designs and checks its work against.",
     meta: {
       role: "UX Lead",
       context: "Mphasis · US health-insurance platform",
@@ -681,7 +637,7 @@ export const caseStudies: CaseStudy[] = [
       domain: "Enterprise SaaS · US health insurance",
     },
     tags: ["Agentic design workflow", "Design systems", "Figma variables", "MCP"],
-    headline: { value: "3 or 4 days", label: "from Jira story to engineering-ready screen, down from one or two weeks (what the team has seen)" },
+    headline: { value: "3 or 4 days", label: "from Jira story to engineering-ready screen, down from one or two weeks" },
     card: { title: "A design system AI can read", widget: "pipeline", label: "Jira-story turnaround" },
     hook: {
       line: "Our AI tool kept putting Save on the wrong side.",
@@ -846,7 +802,7 @@ export const caseStudies: CaseStudy[] = [
           visual: "story-days",
         },
         { value: "About 40%", label: "Less design production time overall", visual: "time-freed" },
-        { value: "5 and 3", label: "Client brands and platforms covered by one system", visual: "brand-grid" },
+        { value: "5 brands, 3 platforms", label: "Covered by one design system", visual: "brand-grid" },
       ],
       points: [
         "All four designers on my team use it, and the org's UAT team chose it for their projects. I didn't have to sell it.",
@@ -868,22 +824,13 @@ export const caseStudies: CaseStudy[] = [
         {
           id: "the-problem",
           rail: "The problem",
-          title: "The AI kept drawing screens that didn't look like ours",
+          title: "The AI kept generating screens that didn't look like ours",
           blocks: [
-            { kind: "p", text: "Sales demos and handoffs from business analysts to developers both had to wait on mockups, and every mockup drawn by hand pulled a senior designer off product work. So I brought in AI to speed things up. The screens it made weren't usable." },
+            { kind: "p", text: "Sales demos and handoffs from business analysts to developers both had to wait on mockups. Developers judge whether something is feasible from screens, not from specs, and slow demos slipped in the middle of live sales cycles. Every mockup drawn by hand pulled a senior designer off product work, so I brought in AI to speed things up. The screens it made weren't usable." },
             { kind: "stories" },
             { kind: "p", text: "Nothing in our Figma file told it otherwise. The system was six years old and its components had no descriptions, so rules like where Save goes or which color a link takes lived only in designers' heads. The AI could read every component we had, but none of our rules." },
             { kind: "exhibit", id: "rules-in-heads" },
             { kind: "reframe", assumed: "The AI isn't good enough yet, so prompt harder.", actual: "Our design system was never written down in a way a machine could follow." },
-          ],
-        },
-        {
-          id: "stakes",
-          rail: "Who was waiting",
-          title: "Two teams were waiting on these screens",
-          blocks: [
-            { kind: "p", text: "Developers judge whether something is feasible from screens, not from specs, so business analysts couldn't hand over a Jira story until the mockups existed. Sales and marketing needed branded demos for clients, and when those were slow, they slipped in the middle of live sales cycles. Both of these pulled senior designers off product work." },
-            { kind: "exhibit", id: "two-loops" },
           ],
         },
         {
@@ -892,8 +839,7 @@ export const caseStudies: CaseStudy[] = [
           title: "I rewrote the design system instead of tuning prompts",
           blocks: [
             { kind: "p", text: "The expected answers were to wait for better AI, write better prompts, or hire more designers. A better prompt would have been fine if I only had to design one screen, one time. But this was never one scenario. The designers on my team and I would be using it many times a day, for all kinds of screens." },
-            { kind: "p", text: "So my gut said the only way was to build a system first, then plug in skills that could give us the right result every time. Nobody had asked for that, and I couldn't find anyone who had made a veteran design system readable by AI, so there was no process to follow. I decided to build one anyway." },
-            { kind: "exhibit", id: "prompt-vs-system" },
+            { kind: "p", text: "So my gut said the only way was to build a system first, then plug in skills that could give us the right result every time. Nobody had asked for that, and I couldn't find anyone who had made a six-year-old design system readable by AI, so there was no process to follow. I decided to build one anyway." },
             { kind: "note", label: "What it cost", text: "Weeks of work nobody had asked for, before it proved itself." },
           ],
         },
@@ -933,7 +879,6 @@ export const caseStudies: CaseStudy[] = [
           blocks: [
             { kind: "p", text: "We were using Figma's agent, which was free while it was in beta, and beta pricing ends. So I kept the skill files in plain markdown that any agent can read. They run on Figma's agent today and can move to Claude Code or another agent through a Figma MCP." },
             { kind: "p", text: "I also had to stop the new system drifting the way the old one had. Even with the rules written down, the docs once said 19 components while the file had 20. Unchecked patches like that are how the old system drifted, so now an audit compares the docs with the file every session, and a memory skill carries decisions forward." },
-            { kind: "exhibit", id: "portable-skills" },
             { kind: "note", label: "What it cost", text: "There's governance to maintain now: versioned backups and a guide page." },
           ],
         },
@@ -943,7 +888,6 @@ export const caseStudies: CaseStudy[] = [
           title: "What changed",
           blocks: [
             { kind: "p", text: "New-client and demo mockups used to take about two days, and now they take three or four hours. Working with business analysts, a Jira story gets to an engineering-ready screen in three or four days instead of one or two weeks. Overall we spend about 40% less time on design production, and one system covers five client brands and three platforms." },
-            { kind: "metrics" },
             { kind: "p", text: "The AI drafts the screens and designers make the decisions, and the time we save goes into research, flows and edge cases. All four designers on my team use it, and the organization's UAT team chose it for their projects too, without me having to sell it." },
             { kind: "p", text: "I built it in four to five weeks across five brands and three platforms, and I could do it again in one or two. These figures are what the team has seen. Managers, business analysts and leadership have recognized them, but they're not in our sprint metrics yet." },
             { kind: "exhibit", id: "adoption-spread" },
@@ -968,13 +912,13 @@ export const caseStudies: CaseStudy[] = [
     index: "04",
     glyph: "pipeline",
     group: "AI-driven UI",
-    title: "Blinkwiser: making an AI carousel tool you can check",
+    title: "Blinkwiser: a team of AI agents that makes carousels you can check",
     short: "Blinkwiser AI carousels",
-    dek: "The first version took two weeks and made up its own statistics. Over the next two months, building with AI coding agents, I rebuilt it so every number traces to a source and every edit can be undone.",
+    dek: "The first version took two weeks and made up its own statistics. Over the next two months, building with AI coding agents, I rebuilt it as a studio you talk to, where a team of agents researches, writes and designs the carousel, every number traces to a source and every edit can be undone.",
     meta: {
-      role: "Independent lab · product, UX, architecture, evaluation",
+      role: "My own product · product, UX and the agent workflow",
       context: "Blinkwiser · built by directing AI coding agents",
-      timeline: "Jul 2026–now",
+      timeline: "Jul 2026 to now",
       domain: "AI SaaS · creator tools",
     },
     live: {
@@ -982,7 +926,7 @@ export const caseStudies: CaseStudy[] = [
       note: "Free to try. Give it a topic, link, video or file, and agents research, write and design a LinkedIn carousel.",
       links: [{ label: "Try it at carousel.blinkwiser.com", href: "https://carousel.blinkwiser.com/" }],
     },
-    tags: ["Agent pipeline", "Grounding", "Eval harness", "AI UX"],
+    tags: ["Agent workflow", "Chat editing", "Restore points", "Grounding"],
     cover: {
       src: "/work/blinkwiser/landing.webp",
       width: 1600,
@@ -998,18 +942,18 @@ export const caseStudies: CaseStudy[] = [
       alt: "Screen recording of the studio generating a carousel: each agent step reports in the chat, then the first slides land, marked Draft while the editor is still checking.",
       caption: "One run, sped up three times: each agent step reports in the chat, and the first slides land marked Draft while the checks finish.",
     },
-    headline: { value: "7 in 10", label: "blind comparisons won by the rebuild over the first version (my eval harness, AI judge)" },
+    headline: { value: "23 seconds", label: "from a topic, link, video or file to the first slides on screen, while the checks finish" },
     card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan, write, check", label: "facts checked before you see it" },
     hook: {
       line: "The first version made up its own statistics.",
-      turn: "I rebuilt it in two months, so every number traces to a source and every edit can be undone.",
-      number: { value: "7 in 10", label: "blind head-to-heads won by the rebuild over v1 (my eval harness, AI judge)" },
+      turn: "So I rebuilt it as a studio you talk to. A team of agents researches, writes and designs the carousel, every number traces to a source, and every edit can be undone.",
+      number: { value: "23 seconds", label: "from a topic, link, video or file to the first slides on screen, while the checks finish" },
       note: "Illustration with demo content, not a real deck. The live product is shown below.",
       tabsLabel: "Three ways v1 broke trust",
       picture: {
         visual: "trust-edit",
         title: "One edit, in v1 and in the rebuild",
-        chips: ["One edit request", "v1 vs the rebuild"],
+        chips: ["One edit request", "v1 against the rebuild"],
         before: {
           label: "v1",
           items: ["A number with no source", "Claimed an edit it hadn't made", "No way back: undo was a chat message"],
@@ -1034,7 +978,7 @@ export const caseStudies: CaseStudy[] = [
     snapshot: {
       frame: "The model made up numbers, claimed edits it hadn't made, and drifted into generic AI writing. Creators couldn't trust what it produced.",
       decision: "I moved the rules from the prompt into code, made every edit reversible and clear about what changed, and settled trade-offs with blind tests.",
-      outcome: "Numbers trace to sources, the chat says what really changed, and every edit can be undone. Live, free, pre-revenue.",
+      outcome: "Numbers trace to sources, the chat says what really changed, and every edit can be undone. It's live and free.",
     },
     frame: {
       assumed: "Generation is the product.",
@@ -1156,9 +1100,9 @@ export const caseStudies: CaseStudy[] = [
       points: [
         "Every change saves a restore point, and the chat says when an edit didn't happen.",
         "Still behind: v1 scores higher on flow, 8.4 against 7.5, and that's what I'm working on next.",
-        "Live and free at carousel.blinkwiser.com, with a handful of real users and no revenue yet.",
+        "Live and free at carousel.blinkwiser.com.",
       ],
-      provenance: "Scores come from my own harness and an AI judge, not from users.",
+      provenance: "Scores come from my own harness and an AI judge.",
       exhibit: "eval-board",
     },
     ownership: {
@@ -1167,7 +1111,7 @@ export const caseStudies: CaseStudy[] = [
         "Built by directing AI coding agents and holding them to tests and evals.",
       ],
       change: [
-        "I rebuilt v2 on my own evals before real users told me what mattered. I'd ship to creators earlier and take distribution as seriously as quality.",
+        "I'd write the golden cases and the blind judge on day one.",
       ],
     },
     story: {
@@ -1177,47 +1121,60 @@ export const caseStudies: CaseStudy[] = [
           rail: "The first version",
           title: "The first version made up its own statistics",
           blocks: [
-            { kind: "p", text: "The brief was my own: turn a topic into a LinkedIn carousel, fast. I had a first version in beta within two weeks, and the hard part only showed up once people started using it." },
+            { kind: "p", text: "The brief was my own: turn a topic into a LinkedIn carousel, fast. I had a first version in beta within two weeks, and that's when the hard part showed up." },
             { kind: "p", text: "The model invented numbers and stated them with confidence. When I asked it to change something, it would reply “I've rewritten the carousel” when nothing had changed. And if you didn't like an edit, the only way back was another chat message." },
-            { kind: "reframe", assumed: "Generation is the product.", actual: "People post these carousels under their own name, so every fact has to be right." },
+            { kind: "reframe", assumedLabel: "What I assumed", assumed: "Generation is the product.", actual: "People post these carousels under their own name, so every fact has to be right." },
             { kind: "exhibit", id: "trust-questions" },
-            { kind: "p", text: "A wrong statistic costs a creator their reputation, and a tool that lies about its own edits can't be trusted with anything else." },
+            { kind: "p", text: "A wrong statistic costs a creator their reputation, and a tool that lies about its own edits can't be trusted with anything else. But every extra quality step adds time, speed decides who keeps using a tool like this, and for a solo, bootstrapped product the cost of every deck mattered as much as its quality." },
           ],
         },
         {
-          id: "stakes",
-          rail: "What was at stake",
-          title: "Trust, speed and cost all pulled against each other",
+          id: "studio",
+          rail: "The studio",
+          title: "A studio you talk to",
           blocks: [
-            { kind: "p", text: "Creators publish these under their own name, so accuracy isn't optional. The editor is a chat, so if it misreports a change even once, people stop believing it. But every extra quality step adds time, speed decides who keeps using a tool like this, and for a solo, bootstrapped product the cost of every deck mattered as much as its quality." },
-            { kind: "exhibit", id: "quality-steps" },
+            { kind: "p", text: "Today it's a studio you talk to. You give it a request, a team of agents researches, writes and designs the carousel, and each step reports in the chat as it happens. I designed the studio around a few ideas." },
+            {
+              kind: "cards",
+              items: [
+                { title: "Start from anything", body: "One box takes a topic, a link, a YouTube video or a file, and works out which it is. No tabs and no modes." },
+                { title: "Questions only when needed", body: "It asks a question only when a request is genuinely unclear. A specific request goes straight to work." },
+                { title: "One slide or all of them", body: "Select slides to change just those, or clear the selection and talk about the whole carousel." },
+                { title: "It learns how you like it", body: "It remembers your tone, your brand rules and the words you never want, and keeps long chats short, so every carousel starts closer to done." },
+                { title: "Close the tab, it keeps going", body: "Generation runs on a background worker, not in the browser, so you can walk away and come back to a finished carousel." },
+                { title: "Out in one click", body: "A LinkedIn-ready PDF, high-res JPGs, a public share link, or any slide copied as SVG straight into Figma." },
+              ],
+            },
           ],
         },
         {
-          id: "enforce-in-code",
-          rail: "Decision 1: code",
-          title: "I moved the rules out of the prompt and into code",
+          id: "agents",
+          rail: "The agent team",
+          title: "A team of agents, with the rules checked in code",
           blocks: [
-            { kind: "p", text: "Version one relied on prompts. Limits and “don't make things up” were requests, and the model could ignore them. Writing better prompts would only have meant asking more nicely and hoping." },
-            { kind: "p", text: "So anything that has to be true is now checked in code. Research turns into a numbered fact sheet, and an outline fixes the slide count and assigns facts to slides. Every number has to trace back to a source or its slide gets downgraded, and a critic and a fact-checker review the deck at the same time." },
+            { kind: "p", text: "Version one relied on prompts. Limits and “don't make things up” were requests, and the model could ignore them. Writing better prompts would only have meant asking more nicely and hoping. So I split the work across a team of agents, each with one job, and anything that has to be true is now checked in code." },
+            { kind: "p", text: "A safety check reads the request first, and a creative director turns it into a brief. A researcher searches the web and boils what it finds down to a numbered fact sheet, with a source for every fact. A planner then outlines the deck, one job per slide, and fixes the slide count." },
+            { kind: "p", text: "After that, two things happen at once. Four cover hooks are written in different styles and scored, and the best one wins, while a writer drafts the rest of the slides. Code checks every length, banned word and half-finished sentence, and every number has to trace back to the fact sheet or its slide gets downgraded." },
+            { kind: "p", text: "The draft shows up after about 23 seconds, marked Draft, while a critic, a fact-checker and a proofreader go over it at the same time. Only then is it saved." },
             { kind: "exhibit", id: "pipeline" },
-            { kind: "note", label: "What it cost", text: "More calls meant more waiting, and that's what forced my third decision." },
+            { kind: "note", label: "What it cost", text: "More calls meant more waiting, and that's what led to the blind tests further down." },
           ],
         },
         {
           id: "honest-reversible",
-          rail: "Decision 2: honesty",
-          title: "Every change is checked and can be undone",
+          rail: "Editing",
+          title: "Every edit is checked and can be undone",
           blocks: [
             { kind: "p", text: "Once the editor became a chat agent, its honesty mattered more than anything else. I could have just shown whatever the agent said it did, but that's exactly what had gone wrong in version one." },
-            { kind: "p", text: "Now, when the model claims an edit it didn't make, a guard catches it, tells you what didn't change and tries again. Every change saves a restore point, and restoring one also trims the later turns from the agent's memory." },
+            { kind: "p", text: "One message can now ask for several things, like “switch to the sketch template and punch up slide 2”, and the agent plans each change in order. When the model claims an edit it didn't make, a guard catches it, tells you what didn't change and tries again. And if an edit brings in a number that isn't in the facts, the reply says so." },
+            { kind: "p", text: "Every change saves a restore point. Clicking one puts the carousel back straight away, without another agent run, and the later replies fade with a Back to latest button. Typing undo works the same way. When you carry on from an earlier point, the faded turns are trimmed from the agent's memory, so it never reasons about changes that no longer exist." },
             { kind: "exhibit", id: "restore-chat" },
             { kind: "note", label: "What it cost", text: "The conversation model got more complex to build and test." },
           ],
         },
         {
           id: "evidence",
-          rail: "Decision 3: blind tests",
+          rail: "Blind tests",
           title: "I settled quality versus speed with blind tests",
           blocks: [
             { kind: "p", text: "The rebuild was more accurate, but it was slow, at 84 seconds a deck. I didn't want to pick a setting by feel, so I built a blind eval harness with 10 golden cases, a blind judge and head-to-head comparisons." },
@@ -1228,11 +1185,11 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           id: "the-cut",
-          rail: "Decision 4: the cut",
+          rail: "The cut",
           title: "I cut finished features to protect the templates",
           blocks: [
             { kind: "p", text: "I'd built a freeform canvas and a looks system with nine styles, plus pickers for fonts and layouts. The more options I added, the more every template looked like every other AI tool." },
-            { kind: "p", text: "So I cut them, and kept three templates exactly as designed: The Truth, The Sketch and The Statement." },
+            { kind: "p", text: "So I cut them, and kept three templates exactly as designed: The Truth, The Sketch and The Statement. The Sketch draws its own pencil doodles for each slide, and any template can write the whole carousel natively in six languages." },
             { kind: "exhibit", id: "cut-to-three" },
             { kind: "note", label: "What it cost", text: "I threw away work that was already finished." },
           ],
@@ -1243,10 +1200,8 @@ export const caseStudies: CaseStudy[] = [
           title: "What changed",
           blocks: [
             { kind: "p", text: "In blind head-to-heads, the rebuild beat version one 7 times out of 10. Its claims hold up against their sources better, 9.5 against 8.8, and a carousel takes 31 seconds instead of 84 at the same quality. The first slides show up after about 23 seconds, marked Draft while the checks finish." },
-            { kind: "metrics" },
-            { kind: "p", text: "Every change saves a restore point, and the chat tells you when an edit didn't happen. It isn't better everywhere, though. Version one still scores higher on flow, 8.4 against 7.5, and that's what I'm working on next." },
-            { kind: "p", text: "The carousel builder is live and free at carousel.blinkwiser.com, with a handful of real users and no revenue yet. All of these scores come from my own harness and an AI judge, not from users." },
-            { kind: "links" },
+            { kind: "p", text: "It isn't better everywhere, though. Version one still scores higher on flow, 8.4 against 7.5, and that's what I'm working on next." },
+            { kind: "p", text: "The carousel builder is live and free at carousel.blinkwiser.com. All of these scores come from my own harness and an AI judge." },
             { kind: "exhibit", id: "eval-board" },
           ],
         },
@@ -1255,8 +1210,8 @@ export const caseStudies: CaseStudy[] = [
           rail: "Next time",
           title: "What I'd do differently",
           blocks: [
-            { kind: "p", text: "The product, the UX, the pipeline architecture, the eval design and every cut were mine. I built it by directing AI coding agents and holding them to tests and evals." },
-            { kind: "p", text: "Looking back, I rebuilt version two on my own evals before real users told me what mattered. I'd ship to creators earlier, and I'd take distribution as seriously as quality." },
+            { kind: "p", text: "This was my first agentic AI product. The product, the UX, the agent workflow, the eval design and every cut were mine, and I built it by directing AI coding agents and holding them to tests and evals." },
+            { kind: "p", text: "Looking back, I'd write the golden cases and the blind judge on day one. Version one had no evals at all, so I only found its problems once it was in beta." },
           ],
         },
       ],
@@ -1271,14 +1226,14 @@ export const caseStudies: CaseStudy[] = [
     group: "Civic scale",
     title: "Dubai Municipality: turning nine city apps into one",
     short: "Dubai Municipality",
-    dek: "Dubai Municipality had nine separate apps, each with its own way of working. As lead designer, onsite for eight months, I designed the one app that replaced them, in Arabic and English, on a low-code platform.",
+    dek: "Dubai Municipality had nine separate apps, each with its own way of working. As lead designer, onsite for 11 months, I designed the one app that replaced them, in Arabic and English, on a low-code platform.",
     meta: {
-      role: "Lead UX Designer, onsite in Dubai",
+      role: "Senior UX Designer, onsite in Dubai",
       context: "Mphasis · Dubai Municipality",
-      timeline: "2020–2021, eight months",
+      timeline: "Nov 2019 to Sep 2020",
       domain: "Government · Arabic and English",
     },
-    tags: ["Information architecture", "Card sorting", "Stakeholder alignment", "Right-to-left layout", "Low-code platform"],
+    tags: ["Information architecture", "Card sorting", "Right-to-left layout", "Low-code platform"],
     cover: {
       src: "/work/dubai/app.webp",
       width: 2400,
@@ -1354,7 +1309,7 @@ export const caseStudies: CaseStudy[] = [
       metrics: [
         { value: "9 apps", label: "Brought into one app", visual: "dm-apps" },
         { value: "5 tabs", label: "Home, Dashboard, Services, Media Center and More", visual: "dm-tabs" },
-        { value: "8 months", label: "Onsite in Dubai as lead designer, through to launch", visual: "dm-months" },
+        { value: "11 months", label: "Onsite in Dubai as lead designer, through to launch", visual: "dm-months" },
         { value: "2 languages", label: "English designed first, Arabic as a mirrored template", visual: "dm-rtl" },
       ],
       points: [
@@ -1383,16 +1338,9 @@ export const caseStudies: CaseStudy[] = [
             { kind: "p", text: "The Municipality had nine separate apps, and each one came from a different part of the organization. Dubai 24/7 took complaints and requests, Green Ticket booked visits to service centers, Montaji checked consumer products, Dubai BPS tracked building permits, and the rest covered Al Mamzar Beach Park, parks and beaches, Dubai Frame, the Quranic Park and a dictionary of local Arabic terms." },
             { kind: "exhibit", id: "dm-nine-into-one" },
             { kind: "p", text: "So before I could design one dashboard for all of them, I had to understand every one of them." },
-          ],
-        },
-        {
-          id: "nine-apps",
-          rail: "Nine apps",
-          title: "Nine apps, and nothing in common",
-          blocks: [
             { kind: "p", text: "Getting that understanding took time. Every app had its own stakeholders and its own documents, so I went app by app. I spoke with each department's stakeholders, read the documents they had, and gathered the details one piece at a time." },
             { kind: "p", text: "What I found was that the nine apps had nothing in common. Each had its own screens, its own way of doing things and its own idea of what a user needed. There was no shared pattern to build on, so the common structure was something I had to design from scratch." },
-            { kind: "note", label: "My role", text: "Lead designer, onsite in Dubai for eight months, with two junior designers working from India. Every day I worked with the developers, business analysts, the project manager and the department stakeholders, and I presented every design myself." },
+            { kind: "note", label: "My role", text: "Lead designer, onsite in Dubai for 11 months, with two junior designers working from India. Every day I worked with the developers, business analysts, the project manager and the department stakeholders, and I presented every design myself, through several rounds of review until sign-off." },
           ],
         },
         {
@@ -1439,21 +1387,12 @@ export const caseStudies: CaseStudy[] = [
           ],
         },
         {
-          id: "approval",
-          rail: "Reviews",
-          title: "Every design went through many reviews",
-          blocks: [
-            { kind: "p", text: "With so many departments involved, every design went through several rounds of review. I presented the designs myself each time and worked through the feedback until we had sign-off." },
-          ],
-        },
-        {
           id: "outcome",
           rail: "What shipped",
           title: "What shipped",
           blocks: [
             { kind: "p", text: "The unified app launched while I was there. Nine separate apps became one, with one sign-in, one search and one dashboard for every request, and Arabic and English on the same layout." },
-            { kind: "metrics" },
-            { kind: "p", text: "I'm proud of the design and of bringing nine apps into one. The live app has changed since 2021, so what you see today isn't exactly what I designed. I don't have usage figures from this project, and the screens here are from the live app, since I don't have my original design files anymore." },
+            { kind: "p", text: "I'm proud of the design and of bringing nine apps into one. The live app has changed since 2020, so what you see today isn't exactly what I designed, and I don't have usage figures from this project." },
           ],
         },
         {
@@ -1462,7 +1401,6 @@ export const caseStudies: CaseStudy[] = [
           title: "What I'd do differently",
           blocks: [
             { kind: "p", text: "I'd do a lot more research, and with the people the app is really for: the residents and citizens of Dubai, not just the departments. I'd also build it one feature at a time and give each feature enough time to be done properly." },
-            { kind: "p", text: "If I were asked to rebuild it today, I'd be happy to, and I'd build it in React." },
           ],
         },
       ],
@@ -1479,7 +1417,7 @@ export const caseStudies: CaseStudy[] = [
     meta: {
       role: "UX Designer, on a larger team",
       context: "Mphasis · Jet Airways",
-      timeline: "2015–2019",
+      timeline: "Oct 2015 to Nov 2019",
       domain: "Airline e-commerce · web, iOS, Android",
     },
     tags: ["E-commerce checkout", "Pricing clarity", "Upsell and add-ons", "Responsive design"],
@@ -1530,7 +1468,7 @@ export const caseStudies: CaseStudy[] = [
     },
     frame: {
       assumed: "Design the booking screens.",
-      actual: "Help people choose a fare they understand, on any screen, with no surprises at payment.",
+      actual: "People compare fares by price, and on a phone the grid made every price too small to compare.",
       body: [
         "I worked on Jet Airways' booking for four years, on a larger design team. There was no single brief: the work came in pieces, across the whole journey.",
         "The journey ran Search, Flights, Guests, Extras, Pay. This case covers four calls I made along it.",
@@ -1649,9 +1587,9 @@ export const caseStudies: CaseStudy[] = [
           title: "Four years on an airline's booking flow",
           blocks: [
             { kind: "p", text: "I worked on Jet Airways' booking for four years, as one of the designers on a larger team. There was no single brief. The work came in pieces, across the whole journey from search to payment." },
-            { kind: "p", text: "The journey ran Search, Flights, Guests, Extras and Pay. Each flight came in five fares, plus a business-class option, and meals, seats, baggage and insurance were sold along the way, on web, iOS and Android. People compare fares by price, so every number had to be clear, and the airline needed the extras to sell. This case covers four calls I made along that journey." },
+            { kind: "p", text: "The journey ran Search, Flights, Guests, Extras and Pay. Each flight came in five fares, plus a business-class option, and meals, seats, baggage and insurance were sold along the way, on web, iOS and Android. People compare fares by price, so every number had to be clear, and the airline needed the extras to sell. This case covers four calls I made along that journey, and other designers on the team owned the rest." },
             { kind: "exhibit", id: "jet-journey" },
-            { kind: "reframe", assumed: "Design the booking screens.", actual: "Help people choose a fare they understand, on any screen, with no surprises at payment." },
+            { kind: "reframe", assumed: "Design the booking screens.", actual: "People compare fares by price, and on a phone the grid made every price too small to compare." },
           ],
         },
         {
@@ -1702,7 +1640,6 @@ export const caseStudies: CaseStudy[] = [
           title: "What shipped",
           blocks: [
             { kind: "p", text: "The booking flow shipped on web, iOS and Android, built on a shared component library so all three offered the same choices, each laid out for its own screen. It stayed live until the airline closed in 2019." },
-            { kind: "metrics" },
             { kind: "p", text: "This was between 2015 and 2019, and I don't have figures from it. What you see here is what we designed and shipped, taken from my own files." },
             { kind: "exhibit", id: "jet-screens" },
           ],
@@ -1712,7 +1649,6 @@ export const caseStudies: CaseStudy[] = [
           rail: "Next time",
           title: "What I'd do differently",
           blocks: [
-            { kind: "p", text: "The four calls in this case were mine: the grid and the mobile list, the price breakdown, the single Extras step and the in-place upgrade offer. Other designers on the team owned the rest of the journey." },
             { kind: "p", text: "If I did it again, I'd measure as I went, like how many people picked each fare and how many added extras, so the work could be judged by numbers. And I'd watch people book on a phone, not just review the screens." },
           ],
         },

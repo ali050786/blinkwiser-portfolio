@@ -6,8 +6,12 @@
  *   general      the public résumé (/resume and the PDF in /public)
  *   health-tech  sent directly for health-tech roles; built with
  *                RESUME_VARIANT=health-tech and kept in /resumes, not deployed
- * Order rule: domain → outcomes → leadership → AI. Every number here is defensible
- * in an interview; see _bmad-output/planning-artifacts/resume-brainstorm.md.
+ * Written in Ali's voice (human-story-writer-20): plain words, no dash ranges.
+ * The profile is first person; experience lines open with the action or the
+ * result instead of "I", and no two in a row open the same way. Titles and dates match LinkedIn and the facts table in docs/HANDOFF.md.
+ * Order on the platform job: how design runs (leadership) first, then outcomes,
+ * then AI. Every number here is
+ * one Ali can defend in an interview.
  */
 
 export type ResumeEntry = {
@@ -37,7 +41,7 @@ const shared = {
     { label: "portfolio.blinkwiser.com", href: "https://portfolio.blinkwiser.com" },
     { label: "ali050786@gmail.com", href: "mailto:ali050786@gmail.com" },
     { label: "linkedin.com/in/sikandar-ux", href: "https://www.linkedin.com/in/sikandar-ux" },
-    { label: "Pune, India", href: "" },
+    { label: "Pune, India, open to relocating", href: "" },
   ],
   sections: [
     {
@@ -45,41 +49,39 @@ const shared = {
       entries: [
         {
           org: "Mphasis · White-label US health-insurance platform",
-          role: "Founding UX Designer, now UX Lead",
-          note: "Official title: Technical Delivery Lead",
-          period: "2021 – Present",
-          scope: "The platform's first designer · led **4 designers** (hired 2) · UX sign-off on client releases · **3 live clients**",
+          role: "UX Lead",
+          period: "Oct 2020 to present",
+          scope: "Joined as the platform's first designer and now lead a team of **four UX designers** (official title: Technical Delivery Lead), signing off the UX on every release for **three live clients**, including a Fortune 500 company.",
           bullets: [
-            "**From 9 steps to 5.** Redesigned open enrollment so members say who's covered once, instead of again for every coverage, and it's live for all 3 clients. The new order didn't match the backend's data model, so I agreed a phased backend change with engineering.",
-            "**Under a day to theme a new client** or sales demo, down from weeks, using three tiers of design tokens (insurer, employer, and member) behind a **120+ component** system for web, mobile web, iOS, and Android.",
-            "**3 or 4 days from Jira story to engineering-ready screen**, down from 1 or 2 weeks, working with business analysts (team-observed), after I rewrote the design system as skill files that AI tools can follow. Self-initiated, used by my designers, and adopted by the wider org's UAT team.",
             "Set up how design runs on the platform: workshops with business analysts before design, UX validation on every build, a designer's review of every AI-generated screen, and an agreement with the tech lead that each component state is built once.",
+            "Redesigned open enrollment so members say who's covered once, instead of again for every coverage. It went **from 9 steps to 5** and is live for all three clients. The new order didn't match the backend's data model, so I agreed a phased backend change with engineering.",
+            "Theming a new client or sales demo now takes **under a day** instead of weeks, thanks to three tiers of design tokens (insurer, employer and member) I set up behind a **120+ component** system for web, mobile web, iOS and Android.",
+            "Rewrote the design system as skill files that AI tools can follow. With business analysts, a Jira story now becomes an engineering-ready screen in **three or four days** instead of one or two weeks. It was my own idea, and my designers and the wider org's UAT team use it.",
           ],
         },
         {
           org: "Blinkwiser",
-          role: "Independent AI product work",
-          note: "Lab, alongside Mphasis",
-          period: "Jul 2026 – Present",
-          body: "**Carousel Builder**, live with users: turns a topic into a LinkedIn carousel, checks every figure against a source, and lets you undo any edit. Rebuilt in two months by directing AI coding agents. **Video Course Builder** in beta.",
+          role: "My own AI products",
+          period: "Jul 2026 to present",
+          body: "Built **Agentic Carousel**, which turns a topic into a LinkedIn carousel. The first version made up its own statistics, so over two months I rebuilt it with AI coding agents. Every figure is now checked against a source and any edit can be undone. It's live with real users, and **Video Course Builder** is in beta.",
         },
         {
           org: "Mphasis · Dubai Municipality",
-          role: "Lead UX Designer, onsite in Dubai",
-          period: "2020 – 2021",
-          body: "Led the design of one app that replaced **nine separate Municipality apps**: the five-tab structure, the dashboard, and service groups built with stakeholders in a card sorting workshop. Arabic set up as a right-to-left template, all within the limits of a low-code platform. It launched while I was there.",
+          role: "Senior UX Designer",
+          period: "Nov 2019 to Sep 2020",
+          body: "Lead designer, onsite in Dubai for 11 months, on the one app that replaced **nine separate Municipality apps**. Designed the five-tab structure, the dashboard, and service groups from a card sorting workshop with stakeholders. Set up Arabic as a right-to-left template on a low-code platform, and the app launched while I was there.",
         },
         {
           org: "Mphasis · Jet Airways",
-          role: "UX Designer, consumer apps",
-          period: "2015 – 2019",
-          body: "Web, iOS, Android, and Apple Watch apps on a shared component library, all in production until the airline closed in 2019.",
+          role: "UX Designer",
+          period: "Oct 2015 to Nov 2019",
+          body: "One of several designers on the consumer apps for web, iOS, Android and Apple Watch. My part was how people choose a fare, see the full price and add extras, and all of it stayed live until the airline closed in 2019.",
         },
         {
           org: "IBN Al QYM · ITAD · Wahab Studio",
-          role: "UX, UI & graphic design",
-          period: "2007 – 2015",
-          body: "Agency UI for client web platforms in Doha; earlier, web mockups, brand and print design."
+          role: "UX, UI and graphic design",
+          period: "2007 to 2015",
+          body: "UI for client web platforms at an agency in Doha. Before that, web mockups, brand and print design.",
         },
       ],
     },
@@ -87,18 +89,18 @@ const shared = {
       label: "Skills",
       compact: true,
       entries: [
-        { org: "Design", body: "Design systems & tokens, AI-readable design systems, white-label theming, information architecture, interaction design, usability testing, bilingual / RTL" },
-        { org: "AI-assisted delivery", body: "Design-to-code: Claude Code, GitHub Copilot in VS Code, Google Antigravity, Figma MCP · Agent frameworks: LangChain / LangGraph · Prototyping: Lovable" },
+        { org: "Design", body: "Design systems and tokens, AI-readable design systems, white-label theming, information architecture, interaction design, usability testing, Arabic and English layouts (RTL)" },
+        { org: "AI in delivery", body: "Design to code with Claude Code, GitHub Copilot in VS Code, Google Antigravity and the Figma MCP · agents with LangChain and LangGraph · prototypes in Lovable" },
         { org: "Design tools", body: "Figma, FigJam, Storybook, Zeplin, Maze, Miro, Adobe XD" },
-        { org: "Technical", body: "React / Next.js, TypeScript, HTML / CSS, design tokens" },
+        { org: "Technical", body: "React and Next.js, TypeScript, HTML and CSS, design tokens" },
       ],
     },
     {
       label: "Education",
       compact: true,
       entries: [
-        { org: "IIT Roorkee", body: "**PG Certificate, Forward Deployed AI Engineering** · 2026, in progress" },
-        { org: "Mahatma Gandhi University", body: "**Bachelor of Business Administration** · Meghalaya, 2011 – 2013" },
+        { org: "IIT Roorkee", body: "**PG Certificate in Forward Deployed AI Engineering** · in progress, 2026" },
+        { org: "Mahatma Gandhi University", body: "**Bachelor of Business Administration** · Meghalaya, 2011 to 2013" },
         { org: "DeepLearning.AI", body: "Agentic AI · AI Agents in LangGraph" },
       ],
     },
@@ -109,19 +111,19 @@ export const resumeVariants = {
   general: {
     ...shared,
     title: "Lead UX Designer",
-    tagline: "Regulated enterprise SaaS: health insurance, government, and AI",
+    tagline: "Health insurance, government services and AI products",
     summary:
-      "I've spent 11 years in UX. For the last five, I've been the founding designer and then UX lead on a white-label US health-insurance platform used by **insurers, employers, and members**, from its first screen to production. Before that, I brought nine Dubai Municipality apps into one, in Arabic and English, and designed Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**.",
+      "I've spent 11 years in UX. For the last six, I've been the founding designer and then UX lead on a white-label US health-insurance platform used by **insurers, employers and members**, from its first screen to production. Before that, I brought nine Dubai Municipality apps into one, in Arabic and English, and designed for Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**.",
     domain: undefined as string | undefined,
   },
   "health-tech": {
     ...shared,
     title: "Lead UX Designer · US Health Insurance",
-    tagline: "Payers, employers & members",
+    tagline: "Payers, employers and members",
     summary:
-      "I've spent 11 years in UX. For the last five, I've been the founding designer and then UX lead on a white-label **US health-insurance** platform used by **payers, employers, and members**, from its first screen to production. Before that, I brought nine Dubai Municipality apps into one, in Arabic and English, and designed Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**, with no member data in the loop.",
+      "I've spent 11 years in UX. For the last six, I've been the founding designer and then UX lead on a white-label **US health-insurance** platform used by **payers, employers and members**, from its first screen to production. Before that, I brought nine Dubai Municipality apps into one, in Arabic and English, and designed for Jet Airways' consumer apps. I also lead my team's use of **AI in design delivery**, with no member data in the loop.",
     domain:
-      "Open & passive enrollment · life-event coverage changes · eligibility rules · eligibility data files from employers · benefits administration · privacy-aware design (HIPAA) · accessibility (WCAG)" as string | undefined,
+      "Open and passive enrollment · life-event coverage changes · eligibility rules · eligibility data files from employers · benefits administration · privacy-aware design (HIPAA) · accessibility (WCAG)" as string | undefined,
   },
 };
 

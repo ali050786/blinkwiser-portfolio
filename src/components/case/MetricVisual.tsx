@@ -56,11 +56,11 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
   }
 
   if (id === "dm-months") {
-    // Eight months onsite, one block each.
+    // Eleven months onsite, one block each.
     return (
-      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Eight blocks, one for each month spent onsite in Dubai.">
-        {Array.from({ length: 8 }, (_, i) => (
-          <rect key={i} x={44 + i * 50} y={130} width={42} height={42} rx={8} className={i === 7 ? g.accent : g.accentMid} />
+      <svg viewBox="0 0 480 320" className={`${g.glyph} ${styles.svg}`} role="img" aria-label="Eleven blocks, one for each month spent onsite in Dubai.">
+        {Array.from({ length: 11 }, (_, i) => (
+          <rect key={i} x={44 + i * 36} y={136} width={30} height={30} rx={6} className={i === 10 ? g.accent : g.accentMid} />
         ))}
         <T x={44} y={110}>onsite in Dubai</T>
         <T x={44} y={206}>month 1</T>
@@ -317,7 +317,7 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
         </T>
         {row(after, 178, "after")}
         <T x={44} y={270}>
-          1 block = 1 working {hours ? "hour" : "day"} · team-observed
+          each block is one working {hours ? "hour" : "day"}
         </T>
       </svg>
     );
@@ -339,7 +339,7 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
           freed for research, flows, edge cases
         </T>
         <T x={44} y={270}>
-          approximate · team-observed
+          approximate
         </T>
       </svg>
     );
@@ -369,7 +369,7 @@ export function MetricVisual({ id }: { id: MetricVisualId }) {
           one system
         </T>
         <T x={44} y={280}>
-          brands A–E are generic labels · themed by mode
+          brands A to E are generic labels · themed by mode
         </T>
       </svg>
     );
@@ -433,7 +433,7 @@ export function MetricVizView({ viz }: { viz: MetricViz }) {
         </T>
         {row(viz.after, 178, true)}
         <T x={44} y={270}>
-          1 block = 1 {viz.unit} · {viz.note}
+          each block is one {viz.unit} · {viz.note}
         </T>
       </svg>
     );

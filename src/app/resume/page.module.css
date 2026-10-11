@@ -1,11 +1,13 @@
-/* Résumé: three columns (section, who and when, what), quiet type, a few
-   strong phrases. Prints to one A4 page. */
+/* Résumé on the v4 look: the name in the display serif, mono eyebrows like the
+   home sections, a hairline above each section, and three columns (section, who
+   and when, what). Prints to one A4 page. */
 
 .wrap {
   --r-strong: var(--text-primary);
   --r-text: var(--text-secondary);
   --r-quiet: var(--text-tertiary);
-  max-width: 1000px;
+  --r-rule: var(--border-subtle);
+  max-width: 1040px;
   margin-inline: auto;
   padding: var(--space-12) var(--space-7) var(--space-14);
 }
@@ -14,26 +16,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-10);
-  font-size: var(--font-size-body-s);
+  gap: var(--space-5);
+  margin-bottom: clamp(40px, 6vw, 72px);
 }
 .back {
-  color: var(--text-secondary);
-}
-.download {
   display: inline-flex;
   align-items: center;
-  height: 36px;
-  padding-inline: 16px;
-  border-radius: var(--radius-pill);
-  background: var(--surface-inverse);
-  color: var(--text-inverse);
+  gap: 8px;
+  font-size: var(--font-size-body-s);
+  color: var(--text-secondary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.back:hover {
+  color: var(--accent-solid);
 }
 
 .sheet {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--r-text);
+}
+.sheet p,
+.sheet li {
+  text-wrap: pretty;
 }
 .sheet b {
   font-weight: 500;
@@ -44,49 +49,76 @@
   text-decoration: underline;
   text-decoration-color: var(--border-strong);
   text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-standard);
+}
+.sheet a:hover {
+  text-decoration-color: var(--accent-solid);
 }
 
+/* Head: name and title on the left, contact on the right, bottoms aligned. */
 .head {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
-  margin-bottom: var(--space-11);
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-5) var(--space-10);
+  padding-bottom: clamp(28px, 4vw, 44px);
 }
-.name,
-.title,
-.label {
-  font-family: var(--font-family-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  font-size: 13px;
-  font-weight: 400;
-  margin: 0;
+.who {
+  display: grid;
+  gap: 6px;
 }
 .name {
+  margin: 0 0 8px;
+  font-family: var(--font-family-display);
+  font-weight: 450;
+  font-variation-settings: "opsz" 60;
+  font-size: clamp(40px, 2rem + 2.4vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
   color: var(--r-strong);
 }
-.title,
-.label {
-  color: var(--r-quiet);
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--r-strong);
+}
+.tagline {
+  margin: 0;
+  color: var(--r-text);
 }
 .links {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px var(--space-5);
+  grid-template-columns: auto auto;
+  gap: 4px var(--space-7);
 }
 
+/* Sections: a hairline on top, the label as a home-style eyebrow. */
 .section {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 150px minmax(0, 1fr);
   gap: var(--space-5);
-  margin-bottom: var(--space-10);
+  padding-block: var(--space-7);
+  border-top: 1px solid var(--r-rule);
+}
+.label {
+  margin: 0;
+  padding-top: 3px;
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 .summary {
   margin: 0;
   max-width: 68ch;
+  font-size: 15px;
 }
 .entries {
   display: grid;
@@ -97,7 +129,7 @@
 }
 .entry {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 250px minmax(0, 1fr);
   gap: var(--space-5);
 }
 .meta p,
@@ -111,13 +143,16 @@
 .role {
   color: var(--r-strong);
 }
-.period,
-.note,
-.tagline {
+.note {
   color: var(--r-quiet);
 }
-.tagline {
-  margin: 0;
+.period {
+  margin-top: 2px !important;
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--r-quiet);
 }
 .body {
   display: grid;
@@ -140,7 +175,7 @@
   display: list-item;
 }
 .bullets li::marker {
-  color: var(--r-quiet);
+  color: var(--accent-solid);
 }
 
 @media (max-width: 760px) {
@@ -150,10 +185,13 @@
   .head,
   .section,
   .entry {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .head {
+    align-items: start;
   }
   .links {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   /* Phones: give each contact link a 24px tap height (WCAG 2.2 target size). */
   .links a {
@@ -187,8 +225,9 @@
   }
   .wrap {
     --r-strong: #1d2430;
-    --r-text: #5f6673;
-    --r-quiet: #7c828c;
+    --r-text: #555c69;
+    --r-quiet: #6f7581;
+    --r-rule: #e3e5ea;
     padding: 0;
     max-width: none;
   }
@@ -199,18 +238,37 @@
   .sheet a {
     text-decoration: none;
   }
-  .name,
-  .title,
-  .label {
-    font-size: 8.5pt;
-  }
   .head {
-    margin-bottom: 5mm;
+    padding-bottom: 3.5mm;
+    gap: 2mm 8mm;
+  }
+  .who {
+    gap: 0.6mm;
+  }
+  .name {
+    margin-bottom: 1.4mm;
+    font-size: 21pt;
+  }
+  .title {
+    font-size: 10pt;
+  }
+  .links {
+    gap: 0.6mm 6mm;
+  }
+  .label {
+    padding-top: 0.4mm;
+    font-size: 7pt;
+    letter-spacing: 0.14em;
+    color: #555c69;
+  }
+  .summary {
+    max-width: none;
+    font-size: 8.8pt;
   }
   .section {
-    grid-template-columns: 30mm 1fr;
+    grid-template-columns: 22mm minmax(0, 1fr);
     gap: 3mm;
-    margin-bottom: 4.5mm;
+    padding-block: 2.4mm;
   }
   .entries {
     gap: 2.4mm;
@@ -219,12 +277,21 @@
     gap: 1mm;
   }
   .entry {
-    grid-template-columns: 50mm 1fr;
+    grid-template-columns: 49mm minmax(0, 1fr);
     gap: 3mm;
     break-inside: avoid;
+  }
+  .meta {
+    font-size: 8.4pt;
+  }
+  .period {
+    font-size: 7.4pt;
   }
   .body,
   .bullets {
     gap: 0.8mm;
+  }
+  .bullets li::marker {
+    color: #6f7581;
   }
 }

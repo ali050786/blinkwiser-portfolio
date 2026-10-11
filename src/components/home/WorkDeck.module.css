@@ -1,0 +1,396 @@
+.section {
+  position: relative;
+  padding-top: clamp(88px, 10vw, 136px);
+  background: var(--surface-band);
+  border-top: 1px solid var(--border-subtle);
+  scroll-margin-top: 64px;
+}
+
+/* ------------------------------------------------------------------- tabs
+ * The tab bar lives inside the stage, so it never scrolls away while you are
+ * in the case studies. In the list it sticks under the header. */
+.tabBar {
+  position: sticky;
+  top: 64px;
+  /* above every case card (they stack up to 6 deep), below the site header */
+  z-index: 10;
+  padding-block: 10px;
+  background: var(--surface-band);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-width: 132px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-hover),
+    border-color var(--motion-hover);
+}
+.tab:hover {
+  background: var(--surface-raised);
+}
+.tab[aria-current="true"] {
+  background: var(--surface-raised);
+  border-color: var(--border-default);
+}
+.tabTitle {
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+.tabSub {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.tab[aria-current="true"] .tabSub {
+  color: var(--text-secondary);
+}
+
+/* ------------------------------------------------------------ list layout
+ * The default, and what narrow screens and reduced motion keep. */
+.track {
+  margin-top: 44px;
+  padding-bottom: clamp(88px, 10vw, 136px);
+}
+.track .inner {
+  padding-top: 40px;
+}
+.inner {
+  position: relative;
+}
+.rail {
+  display: none;
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+.item {
+  display: grid;
+  gap: 24px;
+  /* header, plus the sticky tab bar, plus a little air */
+  scroll-margin-top: 160px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.tag {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.title {
+  font-family: var(--font-family-display);
+  font-weight: 460;
+  font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.outcome {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.meta {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-tertiary);
+}
+.more {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-default);
+  font-size: 14px;
+  color: var(--text-primary);
+  transition:
+    background-color var(--motion-hover),
+    border-color var(--motion-hover);
+}
+.more:hover {
+  background: var(--surface-raised);
+  border-color: var(--border-strong);
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--deck-radius);
+  overflow: hidden;
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+.lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: rgb(255 255 255 / 0.45);
+  stroke-width: 1.2;
+}
+.shot {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 23%;
+  bottom: -2%;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -20px rgb(10 14 22 / 0.45);
+  background: #fff;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.shot[data-fit="contain"] {
+  left: 5%;
+  right: 5%;
+  top: 25%;
+  bottom: 5%;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.shot[data-fit="contain"] img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+/* The case's opening line, printed on the card like the cover of a case study. */
+.opening {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 5.5%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--deck-on-tint);
+}
+.openingLabel {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.openingLine {
+  max-width: 34ch;
+  font-family: var(--font-family-display);
+  font-weight: 460;
+  font-size: clamp(16px, 0.9rem + 0.45vw, 20px);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+/* Wide screens with reduced motion: the list, two columns per case. */
+@media (min-width: 960px) {
+  .item {
+    grid-template-columns: minmax(240px, 300px) minmax(0, 680px);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ---------------------------------------------------------- pinned layout */
+@media (min-width: 960px) {
+  :global([data-motion="ok"]) .track {
+    height: calc((var(--n) - 1) * 85vh + 100vh);
+    padding: 0;
+  }
+  /* Pinned: the tabs sit at the top of the stage and the deck fills the rest. */
+  :global([data-motion="ok"]) .stage {
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  :global([data-motion="ok"]) .tabBar {
+    position: relative;
+    top: auto;
+    flex: none;
+    padding-block: 14px 10px;
+    background: none;
+    border-bottom: 0;
+  }
+  :global([data-motion="ok"]) .track .inner {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    padding-top: 0;
+  }
+  :global([data-motion="ok"]) .inner {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+  }
+  :global([data-motion="ok"]) .rail {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-family: var(--font-family-mono);
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+  :global([data-motion="ok"]) .rail li {
+    position: relative;
+    padding-left: 16px;
+    transition: color var(--motion-state);
+  }
+  :global([data-motion="ok"]) .rail li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background: var(--border-strong);
+    transition:
+      width var(--motion-state),
+      background-color var(--motion-state);
+  }
+  :global([data-motion="ok"]) .rail li[data-on] {
+    color: var(--text-primary);
+  }
+  :global([data-motion="ok"]) .rail li[data-on]::before {
+    width: 12px;
+    background: var(--accent-solid);
+  }
+  :global([data-motion="ok"]) .items {
+    position: relative;
+    display: block;
+    height: min(calc(100vh - 64px - 96px - 72px), 600px);
+  }
+  :global([data-motion="ok"]) .item {
+    position: absolute;
+    inset: 0;
+    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    pointer-events: none;
+  }
+  :global([data-motion="ok"]) .text {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 360ms var(--ease-standard),
+      transform 480ms var(--ease-emphasized),
+      visibility 0s linear 360ms;
+  }
+  :global([data-motion="ok"]) .item[data-on] .text {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 120ms, 120ms, 0s;
+  }
+  :global([data-motion="ok"]) .cardCol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  :global([data-motion="ok"]) .card {
+    width: min(100%, calc((100vh - 64px - 140px - 72px) * 16 / 11), 680px);
+  }
+  :global([data-motion="ok"]) .item[data-on] .card {
+    pointer-events: auto;
+  }
+  :global([data-motion="ok"]) .opening {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 360ms var(--ease-standard),
+      transform 480ms var(--ease-emphasized);
+  }
+  :global([data-motion="ok"]) .item[data-on] .opening {
+    opacity: 1;
+    transform: none;
+    transition-delay: 180ms;
+  }
+}
+
+/* Narrow screens: the card is too short to lay the caption over the screen,
+ * so the caption sits above it and the card grows to fit both. */
+@media (max-width: 959px) {
+  .card {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .opening {
+    position: relative;
+    order: -1;
+    left: auto;
+    right: auto;
+    top: auto;
+    padding: 18px 7% 14px;
+  }
+  .shot {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin: 0 7% -2px;
+    aspect-ratio: 16 / 10;
+  }
+  .shot[data-fit="contain"] {
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin: 0 5% 5%;
+  }
+}
+
+@media (max-width: 959px) {
+  .tabs {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab {
+    flex: none;
+  }
+}

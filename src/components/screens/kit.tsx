@@ -211,9 +211,9 @@ export const Foot = ({ primary, back = true, extras }: { primary: string; back?:
   </div>
 );
 
-/* Demo data, shared so every screen tells the same story. */
+/* Demo data, shared so every screen tells the same story: the Reed family from the enrollment hero and trailer. */
 export const family = {
-  member: "Michael Brown",
-  spouse: "Jane Brown",
-  kids: ["Harry Brown", "Carrie Brown", "Jason Brown"],
+  member: "Dennis Reed",
+  spouse: "Ana Reed",
+  kids: ["Leo Reed", "Maya Reed", "Ivy Reed"],
 };

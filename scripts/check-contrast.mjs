@@ -65,7 +65,8 @@ for (const mode of ["light", "dark"]) {
   const raised = token("semantic.surface.raised", mode);
   const sunken = token("semantic.surface.sunken", mode);
   const highlight = token("semantic.surface.highlight", mode);
-  for (const [bgName, bg] of [["canvas", canvas], ["raised", raised], ["sunken", sunken], ["highlight", highlight]]) {
+  const band = token("semantic.surface.band", mode);
+  for (const [bgName, bg] of [["canvas", canvas], ["raised", raised], ["sunken", sunken], ["highlight", highlight], ["band", band]]) {
     pairs.push([mode, `text.primary / ${bgName}`, token("semantic.text.primary", mode), bg, 4.5]);
     pairs.push([mode, `text.secondary / ${bgName}`, token("semantic.text.secondary", mode), bg, 4.5]);
     pairs.push([mode, `text.tertiary / ${bgName}`, token("semantic.text.tertiary", mode), bg, 4.5]);
@@ -75,6 +76,7 @@ for (const mode of ["light", "dark"]) {
   pairs.push([mode, "text.critical / raised", token("semantic.text.critical", mode), raised, 4.5]);
   pairs.push([mode, "border.strong / canvas (UI)", token("semantic.border.strong", mode), canvas, 3]);
   pairs.push([mode, "on-solid / accent.solid", token("semantic.accent.on-solid", mode), token("semantic.accent.solid", mode), 4.5]);
+  for (const n of [1, 2, 3, 4, 5, 6]) pairs.push([mode, `deck.on-tint / deck.tint-${n}`, token("component.deck.on-tint", mode), token(`component.deck.tint-${n}`, mode), 4.5]);
   pairs.push([mode, "on-solid / accent.strong", token("semantic.accent.on-solid", mode), token("semantic.accent.strong", mode), 4.5]);
 }
 

@@ -39,7 +39,7 @@ export const career: CareerChapter[] = [
   {
     id: "health",
     org: "US health insurance",
-    years: "2021–",
+    years: "2020–",
     brief: "Shorten the flow",
     fix: "The family's order, not the database's",
     result: "9 → 5 steps",
@@ -50,7 +50,7 @@ export const career: CareerChapter[] = [
   {
     id: "dubai",
     org: "Dubai Municipality",
-    years: "2020–21",
+    years: "2019–20",
     brief: "Redesign the portal",
     fix: "Organized by resident need",
     result: "Citizens and residents",

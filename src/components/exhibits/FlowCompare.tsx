@@ -39,7 +39,7 @@ export function FlowCompare() {
     view === "before"
       ? [
           ["Steps", "9"],
-          ["“Who's covered?” asked", "1 + once per coverage"],
+          ["“Who's covered?” asked", "once, then again per coverage"],
           ["Cost shown", "at the end, as an estimate"],
         ]
       : [

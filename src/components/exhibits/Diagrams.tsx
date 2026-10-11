@@ -30,7 +30,7 @@ export function CoverageGap() {
       <path d="M120 160 H600" className={d.gap} />
       <circle cx="120" cy="160" r="6" className={g.cardWarn} />
       <T x={360} y={190} anchor="middle" warn>
-        missed in the window → uncovered until the next window or a life event
+        missed in the window, so uncovered until the next window or a life event
       </T>
       <T x={40} y={218}>
         Jan

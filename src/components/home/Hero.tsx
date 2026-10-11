@@ -80,7 +80,7 @@ export function Hero() {
             </span>
           </h1>
           <p className={styles.lede} data-fade>
-            I&apos;ve spent 11 years in UX, and for the last five I&apos;ve led design on a white-label health-insurance platform
+            I&apos;ve spent 11 years in UX, and for the last six I&apos;ve led design on a white-label health-insurance platform
             used by insurers, employers and their members.
           </p>
           <div className={styles.ctas} data-fade>

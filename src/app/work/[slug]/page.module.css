@@ -1,5 +1,21 @@
 .article {
   position: relative;
+  /* Chapter bands reach past the content column; clip them without making a scroll container. */
+  overflow-x: clip;
+}
+
+/*
+ * Story headings take the display serif, as on the home page: the hook line,
+ * chapter titles and the next-case title. Small UI headings inside diagrams and
+ * screens stay in the sans.
+ */
+.article :global(.t-display-xl),
+.article :global(.t-display-l),
+.article :global(.t-display-m) {
+  font-family: var(--font-family-display);
+  font-weight: 450;
+  font-variation-settings: "opsz" 60;
+  letter-spacing: -0.015em;
 }
 .body {
   display: grid;
@@ -10,6 +26,10 @@
 }
 .content {
   min-width: 0;
+}
+/* The chapter rail (already sticky, so positioned) stays above the full-width chapter bands. */
+.body > :first-child {
+  z-index: 1;
 }
 .evidence {
   display: grid;

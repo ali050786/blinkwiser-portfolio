@@ -7,6 +7,7 @@ All fonts in this folder are self-hosted (no request to Google Fonts at build or
 | Geist-Variable.woff2 | Geist | Vercel, `geist` npm package |
 | GeistMono-Variable.woff2 | Geist Mono | Vercel, `geist` npm package |
 | instrument-serif-latin-400-*.woff2 | Instrument Serif | Instrument, via `@fontsource/instrument-serif` |
+| newsreader-latin-opsz-normal.woff2 | Newsreader | Production Type, via `@fontsource-variable/newsreader` |
 | ibm-plex-sans-arabic-arabic-*.woff2 | IBM Plex Sans Arabic | IBM, via `@fontsource/ibm-plex-sans-arabic` |
 
 License text: https://openfontlicense.org

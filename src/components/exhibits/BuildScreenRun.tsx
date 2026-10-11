@@ -13,7 +13,7 @@ const steps = [
   { title: "Read the story", detail: "“As a member, I want to compare dental plans side by side so I can pick the right coverage.”" },
   { title: "Classify the page", detail: "Secured page · plan comparison" },
   { title: "Pick the shell", detail: "app-shells / secured, two-column" },
-  { title: "Compose sanctioned components", detail: "Header ◆  Title ◆  PlanCard ◆ ×3  Button ◆" },
+  { title: "Compose approved components", detail: "Header ◆  Title ◆  PlanCard ◆ ×3  Button ◆" },
   { title: "Self-verify", detail: "Run the checklist before handing back" },
 ];
 
@@ -196,7 +196,7 @@ export function BuildScreenRun() {
           </div>
           <div className={styles.legend}>
             {stale ? (
-              <span className="t-label c-tertiary">Tags show what the agent drew: loose shapes, not components</span>
+              <span className="t-label c-tertiary">Tags show what the agent generated: loose shapes, not components</span>
             ) : (
               <span className="t-label c-tertiary">
                 <span className={styles.diamond} aria-hidden="true" /> instance of a published component · Brand {brand.toUpperCase()}

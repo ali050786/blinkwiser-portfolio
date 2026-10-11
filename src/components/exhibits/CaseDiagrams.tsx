@@ -79,7 +79,7 @@ export function GrowthCeiling() {
         </g>
       ))}
       <T x={40} y={204} warn>
-        clients signed ≤ re-skins engineering can do
+        no more clients than engineering can re-skin
       </T>
     </Diagram>
   );

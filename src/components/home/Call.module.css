@@ -48,10 +48,12 @@
   text-align: center;
 }
 .title {
-  font-size: clamp(2.25rem, 1.2rem + 3vw, 3.8rem);
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-display);
+  font-variation-settings: "opsz" 60;
+  font-size: clamp(2.25rem, 1.3rem + 3vw, 3.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+  font-weight: 450;
   color: var(--text-primary);
 }
 .title > span {

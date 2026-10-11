@@ -17,7 +17,7 @@ import m from "./EnrollmentChanges.module.css";
 
 const { member, spouse, kids } = family;
 const child = kids[0]!;
-const adopted = "Timothy Brown";
+const adopted = "Noor Reed";
 const BRAND = "#0f766e";
 const LINE = "rgba(227, 230, 236, 1)";
 const LINE_0 = "rgba(227, 230, 236, 0)";
@@ -159,7 +159,7 @@ const covered: [string, string][] = [
   [spouse, "Spouse"],
   [child, "Child"],
   [kids[1]!, "Child"],
-  [adopted, "Adopted child"],
+  [adopted, "Newborn"],
 ];
 
 const medPlans: [string, number][] = [
@@ -240,7 +240,7 @@ const household = [
   { n: member, role: "Member", covs: [1, 1, 0, 0] },
   { n: spouse, role: "Spouse", covs: [1, 1, 0, 0] },
   { n: child, role: "Child", covs: [1, 1, 1, 0] },
-  { n: adopted, role: "Adopted child", covs: [1, 1, 0, 0], isNew: true },
+  { n: adopted, role: "Newborn", covs: [1, 1, 0, 0], isNew: true },
 ];
 
 function GridComp({ beat }: { beat: Beat }) {

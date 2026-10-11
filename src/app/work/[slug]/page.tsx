@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy, getNeighbours } from "@/content/case-studies";
+import { deck, type CaseSlug } from "@/content/home";
 import { CaseHero } from "@/components/case/CaseHero";
-import { Snapshot } from "@/components/case/Snapshot";
 import { CaseCover } from "@/components/case/CaseCover";
 import { BeatRail } from "@/components/case/BeatRail";
 import { Beat } from "@/components/case/Beat";
@@ -52,10 +52,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const beat = (id: (typeof BEATS)[number]["id"]) => BEATS.find((b) => b.id === id)!;
 
   return (
-    <article data-case={c.slug} className={styles.article}>
+    <article
+      data-case={c.slug}
+      className={styles.article}
+      // Each case keeps the tint of its card on the home page, behind its product screens.
+      style={{ ["--case-tint" as string]: `var(--deck-tint-${deck[c.slug as CaseSlug].tint})` }}
+    >
       <ReadingProgress />
       <CaseHero study={c} />
-      <Snapshot study={c} />
       {c.cover && <CaseCover shot={c.cover} label={c.cover.label} />}
       {c.reel && <CaseCover shot={c.reel} label="The product, running" />}
 

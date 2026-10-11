@@ -8,10 +8,10 @@ import styles from "./CoverageGrid.module.css";
 
 export type Role = "you" | "partner" | "child";
 export const members: { id: string; name: string; role: Role; label: string }[] = [
-  { id: "you", name: "You", role: "you", label: "Employee" },
-  { id: "sam", name: "Sam", role: "partner", label: "Partner" },
+  { id: "you", name: "Dennis", role: "you", label: "Employee" },
+  { id: "sam", name: "Ana", role: "partner", label: "Partner" },
   { id: "maya", name: "Maya", role: "child", label: "Child" },
-  { id: "leo", name: "Leo", role: "child", label: "Child" },
+  { id: "leo", name: "Noor", role: "child", label: "Newborn" },
 ];
 
 export type CovId = "medical" | "dental" | "vision";

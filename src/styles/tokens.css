@@ -63,6 +63,7 @@
   --color-ink-text-2: #9AA1AC;
   --color-ink-text-3: #888F9B;
   --color-ink-line-strong: #5E6879;
+  --color-ink-band: #10141A;
   --color-mist-canvas: #F5F6F9;
   --color-mist-sunken: #ECEEF3;
   --color-mist-raised: #FFFFFF;
@@ -72,11 +73,19 @@
   --color-mist-text-2: #4B5060;
   --color-mist-text-3: #5D6272;
   --color-mist-line-strong: #878D9C;
+  --color-mist-band: #ECEEF3;
   --color-blue-400: #84A9E8;
   --color-blue-500: #5A8DDE;
   --color-blue-600: #2F62B8;
   --color-blue-700: #24509A;
   --color-blue-on-500: #080E1A;
+  --color-tint-sky: #C7D6F0;
+  --color-tint-sea: #BFDAD4;
+  --color-tint-lilac: #D2CFEA;
+  --color-tint-slate: #C9D0DC;
+  --color-tint-sand: #E5D9C3;
+  --color-tint-mist: #D7E0EC;
+  --color-tint-ink: #141A24;
   --space-0: 0px;
   --space-1: 2px;
   --space-2: 4px;
@@ -103,6 +112,7 @@
   --font-family-serif: var(--font-instrument), ui-serif, Georgia, serif;
   --font-family-mono: var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo, monospace;
   --font-family-arabic: var(--font-arabic), 'Geeza Pro', 'Noto Sans Arabic', sans-serif;
+  --font-family-display: var(--font-newsreader), ui-serif, Georgia, 'Times New Roman', serif;
   --font-size-display-xl: clamp(2.75rem, 1.35rem + 5.6vw, 6.25rem);
   --font-size-display-l: clamp(2.25rem, 1.4rem + 3.4vw, 4.25rem);
   --font-size-display-m: clamp(1.875rem, 1.35rem + 2.1vw, 3.125rem);
@@ -146,6 +156,7 @@
   --surface-muted: var(--color-mist-muted);
   --surface-highlight: var(--color-mist-highlight);
   --surface-inverse: var(--color-mist-text);
+  --surface-band: var(--color-mist-band);
   --text-primary: var(--color-mist-text);
   --text-secondary: var(--color-mist-text-2);
   --text-tertiary: var(--color-mist-text-3);
@@ -197,6 +208,14 @@
   --exhibit-bg: var(--surface-sunken);
   --exhibit-border: var(--border-subtle);
   --exhibit-radius: var(--radius-xl);
+  --deck-tint-1: var(--color-tint-sky);
+  --deck-tint-2: var(--color-tint-sea);
+  --deck-tint-3: var(--color-tint-lilac);
+  --deck-tint-4: var(--color-tint-slate);
+  --deck-tint-5: var(--color-tint-sand);
+  --deck-tint-6: var(--color-tint-mist);
+  --deck-on-tint: var(--color-tint-ink);
+  --deck-radius: var(--radius-lg);
 }
 [data-accent] {
   --focus-ring: var(--accent-solid);
@@ -226,6 +245,14 @@
   --exhibit-bg: var(--surface-sunken);
   --exhibit-border: var(--border-subtle);
   --exhibit-radius: var(--radius-xl);
+  --deck-tint-1: var(--color-tint-sky);
+  --deck-tint-2: var(--color-tint-sea);
+  --deck-tint-3: var(--color-tint-lilac);
+  --deck-tint-4: var(--color-tint-slate);
+  --deck-tint-5: var(--color-tint-sand);
+  --deck-tint-6: var(--color-tint-mist);
+  --deck-on-tint: var(--color-tint-ink);
+  --deck-radius: var(--radius-lg);
 }
 
 /* Mode · dark. Light is the default for every first visit; dark applies
@@ -238,6 +265,7 @@
   --surface-muted: var(--color-ink-muted);
   --surface-highlight: var(--color-ink-highlight);
   --surface-inverse: var(--color-ink-text);
+  --surface-band: var(--color-ink-band);
   --text-primary: var(--color-ink-text);
   --text-secondary: var(--color-ink-text-2);
   --text-tertiary: var(--color-ink-text-3);

@@ -1,10 +1,10 @@
-import { Hero } from "@/components/home/Hero";
+import { HeroField } from "@/components/home/HeroField";
 import { HomeSections } from "@/components/home/HomeSections";
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <HeroField />
       <HomeSections />
     </>
   );

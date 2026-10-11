@@ -1,10 +1,20 @@
 .chapter {
+  position: relative;
+  isolation: isolate;
   padding-bottom: clamp(64px, 9vw, 112px);
   scroll-margin-top: 96px;
 }
 .chapter + .chapter {
-  padding-top: clamp(40px, 5vw, 64px);
-  border-top: 1px solid var(--border-default);
+  padding-top: clamp(56px, 6vw, 80px);
+}
+/* Chapters alternate between the canvas and the band surface, edge to edge, as the home sections do. */
+.chapter:nth-of-type(even)::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 -100vw;
+  background: var(--surface-band);
+  border-block: 1px solid var(--border-subtle);
 }
 .head {
   display: grid;
@@ -76,13 +86,22 @@
   gap: 12px;
   margin-block: clamp(16px, 2.5vw, 32px);
 }
+/* Screenshots sit on the case's tint, as on its home page card. */
+.imageFrame {
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3.4vw, 44px);
+  border-radius: var(--deck-radius);
+  background: var(--case-tint, var(--surface-raised));
+}
 .image img {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-lg);
+  border-radius: 10px;
 }
-.narrow {
-  max-width: 360px;
+.narrow .imageFrame img {
+  width: auto;
+  max-width: min(100%, 300px);
 }
 .image figcaption {
   display: grid;

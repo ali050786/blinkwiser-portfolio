@@ -132,14 +132,14 @@ export const capabilities: {
 export const timeline = [
   { period: "Jul 2026–now", role: "Independent AI product work", org: "Blinkwiser", detail: "A lab alongside Mphasis: AI products designed and shipped by directing coding agents." },
   {
-    period: "2021–now",
+    period: "2020–now",
     role: "Founding UX Designer → UX Lead",
     org: "Mphasis · US health-insurance platform",
     detail: "White-label enterprise SaaS for US health insurance. Built the system and a team of four designers around it.",
   },
   {
-    period: "2020–2021",
-    role: "Lead UX Designer, onsite",
+    period: "2019–2020",
+    role: "Senior UX Designer, onsite",
     org: "Mphasis · Dubai Municipality",
     detail: "Nine city apps brought into one, in Arabic and English, with every design presented to the stakeholders myself.",
   },

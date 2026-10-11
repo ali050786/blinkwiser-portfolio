@@ -1,8 +1,8 @@
 ---
 name: portfolio.blinkwiser.com v3
 description: Visual identity for Sikandar Ali Abdul's portfolio. Engineered, dark-first, work shown large. Extends the existing three-tier tokens in tokens/tokens.json; only deltas are listed here.
-status: built (v3 home, 2026-10-06)
-updated: 2026-10-06
+status: built (v4 home, 2026-10-10)
+updated: 2026-10-10
 source_of_truth_for_values: tokens/tokens.json (this file names intent and deltas; the JSON holds the numbers)
 references:
   only: https://deploy.buildfastwithai.com/ (structure, scale and components; Halaska dropped 2026-10-06)
@@ -65,6 +65,19 @@ layout:
 ---
 
 # DESIGN.md
+
+## Case pages follow the v4 home (2026-10-11)
+- Display serif for story headings, hook lines, metric numbers and the next-case title; sans for diagram and screen UI.
+- `--case-tint` (set per case from its home deck tint) is the surface behind every product screen, video and screenshot on a case page. Text on the tint uses `deck.on-tint`.
+- Quiet tabs (raised fill and hairline on the current tab), canvas and band alternating per chapter, no crosshair frames.
+
+## v4 home (2026-10-10): what changed
+Ali asked for the home page to follow the structure and motion of the claude.com product overview page, in our own colours. Only the structure and the motion patterns are borrowed. The brand, type, colours, copy and imagery are ours.
+- **Display type:** Newsreader (OFL, self-hosted, `--font-family-display`) for the hero, section headings, case titles, the capability map and the hiring sentence. Geist stays for body, UI and labels; Geist Mono for eyebrows. The rule "Instrument Serif retired" still holds.
+- **Colours:** palette unchanged (canvas, text, one blue accent). New tokens: `surface.band` (dark `#10141A`, light `#ECEEF3`) for alternating sections, and six card tints (`deck.tint-1` to `-6`: sky, sea, lilac, slate, sand, mist) that sit behind product screens. Tints are surfaces only; text on a tint uses `deck.on-tint` (above 11:1). Hero headline line two and the hiring sentence's underline keep the accent's one job.
+- **Shadows:** allowed on the tinted cards and the product screens on them, because those are light objects. Still none on dark surfaces themselves.
+- **Work shown large:** every tile and card shows a real screen: rebuilt screens in the demo brand (captured from `components/screens`) or live-app screenshots for Dubai Municipality and Jet Airways. Assets in `public/work/tiles` (square crops) and `public/work/deck`.
+- The v3 frame language (crosshairs, ruler) now only survives in the contact box.
 
 ## Brand & Style
 A senior designer who also understands the business, shown through the craft of the page itself, not claimed in copy. The posture is engineered: the page reads like a well-specified system, with visible structure (frame lines, crosshair corners, a ruler, numbered sections). Text is short and confident. Single reference: Deploy, followed section for section. Halaska was dropped because mixing the two read as messy.
