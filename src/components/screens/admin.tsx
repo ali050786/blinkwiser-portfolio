@@ -21,7 +21,7 @@ function AdminFrame({ crumbs = true, children }: { crumbs?: boolean; children: R
       <div>
         {crumbs && (
           <div className={s.crumbs}>
-            {["Public sector", "Contoso Group", "Regional office"].map((c, i) => (
+            {["Public sector", "Harborview Group", "Regional office"].map((c, i) => (
               <span key={c} style={{ display: "contents" }}>
                 {i > 0 && <span style={{ border: 0, padding: 0 }}>»</span>}
                 <span>
@@ -339,7 +339,7 @@ export function PeReport() {
 
 const themes: { n: string; c: string[]; tag: "Default" | "Custom"; draft?: boolean; locked?: string; emp: number }[] = [
   { n: "Default branding", c: ["#0f766e", "#b45309", "#115e59", "#475569"], tag: "Default", emp: 118 },
-  { n: "Northwind branding", c: ["#9b3d63", "#d27a9c", "#6b2945", "#2e1f27"], tag: "Custom", emp: 24 },
+  { n: "Bayside branding", c: ["#9b3d63", "#d27a9c", "#6b2945", "#2e1f27"], tag: "Custom", emp: 24 },
   { n: "Untitled theme", c: ["#7c4dce", "#d6336c", "#4b2a86", "#0f6f86"], tag: "Custom", draft: true, emp: 2 },
   { n: "Summit branding", c: ["#1f8a4c", "#3aa76d", "#1b2233", "#0f6f86"], tag: "Custom", locked: "A. Patel is editing this theme · opened 6 min ago", emp: 12 },
   { n: "Sunrise branding", c: ["#e8590c", "#f08c00", "#c92a2a", "#5f3dc4"], tag: "Custom", emp: 31 },
@@ -443,7 +443,7 @@ export function BhEditor() {
         <p>These settings apply to the member persona only. Renaming a theme doesn&apos;t change which employers use it.</p>
         <label className={s.field}>
           Name
-          <span style={{ color: "var(--m-ink)" }}>Northwind branding</span>
+          <span style={{ color: "var(--m-ink)" }}>Bayside branding</span>
         </label>
       </section>
       <section className={s.panel}>
@@ -488,7 +488,7 @@ export function BhEditor() {
   );
 }
 
-const northwind = {
+const bayside = {
   "--m-brand": "#9b3d63",
   "--m-brand-ink": "#6b2945",
   "--m-brand-soft": "#f6e9ef",
@@ -499,18 +499,18 @@ export function BhPreview() {
   return (
     <div className={`${s.screen} ${s.doc}`} style={{ padding: 0, background: "var(--m-canvas)" }}>
       <div className={s.previewHead}>
-        <h2>Preview: Northwind branding</h2>
+        <h2>Preview: Bayside branding</h2>
         <I n="x" />
       </div>
       <p className={s.previewNote}>This preview shows the colours applied to the interface. Layout and content are for illustration only.</p>
       <div style={{ margin: "0 20px 20px", border: "1px solid var(--m-line)", borderRadius: 8, overflow: "hidden" }}>
-        <DsDashboard style={northwind} banner />
+        <DsDashboard style={bayside} banner />
       </div>
     </div>
   );
 }
 
-const employers = ["Northwind Traders", "Contoso Health", "Fabrikam Inc.", "Tailspin Toys", "Litware", "Adatum Corp.", "Proseware", "Wingtip Partners"];
+const employers = ["Bayside Logistics", "Harborview Health", "Cedar Ridge Foods", "Lakeview Credit Union", "Prairie Steelworks", "Elm Street Bakeries", "Summit Fleet Services", "Riverbend Clinics"];
 
 export function BhAssign() {
   return (
