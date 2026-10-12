@@ -58,7 +58,7 @@
   border-top: 1px solid var(--border-subtle);
 }
 .headlineValue {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-weight: 450;
   font-variation-settings: "opsz" 60;
   font-size: var(--font-size-display-m);

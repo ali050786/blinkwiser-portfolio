@@ -17,7 +17,7 @@
   color: var(--text-secondary);
 }
 .title {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-weight: 450;
   font-variation-settings: "opsz" 60;
   font-size: clamp(2.125rem, 1.4rem + 2.6vw, 3.5rem);

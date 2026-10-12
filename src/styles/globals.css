@@ -156,7 +156,7 @@ ol {
   font-weight: 400;
 }
 .t-display-m {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-size: var(--font-size-display-m);
   line-height: 1.1;
   letter-spacing: -0.005em;

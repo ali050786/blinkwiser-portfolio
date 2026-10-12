@@ -8,6 +8,7 @@ All fonts in this folder are self-hosted (no request to Google Fonts at build or
 | atkinson-hyperlegible-mono-latin-wght-normal.woff2 | Atkinson Hyperlegible Mono | Braille Institute, via `@fontsource-variable/atkinson-hyperlegible-mono` |
 | Geist-Variable.woff2, GeistMono-Variable.woff2 | Geist, Geist Mono (demo product screens only) | Vercel, `geist` npm package |
 | libre-caslon-display-latin-400-normal.woff2 | Libre Caslon Display | Pablo Impallari, via `@fontsource/libre-caslon-display` |
+| libre-caslon-text-latin-*-normal.woff2 | Libre Caslon Text | Pablo Impallari, via `@fontsource/libre-caslon-text` |
 | ibm-plex-sans-arabic-arabic-*.woff2 | IBM Plex Sans Arabic | IBM, via `@fontsource/ibm-plex-sans-arabic` |
 
 License text: https://openfontlicense.org

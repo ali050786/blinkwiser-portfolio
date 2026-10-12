@@ -10,7 +10,7 @@
   text-align: center;
 }
 .title {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-variation-settings: "opsz" 60;
   font-size: clamp(2.25rem, 1.3rem + 3vw, 3.75rem);
   line-height: 1.06;

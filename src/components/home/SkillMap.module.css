@@ -38,7 +38,7 @@
   transition: fill var(--motion-hover);
 }
 .branchLabel {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-size: 21px;
   fill: var(--text-primary);
 }
@@ -63,7 +63,7 @@
   stroke: var(--border-default);
 }
 .hubLabel {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-size: 26px;
   fill: var(--text-primary);
 }
@@ -95,7 +95,7 @@
   color: var(--text-secondary);
 }
 .listTitle {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-weight: 480;
   font-size: 20px;
   color: var(--text-primary);

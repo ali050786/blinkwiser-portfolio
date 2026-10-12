@@ -17,7 +17,7 @@
   border: 1px solid var(--card-border);
 }
 .value {
-  font-family: var(--font-family-display);
+  font-family: var(--font-family-heading);
   font-variation-settings: "opsz" 60;
   font-size: var(--font-size-display-m);
   line-height: 1;

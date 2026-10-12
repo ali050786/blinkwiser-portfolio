@@ -9,9 +9,13 @@
  * chapter titles and the next-case title. Small UI headings inside diagrams and
  * screens stay in the sans.
  */
-.article :global(.t-display-xl),
-.article :global(.t-display-l),
 .article :global(.t-display-m) {
+  font-family: var(--font-family-heading);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.article :global(.t-display-xl),
+.article :global(.t-display-l) {
   font-family: var(--font-family-display);
   font-weight: 450;
   font-variation-settings: "opsz" 60;

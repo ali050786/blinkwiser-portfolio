@@ -48,6 +48,16 @@ export const productMono = localFont({
   preload: false,
 });
 
+/** Section, chapter and card headings: Libre Caslon Text (Pablo Impallari, OFL), the sturdier text cut of the same family. */
+export const caslonText = localFont({
+  src: [
+    { path: "../fonts/libre-caslon-text-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/libre-caslon-text-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-caslon-text",
+  display: "swap",
+});
+
 /** Only the Dubai exhibit uses Arabic, so it is not preloaded. */
 export const plexArabic = localFont({
   src: [
@@ -59,4 +69,4 @@ export const plexArabic = localFont({
   preload: false,
 });
 
-export const fontVariables = [atkinson.variable, atkinsonMono.variable, caslonDisplay.variable, productSans.variable, productMono.variable, plexArabic.variable].join(" ");
+export const fontVariables = [atkinson.variable, atkinsonMono.variable, caslonDisplay.variable, caslonText.variable, productSans.variable, productMono.variable, plexArabic.variable].join(" ");
