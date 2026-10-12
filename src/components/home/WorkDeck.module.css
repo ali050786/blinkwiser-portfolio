@@ -73,9 +73,6 @@
 .inner {
   position: relative;
 }
-.rail {
-  display: none;
-}
 .items {
   display: flex;
   flex-direction: column;
@@ -256,43 +253,8 @@
   }
   :global([data-motion="ok"]) .inner {
     display: grid;
-    grid-template-columns: 56px 1fr;
+    grid-template-columns: 1fr;
     align-items: center;
-  }
-  :global([data-motion="ok"]) .rail {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    font-family: var(--font-family-mono);
-    font-size: 11px;
-    color: var(--text-tertiary);
-  }
-  :global([data-motion="ok"]) .rail li {
-    position: relative;
-    padding-left: 16px;
-    transition: color var(--motion-state);
-  }
-  :global([data-motion="ok"]) .rail li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 8px;
-    height: 1px;
-    background: var(--border-strong);
-    transition:
-      width var(--motion-state),
-      background-color var(--motion-state);
-  }
-  :global([data-motion="ok"]) .rail li[data-on] {
-    color: var(--text-primary);
-  }
-  :global([data-motion="ok"]) .rail li[data-on]::before {
-    width: 12px;
-    background: var(--accent-solid);
   }
   :global([data-motion="ok"]) .items {
     position: relative;
