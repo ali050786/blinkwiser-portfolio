@@ -15,7 +15,7 @@ export function Call() {
             <h2 id="contact-title" className={styles.title}>
               Email is the fastest way to reach me.
             </h2>
-            <p className={styles.lede}>I&apos;m looking for a senior or lead UX role, ideally in health tech or on an AI product.</p>
+            <p className={styles.lede}>I&apos;m a UX lead with 11 years in health insurance, civic services and AI products. Tell me about the problem you&apos;re working on.</p>
             <div className={styles.actions}>
               <a href={`mailto:${site.email}`} className={styles.primary}>
                 Email me <span aria-hidden="true">→</span>
