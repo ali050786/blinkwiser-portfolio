@@ -2,14 +2,11 @@ import type { CaseStudy } from "@/content/types";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import styles from "./LiveLinks.module.css";
 
-/** A quiet panel pointing to the live product. */
+/** A plain panel pointing to the product, without a status badge. */
 export function LiveLinks({ live }: { live: NonNullable<CaseStudy["live"]> }) {
   return (
-    <aside className={styles.panel} aria-label={`${live.title}, live`}>
+    <aside className={styles.panel} aria-label={live.title}>
       <div className={styles.copy}>
-        <p className={`t-label ${styles.label}`}>
-          <span className={styles.dot} aria-hidden="true" /> Live now
-        </p>
         <p className={`t-heading-m ${styles.title}`}>{live.title}</p>
         <p className="t-body-s c-secondary">{live.note}</p>
       </div>
