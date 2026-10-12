@@ -39,13 +39,14 @@ export const caseStudies: CaseStudy[] = [
     },
     headline: { value: "5 steps", label: "down from 9, with “who's covered” asked once" },
     opener: {
-      scope: "One flow that runs three kinds of enrollment: open enrollment, life events and new hires.",
+      simple: true,
+      scope: "One flow for open enrollment, life events and new hires.",
       note: "Dennis is a persona I use to tell the story, and these are illustrations rather than the shipped screens. I counted the steps by walking through the old and new flows, and the prices are made up for the demo.",
       stories: [
         {
           id: "newborn",
           tab: "Adding dependents",
-          story: "Dennis just had a baby, and he has 31 days to get her covered.",
+          story: "Dennis has 31 days to get his newborn covered.",
           quote: "Adding a dependent does not automatically enroll them in coverage.",
           quoteSource: "The old flow, right after he added her",
           visual: "newborn",
@@ -284,17 +285,6 @@ export const caseStudies: CaseStudy[] = [
           ],
         },
         {
-          id: "admins",
-          rail: "The admin side",
-          title: "The members who never open the flow",
-          blocks: [
-            { kind: "p", text: "Every open enrollment, some members do nothing at all. Admins used to sort them out by hand, one member at a time, and every employer had its own rule for them. Some terminate those members, some carry the current plan forward and some move them to a default plan, and all of it landed right at the deadline." },
-            { kind: "p", text: "The business owned those rules. My part was designing how admins set them up, run them and deal with the cases a rule can't decide. Each employer now has a Passive Enrollment tab with four rules written in plain language. Before a run, the admin sees the rule, the file and how many members it will affect, with a plain warning that it can't be undone." },
-            { kind: "p", text: "Every run leaves a record of who ran it, when, and with which rule and file. The report separates the members who were processed from the ones who need a look, and those come back with a reason and Enroll or Terminate buttons right in the row, so nobody gets lost in the batch. We didn't measure the effort before and after, but a job that used to be done member by member is now a rule each employer sets once." },
-            { kind: "exhibit", id: "passive-screens" },
-          ],
-        },
-        {
           id: "outcome",
           rail: "What changed",
           title: "What changed",
@@ -302,6 +292,17 @@ export const caseStudies: CaseStudy[] = [
             { kind: "p", text: "The new flow is live in production for open enrollment, life events and new hires, and admins use the same structure when they enroll someone on a member's behalf. Using that one structure everywhere was a decision I made with product and engineering. It went from 9 steps to 5: Welcome, Profile, Dependents, Coverage and Review." },
             { kind: "p", text: "The complaints that started the redesign have dropped, and admins get through enrolling on someone's behalf faster. To be honest, these are signals we've seen rather than formal measurements, which is something I'd fix next time." },
             { kind: "exhibit", id: "enrollment-screens" },
+          ],
+        },
+        {
+          id: "admins",
+          rail: "The admin side",
+          title: "The members who never open the flow",
+          blocks: [
+            { kind: "p", text: "There was one more piece of work, on the admin side. Every open enrollment, some members do nothing at all. Admins used to sort them out by hand, one member at a time, and every employer had its own rule for them. Some terminate those members, some carry the current plan forward and some move them to a default plan, and all of it landed right at the deadline." },
+            { kind: "p", text: "The business owned those rules. My part was designing how admins set them up, run them and deal with the cases a rule can't decide. Each employer now has a Passive Enrollment tab with four rules written in plain language. Before a run, the admin sees the rule, the file and how many members it will affect, with a plain warning that it can't be undone." },
+            { kind: "p", text: "Every run leaves a record of who ran it, when, and with which rule and file. The report separates the members who were processed from the ones who need a look, and those come back with a reason and Enroll or Terminate buttons right in the row, so nobody gets lost in the batch. We didn't measure the effort before and after, but a job that used to be done member by member is now a rule each employer sets once." },
+            { kind: "exhibit", id: "passive-screens" },
           ],
         },
         {
@@ -341,6 +342,7 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "Under a day", label: "to theme a new client, down from weeks" },
     card: { title: "White-label health-insurance platform", widget: "brands", label: "to theme a new client" },
     hook: {
+      simple: true,
       line: "A new client used to take weeks to set up.",
       turn: "With each client's brand in design tokens, it takes under a day.",
       note: "Illustration in a demo brand, not a client screen.",
@@ -640,6 +642,7 @@ export const caseStudies: CaseStudy[] = [
     headline: { value: "3 or 4 days", label: "from Jira story to engineering-ready screen, down from one or two weeks" },
     card: { title: "A design system AI can read", widget: "pipeline", label: "Jira-story turnaround" },
     hook: {
+      simple: true,
       line: "Our AI tool kept putting Save on the wrong side.",
       turn: "It had no way to know our rules, so I wrote them down. Then its screens matched our product.",
       note: "Illustration in a demo brand, not a client screen.",
@@ -946,8 +949,9 @@ export const caseStudies: CaseStudy[] = [
     card: { title: "Blinkwiser AI carousels", widget: "slides", value: "Plan, write, check", label: "facts checked before you see it" },
     hook: {
       line: "The first version made up its own statistics.",
-      turn: "So I rebuilt it as a studio you talk to. A team of agents researches, writes and designs the carousel, every number traces to a source, and every edit can be undone.",
-      number: { value: "23 seconds", label: "from a topic, link, video or file to the first slides on screen, while the checks finish" },
+      turn: "So I rebuilt it as a studio you talk to, run by a team of agents.",
+      number: null,
+      simple: true,
       note: "Illustration with demo content, not a real deck. The live product is shown below.",
       tabsLabel: "Three ways v1 broke trust",
       picture: {
@@ -1432,6 +1436,7 @@ export const caseStudies: CaseStudy[] = [
     },
     headline: { value: "", label: "Booking on web, iOS, and Android, live until the airline closed in 2019" },
     hook: {
+      simple: true,
       line: "Five fares per flight don't fit on a phone.",
       turn: "So on mobile, each flight opens to show its fares as a list.",
       note: "Illustration with demo content, not the airline's screens. The real screens are shown below.",

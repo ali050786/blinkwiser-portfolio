@@ -48,6 +48,7 @@ export function HeroStories({ opener, compact }: { opener: Opener; compact?: boo
 
   return (
     <div className={styles.wrap} data-compact={compact || undefined}>
+      {!opener.simple && (
       <div role="tablist" aria-label={opener.label ?? "Three moments from one enrollment"} className={styles.tabs}>
         {opener.stories.map((st, i) => (
           <button
@@ -72,12 +73,18 @@ export function HeroStories({ opener, compact }: { opener: Opener; compact?: boo
           </button>
         ))}
       </div>
+      )}
 
-      <div role="tabpanel" id={`story-panel-${s.id}`} aria-labelledby={`story-tab-${s.id}`} className={styles.grid}>
+      <div
+        role={opener.simple ? undefined : "tabpanel"}
+        id={`story-panel-${s.id}`}
+        aria-labelledby={opener.simple ? undefined : `story-tab-${s.id}`}
+        className={styles.grid}
+      >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div key={s.id} className={styles.copy} {...fade}>
             <p className={`t-display-l ${styles.story}`}>{s.story}</p>
-            {s.quoteEmpty && (
+            {!opener.simple && s.quoteEmpty && (
               <figure className={styles.quote}>
                 <p className={styles.emptyField}>
                   <span className="t-label c-tertiary">{s.quoteEmpty.field}</span>
@@ -86,7 +93,7 @@ export function HeroStories({ opener, compact }: { opener: Opener; compact?: boo
                 {s.quoteSource && <figcaption className="t-label c-tertiary">{s.quoteSource}</figcaption>}
               </figure>
             )}
-            {s.quote && (
+            {!opener.simple && s.quote && (
               <blockquote className={styles.quote}>
                 <p>“{s.quote}”</p>
                 {s.quoteSource && <footer className="t-label c-tertiary">{s.quoteSource}</footer>}

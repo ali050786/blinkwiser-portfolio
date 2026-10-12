@@ -19,6 +19,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
   // The same domain label and screen as the case's card on the home page.
   const card = deck[c.slug as CaseSlug];
   const HookScreen = c.hook ? hookScreens[c.hook.picture.visual] : null;
+  const hookNum = c.hook ? (c.hook.number === null ? null : (c.hook.number ?? c.headline)) : null;
 
   /* The turning point sits in the empty space beside the title on wide screens,
      and under the proof on narrow ones, so the proof stays near the top. Only one
@@ -49,10 +50,12 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
             <h1 className={`t-heading-m c-secondary ${styles.titleSmall}`}>{c.title}</h1>
             <p className={`t-display-l ${styles.hookLine}`}>{c.hook.line}</p>
             <p className={`t-heading-l ${styles.hookTurn}`}>{c.hook.turn}</p>
-            <p className={styles.hookNumber}>
-              {(c.hook.number ?? c.headline).value && <span className={`tabular ${styles.headlineValue}`}>{(c.hook.number ?? c.headline).value}</span>}
-              <span className="t-body-s c-secondary">{(c.hook.number ?? c.headline).label}</span>
-            </p>
+            {hookNum && (
+              <p className={styles.hookNumber}>
+                {hookNum.value && <span className={`tabular ${styles.headlineValue}`}>{hookNum.value}</span>}
+                <span className="t-body-s c-secondary">{hookNum.label}</span>
+              </p>
+            )}
           </div>
           <div className={styles.hookVisual}>
             <HookFrame hook={c.hook} before={<HookScreen kind="old" />} after={<HookScreen kind="new" />} />
@@ -78,11 +81,13 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           </div>
           <HeroStories opener={c.opener} />
           {turn && <div className={styles.turnBottom}>{turn}</div>}
-          <ul className={styles.tags} aria-label="Topics">
-            {c.tags.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
+          {!c.opener.simple && (
+            <ul className={styles.tags} aria-label="Topics">
+              {c.tags.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          )}
         </div>
       ) : (
         <div className={styles.grid}>

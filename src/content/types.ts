@@ -239,6 +239,8 @@ export interface CaseStudy {
     scope: string;
     /** Optional opening line that puts a person in the story before the tabs. Replaces the scope line when set. */
     lead?: string;
+    /** A quieter hero: the first story and its picture only, without tabs, the quote or the tag row. */
+    simple?: boolean;
     /** Optional turning point shown under the tabs: what someone said, and what happened next. */
     turn?: { quote: string; source: string; after?: string };
     note: string;
@@ -261,8 +263,10 @@ export interface CaseStudy {
   hook?: {
     line: string;
     turn: string;
-    /** Defaults to the study's headline when not set. */
-    number?: { value: string; label: string };
+    /** Defaults to the study's headline when not set; null hides the number. */
+    number?: { value: string; label: string } | null;
+    /** A quieter hero: the picture alone, without tabs, chips or the evidence line. */
+    simple?: boolean;
     note: string;
     tabsLabel: string;
     picture: {

@@ -70,7 +70,7 @@ export const deck: Record<
   "open-enrollment": {
     domain: "Health insurance",
     outcome: "Enrollment cut from 9 steps to 5, live in production",
-    opening: "Dennis just had a baby, and he has 31 days to get her covered.",
+    opening: "Dennis has 31 days to get his newborn covered.",
     img: "/work/deck/enrollment.webp",
     alt: "Rebuilt plan selection screen from the enrollment redesign, in a demo brand: the family is already listed and prices are monthly.",
     tint: 1,

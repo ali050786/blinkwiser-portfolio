@@ -17,7 +17,7 @@ type Hook = NonNullable<CaseStudy["hook"]>;
 export function HookFrame({ hook, before, after }: { hook: Hook; before: React.ReactNode; after: React.ReactNode }) {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const { picture, findings } = hook;
+  const { picture, findings, simple } = hook;
   const f = findings[active]!;
   const go = (i: number) => {
     const k = (i + findings.length) % findings.length;
@@ -27,6 +27,7 @@ export function HookFrame({ hook, before, after }: { hook: Hook; before: React.R
 
   return (
     <div className={styles.wrap}>
+      {!simple && (
       <div role="tablist" aria-label={hook.tabsLabel} className={tabsCss.tabs}>
         {findings.map((st, i) => (
           <button
@@ -52,22 +53,23 @@ export function HookFrame({ hook, before, after }: { hook: Hook; before: React.R
           </button>
         ))}
       </div>
+      )}
       <figure
         id="hook-panel"
-        role="tabpanel"
-        aria-labelledby={`hook-tab-${active}`}
+        role={simple ? undefined : "tabpanel"}
+        aria-labelledby={simple ? undefined : `hook-tab-${active}`}
         className={`${base.card} ${styles.card}`}
-        data-active={String(active + 1)}
+        data-active={simple ? undefined : String(active + 1)}
       >
         <header className={base.head}>
           <p className={base.title}>{picture.title}</p>
-          <p className={base.change}>
+          {!simple && <p className={base.change}>
             {picture.chips.map((c) => (
               <span key={c} className={base.to}>
                 {c}
               </span>
             ))}
-          </p>
+          </p>}
         </header>
         <div className={base.cols}>
           <section className={base.col} data-kind="old" aria-label={picture.before.label}>
@@ -93,7 +95,7 @@ export function HookFrame({ hook, before, after }: { hook: Hook; before: React.R
             </ul>
           </section>
         </div>
-        <figcaption className={styles.words} aria-live="polite">
+        {!simple && <figcaption className={styles.words} aria-live="polite">
           <span className={styles.wordsQuote}>
             {f.empty ? (
               <>
@@ -106,7 +108,7 @@ export function HookFrame({ hook, before, after }: { hook: Hook; before: React.R
             )}
           </span>
           {f.source && <span className="t-label c-tertiary">{f.source}</span>}
-        </figcaption>
+        </figcaption>}
       </figure>
     </div>
   );
