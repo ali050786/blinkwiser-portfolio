@@ -164,12 +164,10 @@ export function WorkDeck() {
           </div>
 
           <div className={`${s.wrap} ${styles.inner}`}>
-            {/* Progress through the deck: how many cases, which one is in front. */}
+            {/* Progress through the deck: one dash per case, the front one longer and in the accent. */}
             <ol className={styles.rail} aria-hidden="true">
               {items.map(({ c }, k) => (
-                <li key={c.slug} data-on={k === active || undefined}>
-                  {c.index}
-                </li>
+                <li key={c.slug} data-on={k === active || undefined} />
               ))}
             </ol>
 

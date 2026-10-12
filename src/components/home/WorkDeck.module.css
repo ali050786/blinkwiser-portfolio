@@ -272,6 +272,7 @@
   }
   :global([data-motion="ok"]) .rail li {
     position: relative;
+    height: 12px;
     padding-left: 16px;
     transition: color var(--motion-state);
   }
@@ -291,7 +292,7 @@
     color: var(--text-primary);
   }
   :global([data-motion="ok"]) .rail li[data-on]::before {
-    width: 12px;
+    width: 20px;
     background: var(--accent-solid);
   }
   :global([data-motion="ok"]) .items {
