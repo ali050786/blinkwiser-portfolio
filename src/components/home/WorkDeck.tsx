@@ -164,6 +164,15 @@ export function WorkDeck() {
           </div>
 
           <div className={`${s.wrap} ${styles.inner}`}>
+            {/* Progress through the deck: how many cases, which one is in front. */}
+            <ol className={styles.rail} aria-hidden="true">
+              {items.map(({ c }, k) => (
+                <li key={c.slug} data-on={k === active || undefined}>
+                  {c.index}
+                </li>
+              ))}
+            </ol>
+
             <div className={styles.items}>
               {items.map(({ c, m }, k) => {
                 const on = k === active;

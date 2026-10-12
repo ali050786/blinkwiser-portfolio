@@ -67,7 +67,7 @@ layout:
 # DESIGN.md
 
 ## Numbering (2026-10-12)
-No decorative numbers: no "01 ·" on deck cards, chapters or the side rail, and the case label is the domain, not "Case 04". Numbers only where order matters (the colophon build layers).
+No decorative numbers: no "01 ·" on deck cards, chapters or the side rail, and the case label is the domain, not "Case 04". Numbers only where they show position or order: the homepage deck rail (01 to 06, current case highlighted) and the colophon build layers.
 
 ## Labels (2026-10-12)
 Sentence case in the body font, no letter-spacing. No uppercase mono eyebrows, tags or footer labels on the site itself; uppercase stays only inside the demo product screens.
