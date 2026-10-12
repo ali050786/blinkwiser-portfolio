@@ -43,7 +43,7 @@
   grid-template-columns: 56px minmax(0, 1fr);
   background: var(--m-canvas);
   color: var(--m-ink);
-  font-family: var(--font-family-sans, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-product), ui-sans-serif, system-ui, sans-serif;
   font-size: 13px;
   line-height: 1.4;
   letter-spacing: 0;
@@ -1591,7 +1591,7 @@
   border: 1px solid #c9ced8;
   border-radius: 4px;
   line-height: 26px;
-  font-family: var(--font-family-mono, ui-monospace, monospace);
+  font-family: var(--font-product-mono), ui-monospace, monospace;
   font-size: 11px;
 }
 .colorField > span:last-child {

@@ -53,7 +53,7 @@ export default function Colophon() {
         <div className={styles.headCopy}>
           <p className="t-label c-tertiary">Colophon</p>
           <h1 className="t-display-l">
-            How this site is built, and <em className="t-serif-em c-accent">why</em>.
+            How this site is built, and why.
           </h1>
           <p className="t-body-l c-secondary prose">
             The portfolio is a small product in its own right, built with the same habits as the work it shows: explicit variables, honest
@@ -163,19 +163,15 @@ export default function Colophon() {
         </div>
         <ul className={styles.specimens}>
           <li>
-            <span className="t-label c-tertiary">Geist · display</span>
-            <span className="t-display-m">Decisions, not artifacts</span>
+            <span className="t-label c-tertiary">Newsreader · titles and headings</span>
+            <span className="t-display-m" style={{ fontFamily: "var(--font-family-display)", fontWeight: 450 }}>Decisions, not artifacts</span>
           </li>
           <li>
-            <span className="t-label c-tertiary">Instrument Serif · emphasis</span>
-            <span className="t-display-m t-serif-em">the road not taken</span>
-          </li>
-          <li>
-            <span className="t-label c-tertiary">Geist · body</span>
+            <span className="t-label c-tertiary">Atkinson Hyperlegible Next · body, chosen because it keeps similar letters distinct for low-vision readers</span>
             <span className="t-body-l">Every study opens with a 30-second snapshot and ends with what I would change.</span>
           </li>
           <li>
-            <span className="t-label c-tertiary">Geist Mono · labels and tokens</span>
+            <span className="t-label c-tertiary">Atkinson Hyperlegible Mono · code and tokens</span>
             <span className="t-mono">--accent-solid: var(--color-violet-500);</span>
           </li>
           <li>

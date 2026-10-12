@@ -149,16 +149,20 @@ ol {
   font-weight: var(--font-weight-semibold);
 }
 .t-display-l {
+  font-family: var(--font-family-display);
+  font-variation-settings: "opsz" 60;
   font-size: var(--font-size-display-l);
-  line-height: 1.02;
-  letter-spacing: var(--font-tracking-display);
-  font-weight: var(--font-weight-semibold);
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  font-weight: 450;
 }
 .t-display-m {
+  font-family: var(--font-family-display);
+  font-variation-settings: "opsz" 48;
   font-size: var(--font-size-display-m);
-  line-height: 1.06;
-  letter-spacing: var(--font-tracking-heading);
-  font-weight: var(--font-weight-semibold);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  font-weight: 450;
 }
 .t-heading-l {
   font-size: var(--font-size-heading-l);

@@ -129,6 +129,10 @@
 .titleSmall {
   max-width: 40ch;
   margin: 0;
+  font-family: var(--font-family-display);
+  font-variation-settings: "opsz" 24;
+  font-weight: 450;
+  letter-spacing: 0;
 }
 .scope {
   max-width: 60ch;
