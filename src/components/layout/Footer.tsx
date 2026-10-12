@@ -14,8 +14,8 @@ export function Footer() {
             <span className={styles.role}>{site.role}</span>
           </p>
           <p className={styles.blurb}>
-            I&apos;ve spent 11 years in UX, the last six leading design on a US health-insurance platform. I&apos;m looking for a senior or
-            lead UX role, ideally in health tech or on an AI product.
+            I&apos;m a UX lead with 11 years in health insurance, civic services and AI products. Tell me about the problem you&apos;re
+            working on.
           </p>
           <a href={`mailto:${site.email}`} className={styles.mail}>
             <i aria-hidden="true" />

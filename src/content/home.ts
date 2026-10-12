@@ -156,8 +156,8 @@ export const hire = {
 
 export const faq = [
   {
-    q: "What kind of role are you looking for?",
-    a: "A senior or lead UX role. Health tech is where most of my experience is, and AI products are what I've been building on my own since July 2026.",
+    q: "What kind of work do you do?",
+    a: "I lead UX on complex, regulated products. Health tech is where most of my experience is, and AI products are what I've been building on my own since July 2026.",
   },
   {
     q: "Where are you based?",
