@@ -299,10 +299,7 @@ export const caseStudies: CaseStudy[] = [
           rail: "The admin side",
           title: "The members who never open the flow",
           blocks: [
-            { kind: "p", text: "There was one more piece of work, on the admin side. Every open enrollment, some members do nothing at all. Admins used to sort them out by hand, one member at a time, and every employer had its own rule for them. Some terminate those members, some carry the current plan forward and some move them to a default plan, and all of it landed right at the deadline." },
-            { kind: "p", text: "The business owned those rules. My part was designing how admins set them up, run them and deal with the cases a rule can't decide. Each employer now has a Passive Enrollment tab with four rules written in plain language. Before a run, the admin sees the rule, the file and how many members it will affect, with a plain warning that it can't be undone." },
-            { kind: "p", text: "Every run leaves a record of who ran it, when, and with which rule and file. The report separates the members who were processed from the ones who need a look, and those come back with a reason and Enroll or Terminate buttons right in the row, so nobody gets lost in the batch. We didn't measure the effort before and after, but a job that used to be done member by member is now a rule each employer sets once." },
-            { kind: "exhibit", id: "passive-screens" },
+            { kind: "p", text: "There was one more piece of work, on the admin side. Every open enrollment, some members do nothing at all, and admins used to sort them out by hand, one at a time. I designed a way for each employer to set a rule once and run it themselves, and anything the rule can't decide comes back to an admin with a reason. The business owned the rules, and my part was how admins set them up and handle the exceptions." },
           ],
         },
         {
@@ -594,10 +591,7 @@ export const caseStudies: CaseStudy[] = [
           rail: "Branding Hub",
           title: "The Branding Hub, where admins set each client's brand",
           blocks: [
-            { kind: "p", text: "Once brands lived in tokens, someone still had to set those tokens for a lot of employers without breaking what members see, and often several admins were working on themes at the same time. So I designed the Branding Hub, and it's live." },
-            { kind: "p", text: "Admins see every theme in one place, with its colors, the employers using it, who edited it last and whether it's a draft, the default or locked. The editor uses the same color roles as the tokens, and each color tells you where it appears. Before assigning a theme to employers, each with their own logo and links, the admin checks it on a real member dashboard." },
-            { kind: "p", text: "Because several people edit at once, a theme shows who's editing it and stays locked for everyone else. There's a change history, and deleted themes can be restored. We haven't measured usage formally, but theming a client is now one admin task inside the system instead of an engineering job." },
-            { kind: "exhibit", id: "branding-screens" },
+            { kind: "p", text: "Once brands lived in tokens, someone still had to set them for a lot of employers without breaking what members see, and often several admins were working on themes at the same time. So I designed the Branding Hub, an admin tool where each client's brand is set up and checked on a real member screen before it goes out, and it's live. We haven't measured usage formally, but theming a client is now one admin task inside the system instead of an engineering job." },
           ],
         },
         {

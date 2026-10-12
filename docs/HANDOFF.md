@@ -22,6 +22,7 @@ Read this first in a new session, then docs/ux/DESIGN.md, docs/ux/EXPERIENCE.md 
 Key numbers: 11 years in UX; enrollment from 9 steps to 5; a new client themed in under a day (was weeks); Jira story to screen in three or four days (was one or two weeks); about 40% less design production time; team of four designers, two hired by Ali; 120+ components; nine Dubai Municipality apps into one.
 
 ## Confidentiality rules
+- Admin side of the health-insurance platform: words only. No admin screens, mock-ups or step-by-step admin process (passive enrollment, Branding Hub). The member side is public (employers publish member guides), so member screens in the demo brand are fine.
 - Never name the US insurers (check:copy blocks them).
 - Dubai Municipality: public-only route. Live-app screenshots (labelled), public app names, and Ali's general process only. Do not name the low-code platform, and do not describe the client's internal behaviour (departments not sharing, stakeholder friction, apps not working). No app store links: the store ratings are poor and about stability after Ali left.
 - Jet Airways, Dubai Municipality and Mphasis may be named.
