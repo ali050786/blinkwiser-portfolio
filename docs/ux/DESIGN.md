@@ -66,6 +66,9 @@ layout:
 
 # DESIGN.md
 
+## Labels (2026-10-12)
+Sentence case in the body font, no letter-spacing. No uppercase mono eyebrows, tags or footer labels on the site itself; uppercase stays only inside the demo product screens.
+
 ## Type (2026-10-12)
 Libre Caslon Display for every title and heading (`--font-family-display`; `.t-display-*` use it at weight 400). It is cut for large sizes, so the small case title above each hero stays in the body font. Chosen by Ali over Newsreader, Philosopher (its capital I reads as a lowercase l) and Quintus (commercial, no files). Atkinson Hyperlegible Next for body, UI and labels (`--font-family-sans`). Atkinson Hyperlegible Mono for code and tokens (`--font-family-mono`). Geist only inside the demo product screens (`--font-product`). This overrides the older type notes below.
 

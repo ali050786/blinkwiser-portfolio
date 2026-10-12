@@ -28,11 +28,11 @@
   letter-spacing: -0.02em;
 }
 .role {
-  font-family: var(--font-family-mono);
-  font-size: 10px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
   font-weight: var(--font-weight-regular);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-tertiary);
 }
 .blurb {
@@ -61,10 +61,10 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 18px;
-  font-family: var(--font-family-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-tertiary);
 }
 .col ul {
@@ -85,9 +85,9 @@
 .base p {
   padding-top: 24px;
   border-top: 1px solid var(--border-subtle);
-  font-family: var(--font-family-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
+  letter-spacing: 0;
   color: var(--text-tertiary);
 }
 @media (max-width: 800px) {

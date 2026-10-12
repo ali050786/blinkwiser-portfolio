@@ -216,14 +216,14 @@ em.t-serif,
   font-weight: 400;
   letter-spacing: 0.005em;
 }
-/* Mono, uppercase index label: "01 · SELECTED WORK". The engineered layer. */
+/* Small index label in the body font, sentence case. */
 .t-index {
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-micro);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
   line-height: 1.4;
   font-weight: var(--font-weight-medium);
-  letter-spacing: var(--font-tracking-label);
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 .tabular {
   font-variant-numeric: tabular-nums;

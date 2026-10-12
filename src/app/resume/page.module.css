@@ -107,12 +107,12 @@
 .label {
   margin: 0;
   padding-top: 3px;
-  font-family: var(--font-family-mono);
-  font-size: 11px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
   font-weight: 400;
   line-height: 1.5;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-secondary);
 }
 .summary {

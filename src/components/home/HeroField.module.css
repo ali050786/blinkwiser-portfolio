@@ -113,10 +113,10 @@
   transform: none;
 }
 .popTag {
-  font-family: var(--font-family-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-tertiary);
 }
 .popTitle {

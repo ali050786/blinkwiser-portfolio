@@ -10,10 +10,10 @@
   margin-inline: auto;
 }
 .label {
-  font-family: var(--font-family-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-label);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-secondary);
 }
 .title {
