@@ -61,7 +61,7 @@ export function BeatRail({ beats, forks }: { beats: BeatLink[]; forks: ForkLink[
         {beats.map((b) => (
           <li key={b.id}>
             <a href={`#${b.id}`} className={styles.link} aria-current={active === b.id ? "location" : undefined}>
-              <span className="t-mono">{b.n}</span>
+              {b.n && <span className="t-mono">{b.n}</span>}
               {b.label}
             </a>
             {b.id === "decisions" && (

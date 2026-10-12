@@ -17,7 +17,6 @@ export function Story({ study: c }: { study: CaseStudy }) {
       {chapters.map((ch, i) => (
         <section key={ch.id} id={ch.id} data-beat={ch.id} className={styles.chapter} aria-labelledby={`${ch.id}-title`}>
           <header className={styles.head} data-reveal>
-            <p className="t-mono c-tertiary">{String(i + 1).padStart(2, "0")}</p>
             <h2 id={`${ch.id}-title`} className={`t-display-m ${styles.title}`}>
               {ch.title}
             </h2>

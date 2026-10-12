@@ -164,23 +164,13 @@ export function WorkDeck() {
           </div>
 
           <div className={`${s.wrap} ${styles.inner}`}>
-            <ol className={styles.rail} aria-hidden="true">
-              {items.map(({ c }, k) => (
-                <li key={c.slug} data-on={k === active || undefined}>
-                  {c.index}
-                </li>
-              ))}
-            </ol>
-
             <div className={styles.items}>
               {items.map(({ c, m }, k) => {
                 const on = k === active;
                 return (
                   <article key={c.slug} className={styles.item} data-item={k} data-on={on || undefined} style={{ zIndex: N - k }} aria-labelledby={`deck-${c.slug}`}>
                     <div className={styles.text}>
-                      <p className={styles.tag}>
-                        {c.index} · {m.domain}
-                      </p>
+                      <p className={styles.tag}>{m.domain}</p>
                       <h3 id={`deck-${c.slug}`} className={styles.title}>
                         {c.card?.title ?? c.short}
                       </h3>

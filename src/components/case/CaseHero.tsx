@@ -44,8 +44,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
         <div className={styles.hook}>
           <div className={styles.hookCopy}>
             <p className="t-label">
-              <span className="c-accent">Case {c.index}</span>
-              <span className="c-tertiary"> · {card.domain}</span>
+              <span className="c-accent">{card.domain}</span>
             </p>
             <h1 className={`t-heading-m c-secondary ${styles.titleSmall}`}>{c.title}</h1>
             <p className={`t-display-l ${styles.hookLine}`}>{c.hook.line}</p>
@@ -67,8 +66,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           <div className={styles.openerTop} data-turn={c.opener.turn ? "" : undefined}>
             <div className={styles.openerHead}>
               <p className="t-label">
-                <span className="c-accent">Case {c.index}</span>
-                <span className="c-tertiary"> · {card.domain}</span>
+                <span className="c-accent">{card.domain}</span>
               </p>
               <h1 className={`t-heading-m c-secondary ${styles.titleSmall}`}>{c.title}</h1>
               {c.opener.lead ? (
@@ -94,8 +92,7 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
           {/* No picture here: the product image right under the hero is the visual for this case. */}
           <div className={styles.copy}>
             <p className="t-label">
-              <span className="c-accent">Case {c.index}</span>
-              <span className="c-tertiary"> · {card.domain}</span>
+              <span className="c-accent">{card.domain}</span>
             </p>
             <h1 className="t-display-l">{c.title}</h1>
             <p className={`t-body-l c-secondary ${styles.dek}`}>{c.dek}</p>

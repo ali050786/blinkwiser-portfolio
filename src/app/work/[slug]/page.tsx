@@ -65,7 +65,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
       {c.story ? (
         <div className={`container ${styles.body}`}>
-          <BeatRail beats={c.story.chapters.map((ch, i) => ({ id: ch.id, n: String(i + 1).padStart(2, "0"), label: ch.rail }))} forks={[]} />
+          <BeatRail beats={c.story.chapters.map((ch) => ({ id: ch.id, n: "", label: ch.rail }))} forks={[]} />
           <div className={styles.content}>
             <Story study={c} />
           </div>

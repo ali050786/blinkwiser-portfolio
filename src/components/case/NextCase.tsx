@@ -17,13 +17,12 @@ export function NextCase({ study: c }: { study: CaseStudy }) {
         <div className={styles.copy}>
           <p className="t-label">
             <span className="c-tertiary">Next case · </span>
-            <span className="c-accent">{c.index}</span>
-            <span className="c-tertiary"> · {m.domain}</span>
+            <span className="c-accent">{m.domain}</span>
           </p>
           <p className={`t-display-m ${styles.title}`}>{c.title}</p>
           <p className="c-secondary">{m.outcome}</p>
           <span className={styles.cta}>
-            Read case {c.index} <Icon name="arrow-right" size={16} />
+            Read the story <Icon name="arrow-right" size={16} />
           </span>
         </div>
         <div className={styles.deckCard} style={{ background: `var(--deck-tint-${m.tint})` }} aria-hidden="true">
