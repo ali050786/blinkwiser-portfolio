@@ -21,11 +21,11 @@ export const atkinsonMono = localFont({
   display: "swap",
 });
 
-/** Titles and headings: Newsreader (Production Type, OFL; optical size and weight axes). */
-export const newsreader = localFont({
-  src: "../fonts/newsreader-latin-opsz-normal.woff2",
-  variable: "--font-newsreader",
-  weight: "200 800",
+/** Titles and headings: Libre Caslon Display (Pablo Impallari, OFL), a high-contrast Caslon cut for large sizes. */
+export const caslonDisplay = localFont({
+  src: "../fonts/libre-caslon-display-latin-400-normal.woff2",
+  variable: "--font-caslon-display",
+  weight: "400",
   display: "swap",
 });
 
@@ -59,4 +59,4 @@ export const plexArabic = localFont({
   preload: false,
 });
 
-export const fontVariables = [atkinson.variable, atkinsonMono.variable, newsreader.variable, productSans.variable, productMono.variable, plexArabic.variable].join(" ");
+export const fontVariables = [atkinson.variable, atkinsonMono.variable, caslonDisplay.variable, productSans.variable, productMono.variable, plexArabic.variable].join(" ");

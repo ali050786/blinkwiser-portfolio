@@ -67,7 +67,7 @@ layout:
 # DESIGN.md
 
 ## Type (2026-10-12)
-Newsreader for every title and heading (`--font-family-display`; `.t-display-*` and the case hero title use it at weight 450). Atkinson Hyperlegible Next for body, UI and labels (`--font-family-sans`). Atkinson Hyperlegible Mono for code and tokens (`--font-family-mono`). Geist only inside the demo product screens (`--font-product`). This overrides the older type notes below.
+Libre Caslon Display for every title and heading (`--font-family-display`; `.t-display-*` use it at weight 400). It is cut for large sizes, so the small case title above each hero stays in the body font. Chosen by Ali over Newsreader, Philosopher (its capital I reads as a lowercase l) and Quintus (commercial, no files). Atkinson Hyperlegible Next for body, UI and labels (`--font-family-sans`). Atkinson Hyperlegible Mono for code and tokens (`--font-family-mono`). Geist only inside the demo product screens (`--font-product`). This overrides the older type notes below.
 
 ## Case pages follow the v4 home (2026-10-11)
 - Display serif for story headings, hook lines, metric numbers and the next-case title; sans for diagram and screen UI.

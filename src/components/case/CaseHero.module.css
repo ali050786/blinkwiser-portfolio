@@ -129,9 +129,8 @@
 .titleSmall {
   max-width: 40ch;
   margin: 0;
-  font-family: var(--font-family-display);
-  font-variation-settings: "opsz" 24;
-  font-weight: 450;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0;
 }
 .scope {

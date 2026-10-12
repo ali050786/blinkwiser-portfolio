@@ -163,8 +163,8 @@ export default function Colophon() {
         </div>
         <ul className={styles.specimens}>
           <li>
-            <span className="t-label c-tertiary">Newsreader · titles and headings</span>
-            <span className="t-display-m" style={{ fontFamily: "var(--font-family-display)", fontWeight: 450 }}>Decisions, not artifacts</span>
+            <span className="t-label c-tertiary">Libre Caslon Display · titles and headings</span>
+            <span className="t-display-m" style={{ fontFamily: "var(--font-family-display)", fontWeight: 400 }}>Decisions, not artifacts</span>
           </li>
           <li>
             <span className="t-label c-tertiary">Atkinson Hyperlegible Next · body, chosen because it keeps similar letters distinct for low-vision readers</span>

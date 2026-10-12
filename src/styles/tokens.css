@@ -109,10 +109,10 @@
   --radius-xl: 24px;
   --radius-pill: 999px;
   --font-family-sans: var(--font-atkinson), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-family-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-family-serif: var(--font-caslon-display), ui-serif, Georgia, serif;
   --font-family-mono: var(--font-atkinson-mono), ui-monospace, 'SF Mono', Menlo, monospace;
   --font-family-arabic: var(--font-arabic), 'Geeza Pro', 'Noto Sans Arabic', sans-serif;
-  --font-family-display: var(--font-newsreader), ui-serif, Georgia, 'Times New Roman', serif;
+  --font-family-display: var(--font-caslon-display), ui-serif, Georgia, 'Times New Roman', serif;
   --font-size-display-xl: clamp(2.75rem, 1.35rem + 5.6vw, 6.25rem);
   --font-size-display-l: clamp(2.25rem, 1.4rem + 3.4vw, 4.25rem);
   --font-size-display-m: clamp(1.875rem, 1.35rem + 2.1vw, 3.125rem);
