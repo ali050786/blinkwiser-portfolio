@@ -639,6 +639,17 @@ export const caseStudies: CaseStudy[] = [
       domain: "Enterprise SaaS · US health insurance",
     },
     tags: ["Agentic design workflow", "Design systems", "Figma variables", "MCP"],
+    cover: {
+      video: "/work/ai-system/cover.mp4?v=1",
+      poster: "/work/ai-system/cover-poster.webp?v=1",
+      width: 1920,
+      height: 840,
+      sound: false,
+      fill: true,
+      alt: "Trailer of the AI-readable design system: a story is typed into an AI tool, which reads four skill files, builds a claims page from real component instances, checks its own work against a checklist, and re-themes the page in another brand.",
+      caption: "One story in, one screen out. The AI reads the skill files first, builds from real components and checks its own work.",
+      note: "Animated in a demo brand. The rules shown are quoted from the skill files.",
+    },
     headline: { value: "3 or 4 days", label: "from Jira story to engineering-ready screen, down from one or two weeks" },
     card: { title: "A design system AI can read", widget: "pipeline", label: "Jira-story turnaround" },
     hook: {

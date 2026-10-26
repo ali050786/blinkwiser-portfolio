@@ -3,7 +3,7 @@
 import { DsDashboard } from "@/components/screens/designSystem";
 import { employer, insurers, type InsurerId } from "@/components/exhibits/ThemeDevices";
 import { site } from "@/content/site";
-import { StudioShell, clamp, inOut, live, ramp, rise, useStudio } from "./clock";
+import { NIGHT, StudioShell, WHITE, blob, clamp, css, hex, inOut, live, mix, ramp, rise, useStudio } from "./clock";
 import s from "./PlatformTrailer.module.css";
 
 /*
@@ -28,13 +28,6 @@ const SIZE: Record<Layout, [number, number]> = { card: [1440, 1080], wide: [1920
 const DASH_ZOOM: Record<Layout, number> = { card: 1.077, wide: 0.904 };
 
 /* ---------------------------------------------------------------- colour */
-
-type Rgb = [number, number, number];
-const hex = (h: string): Rgb => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)) as Rgb;
-const mix = (a: Rgb, b: Rgb, p: number): Rgb => [0, 1, 2].map((i) => a[i]! + (b[i]! - a[i]!) * p) as Rgb;
-const css = (c: Rgb) => `rgb(${c.map((v) => Math.round(v)).join(", ")})`;
-const WHITE: Rgb = [255, 255, 255];
-const NIGHT = hex("#0e1116");
 
 /** Which demo brand the dashboard wears, and when it switches. */
 const looks: { t: number; b: InsurerId }[] = [
@@ -77,7 +70,6 @@ function brandAt(t: number) {
 
 /** A soft gradient that drifts slowly. Original, from the site palette. */
 function backdrop(t: number) {
-  const blob = (x: number, y: number, r: number, c: string) => `radial-gradient(${r}% ${r}% at ${x}% ${y}%, ${c}, transparent 70%)`;
   const sin = (k: number, a: number) => Math.sin(t * k + a);
   return [
     blob(18 + 6 * sin(0.35, 0), 22 + 5 * sin(0.3, 1), 58, "rgba(19, 179, 161, 0.34)"),

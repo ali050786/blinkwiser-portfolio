@@ -27,6 +27,18 @@ export const rise = (t: number, a: number, dy = 18): React.CSSProperties => {
   return { opacity: p, transform: `translateY(${(1 - p) * dy}px)`, display: "inline-block" };
 };
 
+/* ---------------------------------------------------------------- colour */
+
+export type Rgb = [number, number, number];
+export const hex = (h: string): Rgb => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)) as Rgb;
+export const mix = (a: Rgb, b: Rgb, p: number): Rgb => [0, 1, 2].map((i) => a[i]! + (b[i]! - a[i]!) * p) as Rgb;
+export const css = (c: Rgb) => `rgb(${c.map((v) => Math.round(v)).join(", ")})`;
+export const WHITE: Rgb = [255, 255, 255];
+export const NIGHT = hex("#0e1116");
+
+/** A soft radial blob for the drifting gradient backdrops. */
+export const blob = (x: number, y: number, r: number, c: string) => `radial-gradient(${r}% ${r}% at ${x}% ${y}%, ${c}, transparent 70%)`;
+
 /* ------------------------------------------------------------ the clock */
 
 declare global {

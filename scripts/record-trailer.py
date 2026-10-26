@@ -12,6 +12,10 @@ frame in headless Chrome, then encodes with ffmpeg. Trailers:
               -> public/work/platform/trailer.mp4, trailer-poster.webp
   platform-wide  /studio/platform-wide, 1920 x 840, silent (case page hero)
               -> public/work/platform/cover.mp4, cover-poster.webp
+  skills      /studio/skills-trailer, 1440 x 1080, silent (home card)
+              -> public/work/ai-system/trailer.mp4, trailer-poster.webp
+  skills-wide /studio/skills-wide, 1920 x 840, silent (case page hero)
+              -> public/work/ai-system/cover.mp4, cover-poster.webp
 
 The soundtrack is copied, not re-encoded, from the current trailer.mp4 (or
 --audio). Everything is written to a temp folder first and only moved into
@@ -43,6 +47,8 @@ TRAILERS = {
     "platform": {"path": "/studio/platform-trailer", "out": WORK / "platform", "size": (1440, 1080), "poster_at": 5.4, "audio": False},
     # The same trailer in 2.3:1 for the case page's hero, saved as cover.mp4 next to the home card's trailer.mp4.
     "platform-wide": {"path": "/studio/platform-wide", "out": WORK / "platform", "size": (1920, 840), "poster_at": 5.4, "audio": False, "stem": "cover"},
+    "skills": {"path": "/studio/skills-trailer", "out": WORK / "ai-system", "size": (1440, 1080), "poster_at": 10.9, "audio": False},
+    "skills-wide": {"path": "/studio/skills-wide", "out": WORK / "ai-system", "size": (1920, 840), "poster_at": 10.9, "audio": False, "stem": "cover"},
 }
 
 

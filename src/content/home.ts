@@ -134,6 +134,7 @@ export const deck: Record<
   "ai-readable-design-system": {
     domain: "Design systems",
     status: "Built 2026",
+    video: { src: "/work/ai-system/trailer.mp4?v=1", poster: "/work/ai-system/trailer-poster.webp?v=1", fill: true },
     outcome: "Jira story to screen in three or four days, down from one or two weeks",
     opening: "Our AI tool kept putting Save on the wrong side.",
     img: "/work/deck/ai-system.webp",
