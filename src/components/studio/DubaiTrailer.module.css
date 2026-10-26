@@ -1,0 +1,286 @@
+/*
+ * The Dubai Municipality trailer, 1440 x 1080 (4:3, the home card's shape),
+ * with wide (2.3:1) overrides at the end. Midnight blue with a teal glow;
+ * site type for the story, the live app's own screens in the phones.
+ */
+
+.stage {
+  --ink: #f1f4f8;
+  --ink-2: #a3afc2;
+  --teal: #5fd4c4;
+  --red: #ff8e80;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #07131f;
+  color: var(--ink);
+  font-family: var(--font-atkinson), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: var(--font-caslon-text), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.006em;
+}
+.accent {
+  color: var(--teal);
+}
+.bad {
+  color: var(--red);
+}
+.eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: var(--ink-2);
+}
+
+/* opening and end cards */
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.big {
+  font-size: 76px;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.024em;
+}
+.endTitle {
+  font-size: 88px;
+  line-height: 1.06;
+  font-weight: 600;
+  letter-spacing: -0.026em;
+}
+.endAccent {
+  margin-top: 10px;
+  font-size: 54px;
+  color: var(--teal);
+}
+.byline {
+  margin-top: 54px;
+  font-size: 21px;
+  color: var(--ink-2);
+}
+.byline b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* headlines */
+.top {
+  position: absolute;
+  left: 96px;
+  top: 84px;
+  right: 96px;
+}
+.beat {
+  position: absolute;
+  inset: 0 0 auto 0;
+}
+.line {
+  display: block;
+  font-size: 62px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+}
+.sub {
+  display: block;
+  margin-top: 12px;
+  font-size: 30px;
+  line-height: 1.25;
+  color: var(--ink-2);
+  letter-spacing: -0.01em;
+}
+/* What the one app brought, lit as the phone shows each part. */
+.gains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+.gain {
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px 0 12px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 21px;
+  font-weight: 600;
+}
+.gain i {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #062a26;
+}
+.gain svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* the nine apps: cards, the lines into the phone, and each app's flight */
+.apps {
+  position: absolute;
+  inset: 0;
+}
+.lines {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  overflow: visible;
+}
+.wire {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.16);
+  stroke-width: 2;
+}
+.comet {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.card {
+  position: absolute;
+  display: grid;
+  align-content: end;
+  gap: 2px;
+  padding: 0 16px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+.card b {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.card span {
+  font-size: 15px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.icon {
+  position: absolute;
+  z-index: 2;
+  line-height: 0;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.45));
+}
+
+/* the one app: a phone around the live app's own screens */
+.phones {
+  position: absolute;
+  inset: 0;
+}
+.halo {
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(70, 210, 190, 0.38), rgba(70, 210, 190, 0) 100%);
+}
+.phone {
+  position: absolute;
+  padding: 11px;
+  border-radius: 54px;
+  background: linear-gradient(160deg, #2a2f38, #0b0d12 40%, #1b1f27);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.16),
+    0 50px 90px -30px rgba(0, 0, 0, 0.7);
+}
+.glass {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 44px;
+  background: #f3f5f9;
+}
+.island {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 92px;
+  height: 26px;
+  translate: -50% 0;
+  border-radius: 999px;
+  background: #07090c;
+}
+.screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.screen img {
+  position: absolute;
+  max-width: none;
+}
+.count {
+  position: absolute;
+  translate: -50% 0;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 18px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.count b {
+  color: var(--teal);
+  font-weight: 700;
+}
+.lang {
+  position: absolute;
+  translate: -50% 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* ------------------------------------------------------------- wide (2.3:1)
+ * The case page's hero: headline on the left, apps and phone on the right. */
+.stage[data-layout="wide"] .top {
+  left: 110px;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  width: 560px;
+}
+.stage[data-layout="wide"] .beat {
+  top: 50%;
+  transform: translateY(-55%);
+}
+.stage[data-layout="wide"] .line {
+  font-size: 54px;
+}
+.stage[data-layout="wide"] .sub {
+  font-size: 26px;
+}
+.stage[data-layout="wide"] .gain {
+  height: 44px;
+  font-size: 20px;
+}
+.stage[data-layout="wide"] .lang {
+  font-size: 18px;
+}
+.stage[data-layout="wide"] .card b {
+  font-size: 18px;
+}
+.stage[data-layout="wide"] .card span {
+  font-size: 13px;
+}

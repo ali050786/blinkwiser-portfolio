@@ -547,15 +547,18 @@ function End({ t }: { t: number }) {
   );
 }
 
-/** A soft gradient that drifts slowly: the case's lilac, with sky and a little of the site's teal. */
+/**
+ * A design tool's canvas: light grey with a dot grid, and a faint lilac glow
+ * that drifts. The AI builds its screen on a canvas, so the ground is one.
+ * Each case trailer has its own ground, so they never read alike side by side.
+ */
 function backdrop(t: number) {
   const sin = (k: number, a: number) => Math.sin(t * k + a);
   return [
-    blob(20 + 6 * sin(0.33, 0), 20 + 5 * sin(0.29, 1), 60, "rgba(150, 138, 226, 0.36)"),
-    blob(86 + 5 * sin(0.27, 2), 22 + 6 * sin(0.31, 3), 58, "rgba(118, 162, 238, 0.3)"),
-    blob(74 + 6 * sin(0.24, 4), 90 + 4 * sin(0.3, 5), 60, "rgba(19, 179, 161, 0.2)"),
-    blob(10 + 5 * sin(0.26, 6), 86 + 5 * sin(0.28, 7), 54, "rgba(232, 190, 228, 0.3)"),
-    "#f4f4fa",
+    "radial-gradient(circle, rgba(16, 19, 26, 0.16) 1.6px, transparent 2.2px) 0 0 / 28px 28px",
+    blob(18 + 6 * sin(0.33, 0), 20 + 5 * sin(0.29, 1), 56, "rgba(150, 138, 226, 0.16)"),
+    blob(84 + 5 * sin(0.27, 2), 86 + 6 * sin(0.31, 3), 58, "rgba(118, 162, 238, 0.12)"),
+    "#eceef2",
   ].join(", ");
 }
 

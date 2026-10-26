@@ -124,7 +124,7 @@ export const deck: Record<
   "enterprise-platform-from-zero": {
     domain: "White-label SaaS",
     status: "2020 to now",
-    video: { src: "/work/platform/trailer.mp4?v=2", poster: "/work/platform/trailer-poster.webp?v=2", fill: true },
+    video: { src: "/work/platform/trailer.mp4?v=3", poster: "/work/platform/trailer-poster.webp?v=3", fill: true },
     outcome: "A new client themed in under a day, down from weeks",
     opening: "A new client used to take weeks to set up.",
     img: "/work/deck/platform.webp",
@@ -134,7 +134,7 @@ export const deck: Record<
   "ai-readable-design-system": {
     domain: "Design systems",
     status: "Built 2026",
-    video: { src: "/work/ai-system/trailer.mp4?v=1", poster: "/work/ai-system/trailer-poster.webp?v=1", fill: true },
+    video: { src: "/work/ai-system/trailer.mp4?v=2", poster: "/work/ai-system/trailer-poster.webp?v=2", fill: true },
     outcome: "Jira story to screen in three or four days, down from one or two weeks",
     opening: "Our AI tool kept putting Save on the wrong side.",
     img: "/work/deck/ai-system.webp",
@@ -144,6 +144,7 @@ export const deck: Record<
   "designing-trust-into-ai": {
     domain: "AI product",
     status: "2026 to now",
+    video: { src: "/work/blinkwiser/trailer.mp4?v=1", poster: "/work/blinkwiser/trailer-poster.webp?v=1", fill: true },
     outcome: "First slides in about 23 seconds, with every number traced to a source",
     opening: "The first version made up its own statistics.",
     img: "/work/deck/blinkwiser.webp",
@@ -153,6 +154,7 @@ export const deck: Record<
   "dubai-municipality": {
     domain: "Civic services",
     status: "2019 to 2020",
+    video: { src: "/work/dubai/trailer.mp4?v=2", poster: "/work/dubai/trailer-poster.webp?v=2", fill: true },
     outcome: "Nine city apps brought into one, in Arabic and English",
     opening: "Nine separate apps, each with its own way of working.",
     img: "/work/deck/dubai.webp",

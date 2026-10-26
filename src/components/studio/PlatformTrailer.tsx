@@ -68,15 +68,19 @@ function brandAt(t: number) {
 
 /* ------------------------------------------------------------ background */
 
-/** A soft gradient that drifts slowly. Original, from the site palette. */
+/**
+ * A warm sunset gradient that drifts slowly: apricot, coral and butter on
+ * cream. Original. Each case trailer has its own ground, so they never read
+ * alike side by side on the home page.
+ */
 function backdrop(t: number) {
   const sin = (k: number, a: number) => Math.sin(t * k + a);
   return [
-    blob(18 + 6 * sin(0.35, 0), 22 + 5 * sin(0.3, 1), 58, "rgba(19, 179, 161, 0.34)"),
-    blob(84 + 5 * sin(0.28, 2), 18 + 6 * sin(0.33, 3), 62, "rgba(110, 150, 235, 0.36)"),
-    blob(72 + 6 * sin(0.25, 4), 88 + 4 * sin(0.31, 5), 64, "rgba(178, 152, 232, 0.34)"),
-    blob(12 + 5 * sin(0.27, 6), 86 + 5 * sin(0.29, 7), 54, "rgba(255, 206, 170, 0.32)"),
-    "#f3f6fa",
+    blob(16 + 6 * sin(0.35, 0), 20 + 5 * sin(0.3, 1), 62, "rgba(255, 168, 104, 0.55)"),
+    blob(86 + 5 * sin(0.28, 2), 16 + 6 * sin(0.33, 3), 60, "rgba(255, 118, 138, 0.42)"),
+    blob(76 + 6 * sin(0.25, 4), 90 + 4 * sin(0.31, 5), 64, "rgba(196, 150, 238, 0.36)"),
+    blob(10 + 5 * sin(0.27, 6), 88 + 5 * sin(0.29, 7), 56, "rgba(255, 214, 118, 0.5)"),
+    "#fcefe4",
   ].join(", ");
 }
 

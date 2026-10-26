@@ -53,7 +53,7 @@ export function NineIntoOne() {
           <circle key={i} cx={19 + i * 28} cy={236} r={6} className={i === 0 ? g.accent : g.nodeModel} />
         ))}
       </g>
-      <T x={615} y={316} anchor="middle" accent>
+      <T x={690} y={316} anchor="end" accent>
         one app · one sign-in · five tabs
       </T>
     </Diagram>

@@ -1,0 +1,234 @@
+/*
+ * The Blinkwiser trailer, 1440 x 1080 (4:3, the home card's shape), with wide
+ * (2.3:1) overrides at the end. A dark stage in the product's violet; site
+ * type for the story, the real recording for the product.
+ */
+
+.stage {
+  --ink: #f3f1fb;
+  --ink-2: #aaa6c4;
+  --lavender: #b8a8ff;
+  --bad: #ff9d8f;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0c0a14;
+  color: var(--ink);
+  font-family: var(--font-atkinson), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: var(--font-caslon-text), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.006em;
+}
+.accent {
+  color: var(--lavender);
+}
+.bad {
+  color: var(--bad);
+}
+.eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: var(--ink-2);
+}
+
+/* centre cards: opening, numbers, end */
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.big {
+  font-size: 78px;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.024em;
+}
+.endTitle {
+  font-size: 88px;
+  line-height: 1.06;
+  font-weight: 600;
+  letter-spacing: -0.026em;
+}
+.endAccent {
+  margin-top: 10px;
+  font-size: 54px;
+  color: var(--lavender);
+}
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 21px;
+  color: var(--ink-2);
+}
+.live b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.live i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #c4f06a;
+  box-shadow: 0 0 10px rgba(196, 240, 106, 0.7);
+}
+.byline {
+  margin-top: 30px;
+  font-size: 21px;
+  color: var(--ink-2);
+}
+.byline b {
+  color: var(--ink);
+  font-weight: 600;
+}
+.stats {
+  display: flex;
+  gap: 64px;
+  margin-top: 8px;
+}
+.stat {
+  justify-items: center;
+  gap: 10px;
+  width: 300px;
+}
+.stat b {
+  font-size: 84px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--lavender);
+}
+.stat span {
+  font-size: 23px;
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+.note {
+  margin-top: 40px;
+  font-size: 18px;
+  color: var(--ink-2);
+}
+
+/* headlines above the recording */
+.top {
+  position: absolute;
+  left: 96px;
+  top: 84px;
+  right: 96px;
+}
+.beat {
+  position: absolute;
+  inset: 0 0 auto 0;
+}
+.line {
+  display: block;
+  font-size: 62px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+}
+.sub {
+  display: block;
+  margin-top: 12px;
+  font-size: 32px;
+  line-height: 1.25;
+  color: var(--ink-2);
+  letter-spacing: -0.01em;
+}
+/* The agent steps, lit as each one starts in the recording. */
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.job {
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 20px 0 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  color: var(--ink-2);
+  font-size: 22px;
+  font-weight: 600;
+}
+.job i {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--lavender);
+  color: #17122e;
+}
+.job svg {
+  width: 15px;
+  height: 15px;
+}
+.job[data-state="now"] {
+  border-color: var(--lavender);
+  background: rgba(184, 168, 255, 0.16);
+  color: var(--ink);
+  box-shadow: 0 0 24px -4px rgba(150, 120, 255, 0.6);
+}
+.job[data-state="done"] {
+  color: var(--ink);
+}
+
+/* the real recording, framed */
+.shot {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0b0b10;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 40px 120px -30px rgba(96, 72, 230, 0.55);
+}
+.shot video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+/* ------------------------------------------------------------- wide (2.3:1)
+ * The case page's hero: headline on the left, the recording on the right. */
+.stage[data-layout="wide"] .top {
+  left: 110px;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  width: 560px;
+}
+.stage[data-layout="wide"] .beat {
+  top: 50%;
+  transform: translateY(-55%);
+}
+.stage[data-layout="wide"] .line {
+  font-size: 52px;
+}
+.stage[data-layout="wide"] .sub {
+  font-size: 28px;
+}
+.stage[data-layout="wide"] .job {
+  height: 44px;
+  font-size: 20px;
+}

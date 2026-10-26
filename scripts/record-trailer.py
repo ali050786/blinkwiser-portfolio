@@ -16,6 +16,15 @@ frame in headless Chrome, then encodes with ffmpeg. Trailers:
               -> public/work/ai-system/trailer.mp4, trailer-poster.webp
   skills-wide /studio/skills-wide, 1920 x 840, silent (case page hero)
               -> public/work/ai-system/cover.mp4, cover-poster.webp
+  blinkwiser  /studio/blinkwiser-trailer, 1440 x 1080, silent (home card),
+              cut from the real recording public/work/blinkwiser/run.mp4
+              -> public/work/blinkwiser/trailer.mp4, trailer-poster.webp
+  blinkwiser-wide  /studio/blinkwiser-wide, 1920 x 840, silent (case page hero)
+              -> public/work/blinkwiser/cover.mp4, cover-poster.webp
+  dubai       /studio/dubai-trailer, 1440 x 1080, silent (home card)
+              -> public/work/dubai/trailer.mp4, trailer-poster.webp
+  dubai-wide  /studio/dubai-wide, 1920 x 840, silent (case page hero)
+              -> public/work/dubai/cover.mp4, cover-poster.webp
 
 The soundtrack is copied, not re-encoded, from the current trailer.mp4 (or
 --audio). Everything is written to a temp folder first and only moved into
@@ -49,6 +58,10 @@ TRAILERS = {
     "platform-wide": {"path": "/studio/platform-wide", "out": WORK / "platform", "size": (1920, 840), "poster_at": 5.4, "audio": False, "stem": "cover"},
     "skills": {"path": "/studio/skills-trailer", "out": WORK / "ai-system", "size": (1440, 1080), "poster_at": 10.9, "audio": False},
     "skills-wide": {"path": "/studio/skills-wide", "out": WORK / "ai-system", "size": (1920, 840), "poster_at": 10.9, "audio": False, "stem": "cover"},
+    "blinkwiser": {"path": "/studio/blinkwiser-trailer", "out": WORK / "blinkwiser", "size": (1440, 1080), "poster_at": 12.9, "audio": False},
+    "blinkwiser-wide": {"path": "/studio/blinkwiser-wide", "out": WORK / "blinkwiser", "size": (1920, 840), "poster_at": 12.9, "audio": False, "stem": "cover"},
+    "dubai": {"path": "/studio/dubai-trailer", "out": WORK / "dubai", "size": (1440, 1080), "poster_at": 7.4, "audio": False},
+    "dubai-wide": {"path": "/studio/dubai-wide", "out": WORK / "dubai", "size": (1920, 840), "poster_at": 7.4, "audio": False, "stem": "cover"},
 }
 
 
@@ -82,7 +95,9 @@ def main() -> int:
         page.evaluate("() => document.fonts.ready.then(() => true)")
         duration, fps = page.evaluate("() => [window.__trailer.duration, window.__trailer.fps]")
         stage = page.locator("[data-stage]")
-        shot = lambda t, path: (page.evaluate("t => window.__trailer.setTime(t)", t), stage.screenshot(path=str(path)))
+        # Trailers cut from a real recording seek a <video> each frame; wait for it before the screenshot.
+        seeked = "() => [...document.querySelectorAll('[data-stage] video')].every(v => v.readyState >= 2 && !v.seeking) && [...document.querySelectorAll('[data-stage] img')].every(i => i.complete)"
+        shot = lambda t, path: (page.evaluate("t => window.__trailer.setTime(t)", t), page.wait_for_function(seeked), stage.screenshot(path=str(path)))
 
         if args.stills:
             stills = pathlib.Path(args.stills_dir)
