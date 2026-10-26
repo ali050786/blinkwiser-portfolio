@@ -1,0 +1,232 @@
+/*
+ * The platform trailer, 1440 x 1080 (4:3, the home card's shape). Site type
+ * for the story; the dashboard keeps the demo brand's product type.
+ */
+
+.stage {
+  --ink: #10131a;
+  --ink-2: #4b5060;
+  --teal: #0a7266;
+  --red: #a3261a;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: var(--font-atkinson), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: var(--font-caslon-text), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.006em;
+}
+.accent {
+  color: var(--teal);
+}
+.bad {
+  color: var(--red);
+}
+.eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: var(--ink-2);
+}
+
+/* opening and end cards */
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.big {
+  font-size: 78px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.024em;
+}
+.endTitle {
+  font-size: 88px;
+  line-height: 1.06;
+  font-weight: 600;
+  letter-spacing: -0.026em;
+}
+.endAccent {
+  margin-top: 10px;
+  font-size: 54px;
+  color: var(--teal);
+}
+.byline {
+  margin-top: 54px;
+  font-size: 21px;
+  color: var(--ink-2);
+}
+.byline b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* headlines above the dashboard */
+.top {
+  position: absolute;
+  left: 120px;
+  top: 92px;
+  right: 120px;
+}
+.beat {
+  position: absolute;
+  inset: 0 0 auto 0;
+}
+.line {
+  display: block;
+  font-size: 62px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+}
+.sub {
+  display: block;
+  margin-top: 8px;
+  font-size: 34px;
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.small {
+  display: block;
+  margin-top: 12px;
+  font-size: 21px;
+  color: var(--ink-2);
+}
+.tiers {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+.tier {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 2px solid rgba(10, 114, 102, 0.35);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--teal);
+}
+.arrow {
+  font-size: 26px;
+  color: var(--ink-2);
+}
+/* Where the one foundation runs. */
+.surfaces {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.surface {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(16, 19, 26, 0.12);
+  font-size: 21px;
+  font-weight: 600;
+}
+.surfaces .small {
+  margin: 0 0 0 10px;
+}
+
+/* the dashboard, rising from the bottom edge */
+.card {
+  position: absolute;
+  left: 160px;
+  top: 384px;
+  width: 1120px;
+  height: 820px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px rgba(16, 19, 26, 0.06),
+    0 40px 90px -30px rgba(30, 40, 80, 0.4);
+}
+.cardBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 58px;
+  padding-inline: 22px;
+  border-bottom: 1px solid #e3e6ec;
+  font-family: var(--font-product), system-ui, sans-serif;
+  font-size: 17px;
+}
+.logo {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  font-weight: 700;
+}
+.cobrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #f4f0fa;
+  color: #4a3a63;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cobrand i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+/* The member's own setting, the third tier. */
+.member {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: #3a4558;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* The library's dashboard pattern is drawn at 1040px; PlatformTrailer scales it per layout. */
+.screen {
+  zoom: 1.077;
+}
+
+/* ------------------------------------------------------------- wide (2.3:1)
+ * The case page's hero: the same beats with the headline on the left and the
+ * dashboard on the right, bleeding off the bottom edge. */
+.stage[data-layout="wide"] .top {
+  left: 140px;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  width: 680px;
+}
+.stage[data-layout="wide"] .beat {
+  inset: 0 0 auto 0;
+  top: 50%;
+  transform: translateY(-58%);
+}
+.stage[data-layout="wide"] .line {
+  font-size: 54px;
+}
+.stage[data-layout="wide"] .sub {
+  font-size: 30px;
+}
+.stage[data-layout="wide"] .card {
+  left: 880px;
+  top: 96px;
+  width: 940px;
+  height: 820px;
+}

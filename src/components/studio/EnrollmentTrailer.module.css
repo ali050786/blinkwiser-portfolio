@@ -5,25 +5,6 @@
  * type and palette inside the browser window (same values as screens/kit).
  */
 
-.shell {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  display: grid;
-  place-items: center;
-  background: #1b1e24;
-  overflow: hidden;
-}
-.shell[data-record] {
-  place-items: start;
-  background: transparent;
-}
-.fit {
-  position: relative;
-  width: 1920px;
-  height: 1080px;
-  transform-origin: 0 0;
-}
 
 .stage {
   --ink: #10131a;
@@ -929,28 +910,3 @@
   z-index: 19;
 }
 
-/* preview controls (not recorded) */
-.controls {
-  position: fixed;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font: 13px/1 system-ui, sans-serif;
-  z-index: 10001;
-}
-.controls button {
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: #fff;
-  color: #000;
-}
-.controls input {
-  width: 420px;
-}

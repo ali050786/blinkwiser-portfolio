@@ -1,13 +1,17 @@
+/* A size container, so the headline can be sized from the wrapper's width (cqi). */
 .intro {
+  container-type: inline-size;
   padding-block: clamp(56px, 9vw, 120px) clamp(40px, 6vw, 72px);
 }
+/* The hero line runs the full width of the wrapper on one line: the sentence
+ * is about 13.9em wide, so 7.1% of the wrapper fills it with a hair to spare.
+ * Below 44px (phones) it wraps into two balanced lines instead. */
 .title {
-  max-width: 18ch;
   font-family: var(--font-family-heading);
-  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
-  line-height: 1.12;
+  font-size: max(2.75rem, 7.1cqi);
+  line-height: 1.03;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.022em;
   color: var(--text-primary);
 }
 .rows {
@@ -15,7 +19,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px clamp(24px, 4vw, 56px);
   max-width: 920px;
-  margin-top: clamp(28px, 4vw, 44px);
+  margin-top: clamp(32px, 4.5vw, 56px);
 }
 .row dt {
   font-size: 14px;

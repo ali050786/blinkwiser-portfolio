@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
 """
-Records the enrollment trailer from the studio page (src/app/studio/trailer).
+Records a case-study trailer from its studio page (src/app/studio).
 
-The page draws any moment exactly from one clock, so this steps it frame by
-frame in headless Chrome, then encodes with ffmpeg:
+Each page draws any moment exactly from one clock, so this steps it frame by
+frame in headless Chrome, then encodes with ffmpeg. Trailers:
 
-  public/work/enrollment/trailer.mp4          with the soundtrack (case page)
-  public/work/enrollment/trailer-silent.mp4   no audio (home card)
-  public/work/enrollment/trailer-poster.webp  "The family stays" frame
+  enrollment  /studio/trailer, 1920 x 1080, with the original soundtrack
+              -> public/work/enrollment/trailer.mp4 (case page),
+                 trailer-silent.mp4 (home card), trailer-poster.webp
+  platform    /studio/platform-trailer, 1440 x 1080, silent (home card)
+              -> public/work/platform/trailer.mp4, trailer-poster.webp
+  platform-wide  /studio/platform-wide, 1920 x 840, silent (case page hero)
+              -> public/work/platform/cover.mp4, cover-poster.webp
 
-The soundtrack is copied, not re-encoded, from the current trailer.mp4
-(or --audio). Everything is written to a temp folder first and only moved
-into public/ once all three files are made.
+The soundtrack is copied, not re-encoded, from the current trailer.mp4 (or
+--audio). Everything is written to a temp folder first and only moved into
+public/ once all files are made. Then bump the ?v= tag on that trailer's
+URLs in src/content so browsers and the CDN fetch the new files.
 
 Needs `npm run dev` running, ffmpeg on PATH, Google Chrome installed, and
 Python Playwright. The video-generation pipeline's venv has Playwright:
 
-  "../../video generation/platform/pipeline/.venv/bin/python" scripts/record-trailer.py
-  ... scripts/record-trailer.py --stills 3.6 10.4 21.4   # just these moments, as PNGs
+  "../../video generation/platform/pipeline/.venv/bin/python" scripts/record-trailer.py platform
+  ... scripts/record-trailer.py platform --stills 2 6 11   # just these moments, as PNGs
 """
 
 import argparse
@@ -31,8 +36,14 @@ import tempfile
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PUBLIC = ROOT / "public" / "work" / "enrollment"
-POSTER_AT = 29.9
+WORK = ROOT / "public" / "work"
+
+TRAILERS = {
+    "enrollment": {"path": "/studio/trailer", "out": WORK / "enrollment", "size": (1920, 1080), "poster_at": 29.9, "audio": True},
+    "platform": {"path": "/studio/platform-trailer", "out": WORK / "platform", "size": (1440, 1080), "poster_at": 5.4, "audio": False},
+    # The same trailer in 2.3:1 for the case page's hero, saved as cover.mp4 next to the home card's trailer.mp4.
+    "platform-wide": {"path": "/studio/platform-wide", "out": WORK / "platform", "size": (1920, 840), "poster_at": 5.4, "audio": False, "stem": "cover"},
+}
 
 
 def run(cmd: list[str]) -> None:
@@ -41,21 +52,26 @@ def run(cmd: list[str]) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--url", default="http://localhost:3000/studio/trailer?record")
+    ap.add_argument("trailer", nargs="?", default="enrollment", choices=sorted(TRAILERS))
+    ap.add_argument("--base", default="http://localhost:3000", help="where `npm run dev` is serving")
     ap.add_argument("--stills", nargs="*", type=float, help="only render these moments (seconds) as PNGs")
     ap.add_argument("--stills-dir", default=str(ROOT / ".trailer-stills"), help="where --stills go")
-    ap.add_argument("--audio", default=str(PUBLIC / "trailer.mp4"), help="file to copy the soundtrack from")
+    ap.add_argument("--audio", help="file to copy the soundtrack from (default: the trailer's current trailer.mp4)")
     ap.add_argument("--crf", default="18", help="x264 quality (lower is better)")
     args = ap.parse_args()
 
+    cfg = TRAILERS[args.trailer]
+    stem = cfg.get("stem", "trailer")
+    out_dir: pathlib.Path = cfg["out"]
+    width, height = cfg["size"]
     work = pathlib.Path(tempfile.mkdtemp(prefix="trailer-"))
     frames = work / "frames"
     frames.mkdir()
 
     with sync_playwright() as p:
         browser = p.chromium.launch(channel="chrome", headless=True)
-        page = browser.new_page(viewport={"width": 1920, "height": 1080}, device_scale_factor=1)
-        page.goto(args.url, wait_until="networkidle")
+        page = browser.new_page(viewport={"width": width, "height": height}, device_scale_factor=1)
+        page.goto(f"{args.base}{cfg['path']}?record", wait_until="networkidle")
         page.wait_for_function("() => !!window.__trailer")
         page.evaluate("() => document.fonts.ready.then(() => true)")
         duration, fps = page.evaluate("() => [window.__trailer.duration, window.__trailer.fps]")
@@ -63,11 +79,12 @@ def main() -> int:
         shot = lambda t, path: (page.evaluate("t => window.__trailer.setTime(t)", t), stage.screenshot(path=str(path)))
 
         if args.stills:
-            out = pathlib.Path(args.stills_dir)
-            out.mkdir(parents=True, exist_ok=True)
+            stills = pathlib.Path(args.stills_dir)
+            stills.mkdir(parents=True, exist_ok=True)
             for t in args.stills:
-                shot(t, out / f"still-{t:05.2f}.png")
-                print(f"still {t:.2f}s -> {out / f'still-{t:05.2f}.png'}")
+                target = stills / f"{args.trailer}-{t:05.2f}.png"
+                shot(t, target)
+                print(f"still {t:.2f}s -> {target}")
             browser.close()
             shutil.rmtree(work)
             return 0
@@ -78,8 +95,8 @@ def main() -> int:
             if i % 60 == 0:
                 print(f"frame {i}/{total}", flush=True)
 
-        # Poster: the same moment the old poster showed, encoded to WebP by Chrome itself.
-        shot(POSTER_AT, work / "poster.png")
+        # Poster: a chosen moment, encoded to WebP by Chrome itself (this ffmpeg has no WebP encoder).
+        shot(cfg["poster_at"], work / "poster.png")
         b64 = base64.b64encode((work / "poster.png").read_bytes()).decode()
         webp = page.evaluate(
             """async (b64) => {
@@ -93,28 +110,34 @@ def main() -> int:
             }""",
             b64,
         )
-        (work / "trailer-poster.webp").write_bytes(base64.b64decode(webp))
+        (work / f"{stem}-poster.webp").write_bytes(base64.b64decode(webp))
         browser.close()
 
     print("encoding", flush=True)
-    run(["ffmpeg", "-v", "error", "-y", "-i", args.audio, "-vn", "-c:a", "copy", str(work / "audio.m4a")])
+    silent = work / (f"{stem}-silent.mp4" if cfg["audio"] else f"{stem}.mp4")
     run([
         "ffmpeg", "-v", "error", "-y", "-framerate", str(fps), "-i", str(frames / "%05d.png"),
         "-c:v", "libx264", "-preset", "slow", "-crf", args.crf, "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an",
-        str(work / "trailer-silent.mp4"),
+        str(silent),
     ])
-    run([
-        "ffmpeg", "-v", "error", "-y", "-i", str(work / "trailer-silent.mp4"), "-i", str(work / "audio.m4a"),
-        "-map", "0:v", "-map", "1:a", "-c", "copy", "-shortest", "-movflags", "+faststart",
-        str(work / "trailer.mp4"),
-    ])
+    names = [silent.name, f"{stem}-poster.webp"]
+    if cfg["audio"]:
+        audio_src = args.audio or str(out_dir / f"{stem}.mp4")
+        run(["ffmpeg", "-v", "error", "-y", "-i", audio_src, "-vn", "-c:a", "copy", str(work / "audio.m4a")])
+        run([
+            "ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(work / "audio.m4a"),
+            "-map", "0:v", "-map", "1:a", "-c", "copy", "-shortest", "-movflags", "+faststart",
+            str(work / f"{stem}.mp4"),
+        ])
+        names.append(f"{stem}.mp4")
 
-    for name in ("trailer.mp4", "trailer-silent.mp4", "trailer-poster.webp"):
-        shutil.move(str(work / name), str(PUBLIC / name))
-        print(f"wrote {PUBLIC / name}")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for name in names:
+        shutil.move(str(work / name), str(out_dir / name))
+        print(f"wrote {out_dir / name}")
     shutil.rmtree(work)
     # Same file names, so browsers and the CDN would keep serving the old copies.
-    print("Now bump the ?v= tag on the trailer URLs in src/content/home.ts and src/content/case-studies.ts.")
+    print("Now bump the ?v= tag on this trailer's URLs in src/content (home.ts, case-studies.ts).")
     return 0
 
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { site } from "@/content/site";
+import { StudioShell, clamp, inOut, lerp, live, ramp, rise, useStudio } from "./clock";
 import s from "./EnrollmentTrailer.module.css";
 
 /*
@@ -17,21 +18,6 @@ import s from "./EnrollmentTrailer.module.css";
 export const DURATION = 34.6;
 export const FPS = 30;
 
-/* ---------------------------------------------------------------- timing */
-
-const clamp = (x: number) => Math.min(1, Math.max(0, x));
-const outCubic = (x: number) => 1 - (1 - x) ** 3;
-const inOut = (x: number) => (x < 0.5 ? 4 * x ** 3 : 1 - (-2 * x + 2) ** 3 / 2);
-const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
-/** 0 to 1 over [a, a + d], eased out. */
-const ramp = (t: number, a: number, d = 0.45) => outCubic(clamp((t - a) / d));
-/** 1 while t is inside [a, b], fading in and out over f seconds. A start at or below 0 means already in. */
-const live = (t: number, a: number, b: number, f = 0.3) => Math.min(a <= 0 ? 1 : ramp(t, a, f), 1 - ramp(t, b - f, f));
-/** Fade and rise in at a. */
-const rise = (t: number, a: number, dy = 18): React.CSSProperties => {
-  const p = ramp(t, a, 0.5);
-  return { opacity: p, transform: `translateY(${(1 - p) * dy}px)`, display: "inline-block" };
-};
 const money = (n: number) => `$${n.toFixed(2)}`;
 
 /* ----------------------------------------------------------------- icons */
@@ -886,91 +872,31 @@ function placePointer(t: number, stage: HTMLElement | null, cursor: HTMLElement 
 
 /* --------------------------------------------------------------- the page */
 
-declare global {
-  interface Window {
-    __trailer?: { duration: number; fps: number; setTime: (t: number) => Promise<void> };
-  }
-}
-
 export function EnrollmentTrailer() {
-  const [t, setT] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const [record, setRecord] = useState(false);
-  const [scale, setScale] = useState(1);
+  const studio = useStudio(DURATION, FPS, 1920, 1080);
+  const { t, scale } = studio;
   const stage = useRef<HTMLDivElement>(null);
   const cursor = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
-
-  // The recorder drives the clock directly and waits for two frames after each step.
-  useEffect(() => {
-    setRecord(new URLSearchParams(window.location.search).has("record"));
-    window.__trailer = {
-      duration: DURATION,
-      fps: FPS,
-      setTime: (v: number) =>
-        new Promise((res) => {
-          setT(v);
-          requestAnimationFrame(() => requestAnimationFrame(() => res()));
-        }),
-    };
-    return () => {
-      delete window.__trailer;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!playing) return;
-    let raf = 0;
-    let last = performance.now();
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      setT((v) => (v + dt >= DURATION ? 0 : v + dt));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [playing]);
-
-  useLayoutEffect(() => {
-    if (record) return setScale(1);
-    const fit = () => setScale(Math.min(window.innerWidth / 1920, (window.innerHeight - 90) / 1080));
-    fit();
-    window.addEventListener("resize", fit);
-    return () => window.removeEventListener("resize", fit);
-  }, [record]);
 
   // The pointer is placed after layout, from the live positions of its targets.
   useLayoutEffect(() => placePointer(t, stage.current, cursor.current, ring.current, scale), [t, scale]);
 
   return (
-    <div className={s.shell} data-record={record || undefined}>
-      {/* The dev-mode badge would show up in the recording. */}
-      <style>{"nextjs-portal{display:none!important}"}</style>
-      <div className={s.fit} style={{ transform: `scale(${scale})` }}>
-        <div ref={stage} className={s.stage} data-stage>
-          <Story t={t} />
-          <Checks t={t} />
-          <Middle t={t} />
-          <End t={t} />
-          <Window t={t} />
-          <div ref={ring} className={s.ripple} style={{ opacity: 0 }} />
-          <div ref={cursor} className={s.cursor} style={{ opacity: 0 }}>
-            <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
-              <path d="M5 3l16 10.2-7 1.4-3.6 6.9z" fill="#10131a" stroke="#ffffff" strokeWidth="1.6" strokeLinejoin="round" />
-            </svg>
-          </div>
+    <StudioShell studio={studio}>
+      <div ref={stage} className={s.stage} data-stage>
+        <Story t={t} />
+        <Checks t={t} />
+        <Middle t={t} />
+        <End t={t} />
+        <Window t={t} />
+        <div ref={ring} className={s.ripple} style={{ opacity: 0 }} />
+        <div ref={cursor} className={s.cursor} style={{ opacity: 0 }}>
+          <svg viewBox="0 0 28 28" width="28" height="28" aria-hidden="true">
+            <path d="M5 3l16 10.2-7 1.4-3.6 6.9z" fill="#10131a" stroke="#ffffff" strokeWidth="1.6" strokeLinejoin="round" />
+          </svg>
         </div>
       </div>
-      {!record && (
-        <div className={s.controls}>
-          <button type="button" onClick={() => setPlaying((p) => !p)}>
-            {playing ? "Pause" : "Play"}
-          </button>
-          <input type="range" min={0} max={DURATION} step={1 / FPS} value={t} onChange={(e) => setT(Number(e.target.value))} aria-label="Time" />
-          <span>{t.toFixed(2)} s</span>
-        </div>
-      )}
-    </div>
+    </StudioShell>
   );
 }

@@ -34,7 +34,9 @@ export const viewport: Viewport = {
 // Runs before paint: applies a saved theme (light unless the visitor chose
 // dark) and records the motion preference, so there is no flash of the wrong
 // theme and reveal styles only apply when reduced motion isn't requested.
-const bootScript = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}d.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'ok';})();`;
+// Choices live under 'site-theme' since the light-first redesign; the old
+// 'theme' key (from the dark-first site) is dropped so everyone starts light.
+const bootScript = `(function(){var d=document.documentElement;try{localStorage.removeItem('theme');var t=localStorage.getItem('site-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}d.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'ok';})();`;
 
 const personJsonLd = {
   "@context": "https://schema.org",

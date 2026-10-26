@@ -22,7 +22,10 @@ type Name =
   | "lock"
   | "pause"
   | "spark"
-  | "send";
+  | "send"
+  | "grid"
+  | "user"
+  | "file";
 
 const paths: Record<Name, React.ReactNode> = {
   "arrow-right": <path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" />,
@@ -72,6 +75,21 @@ const paths: Record<Name, React.ReactNode> = {
   pause: <path d="M7.5 5.5v9M12.5 5.5v9" />,
   spark: <path d="M10 3.5c.6 3.4 2.6 5.4 6 6-3.4.6-5.4 2.6-6 6-.6-3.4-2.6-5.4-6-6 3.4-.6 5.4-2.6 6-6Z" />,
   send: <path d="M10 15.5v-11M5.5 9L10 4.5 14.5 9" />,
+  grid: (
+    <>
+      <rect x="3.5" y="3.5" width="5.5" height="5.5" rx="1.4" />
+      <rect x="11" y="3.5" width="5.5" height="5.5" rx="1.4" />
+      <rect x="3.5" y="11" width="5.5" height="5.5" rx="1.4" />
+      <rect x="11" y="11" width="5.5" height="5.5" rx="1.4" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="10" cy="7" r="3" />
+      <path d="M4.5 16.5c.8-2.8 3-4.3 5.5-4.3s4.7 1.5 5.5 4.3" />
+    </>
+  ),
+  file: <path d="M6 2.5h5.5L15 6v11.5H6zM11.5 2.5V6H15M8.5 10h4M8.5 13h4" />,
 };
 
 export function Icon({ name, size = 18, ...rest }: { name: Name; size?: number } & SVGProps<SVGSVGElement>) {

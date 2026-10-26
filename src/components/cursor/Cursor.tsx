@@ -23,6 +23,8 @@ const INTERACTIVE = "a[href], button, [role='button'], summary, label[for], sele
 const TYPING = "input, textarea, select, [contenteditable='true']";
 
 function labelFor(el: Element): string {
+  // Controls that show their own label (the header toolbar's icons) keep the pointer quiet.
+  if (el.closest("[data-cursor-quiet]")) return "";
   const own = el.closest("[data-cursor-text]")?.getAttribute("data-cursor-text");
   if (own) return own;
   const a = el.closest("a[href]") as HTMLAnchorElement | null;

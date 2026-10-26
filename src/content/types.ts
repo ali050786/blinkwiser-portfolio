@@ -141,6 +141,8 @@ export interface Shot {
   bare?: boolean;
   /** Autoplaying video with a pause button; true adds a sound toggle (muted by default). */
   sound?: boolean;
+  /** The media brings its own background (a trailer): it fills the cover frame edge to edge, with no tint or padding. */
+  fill?: boolean;
 }
 
 export interface Option {

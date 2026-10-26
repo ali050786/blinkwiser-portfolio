@@ -40,3 +40,12 @@
 .frame[data-full] > * {
   box-shadow: none;
 }
+/* A trailer with its own background fills the frame edge to edge: no tint, no padding. */
+.frame[data-fill] {
+  padding: 0;
+  background: none;
+}
+.frame[data-fill] > * {
+  border-radius: var(--deck-radius);
+  box-shadow: none;
+}

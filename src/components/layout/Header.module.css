@@ -1,28 +1,50 @@
-/* Minimal bar: text only, one line, 56px. */
+/*
+ * The header and the toolbar it turns into (see Header.tsx). The header keeps
+ * one height in both states, so the page never shifts when it switches.
+ */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  transition: background-color var(--duration-base) var(--ease-standard);
+  height: 56px;
 }
-.header[data-scrolled] {
-  background: color-mix(in srgb, var(--surface-canvas) 86%, transparent);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  backdrop-filter: blur(12px) saturate(140%);
+/* In toolbar mode only the pill takes clicks; the strip around it lets them through. */
+.header[data-compact] {
+  pointer-events: none;
 }
 .inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------------------------------------------------------------ at the top */
+.bar {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
   height: 56px;
 }
-
+.surfaceFull {
+  position: absolute;
+  inset: 0 calc(-1 * var(--layout-gutter));
+  z-index: -1;
+  background: transparent;
+}
 .left {
   display: flex;
   align-items: center;
   gap: 28px;
   min-width: 0;
+}
+.nameWrap {
+  display: inline-flex;
 }
 .name {
   font-size: 15px;
@@ -44,7 +66,6 @@
 .link[aria-current] {
   color: var(--text-primary);
 }
-
 .right {
   display: flex;
   align-items: center;
@@ -59,7 +80,7 @@
   font-size: 15px;
   color: var(--text-primary);
   border-radius: var(--radius-xs);
-  transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
+  transition: background-color var(--duration-fast) var(--ease-standard);
 }
 /* The brand spark: decorative (the label carries the meaning), so it can be the bright teal. */
 .ask svg {
@@ -69,6 +90,116 @@
   background: var(--surface-muted);
 }
 
+/* --------------------------------------------------------- the toolbar */
+.toolbar {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 5px 0 18px;
+  pointer-events: auto;
+}
+/* Frosted glass: mostly see-through, a strong blur behind, a light top edge. */
+.surface {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--surface-raised) 52%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.6),
+    0 10px 30px -12px rgb(16 19 26 / 0.28),
+    0 1px 3px rgb(16 19 26 / 0.06);
+}
+:root[data-theme="dark"] .surface {
+  border-color: rgb(255 255 255 / 0.12);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 12px 32px -12px rgb(0 0 0 / 0.6);
+}
+.toolName {
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.divider {
+  width: 1px;
+  height: 18px;
+  margin: 0 6px 0 14px;
+  background: var(--border-default);
+}
+.tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 2px;
+}
+.tool {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding-inline: 9px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard);
+}
+.tool:hover,
+.tool:focus-visible {
+  background: var(--surface-muted);
+  color: var(--text-primary);
+}
+.tool[aria-current] {
+  color: var(--accent-solid);
+}
+/* The brand spark keeps its bright teal in the toolbar too. */
+.toolAsk svg {
+  color: var(--accent-bright);
+}
+/* The theme switch, round like the other toolbar buttons. */
+.tools button[data-theme-state] {
+  border-radius: 999px;
+  transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.tools button[data-theme-state]:hover {
+  background: var(--surface-muted);
+}
+/* The label slides out on hover or keyboard focus; the pill grows with it. */
+.toolLabel {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  transition:
+    max-width 350ms var(--ease-emphasized),
+    margin-left 350ms var(--ease-emphasized),
+    opacity 200ms var(--ease-standard);
+}
+.tool:hover .toolLabel,
+.tool:focus-visible .toolLabel {
+  max-width: 120px;
+  margin-left: 7px;
+  opacity: 1;
+}
+
+/* Phones: the toolbar keeps its five buttons at full size and drops the name (the full header hides it there too). */
+@media (max-width: 420px) {
+  .toolbar .nameWrap,
+  .toolbar .nameWrap + .divider {
+    display: none;
+  }
+  .toolbar {
+    padding-left: 5px;
+  }
+}
 @media (max-width: 640px) {
   .name {
     display: none;

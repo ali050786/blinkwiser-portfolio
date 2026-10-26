@@ -7,7 +7,7 @@ export function CaseCover({ shot, label }: { shot: Shot; label?: string }) {
   label = label ?? "The product";
   return (
     <figure className={`container ${styles.wrap}`} data-reveal>
-      <div className={styles.frame} data-video={shot.video ? true : undefined} data-full={shot.full || undefined}>
+      <div className={styles.frame} data-video={shot.video ? true : undefined} data-full={shot.full || undefined} data-fill={shot.fill || undefined}>
         <ShotMedia shot={shot} maxScale={1.15} eager />
       </div>
       {!shot.bare && (

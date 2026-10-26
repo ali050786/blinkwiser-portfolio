@@ -9,9 +9,6 @@
 .item {
   position: relative;
 }
-.wide {
-  grid-column: 1 / -1;
-}
 /* Same box as .media: top of the item, full width, same ratio. The video sits
  * inside it as a white card on the tint. */
 .overlay {
@@ -25,12 +22,12 @@
   border-radius: var(--radius-xs);
   pointer-events: none;
 }
-.wide .overlay {
-  aspect-ratio: 16 / 9;
-}
 .inset {
   width: 90%;
   border-radius: 12px;
+}
+.overlay[data-fill] {
+  overflow: hidden;
 }
 .overlay video {
   pointer-events: none;
@@ -50,9 +47,6 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-xs);
-}
-.wide .media {
-  aspect-ratio: 16 / 9;
 }
 .img {
   object-fit: cover;
@@ -95,9 +89,5 @@
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
-  }
-  .wide .media,
-  .wide .overlay {
-    aspect-ratio: 4 / 3;
   }
 }

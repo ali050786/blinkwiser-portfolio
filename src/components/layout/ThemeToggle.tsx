@@ -25,7 +25,7 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = next;
     paintChrome(next);
     try {
-      localStorage.setItem("theme", next);
+      localStorage.setItem("site-theme", next);
     } catch {
       /* storage unavailable: the choice lasts for this page view */
     }

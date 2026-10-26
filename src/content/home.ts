@@ -107,7 +107,8 @@ export const deck: Record<
     tint: 1 | 2 | 3 | 4 | 5 | 6;
     fit?: "cover" | "contain";
     /** Optional muted loop shown on the home card instead of the still. */
-    video?: { src: string; poster: string };
+    /** `fill`: the trailer brings its own background and fills the card; otherwise it sits as a white card on the tint. */
+    video?: { src: string; poster: string; fill?: boolean };
   }
 > = {
   "open-enrollment": {
@@ -123,6 +124,7 @@ export const deck: Record<
   "enterprise-platform-from-zero": {
     domain: "White-label SaaS",
     status: "2020 to now",
+    video: { src: "/work/platform/trailer.mp4?v=2", poster: "/work/platform/trailer-poster.webp?v=2", fill: true },
     outcome: "A new client themed in under a day, down from weeks",
     opening: "A new client used to take weeks to set up.",
     img: "/work/deck/platform.webp",
