@@ -1,0 +1,33 @@
+.ask {
+  position: fixed;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  font-size: 14px;
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-overlay);
+  transition: transform 100ms var(--ease-standard), opacity var(--duration-fast) var(--ease-standard);
+}
+.ask svg {
+  color: currentColor;
+}
+.ask:hover {
+  opacity: 0.88;
+}
+.ask:active {
+  transform: scale(0.96);
+}
+[data-motion="ok"] .ask {
+  animation: pop 160ms var(--ease-emphasized);
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+}

@@ -1,70 +1,38 @@
 import Link from "next/link";
 import { site } from "@/content/site";
-import { caseStudies } from "@/content/case-studies";
+import { CopyEmail } from "@/components/home/CopyEmail";
 import styles from "./Footer.module.css";
 
-/** Deploy's footer: brand and line on the left, link columns, a mono base line. */
+/** One quiet line: where to find me on the left, the year and city on the right. */
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.wrap} ${styles.grid}`}>
-        <div className={styles.lead}>
-          <p className={styles.brand}>
-            {site.name}
-            <span className={styles.role}>{site.role}</span>
-          </p>
-          <p className={styles.blurb}>
-            I&apos;m a UX lead with 11 years in health insurance, civic services and AI products. Tell me about the problem you&apos;re
-            working on.
-          </p>
-          <a href={`mailto:${site.email}`} className={styles.mail}>
-            <i aria-hidden="true" />
-            {site.email}
-          </a>
-        </div>
-
-        <nav aria-label="Case studies" className={styles.col}>
-          <p className={styles.label}>
-            <i aria-hidden="true" /> Case studies
-          </p>
-          <ul>
-            {caseStudies.map((c) => (
-              <li key={c.slug}>
-                <Link href={`/work/${c.slug}`}>{c.short}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <nav aria-label="Elsewhere" className={styles.col}>
-          <p className={styles.label}>
-            <i aria-hidden="true" /> Elsewhere
-          </p>
-          <ul>
+      <div className={`container ${styles.inner}`}>
+        <ul className={styles.links} aria-label="Elsewhere">
+          <li>
+            <a href={site.linkedin} rel="me noopener" target="_blank" data-cursor-text="Open LinkedIn">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <CopyEmail email={site.email} className={styles.email} />
+          </li>
+          {site.resumeUrl && (
             <li>
-              <a href={site.linkedin} rel="me noopener" target="_blank">
-                LinkedIn
-              </a>
+              <Link href={site.resumeUrl}>Resume</Link>
             </li>
-            <li>
-              <a href={site.blinkwiser} target="_blank" rel="noopener">
-                Blinkwiser
-              </a>
-            </li>
-            {site.resumeUrl && (
-              <li>
-                <a href={site.resumeUrl}>Resume</a>
-              </li>
-            )}
-            <li>
-              <Link href="/colophon">Colophon</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className={`${styles.wrap} ${styles.base}`}>
-        <p>
-          © {new Date().getFullYear()} {site.name} · {site.location}
+          )}
+          <li>
+            <a href={site.blinkwiser} target="_blank" rel="noopener" data-cursor-text="Open Blinkwiser">
+              Blinkwiser
+            </a>
+          </li>
+          <li>
+            <Link href="/colophon">Colophon</Link>
+          </li>
+        </ul>
+        <p className={styles.base}>
+          © {new Date().getFullYear()} {site.name}, {site.location}
         </p>
       </div>
     </footer>

@@ -83,8 +83,19 @@ ol {
   list-style: none;
 }
 ::selection {
-  background: color-mix(in srgb, var(--accent-solid) 22%, transparent);
+  background: color-mix(in srgb, var(--accent-bright) 30%, transparent);
   color: var(--text-primary);
+}
+
+/* ----------------------------------------------------------- custom cursor
+ * Cursor.tsx sets data-cursor="on" only for a fine pointer on a wide screen,
+ * outside forced-colours mode. Text fields keep the system caret. */
+html[data-cursor="on"],
+html[data-cursor="on"] * {
+  cursor: none !important;
+}
+html[data-cursor="on"] :is(input, textarea, select, [contenteditable="true"]) {
+  cursor: text !important;
 }
 
 /* ------------------------------------------------------------ focus + a11y */
@@ -277,12 +288,12 @@ em.t-serif,
 @property --accent-solid {
   syntax: "<color>";
   inherits: true;
-  initial-value: #5a8dde;
+  initial-value: #0a7266;
 }
 @property --accent-strong {
   syntax: "<color>";
   inherits: true;
-  initial-value: #84a9e8;
+  initial-value: #085a51;
 }
 @property --accent-soft {
   syntax: "<color>";

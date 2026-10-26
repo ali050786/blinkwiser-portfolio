@@ -1,0 +1,103 @@
+.section {
+  padding-bottom: clamp(48px, 7vw, 96px);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 24px);
+}
+.item {
+  position: relative;
+}
+.wide {
+  grid-column: 1 / -1;
+}
+/* Same box as .media: top of the item, full width, same ratio. The video sits
+ * inside it as a white card on the tint. */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xs);
+  pointer-events: none;
+}
+.wide .overlay {
+  aspect-ratio: 16 / 9;
+}
+.inset {
+  width: 90%;
+  border-radius: 12px;
+}
+.overlay video {
+  pointer-events: none;
+}
+/* The overlay lets clicks through to the link, so it never gets :hover itself. */
+.item:hover [data-controls] {
+  opacity: 1;
+  transform: none;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-xs);
+}
+.wide .media {
+  aspect-ratio: 16 / 9;
+}
+.img {
+  object-fit: cover;
+  transition: transform 600ms var(--ease-emphasized);
+}
+.img[data-fit="contain"] {
+  object-fit: contain;
+  padding: 6%;
+}
+.veil {
+  position: absolute;
+  inset: 0;
+  background: oklch(0% 0 0 / 0);
+  transition: background-color var(--duration-base) var(--ease-standard);
+  pointer-events: none;
+}
+.card:hover .veil {
+  background: oklch(0% 0 0 / 0.06);
+}
+.card:hover .img {
+  transform: scale(1.015);
+}
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.title {
+  color: var(--text-primary);
+}
+.sep {
+  color: var(--border-strong);
+}
+.tag {
+  color: var(--text-tertiary);
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .wide .media,
+  .wide .overlay {
+    aspect-ratio: 4 / 3;
+  }
+}

@@ -1,0 +1,70 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms var(--ease-standard);
+  will-change: transform;
+}
+.cursor[data-visible="on"] {
+  opacity: 1;
+}
+.cursor[data-state="hidden"] {
+  opacity: 0;
+}
+
+/* The mark is the site's spark (the same four-point star as the favicon and
+ * the "Ask about Ali" icon), cut from a bright-teal block with a mask, and
+ * centred on the hotspot: its own translate offsets half its width. */
+.mark {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-bright);
+  -webkit-mask: var(--spark) center / contain no-repeat;
+  mask: var(--spark) center / contain no-repeat;
+  transform: translate(-50%, 0) rotate(var(--turn, 0deg)) scale(var(--press, 1));
+  transform-origin: center;
+  transition:
+    width 120ms var(--ease-standard),
+    height 120ms var(--ease-standard),
+    transform 200ms var(--ease-emphasized);
+  --spark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C11 6 14 9 20 10C14 11 11 14 10 20C9 14 6 11 0 10C6 9 9 6 10 0Z'/%3E%3C/svg%3E");
+}
+.cursor[data-pressed="on"] {
+  --press: 0.75;
+}
+/* Over a link: smaller, with a quarter-turn twist as the label types in. */
+.cursor[data-state="link"] .mark {
+  --turn: 45deg;
+  width: 10px;
+  height: 10px;
+}
+/* Over text: a plain thin bar, so selecting still feels like selecting. */
+.cursor[data-state="text"] .mark {
+  width: 2px;
+  height: 20px;
+  -webkit-mask: none;
+  mask: none;
+  transition: none;
+}
+
+.label {
+  margin-left: -4px;
+  padding: 4px 8px;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--accent-bright);
+  color: var(--accent-on-bright);
+  border-radius: var(--radius-xs);
+  transform: translateY(-1px);
+}
+.cursor:not([data-label="on"]) .label {
+  display: none;
+}

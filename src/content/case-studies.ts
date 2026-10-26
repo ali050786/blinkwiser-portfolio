@@ -31,8 +31,8 @@ export const caseStudies: CaseStudy[] = [
     },
     tags: ["US health insurance", "Enrollment", "Life events", "Defaults"],
     cover: {
-      video: "/work/enrollment/trailer.mp4",
-      poster: "/work/enrollment/trailer-poster.webp",
+      video: "/work/enrollment/trailer.mp4?v=2",
+      poster: "/work/enrollment/trailer-poster.webp?v=2",
       sound: true,
       bare: true,
       alt: "Trailer of the enrollment redesign. Old flow: Dennis adds his newborn and is told she isn't covered. He goes through a coverage hub and re-adds his family inside the Medical plan. He sees only an annual estimate. He loses his family list when he changes plan. New flow: one grid sets who needs what. There's no hub. Each plan already knows who it covers. Prices are monthly, with a running total. Switching plans keeps the family.",

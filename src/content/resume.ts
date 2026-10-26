@@ -8,7 +8,7 @@
  *                RESUME_VARIANT=health-tech and kept in /resumes, not deployed
  * Written in Ali's voice (human-story-writer-20): plain words, no dash ranges.
  * The profile is first person; experience lines open with the action or the
- * result instead of "I", and no two in a row open the same way. Titles and dates match LinkedIn and the facts table in docs/HANDOFF.md.
+ * result instead of "I", and no two in a row open the same way. Titles and dates match LinkedIn.
  * Order on the platform job: how design runs (leadership) first, then outcomes,
  * then AI. Every number here is
  * one Ali can defend in an interview.

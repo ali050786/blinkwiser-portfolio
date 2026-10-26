@@ -23,6 +23,37 @@ export const hero = {
 };
 
 /**
+ * The rows under the headline on the minimal home (2026-10-26). Each row is a
+ * label and a sentence split into parts; a part with `href` is a link. Facts
+ * come from the timeline and education in site.ts.
+ */
+export type IntroPart = { text: string; href?: string };
+export const intro: { label: string; parts: IntroPart[] }[] = [
+  {
+    label: "Now",
+    parts: [
+      { text: "UX Lead at Mphasis on a US health-insurance platform, and building AI products at " },
+      { text: "Blinkwiser", href: "https://blinkwiser.com" },
+      { text: "." },
+    ],
+  },
+  {
+    label: "Before",
+    parts: [
+      { text: "Designed onsite for " },
+      { text: "Dubai Municipality", href: "/work/dubai-municipality" },
+      { text: " and on booking for " },
+      { text: "Jet Airways", href: "/work/jet-airways-booking" },
+      { text: "." },
+    ],
+  },
+  {
+    label: "Learning",
+    parts: [{ text: "PG Certificate in Forward Deployed AI Engineering at IIT Roorkee, in progress." }],
+  },
+];
+
+/**
  * One tile in the hero rings. `img` is a square crop in /work/tiles; tiles without one draw a line pattern.
  * The first 12 tiles make the inner ring and the rest the outer ring, in this order around the circle.
  */
@@ -65,10 +96,24 @@ export const tiles: Tile[] = [
  */
 export const deck: Record<
   CaseSlug,
-  { domain: string; outcome: string; opening: string; img: string; alt: string; tint: 1 | 2 | 3 | 4 | 5 | 6; fit?: "cover" | "contain" }
+  {
+    domain: string;
+    /** Short status for the home card tag, taken from the case's timeline. */
+    status: string;
+    outcome: string;
+    opening: string;
+    img: string;
+    alt: string;
+    tint: 1 | 2 | 3 | 4 | 5 | 6;
+    fit?: "cover" | "contain";
+    /** Optional muted loop shown on the home card instead of the still. */
+    video?: { src: string; poster: string };
+  }
 > = {
   "open-enrollment": {
     domain: "Health insurance",
+    status: "Live in production",
+    video: { src: "/work/enrollment/trailer-silent.mp4?v=2", poster: "/work/enrollment/trailer-poster.webp?v=2" },
     outcome: "Enrollment cut from 9 steps to 5, live in production",
     opening: "Dennis has 31 days to get his newborn covered.",
     img: "/work/deck/enrollment.webp",
@@ -77,6 +122,7 @@ export const deck: Record<
   },
   "enterprise-platform-from-zero": {
     domain: "White-label SaaS",
+    status: "2020 to now",
     outcome: "A new client themed in under a day, down from weeks",
     opening: "A new client used to take weeks to set up.",
     img: "/work/deck/platform.webp",
@@ -85,6 +131,7 @@ export const deck: Record<
   },
   "ai-readable-design-system": {
     domain: "Design systems",
+    status: "Built 2026",
     outcome: "Jira story to screen in three or four days, down from one or two weeks",
     opening: "Our AI tool kept putting Save on the wrong side.",
     img: "/work/deck/ai-system.webp",
@@ -93,6 +140,7 @@ export const deck: Record<
   },
   "designing-trust-into-ai": {
     domain: "AI product",
+    status: "2026 to now",
     outcome: "First slides in about 23 seconds, with every number traced to a source",
     opening: "The first version made up its own statistics.",
     img: "/work/deck/blinkwiser.webp",
@@ -101,6 +149,7 @@ export const deck: Record<
   },
   "dubai-municipality": {
     domain: "Civic services",
+    status: "2019 to 2020",
     outcome: "Nine city apps brought into one, in Arabic and English",
     opening: "Nine separate apps, each with its own way of working.",
     img: "/work/deck/dubai.webp",
@@ -110,6 +159,7 @@ export const deck: Record<
   },
   "jet-airways-booking": {
     domain: "Airline e-commerce",
+    status: "2015 to 2019",
     outcome: "Fares, full price, and extras on web, iOS, and Android",
     opening: "Five fares per flight don't fit on a phone.",
     img: "/work/deck/jet.webp",

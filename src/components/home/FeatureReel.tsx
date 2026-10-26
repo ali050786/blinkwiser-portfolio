@@ -44,8 +44,8 @@ export function FeatureReel() {
         <figure className={styles.card} data-card>
           <div className={styles.frame}>
             <AutoVideo
-              src="/work/enrollment/trailer.mp4"
-              poster="/work/enrollment/trailer-poster.webp"
+              src="/work/enrollment/trailer.mp4?v=2"
+              poster="/work/enrollment/trailer-poster.webp?v=2"
               sound
               label="Trailer of the enrollment redesign. In the old flow, Dennis loses his family list when he changes plan. In the new one, a single grid sets who needs what, and switching plans keeps the family."
             />

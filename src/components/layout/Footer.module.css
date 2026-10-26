@@ -1,100 +1,29 @@
 .footer {
-  padding: 80px 0 48px;
-  border-top: 1px solid var(--border-subtle);
+  padding-block: 48px 40px;
 }
-.wrap {
-  width: 100%;
-  max-width: calc(1120px + 2 * var(--layout-gutter));
-  margin-inline: auto;
-  padding-inline: var(--layout-gutter);
-}
-.grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 48px;
-}
-.lead {
+.inner {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 340px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 24px;
 }
-.brand {
+.links {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 18px;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
+  flex-wrap: wrap;
+  gap: 8px 20px;
 }
-.role {
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--text-tertiary);
-}
-.blurb {
+.links a,
+.email {
   font-size: 15px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-.mail {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text-primary);
-}
-.mail i,
-.label i {
-  width: 6px;
-  height: 6px;
-  background: var(--accent-solid);
-}
-.mail:hover {
-  color: var(--accent-solid);
-}
-.label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label);
-  letter-spacing: 0;
-  text-transform: none;
   color: var(--text-tertiary);
-}
-.col ul {
-  display: grid;
-  gap: 10px;
-}
-.col a {
-  font-size: 15px;
-  color: var(--text-secondary);
   transition: color var(--duration-fast) var(--ease-standard);
 }
-.col a:hover {
+.links a:hover,
+.email:hover {
   color: var(--text-primary);
 }
 .base {
-  margin-top: 64px;
-}
-.base p {
-  padding-top: 24px;
-  border-top: 1px solid var(--border-subtle);
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-label);
-  letter-spacing: 0;
+  font-size: 14px;
   color: var(--text-tertiary);
-}
-@media (max-width: 800px) {
-  .grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-  .lead {
-    grid-column: 1 / -1;
-  }
 }

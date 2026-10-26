@@ -20,7 +20,9 @@ type Name =
   | "diamond"
   | "swap"
   | "lock"
-  | "pause";
+  | "pause"
+  | "spark"
+  | "send";
 
 const paths: Record<Name, React.ReactNode> = {
   "arrow-right": <path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" />,
@@ -68,6 +70,8 @@ const paths: Record<Name, React.ReactNode> = {
     </>
   ),
   pause: <path d="M7.5 5.5v9M12.5 5.5v9" />,
+  spark: <path d="M10 3.5c.6 3.4 2.6 5.4 6 6-3.4.6-5.4 2.6-6 6-.6-3.4-2.6-5.4-6-6 3.4-.6 5.4-2.6 6-6Z" />,
+  send: <path d="M10 15.5v-11M5.5 9L10 4.5 14.5 9" />,
 };
 
 export function Icon({ name, size = 18, ...rest }: { name: Name; size?: number } & SVGProps<SVGSVGElement>) {

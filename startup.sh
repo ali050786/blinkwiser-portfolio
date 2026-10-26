@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Frees port 3000 (or $PORT), then starts the Next.js dev server.
+# Next 16 also refuses to start while another dev server runs from this folder
+# on any port, so that one is stopped too.
 # Usage: ./startup.sh        or        PORT=3001 ./startup.sh
 set -euo pipefail
 
@@ -19,15 +21,26 @@ listeners() {
   } | grep -E '^[0-9]+$' | sort -u | tr '\n' ' ' | sed 's/ *$//' || true
 }
 
-pids="$(listeners)"
-if [ -n "$pids" ]; then
-  echo "Port $PORT is in use by PID(s): $(echo $pids). Stopping..."
-  kill $pids 2>/dev/null || true
+# `next dev` processes (and their next-server children) whose working directory is this folder.
+dev_servers() {
+  local here pid cwd
+  here="$(pwd -P)"
+  for pid in $(pgrep -f 'next dev|next-server' 2>/dev/null || true); do
+    cwd="$(lsof -a -p "$pid" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' || true)"
+    if [ "$cwd" = "$here" ]; then echo "$pid"; fi
+  done | sort -u | tr '\n' ' ' | sed 's/ *$//' || true
+}
 
-  # Give it up to 5 seconds to shut down cleanly, then force it.
+# Stops what a finder function returns: a clean stop, up to 5 seconds to exit, then forced.
+stop_all() {
+  local find="$1" what="$2" pids
+  pids="$($find)"
+  [ -z "$pids" ] && return 0
+  echo "$what PID(s): $(echo $pids). Stopping..."
+  kill $pids 2>/dev/null || true
   for _ in 1 2 3 4 5 6 7 8 9 10; do
     sleep 0.5
-    pids="$(listeners)"
+    pids="$($find)"
     [ -z "$pids" ] && break
   done
   if [ -n "$pids" ]; then
@@ -35,7 +48,10 @@ if [ -n "$pids" ]; then
     kill -9 $pids 2>/dev/null || true
     sleep 0.5
   fi
-fi
+}
+
+stop_all dev_servers "Another dev server for this folder is running as"
+stop_all listeners "Port $PORT is in use by"
 echo "Port $PORT is free."
 
 if [ ! -d node_modules ]; then

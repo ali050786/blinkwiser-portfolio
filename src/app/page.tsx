@@ -1,11 +1,12 @@
-import { HeroField } from "@/components/home/HeroField";
-import { HomeSections } from "@/components/home/HomeSections";
+import { Intro } from "@/components/home/Intro";
+import { CaseGrid } from "@/components/home/CaseGrid";
 
+/** Minimal home (2026-10-26): one line about me, three short rows, then the work. */
 export default function Home() {
   return (
     <>
-      <HeroField />
-      <HomeSections />
+      <Intro />
+      <CaseGrid />
     </>
   );
 }

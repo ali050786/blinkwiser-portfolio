@@ -15,8 +15,8 @@ export const site = {
 };
 
 export const nav = [
-  { href: "/#work", label: "Work" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/", label: "Work" },
+  { href: "/about", label: "About" },
 ];
 
 export const proof = [

@@ -76,6 +76,8 @@ for (const mode of ["light", "dark"]) {
   pairs.push([mode, "text.critical / raised", token("semantic.text.critical", mode), raised, 4.5]);
   pairs.push([mode, "border.strong / canvas (UI)", token("semantic.border.strong", mode), canvas, 3]);
   pairs.push([mode, "on-solid / accent.solid", token("semantic.accent.on-solid", mode), token("semantic.accent.solid", mode), 4.5]);
+  // The bright brand teal carries dark text (cursor label, chat send button); it is never text on the canvas itself.
+  pairs.push([mode, "on-bright / accent.bright", token("semantic.accent.on-bright", mode), token("semantic.accent.bright", mode), 4.5]);
   for (const n of [1, 2, 3, 4, 5, 6]) pairs.push([mode, `deck.on-tint / deck.tint-${n}`, token("component.deck.on-tint", mode), token(`component.deck.tint-${n}`, mode), 4.5]);
   pairs.push([mode, "on-solid / accent.strong", token("semantic.accent.on-solid", mode), token("semantic.accent.strong", mode), 4.5]);
 }

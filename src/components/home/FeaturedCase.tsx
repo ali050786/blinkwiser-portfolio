@@ -54,8 +54,8 @@ export function FeaturedCase({ study }: { study: CaseStudy }) {
 
       <div className={styles.visual} data-video>
         <AutoVideo
-          src="/work/enrollment/trailer-silent.mp4"
-          poster="/work/enrollment/trailer-poster.webp"
+          src="/work/enrollment/trailer-silent.mp4?v=2"
+          poster="/work/enrollment/trailer-poster.webp?v=2"
           label="Trailer of the enrollment redesign: Dennis adds his newborn and hits five problems in the old flow, then the same tasks in the redesign, where each one is fixed."
         />
       </div>

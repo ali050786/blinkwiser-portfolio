@@ -13,9 +13,9 @@ const paintChrome = (t: Theme) => document.querySelector('meta[name="theme-color
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
-  // Dark unless the visitor has chosen light; the OS setting is not consulted.
+  // Light unless the visitor has chosen dark; the OS setting is not consulted.
   useEffect(() => {
-    const t: Theme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    const t: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
     setTheme(t);
     paintChrome(t);
   }, []);

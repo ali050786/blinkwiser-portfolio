@@ -1,151 +1,89 @@
-/* Taste Skill's nav rules: one line, 64px, one shape system (no pill boxes
- * around links), a visible current-section state, no decorative dots. */
+/* Minimal bar: text only, one line, 56px. */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid transparent;
-  transition:
-    background-color var(--duration-base) var(--ease-standard),
-    border-color var(--duration-base) var(--ease-standard);
+  transition: background-color var(--duration-base) var(--ease-standard);
 }
 .header[data-scrolled] {
-  background: color-mix(in srgb, var(--surface-canvas) 84%, transparent);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
-  border-bottom-color: var(--border-default);
+  background: color-mix(in srgb, var(--surface-canvas) 86%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
 }
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  height: 64px;
+  gap: 16px;
+  height: 56px;
 }
 
-.brand {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 12px;
-  border-radius: var(--radius-xs);
+.left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
 }
 .name {
   font-size: 15px;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.015em;
+  font-weight: var(--font-weight-medium);
   color: var(--text-primary);
+  white-space: nowrap;
 }
-.role {
-  font-size: 13px;
+.links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.link {
+  font-size: 15px;
   color: var(--text-tertiary);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.link:hover,
+.link[aria-current] {
+  color: var(--text-primary);
 }
 
 .right {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
-.nav ul {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  height: 64px;
-  padding-inline: 14px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  transition: color var(--duration-fast) var(--ease-standard);
-}
-.link::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: -1px;
-  height: 2px;
-  background: var(--accent-solid);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-base) var(--ease-emphasized);
-}
-.link:hover {
-  color: var(--text-primary);
-}
-.link[aria-current] {
-  color: var(--text-primary);
-}
-.link[aria-current]::after {
-  transform: scaleX(1);
-}
-.link:focus-visible {
-  outline-offset: -8px;
-}
-.rule {
-  width: 1px;
-  height: 18px;
-  margin-inline: 10px;
-  background: var(--border-default);
-}
-.resume {
+.ask {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 36px;
+  height: 32px;
   padding-inline: 10px;
-  font-size: 14px;
-  font-weight: var(--font-weight-medium);
+  font-size: 15px;
   color: var(--text-primary);
   border-radius: var(--radius-xs);
-  transition: color var(--duration-fast) var(--ease-standard);
+  transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
 }
-.resume svg {
-  color: var(--accent-solid);
-  transition: transform var(--duration-base) var(--ease-emphasized);
+/* The brand spark: decorative (the label carries the meaning), so it can be the bright teal. */
+.ask svg {
+  color: var(--accent-bright);
 }
-.resume:hover {
-  color: var(--accent-solid);
+.ask:hover {
+  background: var(--surface-muted);
 }
-.resume:hover svg {
-  transform: translate(2px, -2px);
-}
-.menuButton {
-  display: none;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-xs);
-  color: var(--text-primary);
-}
-.sheet {
-  border-top: 1px solid var(--border-default);
-  background: var(--surface-canvas);
-  padding-block: 8px 20px;
-}
-.sheetLink {
-  display: flex;
-  padding-block: 14px;
-  font-size: 24px;
-  font-weight: var(--font-weight-medium);
-  letter-spacing: -0.02em;
-  border-bottom: 1px solid var(--border-subtle);
-}
-@media (max-width: 760px) {
-  .nav,
-  .rule,
-  .resume,
-  .role {
+
+@media (max-width: 640px) {
+  .name {
     display: none;
   }
-  .menuButton {
-    display: inline-grid;
+  .ask span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
-}
-@media (min-width: 761px) {
-  .sheet {
-    display: none;
+  .ask {
+    width: 32px;
+    padding: 0;
+    justify-content: center;
   }
 }

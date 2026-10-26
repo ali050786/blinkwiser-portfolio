@@ -6,3 +6,6 @@ next-env.d.ts
 .DS_Store
 .env*.local
 .vercel
+
+# trailer studio stills (scripts/record-trailer.py --stills)
+.trailer-stills/
