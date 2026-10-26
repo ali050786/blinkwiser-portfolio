@@ -14,9 +14,51 @@ html {
   text-size-adjust: 100%;
   scroll-padding-top: 88px;
 }
+/*
+ * The page and the Ask panel side by side (layout.tsx, AskPanel.module.css).
+ * On wide screens the page is its own scroll area, so when the panel opens it
+ * takes a column beside the page, scrollbar and all, instead of covering it.
+ * --ask-space is the room the open panel takes, for anything fixed to the
+ * page's width (the reading progress bar). Phones keep the window scrolling
+ * and the panel as a full-screen sheet.
+ */
+:root {
+  --ask-width: 384px;
+  --ask-space: 0px;
+}
+@media (min-width: 900px) {
+  html[data-ask-open] {
+    --ask-space: var(--ask-width);
+  }
+  body {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .app-shell {
+    display: flex;
+    height: 100dvh;
+  }
+  .app-page {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    scroll-padding-top: 88px;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
-  html {
+  html,
+  .app-page {
     scroll-behavior: smooth;
+  }
+}
+@media print {
+  body,
+  .app-shell,
+  .app-page {
+    display: block;
+    height: auto;
+    overflow: visible;
   }
 }
 body {

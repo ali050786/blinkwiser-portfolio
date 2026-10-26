@@ -90,7 +90,7 @@ export function SelectAsk() {
       }}
       data-cursor-text="Ask the AI"
     >
-      <Icon name="spark" size={14} />
+      <Icon name="mark" size={14} />
       Ask about this
     </button>
   );

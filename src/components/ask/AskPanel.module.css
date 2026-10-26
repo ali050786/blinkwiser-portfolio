@@ -214,6 +214,70 @@
   text-underline-offset: 2px;
 }
 
+/*
+ * The dock is the panel's place in the app shell (layout.tsx). On phones it
+ * steps out of the way and the panel floats as a sheet.
+ */
+.dock {
+  display: contents;
+}
+
+/*
+ * Wide screens: a column beside the page. The dock widens from nothing to the
+ * panel's width, so the page narrows and the panel slides in from the right
+ * on one curve. Same ground as the page, with a hairline between them, so the
+ * chat reads as part of the layout rather than a sheet laid over it.
+ */
+@media (min-width: 900px) {
+  .dock {
+    position: relative;
+    display: block;
+    flex: none;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: width var(--duration-slow) var(--ease-emphasized);
+  }
+  .dock[data-open] {
+    width: var(--ask-width);
+  }
+  :global(html[data-motion="reduce"]) .dock {
+    transition: none;
+  }
+  .panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--ask-width);
+    background: var(--surface-canvas);
+    border: 0;
+    border-left: 1px solid var(--border-default);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    transform: none;
+    transition: visibility 0s linear var(--duration-slow);
+  }
+  .panel[data-open] {
+    opacity: 1;
+    transform: none;
+    transition: visibility 0s;
+  }
+  .head {
+    padding: 14px 12px 0 20px;
+  }
+  .note {
+    padding: 4px 20px 14px;
+  }
+  .list {
+    padding: 20px;
+  }
+  .form {
+    padding: 12px 16px 14px;
+  }
+}
+
 @media (max-width: 560px) {
   .panel {
     top: 0;

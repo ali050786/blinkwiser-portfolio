@@ -82,7 +82,7 @@
   border-radius: var(--radius-xs);
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
-/* The brand spark: decorative (the label carries the meaning), so it can be the bright teal. */
+/* The brand mark: decorative (the label carries the meaning), so it can be the bright teal. */
 .ask svg {
   color: var(--accent-bright);
 }
@@ -99,6 +99,10 @@
   height: 46px;
   padding: 0 5px 0 18px;
   pointer-events: auto;
+}
+/* Pinned while the pointer or focus is inside (see Header.tsx): labels grow it to the right only. */
+.toolbar[data-pinned] {
+  position: absolute;
 }
 /* Frosted glass: mostly see-through, a strong blur behind, a light top edge. */
 .surface {
@@ -157,7 +161,7 @@
 .tool[aria-current] {
   color: var(--accent-solid);
 }
-/* The brand spark keeps its bright teal in the toolbar too. */
+/* The brand mark keeps its bright teal in the toolbar too. */
 .toolAsk svg {
   color: var(--accent-bright);
 }
@@ -169,23 +173,31 @@
 .tools button[data-theme-state]:hover {
   background: var(--surface-muted);
 }
-/* The label slides out on hover or keyboard focus; the pill grows with it. */
+/*
+ * The label slides out on hover or keyboard focus; the pill grows with it.
+ * A 0fr to 1fr column animates to the label's own width, so it opens and
+ * closes at an even pace whatever its length.
+ */
 .toolLabel {
-  max-width: 0;
+  display: grid;
+  grid-template-columns: 0fr;
   margin-left: 0;
-  overflow: hidden;
-  white-space: nowrap;
   opacity: 0;
   font-size: 14px;
   font-weight: var(--font-weight-medium);
   transition:
-    max-width 350ms var(--ease-emphasized),
-    margin-left 350ms var(--ease-emphasized),
+    grid-template-columns 320ms var(--ease-emphasized),
+    margin-left 320ms var(--ease-emphasized),
     opacity 200ms var(--ease-standard);
+}
+.toolLabel > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .tool:hover .toolLabel,
 .tool:focus-visible .toolLabel {
-  max-width: 120px;
+  grid-template-columns: 1fr;
   margin-left: 7px;
   opacity: 1;
 }

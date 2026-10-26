@@ -217,8 +217,8 @@
   :global(body) {
     background: #fff !important;
   }
-  :global(body > header),
-  :global(body > footer),
+  :global(.app-page > header),
+  :global(.app-page > footer),
   :global(.skip-link),
   .toolbar {
     display: none !important;

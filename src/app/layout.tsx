@@ -58,17 +58,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       </head>
       <body>
-        <a href="#main" className="skip-link">
-          Skip to content
-        </a>
-        <Header />
-        <main id="main" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
+        {/* The page and the Ask panel side by side (globals.css): on wide screens the panel docks beside the page. */}
+        <div className="app-shell">
+          <div id="page" className="app-page">
+            <a href="#main" className="skip-link">
+              Skip to content
+            </a>
+            <Header />
+            <main id="main" tabIndex={-1}>
+              {children}
+            </main>
+            <Footer />
+          </div>
+          <AskPanel suggestions={askSuggestions()} />
+        </div>
         <RevealObserver />
         <SelectAsk />
-        <AskPanel suggestions={askSuggestions()} />
         <Cursor />
       </body>
     </html>

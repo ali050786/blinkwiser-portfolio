@@ -40,8 +40,11 @@ function Answer({ text }: { text: string }) {
  * The "Ask about Ali" side panel. Opens from the header button or the
  * text-selection button (see lib/ask.ts), streams answers from /api/chat, and
  * keeps the conversation while you move between pages. Not modal: the page
- * stays usable beside it. Escape or the close button closes it and returns
- * focus to where you were.
+ * stays usable beside it. On wide screens it is a column beside the page
+ * (the app shell in layout.tsx): opening it narrows the page, which scrolls on
+ * its own, so the chat sits in the layout rather than over it. On phones it is
+ * a full-screen sheet. Escape or the close button closes it and returns focus
+ * to where you were.
  */
 export function AskPanel({ suggestions }: { suggestions: Record<string, string[]> }) {
   const pathname = usePathname();
@@ -125,6 +128,12 @@ export function AskPanel({ suggestions }: { suggestions: Record<string, string[]
     if (open) input.current?.focus();
   }, [open]);
 
+  // Tells anything fixed to the page's width how much room the panel takes (--ask-space).
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-ask-open", open);
+    return () => document.documentElement.removeAttribute("data-ask-open");
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
@@ -143,86 +152,88 @@ export function AskPanel({ suggestions }: { suggestions: Record<string, string[]
   const starters = suggestions[pathname] ?? suggestions["*"] ?? [];
 
   return (
-    <aside className={styles.panel} data-open={open || undefined} data-ask-panel aria-labelledby="ask-title" aria-hidden={!open} inert={!open}>
-      <header className={styles.head}>
-        <h2 id="ask-title" className={styles.title}>
-          <Icon name="spark" size={15} /> Ask about Ali
-        </h2>
-        <button type="button" className={styles.close} onClick={close} aria-label="Close chat">
-          <Icon name="close" size={18} />
-        </button>
-      </header>
-      <p className={styles.note}>An AI that answers from my case studies and resume. It can get things wrong, so for anything that matters, email me.</p>
+    <div className={styles.dock} data-open={open || undefined}>
+      <aside className={styles.panel} data-open={open || undefined} data-ask-panel aria-labelledby="ask-title" aria-hidden={!open} inert={!open}>
+        <header className={styles.head}>
+          <h2 id="ask-title" className={styles.title}>
+            <Icon name="mark" size={15} /> Ask about Ali
+          </h2>
+          <button type="button" className={styles.close} onClick={close} aria-label="Close chat">
+            <Icon name="close" size={18} />
+          </button>
+        </header>
+        <p className={styles.note}>An AI that answers from my case studies and resume. It can get things wrong, so for anything that matters, email me.</p>
 
-      <div ref={list} className={styles.list} aria-live="polite" aria-busy={busy}>
-        {turns.length === 0 ? (
-          <ul className={styles.starters} aria-label="Suggested questions">
-            {starters.map((s) => (
-              <li key={s}>
-                <button type="button" onClick={() => void send(s, quote)}>
-                  {s}
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          turns.map((t, i) =>
-            t.role === "user" ? (
-              <div key={i} className={styles.user}>
-                {t.quote && <blockquote className={styles.quote}>{t.quote}</blockquote>}
-                <p>{t.content}</p>
-              </div>
-            ) : (
-              <div key={i} className={styles.ai}>
-                {t.content ? <Answer text={t.content} /> : <span className={styles.dots} aria-label="Thinking" />}
-              </div>
-            ),
-          )
-        )}
-      </div>
+        <div ref={list} className={styles.list} aria-live="polite" aria-busy={busy}>
+          {turns.length === 0 ? (
+            <ul className={styles.starters} aria-label="Suggested questions">
+              {starters.map((s) => (
+                <li key={s}>
+                  <button type="button" onClick={() => void send(s, quote)}>
+                    {s}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            turns.map((t, i) =>
+              t.role === "user" ? (
+                <div key={i} className={styles.user}>
+                  {t.quote && <blockquote className={styles.quote}>{t.quote}</blockquote>}
+                  <p>{t.content}</p>
+                </div>
+              ) : (
+                <div key={i} className={styles.ai}>
+                  {t.content ? <Answer text={t.content} /> : <span className={styles.dots} aria-label="Thinking" />}
+                </div>
+              ),
+            )
+          )}
+        </div>
 
-      <form
-        className={styles.form}
-        onSubmit={(e) => {
-          e.preventDefault();
-          void send(draft, quote);
-        }}
-      >
-        {quote && (
-          <div className={styles.pending}>
-            <blockquote>{quote}</blockquote>
-            <button type="button" onClick={() => setQuote("")} aria-label="Remove quote">
-              <Icon name="close" size={14} />
+        <form
+          className={styles.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            void send(draft, quote);
+          }}
+        >
+          {quote && (
+            <div className={styles.pending}>
+              <blockquote>{quote}</blockquote>
+              <button type="button" onClick={() => setQuote("")} aria-label="Remove quote">
+                <Icon name="close" size={14} />
+              </button>
+            </div>
+          )}
+          <div className={styles.row}>
+            <label htmlFor="ask-input" className="sr-only">
+              Your question
+            </label>
+            <textarea
+              id="ask-input"
+              ref={input}
+              rows={1}
+              value={draft}
+              maxLength={2000}
+              placeholder={quote ? "What would you like to know about this?" : "Ask about my work…"}
+              onChange={(e) => setDraft(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  void send(draft, quote);
+                }
+              }}
+            />
+            <button type="submit" className={styles.send} disabled={busy || !draft.trim()} aria-label="Send">
+              <Icon name="send" size={16} />
             </button>
           </div>
-        )}
-        <div className={styles.row}>
-          <label htmlFor="ask-input" className="sr-only">
-            Your question
-          </label>
-          <textarea
-            id="ask-input"
-            ref={input}
-            rows={1}
-            value={draft}
-            maxLength={2000}
-            placeholder={quote ? "What would you like to know about this?" : "Ask about my work…"}
-            onChange={(e) => setDraft(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                void send(draft, quote);
-              }
-            }}
-          />
-          <button type="submit" className={styles.send} disabled={busy || !draft.trim()} aria-label="Send">
-            <Icon name="send" size={16} />
-          </button>
-        </div>
-        <p className={styles.foot}>
-          Or email <a href={`mailto:${site.email}`}>{site.email}</a>
-        </p>
-      </form>
-    </aside>
+          <p className={styles.foot}>
+            Or email <a href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
+        </form>
+      </aside>
+    </div>
   );
 }

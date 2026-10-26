@@ -21,7 +21,7 @@ type Name =
   | "swap"
   | "lock"
   | "pause"
-  | "spark"
+  | "mark"
   | "send"
   | "grid"
   | "user"
@@ -73,7 +73,8 @@ const paths: Record<Name, React.ReactNode> = {
     </>
   ),
   pause: <path d="M7.5 5.5v9M12.5 5.5v9" />,
-  spark: <path d="M10 3.5c.6 3.4 2.6 5.4 6 6-3.4.6-5.4 2.6-6 6-.6-3.4-2.6-5.4-6-6 3.4-.6 5.4-2.6 6-6Z" />,
+  /** The site's mark: a square turned on its point, softly rounded. Filled, unlike the outline icons. */
+  mark: <rect x="4.6" y="4.6" width="10.8" height="10.8" rx="2.4" transform="rotate(45 10 10)" fill="currentColor" stroke="none" />,
   send: <path d="M10 15.5v-11M5.5 9L10 4.5 14.5 9" />,
   grid: (
     <>
