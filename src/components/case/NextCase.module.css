@@ -24,6 +24,15 @@
 .card:hover .title {
   color: var(--accent-solid);
 }
+.teaser {
+  font-family: var(--font-family-heading);
+  font-style: italic;
+  font-weight: 420;
+  font-size: clamp(15px, 0.85rem + 0.3vw, 17px);
+  line-height: 1.45;
+  color: var(--text-primary);
+  max-width: 36ch;
+}
 .cta {
   display: inline-flex;
   align-items: center;

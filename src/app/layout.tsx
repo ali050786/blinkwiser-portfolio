@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 // theme and reveal styles only apply when reduced motion isn't requested.
 // Choices live under 'site-theme' since the light-first redesign; the old
 // 'theme' key (from the dark-first site) is dropped so everyone starts light.
-const bootScript = `(function(){var d=document.documentElement;try{localStorage.removeItem('theme');var t=localStorage.getItem('site-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}d.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'ok';})();`;
+const bootScript = `(function(){var d=document.documentElement;try{localStorage.removeItem('theme');var t=localStorage.getItem('site-theme');if(t==='light'||t==='dark')d.dataset.theme=t;}catch(e){}d.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'ok';try{var s=new CSSStyleSheet(),seen={};document.adoptedStyleSheets=document.adoptedStyleSheets.concat(s);var m=function(e){var t=e.target,u=t&&t.tagName==='IMG'&&t.getAttribute('src');if(!u||seen[u])return;seen[u]=1;s.insertRule('img[src="'+CSS.escape(u)+'"]{animation:none!important;background:none!important}');};document.addEventListener('load',m,true);document.addEventListener('error',m,true);}catch(e){}})();`;
 
 const personJsonLd = {
   "@context": "https://schema.org",

@@ -27,3 +27,12 @@
   font-size: 14px;
   color: var(--text-tertiary);
 }
+
+@media (pointer: coarse) {
+  .links a,
+  .email {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

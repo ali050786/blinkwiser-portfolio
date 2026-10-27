@@ -242,3 +242,26 @@
   z-index: 1;
   background: var(--surface-raised);
 }
+
+@media (pointer: coarse) {
+  .select,
+  .cellSelect {
+    min-height: 44px;
+  }
+  .cell {
+    width: 44px;
+    height: 44px;
+  }
+  .reset {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .hatch {
+    min-height: 44px;
+  }
+  .hatch input {
+    width: 22px;
+    height: 22px;
+  }
+}

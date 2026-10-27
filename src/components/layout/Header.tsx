@@ -16,7 +16,7 @@ import styles from "./Header.module.css";
  * - At the top: the minimal bar. Name and three text links on the left, the
  *   chat button and the theme switch on the right.
  * - Once the page scrolls: a small floating toolbar at the top centre with
- *   the name and three icons (Work, About, Resume). Hovering an icon slides
+ *   the name and four icons (Work, Lab, About, Resume). Hovering an icon slides
  *   its label out.
  * The bar's background and the name are shared elements (layoutId), so the
  * header visibly shrinks into the toolbar and grows back; everything else
@@ -94,7 +94,7 @@ export function Header() {
   const late = { ...fade, delay: reduce ? 0 : 0.2 };
 
   const links = [...nav, ...(site.resumeUrl ? [{ href: site.resumeUrl, label: "Resume" }] : [])];
-  const icons: Record<string, "grid" | "user" | "file"> = { Work: "grid", About: "user", Resume: "file" };
+  const icons: Record<string, "grid" | "flask" | "user" | "file"> = { Work: "grid", Lab: "flask", About: "user", Resume: "file" };
 
   return (
     <header className={styles.header} data-compact={compact || undefined}>
@@ -107,6 +107,8 @@ export function Header() {
                 key="toolbar"
                 ref={toolbar}
                 className={styles.toolbar}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: fade }}
                 exit={{ opacity: 0, transition: fade }}
                 data-cursor-quiet
                 onPointerEnter={pin}
@@ -154,7 +156,7 @@ export function Header() {
                 </motion.div>
               </motion.div>
             ) : (
-              <motion.div key="bar" className={styles.bar} exit={{ opacity: 0, transition: fade }}>
+              <motion.div key="bar" className={styles.bar} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: fade }} exit={{ opacity: 0, transition: fade }}>
                 <motion.span layoutId="header-surface" className={styles.surfaceFull} transition={morph} style={{ borderRadius: 0 }} />
                 <nav aria-label="Primary" className={styles.left}>
                   <motion.span layoutId="header-name" className={styles.nameWrap} transition={morph}>

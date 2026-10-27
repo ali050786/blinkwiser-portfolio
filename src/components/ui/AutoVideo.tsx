@@ -8,7 +8,7 @@ import styles from "./AutoVideo.module.css";
  * The one video player on the site: a silent loop that plays itself while
  * it's on screen.
  *
- * - A soft pulse holds the space until the first frame is ready, then the
+ * - A shimmer holds the space until the first frame is ready, then the
  *   video fades and rises in (static under reduced motion).
  * - Controls (pause, replay, and sound when there is a soundtrack) appear on
  *   hover or keyboard focus, and stay visible on touch screens. Moving content
@@ -58,8 +58,8 @@ export function AutoVideo({
       userPaused.current = true;
       setReady(true);
     }
-    // Metadata may already be in when hydration finishes.
-    if (v.readyState >= 1) setReady(true);
+    // The first frame may already be in when hydration finishes.
+    if (v.readyState >= 2) setReady(true);
 
     const sync = () => {
       if (inView.current && !userPaused.current && !document.hidden) v.play().catch(() => {});
@@ -77,14 +77,12 @@ export function AutoVideo({
     const onReady = () => setReady(true);
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
-    v.addEventListener("loadedmetadata", onReady);
     v.addEventListener("loadeddata", onReady);
     v.addEventListener("play", onPlay);
     v.addEventListener("pause", onPause);
     document.addEventListener("visibilitychange", sync);
     return () => {
       io.disconnect();
-      v.removeEventListener("loadedmetadata", onReady);
       v.removeEventListener("loadeddata", onReady);
       v.removeEventListener("play", onPlay);
       v.removeEventListener("pause", onPause);

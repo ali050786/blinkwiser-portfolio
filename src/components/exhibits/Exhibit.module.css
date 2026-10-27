@@ -109,3 +109,12 @@
   opacity: 0.5;
   cursor: default;
 }
+
+@media (pointer: coarse) {
+  .segment {
+    min-height: 44px;
+  }
+  .action {
+    min-height: 44px;
+  }
+}

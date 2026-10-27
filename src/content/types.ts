@@ -230,6 +230,7 @@ export interface CaseStudy {
   /** Optional short recording shown right under the cover. */
   reel?: Shot;
   headline: { value: string; label: string };
+  teaser?: string;
   /**
    * Optional story-first opening for the case hero: a line placing the study's
    * scope, then short stories (one per tab), each with the old system's own words

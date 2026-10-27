@@ -82,12 +82,33 @@
 .meta dd {
   font-size: var(--font-size-body-s);
 }
+/* The result leads the strip and takes a double column, so it's the first fact read. */
+.meta[data-result] {
+  grid-template-columns: minmax(0, 2fr) repeat(4, minmax(0, 1fr));
+}
+.result dd {
+  display: grid;
+  gap: 4px;
+}
+.resultValue {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-solid);
+}
+.resultLabel {
+  color: var(--text-secondary);
+}
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
   }
-  .meta {
+  .meta,
+  .meta[data-result] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .result {
+    grid-column: 1 / -1;
   }
 }
 
@@ -207,4 +228,10 @@
 
 .links {
   margin-top: 32px;
+}
+
+@media (pointer: coarse) {
+  .back {
+    min-height: 44px;
+  }
 }

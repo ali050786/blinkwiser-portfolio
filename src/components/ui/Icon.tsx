@@ -25,7 +25,8 @@ type Name =
   | "send"
   | "grid"
   | "user"
-  | "file";
+  | "file"
+  | "flask";
 
 const paths: Record<Name, React.ReactNode> = {
   "arrow-right": <path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" />,
@@ -76,6 +77,7 @@ const paths: Record<Name, React.ReactNode> = {
   /** The site's mark: a square turned on its point, softly rounded. Filled, unlike the outline icons. */
   mark: <rect x="4.6" y="4.6" width="10.8" height="10.8" rx="2.4" transform="rotate(45 10 10)" fill="currentColor" stroke="none" />,
   send: <path d="M10 15.5v-11M5.5 9L10 4.5 14.5 9" />,
+  flask: <path d="M8 3h4M8.6 3v5L4.4 15.2a1.4 1.4 0 0 0 1.2 2.1h8.8a1.4 1.4 0 0 0 1.2-2.1L11.4 8V3M6.3 12.4h7.4" />,
   grid: (
     <>
       <rect x="3.5" y="3.5" width="5.5" height="5.5" rx="1.4" />

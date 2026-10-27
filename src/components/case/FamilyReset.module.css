@@ -152,6 +152,14 @@
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
+
+@media (pointer: coarse) {
+  .replay {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
 @media (max-width: 480px) {
   .role {
     display: none;

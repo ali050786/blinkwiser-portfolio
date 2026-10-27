@@ -203,6 +203,56 @@
   color: var(--text-tertiary);
   cursor: default;
 }
+/* A failed answer: says what happened and offers a way on. */
+.failed {
+  display: grid;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xs);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.actions button,
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding-inline: 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xs);
+  background: var(--surface-canvas);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.actions button:hover,
+.actions a:hover {
+  background: var(--surface-muted);
+}
+.actions button:disabled {
+  color: var(--text-tertiary);
+  cursor: default;
+}
+.trimmed {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+@media (pointer: coarse) {
+  .actions button,
+  .actions a {
+    min-height: 44px;
+  }
+}
+
 .foot {
   margin-top: 8px;
   font-size: 12px;
@@ -286,5 +336,23 @@
     width: 100vw;
     border-radius: 0;
     border: 0;
+  }
+}
+
+@media (pointer: coarse) {
+  .close {
+    width: 44px;
+    height: 44px;
+  }
+  .send {
+    width: 44px;
+    height: 44px;
+  }
+  .row textarea {
+    min-height: 44px;
+    padding-block: 10px;
+  }
+  .starters button {
+    min-height: 44px;
   }
 }

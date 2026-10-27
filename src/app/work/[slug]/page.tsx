@@ -161,7 +161,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       </div>
       )}
 
-      <NextCase study={next} />
+      <NextCase study={next} currentSlug={c.slug} />
     </article>
   );
 }

@@ -230,3 +230,18 @@
     justify-content: center;
   }
 }
+
+/* Fitts's Law: 44px minimum touch targets on touch devices. */
+@media (pointer: coarse) {
+  .link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .ask {
+    min-height: 44px;
+  }
+  .tool {
+    min-height: 44px;
+  }
+}

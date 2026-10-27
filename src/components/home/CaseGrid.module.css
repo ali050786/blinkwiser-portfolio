@@ -86,6 +86,10 @@
 .tag {
   color: var(--text-tertiary);
 }
+.metric {
+  color: var(--accent-solid);
+  font-weight: var(--font-weight-medium);
+}
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;

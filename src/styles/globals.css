@@ -362,3 +362,21 @@ body[data-accent-live] {
 main:focus {
   outline: none;
 }
+
+/* Lazy images shimmer until loaded; the boot script in layout.tsx switches each one off by src. */
+main img[loading="lazy"] {
+  background-color: var(--surface-muted);
+}
+[data-motion="ok"] main img[loading="lazy"] {
+  background-image: linear-gradient(100deg, transparent 30%, color-mix(in srgb, var(--surface-raised) 70%, transparent) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: img-shimmer 1.4s linear infinite;
+}
+@keyframes img-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}

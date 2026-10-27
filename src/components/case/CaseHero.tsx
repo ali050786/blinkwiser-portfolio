@@ -109,7 +109,16 @@ export function CaseHero({ study: c }: { study: CaseStudy }) {
         </div>
       )}
 
-      <dl className={styles.meta}>
+      <dl className={styles.meta} data-result={c.headline.value ? "" : undefined}>
+        {c.headline.value && (
+          <div className={styles.result}>
+            <dt className="t-label c-tertiary">Result</dt>
+            <dd>
+              <span className={styles.resultValue}>{c.headline.value}</span>
+              <span className={styles.resultLabel}>{c.headline.label}</span>
+            </dd>
+          </div>
+        )}
         {meta.map(([k, v]) => (
           <div key={k}>
             <dt className="t-label c-tertiary">{k}</dt>

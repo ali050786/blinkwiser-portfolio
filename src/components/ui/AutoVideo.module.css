@@ -9,13 +9,31 @@
   inset: 0;
   background: transparent;
 }
-/* Loading: a soft pulse until the first frame (or metadata) is in. */
-[data-motion="ok"] .wrap:not([data-ready]) {
-  animation: pulse 1.4s ease-in-out infinite;
+/* Loading: a shimmer sweep until the first frame is painted. */
+.wrap:not([data-ready]) {
+  background: var(--surface-muted);
 }
-@keyframes pulse {
-  50% {
-    opacity: 0.55;
+.wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 30%, color-mix(in srgb, var(--surface-raised) 70%, transparent) 50%, transparent 70%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 300ms var(--ease-standard);
+}
+[data-motion="ok"] .wrap:not([data-ready])::after {
+  opacity: 1;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
   }
 }
 
@@ -86,5 +104,12 @@
   .controls {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .btn {
+    width: 44px;
+    height: 44px;
   }
 }

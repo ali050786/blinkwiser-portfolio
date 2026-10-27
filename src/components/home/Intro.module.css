@@ -47,3 +47,11 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (pointer: coarse) {
+  .row a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

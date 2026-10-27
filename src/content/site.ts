@@ -16,13 +16,14 @@ export const site = {
 
 export const nav = [
   { href: "/", label: "Work" },
+  { href: "/lab", label: "Lab" },
   { href: "/about", label: "About" },
 ];
 
 export const proof = [
-  { value: 5, prefix: "9 → ", suffix: "", label: "enrollment steps, with \u201cwho's covered\u201d asked once", study: "01" },
+  { value: 5, prefix: "9 → ", suffix: "", label: "enrollment steps, with \u201cwho's covered\u201d asked once", study: "03" },
   { value: 24, prefix: "< ", suffix: "h", label: "to theme a new client on a white-label health-insurance platform, down from weeks", study: "02" },
-  { value: 0, text: "1–2 wks → 3–4 days", prefix: "", suffix: "", label: "Jira-story turnaround with business analysts, once the design system was readable by AI", study: "03" },
+  { value: 0, text: "1–2 wks → 3–4 days", prefix: "", suffix: "", label: "Jira-story turnaround with business analysts, once the design system was readable by AI", study: "01" },
   { value: 0, text: "Plan → Execute → Reflect", prefix: "", suffix: "", label: "an agent workflow on every carousel: research the facts, write, then check its own work", study: "04" },
   { value: 3.5, decimals: 1, prefix: "", suffix: "M", label: "residents' city services, organized by need instead of department", study: "05" },
 ];
@@ -31,23 +32,23 @@ export const principles = [
   {
     title: "Find the problem under the brief",
     /** The one study this habit leads, shown at the top of that study. */
-    primary: "01",
+    primary: "03",
     body: "Every study here starts with a reframe. Asked to edit screens, I found a platform problem. Told a flow was too long, I found it asked questions in the wrong order.",
-    refs: ["01", "02"],
+    refs: ["03", "02"],
   },
   {
     title: "Make the variable explicit",
     /** The one study this habit leads, shown at the top of that study. */
-    primary: "03",
+    primary: "01",
     body: "Brands become tokens. Rules become code, not prompt requests. A design system becomes files an agent can read. What can change should be configurable, and nothing else should be.",
-    refs: ["02", "03", "04"],
+    refs: ["02", "01", "04"],
   },
   {
     title: "Design for the build reality",
     /** The one study this habit leads, shown at the top of that study. */
     primary: "05",
     body: "A design that can't be built as specified is a wish. I design within the platform's constraints and translate between the user's model and the system's, instead of forcing either.",
-    refs: ["01", "05"],
+    refs: ["03", "05"],
   },
   {
     title: "Settle trade-offs with evidence",
@@ -61,7 +62,7 @@ export const principles = [
     /** The one study this habit leads, shown at the top of that study. */
     primary: "02",
     body: "A system nobody uses is a file. Enablement, documentation, design QA, and an agreement with engineering are design work too.",
-    refs: ["02", "03"],
+    refs: ["02", "01"],
   },
 ];
 

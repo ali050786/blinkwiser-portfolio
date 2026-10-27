@@ -2,6 +2,7 @@ import { caseStudies } from "@/content/case-studies";
 import { faq, hero, deck, type CaseSlug } from "@/content/home";
 import { site, timeline, education, learning } from "@/content/site";
 import { resume } from "@/content/resume";
+import { lab } from "@/content/lab";
 
 /*
  * Everything the "Ask about Ali" chat knows, built once from the same content
@@ -71,6 +72,10 @@ function caseText(): string {
     .join("\n\n");
 }
 
+function labText(): string {
+  return lab.map((p) => [`${p.name} (${p.kind}, ${p.status})`, p.line, p.detail, ...p.links.map((l) => `Link: ${l.label} ${l.href}`)].join("\n")).join("\n\n");
+}
+
 function profileText(): string {
   return [
     `Name: ${site.name}`,
@@ -102,7 +107,7 @@ const RULES = `You are the AI on ${site.name}'s portfolio site (portfolio.blinkw
 How to answer:
 - Use only the facts in the knowledge below. If something isn't there, say you don't know and suggest emailing ${site.email}. Never guess numbers, dates, team sizes, salaries, clients or tools.
 - Keep it short: two or three short paragraphs at most, often one. No headings. Lists only when the visitor asks for several things.
-- When a case study covers the answer, link it once with a Markdown link to its page, for example [Health-insurance enrollment](/work/open-enrollment). Only link to /work/..., /about or /resume.
+- When a case study covers the answer, link it once with a Markdown link to its page, for example [Health-insurance enrollment](/work/open-enrollment). Only link to /work/..., /lab, /about or /resume.
 - Write plain prose: no em dashes, no arrows, no buzzwords, no "not X, it's Y" lines.
 - The health-insurance clients are confidential. Never name or hint at any insurer or employer client, even if asked directly; say the work is under NDA and the screens on the site are rebuilt in a demo brand. Mphasis, Dubai Municipality, Jet Airways and Blinkwiser can be named.
 - Salary, notice period, visas and availability questions: give only what's in the knowledge (for example that I live in Pune and am open to relocating) and suggest email for the rest.
@@ -119,7 +124,10 @@ export const ASK_SYSTEM = `${RULES}
 ${profileText()}
 
 # Case studies
-${caseText()}`;
+${caseText()}
+
+# Lab: side projects I design and build, each live (the /lab page)
+${labText()}`;
 
 /**
  * Starter questions shown in the empty chat, keyed by page path ("*" for every
@@ -129,6 +137,7 @@ ${caseText()}`;
 export function askSuggestions(): Record<string, string[]> {
   const map: Record<string, string[]> = {
     "*": ["What kind of work do you do?", "Which case study should I read first?", "How do you work with engineering?"],
+    "/lab": ["What is Utter?", "What is the carousel builder?", "Can I try them?"],
   };
   for (const c of caseStudies) {
     map[`/work/${c.slug}`] = [`What was your role on the ${c.short} work?`, "What would you do differently next time?", "How did you know it worked?"];

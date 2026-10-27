@@ -209,3 +209,12 @@
     max-height: 420px;
   }
 }
+
+@media (pointer: coarse) {
+  .tab {
+    min-height: 44px;
+  }
+  .close {
+    min-height: 44px;
+  }
+}

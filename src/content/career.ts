@@ -19,7 +19,7 @@ export type CareerChapter = {
   /** Marks the current chapter (accent color, "Now"). */
   current?: boolean;
   href?: string;
-  /** Case index for the "Read case" line, e.g. "03". */
+  /** Case index for the "Read case" line, e.g. "01". */
   caseIndex?: string;
 };
 
@@ -34,7 +34,7 @@ export const career: CareerChapter[] = [
     depth: 4,
     current: true,
     href: "/work/ai-readable-design-system",
-    caseIndex: "03",
+    caseIndex: "01",
   },
   {
     id: "health",
@@ -45,7 +45,7 @@ export const career: CareerChapter[] = [
     result: "9 → 5 steps",
     depth: 3,
     href: "/work/open-enrollment",
-    caseIndex: "01",
+    caseIndex: "03",
   },
   {
     id: "dubai",

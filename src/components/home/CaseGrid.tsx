@@ -38,9 +38,15 @@ export function CaseGrid() {
                   <span className={styles.sep} aria-hidden="true">
                     /
                   </span>
-                  <span className={styles.tag}>
-                    {d.domain}, {d.status.charAt(0).toLowerCase() + d.status.slice(1)}
-                  </span>
+                  {c.headline.value ? (
+                    <span className={styles.tag}>
+                      <span className={styles.metric}>{c.headline.value}</span> {c.headline.label}
+                    </span>
+                  ) : (
+                    <span className={styles.tag}>
+                      {d.domain}, {d.status.charAt(0).toLowerCase() + d.status.slice(1)}
+                    </span>
+                  )}
                 </p>
               </Link>
               {/* The loop sits over the card's media box, outside the link, so its

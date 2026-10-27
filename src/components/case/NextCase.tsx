@@ -1,15 +1,24 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
+import { caseStudies } from "@/content/case-studies";
 import type { CaseStudy } from "@/content/types";
 import { deck, type CaseSlug } from "@/content/home";
 import { Icon } from "@/components/ui/Icon";
+import { useVisitedCases } from "@/lib/visited-cases";
+import { CaseProgress } from "./CaseProgress";
 import styles from "./NextCase.module.css";
 
-/**
- * The next case, shown as its card from the home page: the case's tint, a real
- * screen and its opening line, so moving between cases feels like moving along
- * the same deck.
- */
-export function NextCase({ study: c }: { study: CaseStudy }) {
+export function NextCase({ study: fallback, currentSlug }: { study: CaseStudy; currentSlug: string }) {
+  const { visited, hydrated, hydrate } = useVisitedCases();
+  useEffect(hydrate, [hydrate]);
+
+  const unread = hydrated
+    ? caseStudies.filter((c) => c.slug !== currentSlug && !visited.includes(c.slug))
+    : [];
+  const c = unread.length > 0 ? unread[0]! : fallback;
+
   const m = deck[c.slug as CaseSlug];
   return (
     <nav aria-label="Next case study" className={`container ${styles.wrap}`}>
@@ -20,6 +29,7 @@ export function NextCase({ study: c }: { study: CaseStudy }) {
             <span className="c-accent">{m.domain}</span>
           </p>
           <p className={`t-display-m ${styles.title}`}>{c.title}</p>
+          {c.teaser && <p className={styles.teaser}>{c.teaser}</p>}
           <p className="c-secondary">{m.outcome}</p>
           <span className={styles.cta}>
             Read the story <Icon name="arrow-right" size={16} />
@@ -36,6 +46,7 @@ export function NextCase({ study: c }: { study: CaseStudy }) {
           </div>
         </div>
       </Link>
+      <CaseProgress currentSlug={currentSlug} />
     </nav>
   );
 }
